@@ -1,10 +1,10 @@
 # STATUS — as of 30 Oct 2026
 
-**Phase:** P0 Foundations, in progress. **Next gate:** the M1 go/no-go, Mon 9 Nov (D-018, on merge).
+**Phase:** P0 Foundations, in progress. **Next gate:** the M1 go/no-go, Mon 9 Nov (D-018).
 
 ## Schedule note
 
-The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started on 30 Oct. M1 needs about 3 assistant days, 1 day of Sam's, and a 24-hour offline test (C8), so D-018 moves the go/no-go from 2 Nov to **Mon 9 Nov** (recorded in PR `docs/d-017`, takes effect on merge). The 20 Nov freeze and the 1 Dec go-live are unchanged.
+The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started on 30 Oct. M1 needs about 3 assistant days, 1 day of Sam's, and a 24-hour offline test (C8), so D-018 moves the go/no-go from 2 Nov to **Mon 9 Nov**. The 20 Nov freeze and the 1 Dec go-live are unchanged.
 
 ## Done
 
@@ -17,12 +17,12 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 
 ## In progress
 
-- **M1-01 (Claude Code), #2, PR open:** local v16 bench in WSL with erpnext, posawesome (`develop` @ `89ae16d`, candidate) and ruhee_erp installed on `dev.localhost`; the smoke test passes locally. Open: CI result; POS screen not yet opened, because the site has no setup wizard, company or POS Profile (decision asked of Sam); wkhtmltopdf deferred to the A4 print card.
+- **M1-01 (Claude Code), #2: in review, PR #15.** Local v16 bench in WSL with erpnext, posawesome (`develop` @ `89ae16d`, candidate) and ruhee_erp on `dev.localhost`; smoke test passes locally and in CI. `/desk/posapp` returns 200; the full POS screen is deferred to M1-03 (company setup script). wkhtmltopdf is deferred to the A4 print card.
 - **M1-00 (Sam), #1, still open:** Frappe Cloud is not provisioned and there is no staging site; Sam is willing to pay when needed. Open parts: a Frappe Cloud account, a payment method, and the Frappe Cloud GitHub app with access to both repositories. None is assumed to exist. Needed from M1-02, not M1-01.
 
 ## Next
 
-1. M1-01 (#2): finish (CI green, POS screen opened) and merge. The working copy is now `~/frappe-bench/apps/ruhee_erp`, not `~/claude-projects/ruhee-erp`.
+1. M1-01 (#2): review and merge PR #15. The working copy is now `~/frappe-bench/apps/ruhee_erp`, not `~/claude-projects/ruhee-erp`.
 2. M1-02 (#3) Deploy to the Frappe Cloud staging site and pin versions (Sam with Claude Code).
 3. M1-03 to M1-10 (#4 to #11): the spike checks C2–C13.
 4. M1-11 (#12) Spike report and go/no-go.
@@ -52,7 +52,7 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 
 **Interpretations to confirm:** see `SPEC.md` §17.
 
-**Working model:** Claude Code, Codex and ChatGPT build and review; Claude (chat) maintains the spec and the accounting rules. D-017 (amends D-012) is recorded in PR `docs/d-017` and takes effect on merge.
+**Working model:** Claude Code, Codex and ChatGPT build and review; Claude (chat) maintains the spec and the accounting rules. D-017 amends D-012.
 
 ## Risks to watch now
 
