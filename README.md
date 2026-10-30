@@ -2,6 +2,8 @@
 
 ERPNext customisations for Ruhee Pharma
 
+Project instructions are in `AGENTS.md`; specification, accounting rules, decisions and status are in `docs/`.
+
 ### Installation
 
 You can install this app using the [bench](https://github.com/frappe/bench) CLI:
