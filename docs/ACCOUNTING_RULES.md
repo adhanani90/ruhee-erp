@@ -77,7 +77,7 @@ These are management accounts, not SYSCOHADA, plus Sales, Cost of goods sold, St
 Each invariant has a planned automated test.
 
 - **I1** A printed bill matches the recorded invoice: prices, discounts, totals.
-- **I2** For each bill without returns, the USD amounts allocated to it by payments (remise deductions included), plus its USD balance, equal the USD amount debited to Debtors for it, to the cent. The base-rate value of the cash received can differ from the amount allocated; the difference is Exchange income (R7). Bills with returns are covered by I9.
+- **I2** For each bill without returns, the USD amounts allocated to it by payments (remise deductions included), plus its USD balance, equal the USD amount debited to Debtors for it, to the cent. The base-rate value of the cash received can differ from the amount allocated; the difference, net of remise deductions, is Exchange income (R7). Bills with returns are covered by I9.
 - **I3** Customer balances exist only in USD.
 - **I4** Exchange income arises only from R3 and R5. FX gain/loss arises only from revaluation, transfers and refunds paid at a later day's rate.
 - **I5** After the daily close, each cash account's balance in its own currency equals the count, with any variance booked.
