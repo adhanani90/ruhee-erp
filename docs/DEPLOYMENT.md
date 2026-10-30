@@ -18,8 +18,13 @@ Staging and production share one bench group. Each deploy creates a new bench ve
 | --- | --- | --- | --- | --- |
 | frappe | frappe/frappe | version-16 | | |
 | erpnext | frappe/erpnext | version-16 | | |
-| posawesome | our fork of defendicon/POS-Awesome-V15 | to identify in M1-01 (the branch the README gives for v16) | | |
+| posawesome | our fork of defendicon/POS-Awesome-V15 | develop (candidate, M1-01) | `89ae16d872e90727086b2550d7ca97958c9c4aa4` (candidate, M1-01) | |
 | ruhee_erp | ruhee-erp | main | | |
+
+*M1-01 notes (candidates only; M1-02 pins).*
+
+- **posawesome:** upstream has no `version-16` branch, and its tags stop at `15.36.0`. The upstream README claims v15 and v16 support, and its v16 manifest (`docker/apps.json`) pairs ERPNext `version-16` with POS Awesome `develop`. `pyproject.toml` on `develop` declares `frappe`/`erpnext` `>=15.0.0,<17.0.0`; the app name is `posawesome` (`pyproject.toml`, `hooks.py`), with `required_apps = ["erpnext"]`. Our fork's only branch, `develop`, equals upstream `develop` at `89ae16d` (26 Oct 2026). Upstream `production` (`03c6fd3`, Jan 2026) has diverged (`develop` is 1,716 commits ahead and 1 behind). Upstream `stage-develop` (`da1f1f4`) is `develop` plus 4 commits, including "fix(closing): preserve counted amounts and resolve tender currency"; flagged for the C10 closing check.
+- **Local dev bench (M1-01), for reference:** frappe `16.54.0` (`2fcb939`), erpnext `16.53.0` (`9cd11b1`), both `version-16`.
 
 ## 3. Local development setup (Claude Code, M1-01)
 
@@ -41,6 +46,8 @@ bench start
 
 - **First time only (M1-01):** scaffold the app with `bench new-app ruhee_erp` and merge it with this repository, as the M1-01 card describes.
 - **After that:** `bench get-app <ruhee-erp repo URL>`, then `bench --site dev.localhost install-app ruhee_erp`.
+- **M1-01 as built:** native WSL2 Ubuntu 26.04, not `frappe_docker`. Python 3.14 and MariaDB 11.8 come from apt; Node 24 comes from nvm (`nvm alias default 24`); bench comes from `uv tool install --python /usr/bin/python3.14 frappe-bench`. The bench is at `~/frappe-bench` on the WSL filesystem.
+- Restart `bench start` after `bench new-app` or `bench get-app`. Processes started earlier cannot import the new app, and the scheduler then stops the whole bench.
 
 ## 4. Frappe Cloud setup (Sam, M1-00 and M1-02)
 

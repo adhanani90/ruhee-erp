@@ -17,11 +17,12 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 
 ## In progress
 
+- **M1-01 (Claude Code), #2, PR open:** local v16 bench in WSL with erpnext, posawesome (`develop` @ `89ae16d`, candidate) and ruhee_erp installed on `dev.localhost`; the smoke test passes locally. Open: CI result; POS screen not yet opened, because the site has no setup wizard, company or POS Profile (decision asked of Sam); wkhtmltopdf deferred to the A4 print card.
 - **M1-00 (Sam), #1, still open:** Frappe Cloud is not provisioned and there is no staging site; Sam is willing to pay when needed. Open parts: a Frappe Cloud account, a payment method, and the Frappe Cloud GitHub app with access to both repositories. None is assumed to exist. Needed from M1-02, not M1-01.
 
 ## Next
 
-1. M1-01 (#2) Scaffold `ruhee_erp` and the local dev bench (Claude Code). Not started. The WSL dev environment is unverified and is checked in M1-01; the bench should live on the WSL filesystem, not under `/mnt/c`.
+1. M1-01 (#2): finish (CI green, POS screen opened) and merge. The working copy is now `~/frappe-bench/apps/ruhee_erp`, not `~/claude-projects/ruhee-erp`.
 2. M1-02 (#3) Deploy to the Frappe Cloud staging site and pin versions (Sam with Claude Code).
 3. M1-03 to M1-10 (#4 to #11): the spike checks C2–C13.
 4. M1-11 (#12) Spike report and go/no-go.
