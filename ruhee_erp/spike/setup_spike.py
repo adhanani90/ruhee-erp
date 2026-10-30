@@ -15,10 +15,10 @@ the single settings listed below are set when they differ.
 """
 
 import frappe
+from erpnext.setup.utils import get_exchange_rate
+from frappe import _
 from frappe.desk.page.setup_wizard.setup_wizard import setup_complete
 from frappe.utils import flt
-
-from erpnext.setup.utils import get_exchange_rate
 
 COMPANY = "Ruhee Spike"
 ABBR = "RS"
@@ -96,7 +96,11 @@ class Report:
 		self.existing = []
 
 	def print(self):
-		for label, rows in (("created", self.created), ("updated", self.updated)):
+		for label, rows in (
+			("created", self.created),
+			("updated", self.updated),
+			("existing", self.existing),
+		):
 			for row in rows:
 				print(f"  {label}: {row}")
 		print(f"existing, left unchanged: {len(self.existing)}")
@@ -122,7 +126,7 @@ def run():
 	setup_users(report)
 	setup_pos_profile(report, warehouse, cost_center)
 
-	frappe.db.commit()
+	# bench execute commits on success (frappe/commands/utils.py:execute).
 	report.print()
 
 
@@ -131,14 +135,16 @@ def setup_company(report):
 	# (frappe/desk/page/setup_wizard/setup_wizard.py:setup_complete, erpnext
 	# stages from erpnext/setup/setup_wizard/setup_wizard.py:get_setup_stages).
 	if not frappe.is_setup_complete():
+		# The wizard commits on success (setup_wizard.py:run_post_setup_complete), so a
+		# later failure leaves the company in place and a rerun resumes from there.
 		setup_complete(WIZARD_ARGS)
-		frappe.db.commit()
 		frappe.clear_cache()
 		report.created.append(f"setup wizard (company {COMPANY}, fiscal year 2026)")
 	elif not frappe.db.exists("Company", COMPANY):
 		# Wizard already completed on this site with another company: add ours.
 		if not frappe.db.exists(
-			"Fiscal Year", {"year_start_date": WIZARD_ARGS["fy_start_date"], "year_end_date": WIZARD_ARGS["fy_end_date"]}
+			"Fiscal Year",
+			{"year_start_date": WIZARD_ARGS["fy_start_date"], "year_end_date": WIZARD_ARGS["fy_end_date"]},
 		):
 			frappe.get_doc(
 				{
@@ -167,7 +173,9 @@ def setup_company(report):
 
 	company = frappe.get_doc("Company", COMPANY)
 	if company.default_currency != "USD":
-		frappe.throw(f"Company {COMPANY} exists with currency {company.default_currency}, expected USD")
+		frappe.throw(
+			_("Company {0} exists with currency {1}, expected USD").format(COMPANY, company.default_currency)
+		)
 
 
 def setup_currency(report):
@@ -191,7 +199,7 @@ def setup_accounts(report):
 	Debtors, Exchange Gain/Loss and Round Off accounts."""
 	debtors = existing_account("Debtors")
 	if frappe.db.get_value("Account", debtors, "account_currency") != "USD":
-		frappe.throw(f"{debtors} is not in USD")
+		frappe.throw(_("{0} is not in USD").format(debtors))
 	report.existing.append(f"Account {debtors} (USD)")
 
 	fx = existing_account("Exchange Gain/Loss")
@@ -227,7 +235,9 @@ def setup_accounts(report):
 
 
 def setup_store(report):
-	warehouse_parent = frappe.db.get_value("Warehouse", {"company": COMPANY, "is_group": 1, "parent_warehouse": ["is", "not set"]})
+	warehouse_parent = frappe.db.get_value(
+		"Warehouse", {"company": COMPANY, "is_group": 1, "parent_warehouse": ["is", "not set"]}
+	)
 	warehouse = frappe.db.get_value("Warehouse", {"company": COMPANY, "warehouse_name": STORE})
 	if warehouse:
 		report.existing.append(f"Warehouse {warehouse}")
@@ -246,7 +256,9 @@ def setup_store(report):
 		)
 		report.created.append(f"Warehouse {warehouse}")
 
-	cost_center_parent = frappe.db.get_value("Cost Center", {"company": COMPANY, "is_group": 1, "parent_cost_center": ["is", "not set"]})
+	cost_center_parent = frappe.db.get_value(
+		"Cost Center", {"company": COMPANY, "is_group": 1, "parent_cost_center": ["is", "not set"]}
+	)
 	cost_center = frappe.db.get_value("Cost Center", {"company": COMPANY, "cost_center_name": STORE})
 	if cost_center:
 		report.existing.append(f"Cost Center {cost_center}")
@@ -298,7 +310,13 @@ def setup_rates(report):
 			report.existing.append(f"Currency Exchange {SPIKE_DATE} {from_currency}->{to_currency}")
 			continue
 		doc = frappe.get_doc(
-			{"doctype": "Currency Exchange", **filters, "exchange_rate": rate, "for_buying": 1, "for_selling": 1}
+			{
+				"doctype": "Currency Exchange",
+				**filters,
+				"exchange_rate": rate,
+				"for_buying": 1,
+				"for_selling": 1,
+			}
 		).insert()
 		report.created.append(f"Currency Exchange {doc.name} = {rate}")
 
@@ -306,7 +324,7 @@ def setup_rates(report):
 def setup_items(report):
 	price_list = frappe.db.get_value("Price List", {"selling": 1, "currency": "USD", "enabled": 1})
 	if not price_list:
-		frappe.throw("No enabled USD selling price list")
+		frappe.throw(_("No enabled USD selling price list"))
 
 	for suffix, item_name, price, valuation_rate in ITEMS:
 		item_code = f"SPIKE-{suffix}"
@@ -359,7 +377,9 @@ def setup_customers(report):
 		if credit_limit:
 			doc.append("credit_limits", {"company": COMPANY, "credit_limit": credit_limit})
 		doc.insert()
-		report.created.append(f"Customer {doc.name}" + (f" (credit limit ${credit_limit})" if credit_limit else ""))
+		report.created.append(
+			f"Customer {doc.name}" + (f" (credit limit ${credit_limit})" if credit_limit else "")
+		)
 
 
 def setup_users(report):
@@ -431,9 +451,13 @@ def check_rate():
 
 
 def existing_account(account_name, is_group=0):
-	name = frappe.db.get_value("Account", {"company": COMPANY, "account_name": account_name, "is_group": is_group})
+	name = frappe.db.get_value(
+		"Account", {"company": COMPANY, "account_name": account_name, "is_group": is_group}
+	)
 	if not name:
-		frappe.throw(f"Account {account_name} not found for {COMPANY}; is the Standard chart installed?")
+		frappe.throw(
+			_("Account {0} not found for {1}; is the Standard chart installed?").format(account_name, COMPANY)
+		)
 	return name
 
 
@@ -460,7 +484,7 @@ def set_values(report, doctype, name, values):
 	current = frappe.db.get_value(doctype, name, list(values), as_dict=True)
 	changes = {k: v for k, v in values.items() if current.get(k) != v}
 	if not changes:
-		report.existing.append(f"{doctype} {name}")
+		report.existing.append(f"{doctype} {name}: {', '.join(values)} already set")
 		return
 	doc = frappe.get_doc(doctype, name)
 	doc.update(changes)

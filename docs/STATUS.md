@@ -17,21 +17,24 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 - *Confirmed:* M1-01 (#2) done: PR #15 merged 30 Oct.
 - *Reported by Sam:* Codex audit of P0 and M1-01 done (30 Oct).
 - *Confirmed:* M1 cards #3–#12 updated to the audit (30 Oct).
+- *Confirmed:* docs audit PR #16 merged 30 Oct (`ffd9766`); M1-02 prep PR #17 (`required_apps`) merged 30 Oct (`e68168c`).
+- *Confirmed:* M1-00 (#1) closed 30 Oct. *Reported by Sam,* with screenshots in #1: bench group on v16 in Cape Town; first deploy succeeded with frappe `2fcb939`, erpnext `9cd11b1`, posawesome `89ae16d`; Builder removed.
 
 ## In progress
 
-- **M1-00 (Sam), #1, still open:** Frappe Cloud is not provisioned and there is no staging site; Sam is willing to pay when needed. Open parts: a Frappe Cloud account, a payment method, and the Frappe Cloud GitHub app with access to both repositories. None is assumed to exist. Needed from M1-02, not M1-01.
+- **M1-02 (#3):** staging site to be created Mon 2 Nov.
+- **M1-03 (#4):** setup script done and run locally (`ruhee_erp/spike/setup_spike.py`); staging run and C1's screenshot wait on the M1-02 site.
 
 ## Next
 
-1. Review and merge the docs-only audit PR.
-2. M1-02 (#3) Deploy to the Frappe Cloud staging site and pin versions (Sam with Claude Code). Waits on the open Frappe Cloud parts of M1-00.
-3. M1-03 to M1-10 (#4 to #11): the spike checks; M1-03 also captures C1's billing-screen screenshot.
-4. M1-11 (#12) Spike report and go/no-go.
+1. M1-02 (#3) Deploy to the Frappe Cloud staging site and pin versions (Sam with Claude Code).
+2. M1-03 to M1-10 (#4 to #11): the spike checks; M1-03 also captures C1's billing-screen screenshot.
+3. M1-11 (#12) Spike report and go/no-go.
 
 ## Blocked or waiting
 
-- M1-02 and later cards wait on the open Frappe Cloud parts of M1-00.
+- M1-03's staging run waits on the M1-02 staging site.
+- *Reported by Sam:* a trial site, `ruhee-staging.v.frappe.cloud`, exists on a shared bench. It is not used for M1 and is deleted once staging is up.
 - C1 and C12 need to know New Depo's browser and PC specification (Q9). Until then M1 uses any two PCs, and that is noted in the evidence.
 
 ## Open questions
