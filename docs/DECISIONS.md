@@ -100,6 +100,30 @@ This file is append-only. Every entry gives the decision, the reason, the altern
 - **Planned M1 dates:** P0 26–29 Oct, M1 27 Oct – 2 Nov, go/no-go Mon 2 Nov.
 - **Status:** Approved. P0 actually started on 30 Oct (see `STATUS.md`).
 
+## D-017 Codex in the working model
+- **Decision:** OpenAI Codex joins Claude Code and ChatGPT as a builder and
+  reviewer. Sam names one owner per card; one card is one branch and one PR;
+  Sam merges. Codex may take any card, including code that runs against
+  ERPNext. Amends D-012, which reserved that work for Claude Code.
+- **Review:** the author is never the only reviewer. Codex reviews Claude
+  Code's PRs and Claude Code reviews Codex's, at minimum for money, stock
+  and permission code.
+- **Conflict rule:** no two tools work on the same card, or on the same
+  files in parallel. AGENTS.md stays the single source of shared
+  instructions.
+- **Why:** a second model reviewing money and stock code catches errors the
+  author misses; more than one builder speeds up P2.
+- **Alternatives:** keep D-012 unchanged.
+- **Status:** Approved by Sam, 30 Oct 2026, on merge of this PR.
+
+## D-018 Move the M1 go/no-go to Mon 9 Nov 2026
+- **Decision:** the M1 go/no-go moves from Mon 2 Nov to Mon 9 Nov 2026. The
+  20 Nov feature freeze and the 1 Dec go-live are unchanged.
+- **Why:** P0 started on 30 Oct instead of 26 Oct, and M1 needs about 3
+  assistant days, 1 day of Sam's and a 24-hour offline test (C8).
+- **Alternatives:** hold 2 Nov.
+- **Status:** Approved by Sam, 30 Oct 2026.
+
 ---
 
 ## Pending

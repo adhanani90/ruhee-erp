@@ -1,6 +1,6 @@
 # AGENTS.md — Ruhee ERP (New Depo pilot)
 
-Instructions for every coding assistant working in this repository (Claude Code, ChatGPT, any other).
+Instructions for every coding assistant working in this repository (Claude Code, Codex, ChatGPT, any other). Claude Code, Codex and ChatGPT all build and review (D-017).
 Read this file, `docs/STATUS.md` and your task card before doing anything else.
 
 ## 1. What this project is
@@ -64,7 +64,12 @@ ruhee-erp/                  repository root = Frappe app root
 | French quick guides, wording of the acceptance script | ChatGPT | Sam and the New Depo lead |
 | SPEC, ACCOUNTING_RULES, DECISIONS | Claude (chat) | Sam; accounting sign-off by the Q6 signatory |
 
-This split is the default. If one assistant is out of usage, the other takes the next **unstarted** card, never a card already in progress.
+This split is the default. Codex builds and reviews too (D-017, amending D-012): Sam names one owner per card, and Codex may take any card, including code that runs against ERPNext.
+
+- **Review:** the author is never the only reviewer. For money, stock and permission code at minimum, Codex reviews Claude Code's PRs and Claude Code reviews Codex's, in addition to the reviewers above.
+- **Conflicts:** no two tools work on the same card, or on the same files in parallel. This file is the single source of shared instructions.
+
+If one assistant is out of usage, another takes the next **unstarted** card, never a card already in progress.
 
 ## 5. Hard rules
 
