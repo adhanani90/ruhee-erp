@@ -73,12 +73,12 @@ Detailed rules: `ACCOUNTING_RULES.md` R1–R12.
 
 The policies below are the owners'; the mechanics are rules R13–R17.
 
-- **REQ-RET-01** Only managers process returns, refunds and swaps.
+- **REQ-RET-01** Only managers and head office process returns, refunds and swaps.
 - **REQ-RET-02** Outcomes:
   - A cash refund or credit, depending on how long it's been. Time limits come later.
   - At livraison, a refund or a swap, depending on the customer.
   - Goods unpaid for too long can be taken back as a stock return.
-- **REQ-RET-03** Every return is a credit note against the original bill (R13). Goods sold before go-live use POS Awesome's return without invoice, manager-only.
+- **REQ-RET-03** Every return is a credit note against the original bill (R13). Goods sold before go-live use POS Awesome's return without invoice, managers and head office only.
 - **REQ-RET-04** The manager marks each returned line as back on the shelf or not (R14). One return may contain both kinds of line.
   - If one credit note can't handle both, the system splits the return into two credit notes against the same bill: one updating stock, one not, created and printed together.
   - This fallback is confirmed or ruled out in M1 (C13).

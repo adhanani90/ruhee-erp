@@ -84,6 +84,7 @@ If one assistant is out of usage, another takes the next **unstarted** card, nev
 9. **No secrets in the repo:** passwords, API keys, `site_config.json` values.
 10. **Spike code lives in `ruhee_erp/spike/`,** is not referenced from `hooks.py`, and is never deployed to production.
 11. **Scope:** do not add the DGI facture normalisée, delegates, purchase orders, landed costs, batch or expiry tracking, cold-chain records, payroll, assets, projects, WhatsApp or pre-orders.
+12. Never commit real customer, supplier, price, stock or cash data, or exports from the old system, including in tests, fixtures and docs. Use invented data. Real data goes only through Frappe Cloud uploads or the git-ignored /data/ folder.
 
 ## 6. Conventions
 
