@@ -24,7 +24,7 @@ The setup is described in `SPEC.md` §14 and card M1-03: company in USD, CDF ena
 | C6 | Rounding | A CDF total rounds to 50 FC, with the difference posted to Round-off. Record ERPNext's native direction (input for Q1) | Bill and GL extract |
 | C7 | Store rate | A store-specific rate record, not ERPNext's company-wide rate, drives C3–C5 online, and is used by offline bills. A prototype is acceptable | GL extracts; note of the rate's code path |
 | C8 | Offline | Two PCs offline for at least 24 hours, through a browser and PC restart, each create 15 bills (cash, split, credit) and 2 later payments. Everything syncs, nothing lost or duplicated | Paper log, verification script output, screenshots |
-| C9 | Offline edge cases | An oversold item syncs into negative stock, and an over-limit credit bill lands as a draft for the manager | Stock ledger, draft screenshot |
+| C9 | Offline edge cases | An oversold item syncs into negative stock, and an over-limit credit bill lands as a draft for the manager. These bills are in addition to C8's: the same last unit of one item sold on both PCs, and one over-limit credit bill. Expected overall: 33 bills, 32 submitted, 1 draft. | Stock ledger, draft screenshot |
 | C10 | Closing | The shift close shows the CDF drawer in CDF; if not, the gap is written down with an estimate for a custom view | Closing screenshot, note |
 | C11 | Print | A bill prints from the billing screen through a custom A4 template | PDF |
 | C12 | Performance and backup | With 5,000 items loaded, item search answers within a second on a New Depo PC, and a staging backup restores to a fresh site | Timings, restore log |
@@ -34,7 +34,7 @@ The setup is described in `SPEC.md` §14 and card M1-03: company in USD, CDF ena
 
 1. A manager returns a line of a paid CDF bill without stock and refunds it from the CDF drawer (example K).
 2. The manager returns a line of a credit bill to the shelf, against the balance (example L).
-3. Each credit note reverses at its bill's rate, even after a new rate record has been entered, and stock moves only for L.
+3. K and L run at unchanged rates; L moves stock and K doesn't. Then a new rate record is entered, and a further credit note, with no stock movement and no refund, against a bill made at the earlier rate reverses at that rate.
 4. Whether returns work offline is recorded.
 5. A third return mixes a back-on-the-shelf line and a no-stock line in one document. Record whether stock moves for the first line only, since ERPNext's Update Stock setting applies to the whole credit note. If it doesn't, the fallback is two credit notes against the same bill, created and printed together (`ACCOUNTING_RULES.md` R14). M1 documents the fallback; P2 builds it.
 
@@ -50,13 +50,18 @@ Each test names its rule or example. Tests marked "Blocked" are written with the
 - **AUT-CUR-04** Example D: $50.00 USD balance.
 - **AUT-CUR-05** Example E: at 2400/2420, Exchange income $0.42.
 - **AUT-CUR-06** Example F: split payment, Exchange income $0.43.
-- **AUT-CUR-07** Example G: the remise mechanism at an illustrative 2%. The defaults are blocked by Q4.
+- **AUT-CUR-07** Example G: the remise as a deduction to Remises accordées. **Blocked by Q4** for the basis and amounts.
 - **AUT-CUR-08** Example H: rounding direction. **Blocked by Q1.**
 - **AUT-CUR-09** Example I: month-end revaluation, FX loss $9.25.
-- **AUT-CUR-10** I2 holds for every bill in A–I.
+- **AUT-CUR-10** I2 holds for every bill in A–I and O.
 - **AUT-CUR-11** I3: no customer entry posts to a non-USD receivable.
 - **AUT-CUR-12** I4: Exchange income comes only from R3/R5 entries.
 - **AUT-CUR-13** I6: a CDF document without a store rate record. **Blocked by Q5.**
+- **AUT-CUR-14** Example O: payment rounding goes to Exchange income. **Blocked by Q1** for the direction.
+- **AUT-CUR-15** I1: the A4 print of a bill shows the recorded prices, discounts and totals. Written with the print format (P2).
+- **AUT-CUR-16** I5: after a close with a counted variance, each cash account equals the count in its own currency, and the variance is in Cash over/short.
+- **AUT-CUR-17** R6: a USD balance paid later in USD posts with no conversion and no Exchange income.
+- **AUT-CUR-18** R12: change given in the other currency. **Blocked by Q2.**
 
 ### AUT-RATE — historical rates, I8 (P2)
 
@@ -65,6 +70,7 @@ Each test names its rule or example. Tests marked "Blocked" are written with the
 - **AUT-RATE-03** A later payment uses the later day's rate.
 - **AUT-RATE-04** A credit note reverses at the bill's rate.
 - **AUT-RATE-05** A rate record already used by a submitted document can't be edited.
+- **AUT-RATE-06** A mid-day rate record applies only to documents made after its effective time.
 
 ### AUT-STK — stock moves exactly once, I7 and I9 (P2)
 
@@ -95,6 +101,7 @@ These use the sync calls documented in M1-07.
 - **AUT-RET-06** A mixed return gives correct stock, through one credit note or the split fallback.
 - **AUT-RET-07** I9: the reversal's USD value equals the original line's.
 - **AUT-RET-08** Only a manager or head office can create a return (with AUT-PERM-05).
+- **AUT-RET-09** Returning one unit of a three-unit line reverses one unit's value; later returns can't exceed the two left.
 
 ### AUT-PERM — permissions and credit limits (P3)
 
@@ -135,7 +142,7 @@ Expected: CDF due at the higher rate; Exchange income posted.
 
 **AT-05 Split payment.**
 Refs: example F.
-Expected: both drawers credited; Exchange income on the CDF part.
+Expected: both drawers go up; Exchange income on the CDF part.
 
 **AT-06 Part-payment.**
 Refs: R4, example D.

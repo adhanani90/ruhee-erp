@@ -124,6 +124,26 @@ This file is append-only. Every entry gives the decision, the reason, the altern
 - **Alternatives:** hold 2 Nov.
 - **Status:** Approved by Sam, 30 Oct 2026.
 
+## D-019 The repository stays public
+- **Decision:** adhanani90/ruhee-erp stays public. Amends D-012, which
+  describes it as private.
+- **Guard:** no real customer, supplier, price, stock or cash data, and no
+  exports from the old system, are ever committed (AGENTS.md). Revisit
+  before P3 migration work.
+- **Why:** the repository holds no sensitive data, and public repositories
+  get free GitHub Actions minutes.
+- **Alternatives:** make it private.
+- **Status:** Approved by Sam, 30 Oct 2026.
+
+## D-020 Returns by managers and head office
+- **Decision:** managers and head office can process returns, refunds and
+  swaps; facturiers cannot. Amends D-010 and REQ-RET-01, which said
+  managers only.
+- **Why:** Sam's decision after the 30 Oct audit found SPEC and AUT-RET-08
+  disagreed.
+- **Alternatives:** managers only.
+- **Status:** Approved by Sam, 30 Oct 2026.
+
 ---
 
 ## Pending

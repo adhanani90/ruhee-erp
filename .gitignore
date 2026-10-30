@@ -53,3 +53,8 @@ jspm_packages/
 
 # Aider AI Chat
 .aider*
+
+# Real business data (AGENTS.md §5)
+/data/
+*.xlsx
+*.xls

@@ -47,6 +47,7 @@ bench start
 - **First time only (M1-01):** scaffold the app with `bench new-app ruhee_erp` and merge it with this repository, as the M1-01 card describes.
 - **After that:** `bench get-app <ruhee-erp repo URL>`, then `bench --site dev.localhost install-app ruhee_erp`.
 - **M1-01 as built:** native WSL2 Ubuntu 26.04, not `frappe_docker`. Python 3.14 and MariaDB 11.8 come from apt; Node 24 comes from nvm (`nvm alias default 24`); bench comes from `uv tool install --python /usr/bin/python3.14 frappe-bench`. The bench is at `~/frappe-bench` on the WSL filesystem.
+- Working copy for every tool: `~/frappe-bench/apps/ruhee_erp`. Don't work in any other clone.
 - Restart `bench start` after `bench new-app` or `bench get-app`. Processes started earlier cannot import the new app, and the scheduler then stops the whole bench.
 
 ## 4. Frappe Cloud setup (Sam, M1-00 and M1-02)
