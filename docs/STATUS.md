@@ -1,10 +1,10 @@
 # STATUS — as of 30 Oct 2026
 
-**Phase:** P0 Foundations, in progress. **Next gate:** the M1 go/no-go, planned for Mon 2 Nov.
+**Phase:** P0 Foundations, in progress. **Next gate:** the M1 go/no-go, Mon 9 Nov (D-018, on merge).
 
 ## Schedule note
 
-The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started on 30 Oct. M1 needs about 3 assistant days, 1 day of Sam's, and a 24-hour offline test (C8), so **the 2 Nov go/no-go is at risk**. The dates have not been changed; Sam to decide whether to hold or move the gate. The 1 Dec go-live is unchanged.
+The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started on 30 Oct. M1 needs about 3 assistant days, 1 day of Sam's, and a 24-hour offline test (C8), so D-018 moves the go/no-go from 2 Nov to **Mon 9 Nov** (recorded in PR `docs/d-017`, takes effect on merge). The 20 Nov freeze and the 1 Dec go-live are unchanged.
 
 ## Done
 
@@ -51,10 +51,10 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 
 **Interpretations to confirm:** see `SPEC.md` §17.
 
-**Working model (reported by Sam):** Claude Code, Codex and ChatGPT collaborate; Claude (chat) maintains the spec and the accounting rules. D-012 does not mention Codex: to record in DECISIONS (proposed D-017).
+**Working model:** Claude Code, Codex and ChatGPT build and review; Claude (chat) maintains the spec and the accounting rules. D-017 (amends D-012) is recorded in PR `docs/d-017` and takes effect on merge.
 
 ## Risks to watch now
 
-1. POS Awesome on v16 (C1, C2), and the gate date (see the schedule note).
+1. POS Awesome on v16 (C1, C2), and holding the 9 Nov gate (D-018), which leaves 9 working days before the 20 Nov freeze.
 2. Accounting sign-off timing (Q6), since it gates the P2 money work.
 3. Offline data safety: verified in C8 and C9.
