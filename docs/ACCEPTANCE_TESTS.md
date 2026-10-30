@@ -53,7 +53,7 @@ Each test names its rule or example. Tests marked "Blocked" are written with the
 - **AUT-CUR-07** Example G: the remise as a deduction to Remises accordées. **Blocked by Q4** for the basis and amounts.
 - **AUT-CUR-08** Example H: rounding direction. **Blocked by Q1.**
 - **AUT-CUR-09** Example I: month-end revaluation, FX loss $9.25.
-- **AUT-CUR-10** I2 holds for every bill in A–I.
+- **AUT-CUR-10** I2 holds for every bill in A–I and O.
 - **AUT-CUR-11** I3: no customer entry posts to a non-USD receivable.
 - **AUT-CUR-12** I4: Exchange income comes only from R3/R5 entries.
 - **AUT-CUR-13** I6: a CDF document without a store rate record. **Blocked by Q5.**

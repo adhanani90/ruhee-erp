@@ -38,8 +38,8 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 
 | Q | Question | Needed before | Blocks |
 | --- | --- | --- | --- |
-| Q1 | Round CDF to the nearest 50 FC, or always up? | P2 rates work | R1, R3, R5; AUT-CUR-08; AT-03 |
-| Q2 | Which rate applies to change given in the other currency? | P2 payment hooks | R12 |
+| Q1 | Round CDF to the nearest 50 FC, or always up? | P2 rates work | R1, R3, R5; AUT-CUR-08, AUT-CUR-14; AT-03 |
+| Q2 | Which rate applies to change given in the other currency? | P2 payment hooks | R12; AUT-CUR-18 |
 | Q3 | Load opening customer debts at go-live, or keep them in the old system? | P3 migration | REQ-MIG-01, AUT-MIG-02, limits and ageing at go-live |
 | Q4 | Is the remise X% of the amount paid or of the bill? Default X and number of days? | Go-live (manual remise in the MVP) | R9; AUT-CUR-07 defaults |
 | Q5 | With no rate entered, block CDF bills or use yesterday's with a warning? | P2 rates work | R11, I6; AUT-CUR-13 |

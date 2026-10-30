@@ -125,7 +125,7 @@ Check figures: 46,000 ÷ 2300 = 20.00; 230,000 ÷ 2400 = 95.8333.
 
 | Q | Affects | What's needed |
 | --- | --- | --- |
-| Q1 | R1, R3, R5, example H | Round to the nearest 50 FC, or always up? |
+| Q1 | R1, R3, R5, examples H and O | Round to the nearest 50 FC, or always up? |
 | Q2 | R12 | Which rate applies to change given in the other currency? |
 | Q4 | R9, example G | Is the remise a percentage of the amount paid or of the bill? What are the default X and number of days? |
 | Q5 | R11, I6 | With no rate entered: block CDF bills, or use yesterday's with a warning? |
