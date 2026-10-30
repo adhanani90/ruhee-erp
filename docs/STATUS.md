@@ -11,7 +11,7 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 - Architecture and implementation plan approved (30 Oct).
 - *Confirmed:* GitHub repository `adhanani90/ruhee-erp` with the docs on `main` (AGENTS, CLAUDE, SPEC, ACCOUNTING_RULES, ACCEPTANCE_TESTS, DECISIONS, STATUS, DEPLOYMENT).
 - *Confirmed:* POS Awesome fork `adhanani90/POS-Awesome-V15` (parent `defendicon/POS-Awesome-V15`).
-- *Confirmed:* M1 cards are GitHub issues #1 (M1-00) to #12 (M1-11), all open.
+- *Confirmed:* M1 cards are GitHub issues #1 (M1-00) to #12 (M1-11): #1 (M1-00) and #2 (M1-01) closed, #3 to #12 open.
 - *Confirmed:* `CLAUDE.md` already imports `AGENTS.md` (line 1 is `@AGENTS.md`), followed by the Claude Code notes.
 - *Reported by Sam:* Windows clone of the repository; ChatGPT Project configured with initial instructions and source documents.
 - *Confirmed:* M1-01 (#2) done: PR #15 merged 30 Oct.

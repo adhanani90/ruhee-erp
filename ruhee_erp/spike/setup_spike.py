@@ -18,7 +18,7 @@ import frappe
 from erpnext.setup.utils import get_exchange_rate
 from frappe import _
 from frappe.desk.page.setup_wizard.setup_wizard import setup_complete
-from frappe.utils import flt
+from frappe.utils import flt, nowdate
 
 COMPANY = "Ruhee Spike"
 ABBR = "RS"
@@ -434,20 +434,34 @@ def setup_pos_profile(report, warehouse, cost_center):
 
 
 def check_rate():
-	"""Acceptance check: with the provider disabled, ERPNext returns the stored
-	CDF->USD rate, and 232,000 FC converts to $100.87."""
+	"""Acceptance check: with the provider disabled, ERPNext returns the stored rates in
+	both directions, on the spike date and today (later bills rely on allow_stale), and
+	232,000 FC converts to $100.87. Raises on any failure so bench execute exits non-zero."""
+	failures = []
 	disabled = frappe.db.get_single_value("Currency Exchange Settings", "disabled")
 	allow_stale = frappe.db.get_single_value("Accounts Settings", "allow_stale")
-	rate = get_exchange_rate("CDF", "USD", SPIKE_DATE)
-	reverse = get_exchange_rate("USD", "CDF", SPIKE_DATE)
-	usd = flt(232000 * rate, frappe.get_precision("Sales Invoice", "grand_total") or 2)
 	print(f"Currency Exchange Settings.disabled = {disabled}")
 	print(f"Accounts Settings.allow_stale = {allow_stale}")
-	print(f"get_exchange_rate('USD', 'CDF', '{SPIKE_DATE}') = {reverse}")
-	print(f"get_exchange_rate('CDF', 'USD', '{SPIKE_DATE}') = {rate}")
+	if disabled != 1:
+		failures.append("external exchange-rate provider is not disabled")
+
+	for date in (SPIKE_DATE, nowdate()):
+		for from_currency, to_currency, expected in (("USD", "CDF", USD_TO_CDF), ("CDF", "USD", CDF_TO_USD)):
+			rate = get_exchange_rate(from_currency, to_currency, date)
+			print(f"get_exchange_rate('{from_currency}', '{to_currency}', '{date}') = {rate}")
+			if flt(rate, 9) != flt(expected, 9):
+				failures.append(f"{from_currency}->{to_currency} on {date} is {rate}, expected {expected}")
+
+	rate = get_exchange_rate("CDF", "USD", SPIKE_DATE)
+	usd = flt(232000 * rate, frappe.get_precision("Sales Invoice", "grand_total") or 2)
 	print(f"232,000 FC x {rate} = ${usd:.2f}")
-	ok = disabled == 1 and rate == CDF_TO_USD and usd == 100.87
-	print("PASS" if ok else "FAIL")
+	if usd != 100.87:
+		failures.append(f"232,000 FC converts to ${usd:.2f}, expected $100.87")
+
+	if failures:
+		print("FAIL")
+		frappe.throw(_("check_rate failed: {0}").format("; ".join(failures)))
+	print("PASS")
 
 
 def existing_account(account_name, is_group=0):
@@ -462,10 +476,24 @@ def existing_account(account_name, is_group=0):
 
 
 def ensure_account(report, account_name, parent, currency, account_type):
-	name = frappe.db.get_value("Account", {"company": COMPANY, "account_name": account_name})
-	if name:
-		report.existing.append(f"Account {name}")
-		return name
+	existing = frappe.db.get_value(
+		"Account",
+		{"company": COMPANY, "account_name": account_name},
+		["name", "account_currency", "account_type", "is_group"],
+		as_dict=True,
+	)
+	if existing:
+		# Never modify an existing account; stop if it isn't what the spike expects.
+		expected = {"account_currency": currency, "account_type": account_type, "is_group": 0}
+		differences = [
+			f"{k} is {existing[k]!r}, expected {v!r}" for k, v in expected.items() if existing[k] != v
+		]
+		if differences:
+			frappe.throw(
+				_("Account {0} exists but differs: {1}").format(existing.name, "; ".join(differences))
+			)
+		report.existing.append(f"Account {existing.name}")
+		return existing.name
 	doc = frappe.get_doc(
 		{
 			"doctype": "Account",
