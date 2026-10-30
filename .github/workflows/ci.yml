@@ -89,10 +89,12 @@ jobs:
         working-directory: /home/runner/frappe-bench
         run: |
           bench get-app --branch version-16 erpnext
+          bench get-app --branch develop https://github.com/adhanani90/POS-Awesome-V15
           bench get-app ruhee_erp $GITHUB_WORKSPACE
           bench setup requirements --dev
           bench new-site --db-root-password root --admin-password admin test_site
           bench --site test_site install-app erpnext
+          bench --site test_site install-app posawesome
           bench --site test_site install-app ruhee_erp
           bench build
         env:
