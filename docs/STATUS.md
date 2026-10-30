@@ -9,23 +9,26 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 ## Done
 
 - Architecture and implementation plan approved (30 Oct).
-- Repository docs drafted: AGENTS, CLAUDE, SPEC, ACCOUNTING_RULES, ACCEPTANCE_TESTS, DECISIONS, STATUS, DEPLOYMENT.
-- M1 task cards drafted (M1-00 to M1-11).
+- *Confirmed:* GitHub repository `adhanani90/ruhee-erp` with the docs on `main` (AGENTS, CLAUDE, SPEC, ACCOUNTING_RULES, ACCEPTANCE_TESTS, DECISIONS, STATUS, DEPLOYMENT).
+- *Confirmed:* POS Awesome fork `adhanani90/POS-Awesome-V15` (parent `defendicon/POS-Awesome-V15`).
+- *Confirmed:* M1 cards are GitHub issues #1 (M1-00) to #12 (M1-11), all open.
+- *Confirmed:* `CLAUDE.md` already imports `AGENTS.md` (line 1 is `@AGENTS.md`), followed by the Claude Code notes.
+- *Reported by Sam:* Windows clone of the repository; ChatGPT Project configured with initial instructions and source documents.
 
 ## In progress
 
-- **M1-00 (Sam):** the `ruhee-erp` repository with these docs on `main`; a fork of `defendicon/POS-Awesome-V15`; a Frappe Cloud account with a payment method; the Frappe Cloud GitHub app with access to both repositories.
+- **M1-00 (Sam), #1, still open:** Frappe Cloud is not provisioned and there is no staging site; Sam is willing to pay when needed. Open parts: a Frappe Cloud account, a payment method, and the Frappe Cloud GitHub app with access to both repositories. None is assumed to exist. Needed from M1-02, not M1-01.
 
 ## Next
 
-1. M1-01 Scaffold `ruhee_erp` and the local dev bench (Claude Code).
-2. M1-02 Deploy to the Frappe Cloud staging site and pin versions (Sam with Claude Code).
-3. M1-03 to M1-10: the spike checks C2–C13.
-4. M1-11 Spike report and go/no-go.
+1. M1-01 (#2) Scaffold `ruhee_erp` and the local dev bench (Claude Code). Not started. The WSL dev environment is unverified and is checked in M1-01; the bench should live on the WSL filesystem, not under `/mnt/c`.
+2. M1-02 (#3) Deploy to the Frappe Cloud staging site and pin versions (Sam with Claude Code).
+3. M1-03 to M1-10 (#4 to #11): the spike checks C2–C13.
+4. M1-11 (#12) Spike report and go/no-go.
 
 ## Blocked or waiting
 
-- All M1 cards wait on M1-00.
+- M1-01 depends only on the repository, the fork and a working local environment. M1-02 and later cards wait on the open Frappe Cloud parts of M1-00.
 - C1 and C12 need to know New Depo's browser and PC specification (Q9). Until then M1 uses any two PCs, and that is noted in the evidence.
 
 ## Open questions
@@ -47,6 +50,8 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 **Values not yet given:** Mbanzangu's X% (needed for the Mbanzangu rollout, not New Depo).
 
 **Interpretations to confirm:** see `SPEC.md` §17.
+
+**Working model (reported by Sam):** Claude Code, Codex and ChatGPT collaborate; Claude (chat) maintains the spec and the accounting rules. D-012 does not mention Codex: to record in DECISIONS (proposed D-017).
 
 ## Risks to watch now
 
