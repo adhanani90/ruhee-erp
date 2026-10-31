@@ -162,11 +162,11 @@ These are proposals and questions, not decisions:
 | Check | Result (pass / fail / workaround) | Evidence | Notes |
 | --- | --- | --- | --- |
 | C1 Install | | | |
-| C2 Posting | | | |
-| C3 CDF bill | | | |
+| C2 Posting | Local pass; staging/UI pending | [M1-04 local extracts](../ruhee_erp/spike/evidence/m1_04_local.json), [runbook](../ruhee_erp/spike/M1-04.md) | 30 Oct Toronto / 31 Oct site time: three separate Sales Invoices, one stock deduction each at submit; native shift close leaves invoice list and ledger hashes unchanged. Requires create_pos_invoice_instead_of_sales_invoice=0 and update_stock=1. |
+| C3 CDF bill | Local discrepancy; staging/UI pending | [M1-04 local extracts](../ruhee_erp/spike/evidence/m1_04_local.json), [runbook](../ruhee_erp/spike/M1-04.md) | $100 price converts to 229,999.79 FC using native frontend formula reproduced server-side (browser unverified), total rounds to 230,000 FC; Debtors $100.00. Exact-input 23,000,000 FC posts Debtors $10,000.01, expected $10,000.00. Stored reciprocal 0.000434783; no compensation. |
 | C4 Cross-currency payment | | | |
-| C5 Part-payment | | | |
-| C6 Rounding (native direction, for Q1) | | | |
+| C5 Part-payment | Local server/report pass; staging/UI pending | [M1-04 local extracts](../ruhee_erp/spike/evidence/m1_04_local.json), [runbook](../ruhee_erp/spike/M1-04.md) | Exact-input 230,000 FC less 115,000 FC posts Cash CDF $50 / Cr Debtors $50; invoice and Accounts Receivable outstanding USD $50. Screenshots pending. |
+| C6 Rounding (native direction, for Q1) | Local pass; staging pending | [M1-04 local extracts](../ruhee_erp/spike/evidence/m1_04_local.json), [runbook](../ruhee_erp/spike/M1-04.md) | Native nearest 50 FC (source ties down for positive totals): 77,310 -> 77,300, -10 FC, zero USD rounding entry; 77,330 -> 77,350, +20 FC, Cr Round Off $0.01. Q1 remains open. |
 | C7 Store rate (online and offline) | | | |
 | C8 Offline, two PCs | | | |
 | C9 Offline edge cases | | | |
