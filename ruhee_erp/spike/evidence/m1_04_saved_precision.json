@@ -1,0 +1,186 @@
+{
+  "captured_at": "2026-10-31 02:21:27.807314",
+  "metadata": [
+    {
+      "database_column_type": "decimal(21,9)",
+      "doctype": "Sales Invoice",
+      "fieldname": "conversion_rate",
+      "fieldtype": "Float",
+      "precision": "9"
+    },
+    {
+      "database_column_type": "decimal(21,9)",
+      "doctype": "Currency Exchange",
+      "fieldname": "exchange_rate",
+      "fieldtype": "Float",
+      "precision": "9"
+    }
+  ],
+  "saved_invoices": [
+    {
+      "base_grand_total": 100,
+      "base_rounded_total": 100,
+      "base_rounding_adjustment": 0,
+      "conversion_rate": 0.000434783,
+      "currency": "CDF",
+      "debit_to": "Debtors - RS",
+      "docstatus": 1,
+      "gl": [
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 100,
+          "credit_in_account_currency": 100,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "019c2e0e3b",
+          "party": "SPIKE-02 Client A"
+        },
+        {
+          "account": "Cost of Goods Sold - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 80,
+          "debit_in_account_currency": 80,
+          "is_cancelled": 0,
+          "name": "603f78c6cf",
+          "party": null
+        },
+        {
+          "account": "Sales - RS",
+          "account_currency": "USD",
+          "credit": 100,
+          "credit_in_account_currency": 100,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "624370cb03",
+          "party": null
+        },
+        {
+          "account": "Cash CDF - New Depo - RS",
+          "account_currency": "CDF",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 100,
+          "debit_in_account_currency": 230000,
+          "is_cancelled": 0,
+          "name": "6cc631016e",
+          "party": null
+        },
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 100,
+          "debit_in_account_currency": 100,
+          "is_cancelled": 0,
+          "name": "6fa28dfcd0",
+          "party": "SPIKE-02 Client A"
+        },
+        {
+          "account": "Stock In Hand - RS",
+          "account_currency": "USD",
+          "credit": 80,
+          "credit_in_account_currency": 80,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "a2962abd00",
+          "party": null
+        }
+      ],
+      "grand_total": 229999.79,
+      "items": [
+        {
+          "amount": 229999.79,
+          "base_amount": 100,
+          "base_rate": 100,
+          "item_code": "SPIKE-001",
+          "qty": 1,
+          "rate": 229999.79
+        }
+      ],
+      "name": "ACC-SINV-2026-00012",
+      "outstanding_amount": 0,
+      "resolved_conversion_rate_precision": 9,
+      "rounded_total": 230000,
+      "rounding_adjustment": 0.21
+    },
+    {
+      "base_grand_total": 10000.01,
+      "base_rounded_total": 10000.01,
+      "base_rounding_adjustment": 0,
+      "conversion_rate": 0.000434783,
+      "currency": "CDF",
+      "debit_to": "Debtors - RS",
+      "docstatus": 1,
+      "gl": [
+        {
+          "account": "Stock In Hand - RS",
+          "account_currency": "USD",
+          "credit": 8000,
+          "credit_in_account_currency": 8000,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "7e0abe61fd",
+          "party": null
+        },
+        {
+          "account": "Sales - RS",
+          "account_currency": "USD",
+          "credit": 10000.01,
+          "credit_in_account_currency": 10000.01,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "8868d6205d",
+          "party": null
+        },
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 10000.01,
+          "debit_in_account_currency": 10000.01,
+          "is_cancelled": 0,
+          "name": "9cb11f8a12",
+          "party": "SPIKE-02 Client A"
+        },
+        {
+          "account": "Cost of Goods Sold - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 8000,
+          "debit_in_account_currency": 8000,
+          "is_cancelled": 0,
+          "name": "ba71584fd8",
+          "party": null
+        }
+      ],
+      "grand_total": 23000000,
+      "items": [
+        {
+          "amount": 23000000,
+          "base_amount": 10000.01,
+          "base_rate": 100,
+          "item_code": "SPIKE-001",
+          "qty": 100,
+          "rate": 230000
+        }
+      ],
+      "name": "ACC-SINV-2026-00014",
+      "outstanding_amount": 10000.01,
+      "resolved_conversion_rate_precision": 9,
+      "rounded_total": 23000000,
+      "rounding_adjustment": 0
+    }
+  ],
+  "site": "dev.localhost"
+}
