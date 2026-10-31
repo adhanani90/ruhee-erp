@@ -36,7 +36,7 @@ PROFILE_SETTINGS = {
 }
 
 
-def run(site="dev.localhost"):
+def run(site="dev.localhost", rounding_only=False):
 	"""Print JSON evidence; bench execute commits successful transactions.
 
 	Each invocation creates a fresh shift and bills. Failed runs roll back, subject
@@ -49,7 +49,7 @@ def run(site="dev.localhost"):
 	if frappe.session.user != "Administrator":
 		raise ValueError("Run this spike as Administrator using bench execute")
 	check_rate()
-	profile = prepare_profile()
+	profile = prepare_profile("M1-04 Rounding" if rounding_only else PROFILE)
 	# Use a fresh invented cashier and the real PIN endpoints, never bypass the
 	# terminal lock or alter an existing user's PIN. The random PIN is not logged.
 	cashier = f"m104-{frappe.generate_hash(length=10).lower()}@example.com"
@@ -66,8 +66,8 @@ def run(site="dev.localhost"):
 	profile.append("applicable_for_users", {"user": cashier})
 	profile.save()
 	pin = str(100000 + secrets.randbelow(900000))
-	save_cashier_pin(PROFILE, cashier, pin)
-	verify_terminal_employee_pin(PROFILE, cashier, pin)
+	save_cashier_pin(profile.name, cashier, pin)
+	verify_terminal_employee_pin(profile.name, cashier, pin)
 	customer = frappe.db.get_value("Customer", {"customer_name": "SPIKE-02 Client A"})
 	if not customer:
 		raise ValueError("Run the M1-03 baseline first")
@@ -75,7 +75,7 @@ def run(site="dev.localhost"):
 		{
 			"doctype": "POS Opening Shift",
 			"company": COMPANY,
-			"pos_profile": PROFILE,
+			"pos_profile": profile.name,
 			"user": frappe.session.user,
 			"period_start_date": now_datetime(),
 			"posting_date": nowdate(),
@@ -89,12 +89,12 @@ def run(site="dev.localhost"):
 	evidence = {
 		"site": site,
 		"captured_at": str(now_datetime()),
-		"profile": PROFILE,
+		"profile": profile.name,
 		"settings": PROFILE_SETTINGS,
 		"opening_shift": shift.name,
 		"bills": [],
 	}
-	for label in ("C2-1", "C2-2", "C2-3"):
+	for label in () if rounding_only else ("C2-1", "C2-2", "C2-3"):
 		evidence["bills"].append(bill(label, profile, shift, customer, "USD", paid=100))
 
 	rates = resolve_erpnext_currency_rates("CDF", "USD", "USD", nowdate())
@@ -118,20 +118,30 @@ def run(site="dev.localhost"):
 		"exactly_230000": native_rate == 230000,
 		"browser_verified": False,
 	}
-	evidence["bills"].append(
-		bill("C3-native-price", profile, shift, customer, "CDF", rate=native_rate, paid=230000)
-	)
-	evidence["bills"].append(
-		bill("C5-exact-input", profile, shift, customer, "CDF", rate=230000, paid=115000)
-	)
-	evidence["bills"].append(
-		bill("large-exact-input", profile, shift, customer, "CDF", rate=230000, qty=100, paid=0)
-	)
+	if not rounding_only:
+		evidence["bills"].append(
+			bill("C3-native-price", profile, shift, customer, "CDF", rate=native_rate, paid=230000)
+		)
+		evidence["bills"].append(
+			bill("C5-exact-input", profile, shift, customer, "CDF", rate=230000, paid=115000)
+		)
+		evidence["bills"].append(
+			bill("large-exact-input", profile, shift, customer, "CDF", rate=230000, qty=100, paid=0)
+		)
 	# H uses the existing item and an explicit price override, no item import.
 	evidence["bills"].append(bill("C6-H", profile, shift, customer, "CDF", rate=78200, discount=890, paid=0))
 	# A second side of the rounding boundary produces a cent-valued GL difference.
 	evidence["bills"].append(
-		bill("C6-upper", profile, shift, customer, "CDF", rate=78200, discount=870, paid=0)
+		bill(
+			"C6-upper",
+			profile,
+			shift,
+			customer,
+			"CDF",
+			rate=78200,
+			discount=874 if rounding_only else 870,
+			paid=0,
+		)
 	)
 	evidence["before_close"] = ledger_snapshot(evidence["bills"])
 	closing = make_closing_shift_from_opening(frappe.as_json(shift.as_dict()))
@@ -143,29 +153,39 @@ def run(site="dev.localhost"):
 	evidence["after_close"] = ledger_snapshot(evidence["bills"])
 	evidence["ledgers_unchanged_at_close"] = evidence["before_close"] == evidence["after_close"]
 	evidence["accounts_receivable"] = receivable_rows(customer, evidence["bills"])
-	lock_terminal(PROFILE)
+	lock_terminal(profile.name)
 	frappe.get_doc("User", cashier).update({"enabled": 0}).save()
 	print("M1-04 EVIDENCE")
 	print(frappe.as_json(evidence, indent=2))
 	assert all(b["doctype"] == "Sales Invoice" and b["docstatus"] == 1 for b in evidence["bills"])
 	assert all(sum(r.actual_qty for r in b["stock_ledger"]) == -b["qty"] for b in evidence["bills"])
 	assert evidence["ledgers_unchanged_at_close"]
-	part_paid = next(b for b in evidence["bills"] if b["label"] == "C5-exact-input")
-	assert part_paid["outstanding_amount"] == 50
-	assert any(
-		r["voucher_no"] == part_paid["name"] and r["outstanding"] == 50
-		for r in evidence["accounts_receivable"]
-	)
+	if rounding_only:
+		h, upper = evidence["bills"]
+		assert (h["grand_total"], h["rounded_total"], h["rounding_adjustment"]) == (77310, 77300, -10)
+		assert (upper["grand_total"], upper["rounded_total"], upper["rounding_adjustment"]) == (
+			77326,
+			77350,
+			24,
+		)
+		assert any(r.account == "Round Off - RS" and r.credit == 0.01 for r in upper["gl"])
+	else:
+		part_paid = next(b for b in evidence["bills"] if b["label"] == "C5-exact-input")
+		assert part_paid["outstanding_amount"] == 50
+		assert any(
+			r["voucher_no"] == part_paid["name"] and r["outstanding"] == 50
+			for r in evidence["accounts_receivable"]
+		)
 
 
-def prepare_profile():
-	if frappe.db.exists("POS Profile", PROFILE):
-		profile = frappe.get_doc("POS Profile", PROFILE)
+def prepare_profile(name=PROFILE):
+	if frappe.db.exists("POS Profile", name):
+		profile = frappe.get_doc("POS Profile", name)
 		if any(profile.get(k) != v for k, v in PROFILE_SETTINGS.items()):
 			raise ValueError("Existing M1-04 profile differs; inspect instead of overwriting it")
 		return profile
 	profile = frappe.copy_doc(frappe.get_doc("POS Profile", STORE))
-	profile.name = PROFILE
+	profile.name = name
 	profile.update(PROFILE_SETTINGS)
 	profile.append("applicable_for_users", {"user": "Administrator"})
 	profile.insert()
@@ -177,7 +197,7 @@ def bill(label, profile, shift, customer, currency, rate=100, qty=1, paid=0, dis
 	payload = {
 		"doctype": "Sales Invoice",
 		"company": COMPANY,
-		"pos_profile": PROFILE,
+		"pos_profile": profile.name,
 		"posa_pos_opening_shift": shift.name,
 		"customer": customer,
 		"currency": currency,
@@ -207,7 +227,7 @@ def bill(label, profile, shift, customer, currency, rate=100, qty=1, paid=0, dis
 		frappe.as_json(draft),
 		frappe.as_json(
 			{
-				"pos_profile": PROFILE,
+				"pos_profile": profile.name,
 				"posa_pos_opening_shift": shift.name,
 				"is_credit_sale": not paid,
 				"due_date": nowdate(),
@@ -385,6 +405,42 @@ def inspect_saved():
 				"captured_at": str(now_datetime()),
 				"metadata": metadata,
 				"saved_invoices": rows,
+			},
+			indent=2,
+		)
+	)
+
+
+def inspect_precision_ceiling():
+	"""Read only: evaluate precision resolution/schema generation on copied metadata.
+
+	Does not save a Property Setter, change metadata caches, execute DDL or alter rates.
+	"""
+	from frappe.database.schema import get_definition
+	from frappe.model.meta import get_field_precision
+
+	if frappe.local.site != "dev.localhost":
+		raise ValueError("Local source probe only")
+	field = frappe.get_meta("Sales Invoice").get_field("conversion_rate")
+	copy = frappe._dict(field.as_dict())
+	copy.precision = "12"
+	resolved = get_field_precision(copy)
+	definition = get_definition("Float", precision="12")
+	assert resolved == 12 and definition == "decimal(21,12)"
+	assert field.precision == "9"
+	print(
+		frappe.as_json(
+			{
+				"captured_at": str(now_datetime()),
+				"site": frappe.local.site,
+				"live_precision_unchanged": field.precision,
+				"live_column_unchanged": frappe.db.get_column_type("Sales Invoice", "conversion_rate"),
+				"docfield_precision_options": frappe.get_meta("DocField").get_field("precision").options,
+				"copied_metadata_precision": copy.precision,
+				"copied_resolved_precision": resolved,
+				"generated_definition_only_no_ddl": definition,
+				"flt_at_12_decimals": flt(1 / 2300, 12),
+				"persisting_12_decimal_invoice_tested": False,
 			},
 			indent=2,
 		)
