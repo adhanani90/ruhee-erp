@@ -1,0 +1,49 @@
+{
+  "fields": [
+    {
+      "column": "conversion_rate",
+      "database_type": "decimal(21,12)",
+      "doctype": "Sales Invoice",
+      "metadata_precision": "12"
+    },
+    {
+      "column": "exchange_rate",
+      "database_type": "decimal(21,12)",
+      "doctype": "Currency Exchange",
+      "metadata_precision": "12"
+    },
+    {
+      "column": "posa_exchange_rate",
+      "database_type": "decimal(21,12)",
+      "doctype": "Sales Invoice Payment",
+      "metadata_precision": "12"
+    },
+    {
+      "column": "posa_company_exchange_rate",
+      "database_type": "decimal(21,12)",
+      "doctype": "Sales Invoice Payment",
+      "metadata_precision": "12"
+    },
+    {
+      "column": "source_exchange_rate",
+      "database_type": "decimal(21,12)",
+      "doctype": "Payment Entry",
+      "metadata_precision": "12"
+    },
+    {
+      "column": "target_exchange_rate",
+      "database_type": "decimal(21,12)",
+      "doctype": "Payment Entry",
+      "metadata_precision": "12"
+    }
+  ],
+  "invoice": {
+    "accounting_sha256": "8ec9571afdaa702ab48b93f76de28141f542ad07b8e329eeddc78406d36f78d9",
+    "base_grand_total": 10000.01,
+    "grand_total": 23000000,
+    "name": "ACC-SINV-2026-00002",
+    "saved_conversion_rate": 0.000434783
+  },
+  "site": "m105.localhost",
+  "uses_mariadb_root_account": false
+}
