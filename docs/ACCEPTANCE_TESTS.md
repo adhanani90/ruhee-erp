@@ -27,7 +27,7 @@ The setup is described in `SPEC.md` §14 and card M1-03: company in USD, CDF ena
 | C9 | Offline edge cases | An oversold item syncs into negative stock, and an over-limit credit bill lands as a draft for the manager. These bills are in addition to C8's: the same last unit of one item sold on both PCs, and one over-limit credit bill. Expected overall: 33 bills, 32 submitted, 1 draft. | Stock ledger, draft screenshot |
 | C10 | Closing | The shift close shows the CDF drawer in CDF; if not, the gap is written down with an estimate for a custom view | Closing screenshot, note |
 | C11 | Print | A bill prints from the billing screen through a custom A4 template | PDF |
-| C12 | Performance and backup | With 5,000 items loaded, item search answers within a second on a New Depo PC, and a staging backup restores to a fresh site | Timings, restore log |
+| C12 | Performance and backup | With 5,000 items loaded, item search answers within a second on a New Depo PC, and a staging backup restores to a fresh site whose record counts (Company, Item, Customer, Sales Invoice, GL Entry) match the source | Timings, restore log, record counts before and after, the dump's completion time |
 | C13 | Returns | See below | GL and stock ledger extracts, note |
 
 **C13 in full:**
@@ -229,4 +229,4 @@ Expected: oversold items are listed for the manager.
 
 **AT-27 Backup and restore.**
 Refs: `DEPLOYMENT.md`.
-Expected: the latest backup restores to a fresh site and opens.
+Expected: the latest backup restores to a fresh site and opens, and its record counts (Company, Item, Customer, Sales Invoice, GL Entry) match the source site's.
