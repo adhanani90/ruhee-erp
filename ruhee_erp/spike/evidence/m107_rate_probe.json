@@ -1,0 +1,101 @@
+{
+  "captured_at": "2026-10-31 06:45:33.038584",
+  "gl_entries": [
+    {
+      "account": "Cash CDF - New Depo - RS",
+      "credit": 0.0,
+      "credit_in_account_currency": 0.0,
+      "debit": 23.96,
+      "debit_in_account_currency": 57500.0
+    },
+    {
+      "account": "Cost of Goods Sold - RS",
+      "credit": 0.0,
+      "credit_in_account_currency": 0.0,
+      "debit": 18.0,
+      "debit_in_account_currency": 18.0
+    },
+    {
+      "account": "Debtors - RS",
+      "credit": 0.0,
+      "credit_in_account_currency": 0.0,
+      "debit": 23.96,
+      "debit_in_account_currency": 23.96
+    },
+    {
+      "account": "Debtors - RS",
+      "credit": 23.96,
+      "credit_in_account_currency": 23.96,
+      "debit": 0.0,
+      "debit_in_account_currency": 0.0
+    },
+    {
+      "account": "Sales - RS",
+      "credit": 23.96,
+      "credit_in_account_currency": 23.96,
+      "debit": 0.0,
+      "debit_in_account_currency": 0.0
+    },
+    {
+      "account": "Stock In Hand - RS",
+      "credit": 18.0,
+      "credit_in_account_currency": 18.0,
+      "debit": 0.0,
+      "debit_in_account_currency": 0.0
+    }
+  ],
+  "invoice": {
+    "base_change_amount": 0.0,
+    "base_grand_total": 23.96,
+    "base_paid_amount": 23.96,
+    "base_rounded_total": 23.96,
+    "base_write_off_amount": 0.0,
+    "change_amount": 0.0,
+    "conversion_rate": 0.000416667,
+    "currency": "CDF",
+    "docstatus": 1,
+    "grand_total": 57500.0,
+    "name": "ACC-SINV-2026-00003",
+    "outstanding_amount": 0.0,
+    "paid_amount": 57500.0,
+    "plc_conversion_rate": 1.0,
+    "rounded_total": 57500.0,
+    "write_off_amount": 0.0
+  },
+  "items": [
+    {
+      "amount": 57500.0,
+      "base_amount": 23.96,
+      "base_rate": 23.96,
+      "item_code": "SPIKE-002",
+      "price_list_rate": 57500.0,
+      "qty": 1.0,
+      "rate": 57500.0
+    }
+  ],
+  "payload_conversion_rate": 0.000434783,
+  "payments": [
+    {
+      "account": "Cash CDF - New Depo - RS",
+      "amount": 57500.0,
+      "base_amount": 23.96,
+      "mode_of_payment": "Cash CDF"
+    }
+  ],
+  "posting_date": "2026-10-29",
+  "rate_records": {
+    "cached_at_bill_time": [
+      "2026-10-29-USD-CDF-Selling-Buying",
+      "2026-10-29-CDF-USD-Selling-Buying"
+    ],
+    "newer_same_day": [
+      "2026-10-29-USD-CDF-Selling",
+      "2026-10-29-CDF-USD-Selling"
+    ]
+  },
+  "server_get_latest_rate_at_sync": [
+    0.000416667,
+    "2026-10-29"
+  ],
+  "site": "cc.localhost"
+}

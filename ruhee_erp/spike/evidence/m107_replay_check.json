@@ -1,0 +1,243 @@
+{
+  "captured_at": "2026-10-31 06:45:12.816824",
+  "cases": [
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "docstatus": 1,
+          "ledger_state": "SUBMITTED",
+          "name": "ACC-SINV-2026-00001",
+          "replayed": null
+        },
+        {
+          "attempt": 2,
+          "docstatus": 1,
+          "ledger_state": "POST_SUBMIT_DONE",
+          "name": "ACC-SINV-2026-00001",
+          "replayed": true
+        },
+        {
+          "attempt": 3,
+          "docstatus": 1,
+          "ledger_state": "POST_SUBMIT_DONE",
+          "name": "ACC-SINV-2026-00001",
+          "replayed": true
+        }
+      ],
+      "case": "CDF bill paid in CDF",
+      "client_request_id": "inv-1a1919038fd-1f8fb38e-ee09-4974-80fe-9d09c84003bc",
+      "failures": [],
+      "gl_entries": [
+        {
+          "account": "Cash CDF - New Depo - RS",
+          "credit": 0.0,
+          "credit_in_account_currency": 0.0,
+          "debit": 25.0,
+          "debit_in_account_currency": 57500.0
+        },
+        {
+          "account": "Cost of Goods Sold - RS",
+          "credit": 0.0,
+          "credit_in_account_currency": 0.0,
+          "debit": 18.0,
+          "debit_in_account_currency": 18.0
+        },
+        {
+          "account": "Debtors - RS",
+          "credit": 25.0,
+          "credit_in_account_currency": 25.0,
+          "debit": 0.0,
+          "debit_in_account_currency": 0.0
+        },
+        {
+          "account": "Debtors - RS",
+          "credit": 0.0,
+          "credit_in_account_currency": 0.0,
+          "debit": 25.0,
+          "debit_in_account_currency": 25.0
+        },
+        {
+          "account": "Sales - RS",
+          "credit": 25.0,
+          "credit_in_account_currency": 25.0,
+          "debit": 0.0,
+          "debit_in_account_currency": 0.0
+        },
+        {
+          "account": "Stock In Hand - RS",
+          "credit": 18.0,
+          "credit_in_account_currency": 18.0,
+          "debit": 0.0,
+          "debit_in_account_currency": 0.0
+        }
+      ],
+      "invoices_with_request_id": [
+        {
+          "base_grand_total": 25.0,
+          "conversion_rate": 0.000434783,
+          "currency": "CDF",
+          "docstatus": 1,
+          "grand_total": 57500.0,
+          "name": "ACC-SINV-2026-00001",
+          "outstanding_amount": 0.0,
+          "paid_amount": 57500.0
+        }
+      ],
+      "payment_rows": [
+        {
+          "account": "Cash CDF - New Depo - RS",
+          "amount": 57500.0,
+          "base_amount": 25.0,
+          "mode_of_payment": "Cash CDF"
+        }
+      ],
+      "site_wide_count_delta": {
+        "GL Entry": 6,
+        "POS Invoice Submission Ledger": 1,
+        "Payment Entry": 0,
+        "Sales Invoice": 1,
+        "Stock Ledger Entry": 1
+      },
+      "stock_ledger_entries": [
+        {
+          "actual_qty": -1.0,
+          "item_code": "SPIKE-002",
+          "warehouse": "New Depo - RS"
+        }
+      ],
+      "submission_ledger": [
+        {
+          "invoice_name": "ACC-SINV-2026-00001",
+          "name": "b3e5956978c3b1d71f86ba0df0eda29abb3cae626dbf5dbbd3e2a967995ddb9a",
+          "state": "POST_SUBMIT_DONE"
+        }
+      ]
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "docstatus": 1,
+          "ledger_state": "SUBMITTED",
+          "name": "ACC-SINV-2026-00002",
+          "replayed": null
+        },
+        {
+          "attempt": 2,
+          "docstatus": 1,
+          "ledger_state": "POST_SUBMIT_DONE",
+          "name": "ACC-SINV-2026-00002",
+          "replayed": true
+        },
+        {
+          "attempt": 3,
+          "docstatus": 1,
+          "ledger_state": "POST_SUBMIT_DONE",
+          "name": "ACC-SINV-2026-00002",
+          "replayed": true
+        }
+      ],
+      "case": "USD bill paid in USD",
+      "client_request_id": "inv-1a191903fd0-f880a34e-b790-4358-b001-6181edd9c6c4",
+      "failures": [],
+      "gl_entries": [
+        {
+          "account": "Cash USD - New Depo - RS",
+          "credit": 0.0,
+          "credit_in_account_currency": 0.0,
+          "debit": 25.0,
+          "debit_in_account_currency": 25.0
+        },
+        {
+          "account": "Cost of Goods Sold - RS",
+          "credit": 0.0,
+          "credit_in_account_currency": 0.0,
+          "debit": 18.0,
+          "debit_in_account_currency": 18.0
+        },
+        {
+          "account": "Debtors - RS",
+          "credit": 25.0,
+          "credit_in_account_currency": 25.0,
+          "debit": 0.0,
+          "debit_in_account_currency": 0.0
+        },
+        {
+          "account": "Debtors - RS",
+          "credit": 0.0,
+          "credit_in_account_currency": 0.0,
+          "debit": 25.0,
+          "debit_in_account_currency": 25.0
+        },
+        {
+          "account": "Sales - RS",
+          "credit": 25.0,
+          "credit_in_account_currency": 25.0,
+          "debit": 0.0,
+          "debit_in_account_currency": 0.0
+        },
+        {
+          "account": "Stock In Hand - RS",
+          "credit": 18.0,
+          "credit_in_account_currency": 18.0,
+          "debit": 0.0,
+          "debit_in_account_currency": 0.0
+        }
+      ],
+      "invoices_with_request_id": [
+        {
+          "base_grand_total": 25.0,
+          "conversion_rate": 1.0,
+          "currency": "USD",
+          "docstatus": 1,
+          "grand_total": 25.0,
+          "name": "ACC-SINV-2026-00002",
+          "outstanding_amount": 0.0,
+          "paid_amount": 25.0
+        }
+      ],
+      "payment_rows": [
+        {
+          "account": "Cash USD - New Depo - RS",
+          "amount": 25.0,
+          "base_amount": 25.0,
+          "mode_of_payment": "Cash USD"
+        }
+      ],
+      "site_wide_count_delta": {
+        "GL Entry": 6,
+        "POS Invoice Submission Ledger": 1,
+        "Payment Entry": 0,
+        "Sales Invoice": 1,
+        "Stock Ledger Entry": 1
+      },
+      "stock_ledger_entries": [
+        {
+          "actual_qty": -2.0,
+          "item_code": "SPIKE-004",
+          "warehouse": "New Depo - RS"
+        }
+      ],
+      "submission_ledger": [
+        {
+          "invoice_name": "ACC-SINV-2026-00002",
+          "name": "700ea816458be19444c403a7e2767adb436b0a6861bdef7df632da2afc5e9259",
+          "state": "POST_SUBMIT_DONE"
+        }
+      ]
+    }
+  ],
+  "method": "posawesome.posawesome.api.invoices.submit_invoice",
+  "multi_currency_payment_fields": {
+    "POS Profile.posa_enable_multi_currency_payments": false,
+    "Sales Invoice Payment.posa_original_amount": false,
+    "Sales Invoice Payment.posa_payment_currency": false
+  },
+  "profile": {
+    "create_pos_invoice_instead_of_sales_invoice": 0,
+    "name": "M1-07 Replay",
+    "posa_allow_submissions_in_background_job": 0
+  },
+  "site": "cc.localhost"
+}

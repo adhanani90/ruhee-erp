@@ -24,6 +24,7 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 
 - **M1-02 (#3):** staging site to be created Mon 2 Nov.
 - **M1-03 (#4):** setup script done and run locally (`ruhee_erp/spike/setup_spike.py`); staging run and C1's screenshot wait on the M1-02 site.
+- **M1-07 (#8):** sync design note in DECISIONS. *Confirmed* on cc.localhost: the replay check passes (I7). The rate probe shows the server replaces an offline bill's rate at sync (I6, I8 risk for C7). Still to do: the browser offline bill, returns offline (C13), and #6's online evidence.
 
 ## Next
 
