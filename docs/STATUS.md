@@ -24,7 +24,7 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 
 - **M1-02 (#3):** staging site to be created Mon 2 Nov.
 - **M1-03 (#4):** setup script done and run locally (`ruhee_erp/spike/setup_spike.py`); staging run and C1's screenshot wait on the M1-02 site.
-- **M1-04 (#5), Codex; Claude Code reviews:** [draft PR #19](https://github.com/adhanani90/ruhee-erp/pull/19); local C2/C5/C6 pass, **C3 fail**: saved $100 line/grand total 229,999.79 FC (+0.21 FC rounding; no Round Off GL); 23,000,000 FC Debtors $10,000.01. No compensation. [Evidence, precision source and #6 candidates](../ruhee_erp/spike/M1-04.md). Staging/UI pending; then #6, then #10, each on its own branch/PR.
+- **M1-04 (#5), Codex; Claude Code reviews:** [draft PR #19](https://github.com/adhanani90/ruhee-erp/pull/19); local C2/C5 pass, **C3 fail** (separate line-price and Debtors drift), **C6 partial overall** (new local H down 10 FC and +24 FC/Cr Round Off $0.01 proven; staging pending). No compensation. [Evidence, precision-ceiling check and #6 candidate matrix](../ruhee_erp/spike/M1-04.md). Staging/UI pending; then #6, then #10, each on its own branch/PR.
 
 ## Next
 
