@@ -1,0 +1,1146 @@
+{
+  "accounts_receivable": [
+    {
+      "credit_note": 0,
+      "currency": "USD",
+      "invoiced": 100,
+      "outstanding": 50,
+      "paid": 50,
+      "party": "SPIKE-02 Client A",
+      "voucher_no": "ACC-SINV-2026-00013"
+    },
+    {
+      "credit_note": 0,
+      "currency": "USD",
+      "invoiced": 10000.01,
+      "outstanding": 10000.01,
+      "paid": 0,
+      "party": "SPIKE-02 Client A",
+      "voucher_no": "ACC-SINV-2026-00014"
+    },
+    {
+      "credit_note": 0,
+      "currency": "USD",
+      "invoiced": 33.61,
+      "outstanding": 33.61,
+      "paid": 0,
+      "party": "SPIKE-02 Client A",
+      "voucher_no": "ACC-SINV-2026-00015"
+    },
+    {
+      "credit_note": 0,
+      "currency": "USD",
+      "invoiced": 33.63,
+      "outstanding": 33.63,
+      "paid": 0,
+      "party": "SPIKE-02 Client A",
+      "voucher_no": "ACC-SINV-2026-00016"
+    }
+  ],
+  "after_close": {
+    "invoices": [
+      {
+        "docstatus": 1,
+        "name": "ACC-SINV-2026-00009",
+        "update_stock": 1
+      },
+      {
+        "docstatus": 1,
+        "name": "ACC-SINV-2026-00010",
+        "update_stock": 1
+      },
+      {
+        "docstatus": 1,
+        "name": "ACC-SINV-2026-00011",
+        "update_stock": 1
+      },
+      {
+        "docstatus": 1,
+        "name": "ACC-SINV-2026-00012",
+        "update_stock": 1
+      },
+      {
+        "docstatus": 1,
+        "name": "ACC-SINV-2026-00013",
+        "update_stock": 1
+      },
+      {
+        "docstatus": 1,
+        "name": "ACC-SINV-2026-00014",
+        "update_stock": 1
+      },
+      {
+        "docstatus": 1,
+        "name": "ACC-SINV-2026-00015",
+        "update_stock": 1
+      },
+      {
+        "docstatus": 1,
+        "name": "ACC-SINV-2026-00016",
+        "update_stock": 1
+      }
+    ],
+    "ledger_sha256": {
+      "ACC-SINV-2026-00009": "50b926725350ce29ea3972f9a73706e4f9efe195d66a6b4f1af32bebcc7a4765",
+      "ACC-SINV-2026-00010": "1be7c08deacd7110115dcd43de7c7afb53559d5741c52e04ca16ecf41a7517d4",
+      "ACC-SINV-2026-00011": "47b8c89f0e2a4751f3771476cbfb6796fb1181af235db54f51c5bca9b8f03376",
+      "ACC-SINV-2026-00012": "b3ffad9a868d846d0889b8cc2e1981de46c47ec31793836b56f111590aae8ab6",
+      "ACC-SINV-2026-00013": "da7c1bfed8a9328c32aac2dd48818d01511ff13cba9890985a3381ead5010696",
+      "ACC-SINV-2026-00014": "1e3fdb726db491e7a6da29573a32b3606907a6b9991cf258343791a0c971e5d4",
+      "ACC-SINV-2026-00015": "c445e88c47d4bfd8e7e6f91ab4a85144282d7640c7943973e06b0932a28b2f16",
+      "ACC-SINV-2026-00016": "84a6b3eabc4fa6ba8bf5aa08f145b0c79b3b3e83befd5b83efe323847b5aebc6"
+    },
+    "pos_invoices": []
+  },
+  "before_close": {
+    "invoices": [
+      {
+        "docstatus": 1,
+        "name": "ACC-SINV-2026-00009",
+        "update_stock": 1
+      },
+      {
+        "docstatus": 1,
+        "name": "ACC-SINV-2026-00010",
+        "update_stock": 1
+      },
+      {
+        "docstatus": 1,
+        "name": "ACC-SINV-2026-00011",
+        "update_stock": 1
+      },
+      {
+        "docstatus": 1,
+        "name": "ACC-SINV-2026-00012",
+        "update_stock": 1
+      },
+      {
+        "docstatus": 1,
+        "name": "ACC-SINV-2026-00013",
+        "update_stock": 1
+      },
+      {
+        "docstatus": 1,
+        "name": "ACC-SINV-2026-00014",
+        "update_stock": 1
+      },
+      {
+        "docstatus": 1,
+        "name": "ACC-SINV-2026-00015",
+        "update_stock": 1
+      },
+      {
+        "docstatus": 1,
+        "name": "ACC-SINV-2026-00016",
+        "update_stock": 1
+      }
+    ],
+    "ledger_sha256": {
+      "ACC-SINV-2026-00009": "50b926725350ce29ea3972f9a73706e4f9efe195d66a6b4f1af32bebcc7a4765",
+      "ACC-SINV-2026-00010": "1be7c08deacd7110115dcd43de7c7afb53559d5741c52e04ca16ecf41a7517d4",
+      "ACC-SINV-2026-00011": "47b8c89f0e2a4751f3771476cbfb6796fb1181af235db54f51c5bca9b8f03376",
+      "ACC-SINV-2026-00012": "b3ffad9a868d846d0889b8cc2e1981de46c47ec31793836b56f111590aae8ab6",
+      "ACC-SINV-2026-00013": "da7c1bfed8a9328c32aac2dd48818d01511ff13cba9890985a3381ead5010696",
+      "ACC-SINV-2026-00014": "1e3fdb726db491e7a6da29573a32b3606907a6b9991cf258343791a0c971e5d4",
+      "ACC-SINV-2026-00015": "c445e88c47d4bfd8e7e6f91ab4a85144282d7640c7943973e06b0932a28b2f16",
+      "ACC-SINV-2026-00016": "84a6b3eabc4fa6ba8bf5aa08f145b0c79b3b3e83befd5b83efe323847b5aebc6"
+    },
+    "pos_invoices": []
+  },
+  "bills": [
+    {
+      "base_grand_total": 100,
+      "base_paid_amount": 100,
+      "base_rounded_total": 100,
+      "base_rounding_adjustment": 0,
+      "conversion_rate": 1,
+      "currency": "USD",
+      "debit_to": "Debtors - RS",
+      "docstatus": 1,
+      "doctype": "Sales Invoice",
+      "gl": [
+        {
+          "account": "Cost of Goods Sold - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 80,
+          "debit_in_account_currency": 80,
+          "is_cancelled": 0,
+          "name": "1693d0da18",
+          "party": null
+        },
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 100,
+          "debit_in_account_currency": 100,
+          "is_cancelled": 0,
+          "name": "175989aa27",
+          "party": "SPIKE-02 Client A"
+        },
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 100,
+          "credit_in_account_currency": 100,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "57cb310d34",
+          "party": "SPIKE-02 Client A"
+        },
+        {
+          "account": "Sales - RS",
+          "account_currency": "USD",
+          "credit": 100,
+          "credit_in_account_currency": 100,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "5afd9f6bb5",
+          "party": null
+        },
+        {
+          "account": "Stock In Hand - RS",
+          "account_currency": "USD",
+          "credit": 80,
+          "credit_in_account_currency": 80,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "75b4e8dc2f",
+          "party": null
+        },
+        {
+          "account": "Cash USD - New Depo - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 100,
+          "debit_in_account_currency": 100,
+          "is_cancelled": 0,
+          "name": "82d9b8d565",
+          "party": null
+        }
+      ],
+      "grand_total": 100,
+      "input_rate": 100,
+      "items": [
+        {
+          "amount": 100,
+          "base_amount": 100,
+          "base_rate": 100,
+          "item_code": "SPIKE-001",
+          "qty": 1,
+          "rate": 100
+        }
+      ],
+      "label": "C2-1",
+      "name": "ACC-SINV-2026-00009",
+      "outstanding_amount": 0,
+      "paid_amount": 100,
+      "party_account_currency": "USD",
+      "payments": [
+        {
+          "account": "Cash USD - New Depo - RS",
+          "amount": 100,
+          "base_amount": 100,
+          "clearance_date": null,
+          "creation": "2026-10-31 02:14:00.444556",
+          "default": 1,
+          "docstatus": 1,
+          "doctype": "Sales Invoice Payment",
+          "idx": 1,
+          "mode_of_payment": "Cash USD",
+          "modified": "2026-10-31 02:14:01.209652",
+          "modified_by": "Administrator",
+          "name": "23l6omvl90",
+          "owner": "Administrator",
+          "parent": "ACC-SINV-2026-00009",
+          "parentfield": "payments",
+          "parenttype": "Sales Invoice",
+          "reference_no": null,
+          "type": "Cash"
+        }
+      ],
+      "pos_profile": "M1-04 New Depo",
+      "posa_pos_opening_shift": "POSA-OS-26-0000003",
+      "qty": 1,
+      "rounded_total": 100,
+      "rounding_adjustment": 0,
+      "stock_ledger": [
+        {
+          "actual_qty": -1,
+          "is_cancelled": 0,
+          "item_code": "SPIKE-001",
+          "name": "98e8f53706",
+          "qty_after_transaction": -108,
+          "stock_value_difference": -80,
+          "warehouse": "New Depo - RS"
+        }
+      ],
+      "update_stock": 1
+    },
+    {
+      "base_grand_total": 100,
+      "base_paid_amount": 100,
+      "base_rounded_total": 100,
+      "base_rounding_adjustment": 0,
+      "conversion_rate": 1,
+      "currency": "USD",
+      "debit_to": "Debtors - RS",
+      "docstatus": 1,
+      "doctype": "Sales Invoice",
+      "gl": [
+        {
+          "account": "Cost of Goods Sold - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 80,
+          "debit_in_account_currency": 80,
+          "is_cancelled": 0,
+          "name": "0bbbc66a46",
+          "party": null
+        },
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 100,
+          "debit_in_account_currency": 100,
+          "is_cancelled": 0,
+          "name": "28d93860db",
+          "party": "SPIKE-02 Client A"
+        },
+        {
+          "account": "Stock In Hand - RS",
+          "account_currency": "USD",
+          "credit": 80,
+          "credit_in_account_currency": 80,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "39cc9b0209",
+          "party": null
+        },
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 100,
+          "credit_in_account_currency": 100,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "89ed4e9ec1",
+          "party": "SPIKE-02 Client A"
+        },
+        {
+          "account": "Cash USD - New Depo - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 100,
+          "debit_in_account_currency": 100,
+          "is_cancelled": 0,
+          "name": "98f56f5581",
+          "party": null
+        },
+        {
+          "account": "Sales - RS",
+          "account_currency": "USD",
+          "credit": 100,
+          "credit_in_account_currency": 100,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "9ce64e1df8",
+          "party": null
+        }
+      ],
+      "grand_total": 100,
+      "input_rate": 100,
+      "items": [
+        {
+          "amount": 100,
+          "base_amount": 100,
+          "base_rate": 100,
+          "item_code": "SPIKE-001",
+          "qty": 1,
+          "rate": 100
+        }
+      ],
+      "label": "C2-2",
+      "name": "ACC-SINV-2026-00010",
+      "outstanding_amount": 0,
+      "paid_amount": 100,
+      "party_account_currency": "USD",
+      "payments": [
+        {
+          "account": "Cash USD - New Depo - RS",
+          "amount": 100,
+          "base_amount": 100,
+          "clearance_date": null,
+          "creation": "2026-10-31 02:14:01.890847",
+          "default": 1,
+          "docstatus": 1,
+          "doctype": "Sales Invoice Payment",
+          "idx": 1,
+          "mode_of_payment": "Cash USD",
+          "modified": "2026-10-31 02:14:02.094912",
+          "modified_by": "Administrator",
+          "name": "242tt603u6",
+          "owner": "Administrator",
+          "parent": "ACC-SINV-2026-00010",
+          "parentfield": "payments",
+          "parenttype": "Sales Invoice",
+          "reference_no": null,
+          "type": "Cash"
+        }
+      ],
+      "pos_profile": "M1-04 New Depo",
+      "posa_pos_opening_shift": "POSA-OS-26-0000003",
+      "qty": 1,
+      "rounded_total": 100,
+      "rounding_adjustment": 0,
+      "stock_ledger": [
+        {
+          "actual_qty": -1,
+          "is_cancelled": 0,
+          "item_code": "SPIKE-001",
+          "name": "50c32d2179",
+          "qty_after_transaction": -109,
+          "stock_value_difference": -80,
+          "warehouse": "New Depo - RS"
+        }
+      ],
+      "update_stock": 1
+    },
+    {
+      "base_grand_total": 100,
+      "base_paid_amount": 100,
+      "base_rounded_total": 100,
+      "base_rounding_adjustment": 0,
+      "conversion_rate": 1,
+      "currency": "USD",
+      "debit_to": "Debtors - RS",
+      "docstatus": 1,
+      "doctype": "Sales Invoice",
+      "gl": [
+        {
+          "account": "Cost of Goods Sold - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 80,
+          "debit_in_account_currency": 80,
+          "is_cancelled": 0,
+          "name": "0d8da6f293",
+          "party": null
+        },
+        {
+          "account": "Stock In Hand - RS",
+          "account_currency": "USD",
+          "credit": 80,
+          "credit_in_account_currency": 80,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "a9327d0620",
+          "party": null
+        },
+        {
+          "account": "Cash USD - New Depo - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 100,
+          "debit_in_account_currency": 100,
+          "is_cancelled": 0,
+          "name": "b7251b3cc6",
+          "party": null
+        },
+        {
+          "account": "Sales - RS",
+          "account_currency": "USD",
+          "credit": 100,
+          "credit_in_account_currency": 100,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "bd732cc60c",
+          "party": null
+        },
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 100,
+          "credit_in_account_currency": 100,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "e326f20bb3",
+          "party": "SPIKE-02 Client A"
+        },
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 100,
+          "debit_in_account_currency": 100,
+          "is_cancelled": 0,
+          "name": "f761ba18e6",
+          "party": "SPIKE-02 Client A"
+        }
+      ],
+      "grand_total": 100,
+      "input_rate": 100,
+      "items": [
+        {
+          "amount": 100,
+          "base_amount": 100,
+          "base_rate": 100,
+          "item_code": "SPIKE-001",
+          "qty": 1,
+          "rate": 100
+        }
+      ],
+      "label": "C2-3",
+      "name": "ACC-SINV-2026-00011",
+      "outstanding_amount": 0,
+      "paid_amount": 100,
+      "party_account_currency": "USD",
+      "payments": [
+        {
+          "account": "Cash USD - New Depo - RS",
+          "amount": 100,
+          "base_amount": 100,
+          "clearance_date": null,
+          "creation": "2026-10-31 02:14:02.306270",
+          "default": 1,
+          "docstatus": 1,
+          "doctype": "Sales Invoice Payment",
+          "idx": 1,
+          "mode_of_payment": "Cash USD",
+          "modified": "2026-10-31 02:14:02.503996",
+          "modified_by": "Administrator",
+          "name": "247hd9vh76",
+          "owner": "Administrator",
+          "parent": "ACC-SINV-2026-00011",
+          "parentfield": "payments",
+          "parenttype": "Sales Invoice",
+          "reference_no": null,
+          "type": "Cash"
+        }
+      ],
+      "pos_profile": "M1-04 New Depo",
+      "posa_pos_opening_shift": "POSA-OS-26-0000003",
+      "qty": 1,
+      "rounded_total": 100,
+      "rounding_adjustment": 0,
+      "stock_ledger": [
+        {
+          "actual_qty": -1,
+          "is_cancelled": 0,
+          "item_code": "SPIKE-001",
+          "name": "450dd90085",
+          "qty_after_transaction": -110,
+          "stock_value_difference": -80,
+          "warehouse": "New Depo - RS"
+        }
+      ],
+      "update_stock": 1
+    },
+    {
+      "base_grand_total": 100,
+      "base_paid_amount": 100,
+      "base_rounded_total": 100,
+      "base_rounding_adjustment": 0,
+      "conversion_rate": 0.000434783,
+      "currency": "CDF",
+      "debit_to": "Debtors - RS",
+      "docstatus": 1,
+      "doctype": "Sales Invoice",
+      "gl": [
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 100,
+          "credit_in_account_currency": 100,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "019c2e0e3b",
+          "party": "SPIKE-02 Client A"
+        },
+        {
+          "account": "Cost of Goods Sold - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 80,
+          "debit_in_account_currency": 80,
+          "is_cancelled": 0,
+          "name": "603f78c6cf",
+          "party": null
+        },
+        {
+          "account": "Sales - RS",
+          "account_currency": "USD",
+          "credit": 100,
+          "credit_in_account_currency": 100,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "624370cb03",
+          "party": null
+        },
+        {
+          "account": "Cash CDF - New Depo - RS",
+          "account_currency": "CDF",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 100,
+          "debit_in_account_currency": 230000,
+          "is_cancelled": 0,
+          "name": "6cc631016e",
+          "party": null
+        },
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 100,
+          "debit_in_account_currency": 100,
+          "is_cancelled": 0,
+          "name": "6fa28dfcd0",
+          "party": "SPIKE-02 Client A"
+        },
+        {
+          "account": "Stock In Hand - RS",
+          "account_currency": "USD",
+          "credit": 80,
+          "credit_in_account_currency": 80,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "a2962abd00",
+          "party": null
+        }
+      ],
+      "grand_total": 229999.79,
+      "input_rate": 229999.79,
+      "items": [
+        {
+          "amount": 229999.79,
+          "base_amount": 100,
+          "base_rate": 100,
+          "item_code": "SPIKE-001",
+          "qty": 1,
+          "rate": 229999.79
+        }
+      ],
+      "label": "C3-native-price",
+      "name": "ACC-SINV-2026-00012",
+      "outstanding_amount": 0,
+      "paid_amount": 230000,
+      "party_account_currency": "USD",
+      "payments": [
+        {
+          "account": "Cash CDF - New Depo - RS",
+          "amount": 230000,
+          "base_amount": 100,
+          "clearance_date": null,
+          "creation": "2026-10-31 02:14:02.710229",
+          "default": 0,
+          "docstatus": 1,
+          "doctype": "Sales Invoice Payment",
+          "idx": 2,
+          "mode_of_payment": "Cash CDF",
+          "modified": "2026-10-31 02:14:02.901860",
+          "modified_by": "Administrator",
+          "name": "24bslbb2cf",
+          "owner": "Administrator",
+          "parent": "ACC-SINV-2026-00012",
+          "parentfield": "payments",
+          "parenttype": "Sales Invoice",
+          "reference_no": null,
+          "type": "Cash"
+        }
+      ],
+      "pos_profile": "M1-04 New Depo",
+      "posa_pos_opening_shift": "POSA-OS-26-0000003",
+      "qty": 1,
+      "rounded_total": 230000,
+      "rounding_adjustment": 0.21,
+      "stock_ledger": [
+        {
+          "actual_qty": -1,
+          "is_cancelled": 0,
+          "item_code": "SPIKE-001",
+          "name": "244b20aebb",
+          "qty_after_transaction": -111,
+          "stock_value_difference": -80,
+          "warehouse": "New Depo - RS"
+        }
+      ],
+      "update_stock": 1
+    },
+    {
+      "base_grand_total": 100,
+      "base_paid_amount": 50,
+      "base_rounded_total": 100,
+      "base_rounding_adjustment": 0,
+      "conversion_rate": 0.000434783,
+      "currency": "CDF",
+      "debit_to": "Debtors - RS",
+      "docstatus": 1,
+      "doctype": "Sales Invoice",
+      "gl": [
+        {
+          "account": "Cost of Goods Sold - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 80,
+          "debit_in_account_currency": 80,
+          "is_cancelled": 0,
+          "name": "6ec969dbd0",
+          "party": null
+        },
+        {
+          "account": "Sales - RS",
+          "account_currency": "USD",
+          "credit": 100,
+          "credit_in_account_currency": 100,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "7cc53472e5",
+          "party": null
+        },
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 50,
+          "credit_in_account_currency": 50,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "7e0ace4dc5",
+          "party": "SPIKE-02 Client A"
+        },
+        {
+          "account": "Cash CDF - New Depo - RS",
+          "account_currency": "CDF",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 50,
+          "debit_in_account_currency": 115000,
+          "is_cancelled": 0,
+          "name": "9f350fb14f",
+          "party": null
+        },
+        {
+          "account": "Stock In Hand - RS",
+          "account_currency": "USD",
+          "credit": 80,
+          "credit_in_account_currency": 80,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "d9fd4d6d58",
+          "party": null
+        },
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 100,
+          "debit_in_account_currency": 100,
+          "is_cancelled": 0,
+          "name": "f406aed5fe",
+          "party": "SPIKE-02 Client A"
+        }
+      ],
+      "grand_total": 230000,
+      "input_rate": 230000,
+      "items": [
+        {
+          "amount": 230000,
+          "base_amount": 100,
+          "base_rate": 100,
+          "item_code": "SPIKE-001",
+          "qty": 1,
+          "rate": 230000
+        }
+      ],
+      "label": "C5-exact-input",
+      "name": "ACC-SINV-2026-00013",
+      "outstanding_amount": 50,
+      "paid_amount": 115000,
+      "party_account_currency": "USD",
+      "payments": [
+        {
+          "account": "Cash CDF - New Depo - RS",
+          "amount": 115000,
+          "base_amount": 50,
+          "clearance_date": null,
+          "creation": "2026-10-31 02:14:03.126298",
+          "default": 0,
+          "docstatus": 1,
+          "doctype": "Sales Invoice Payment",
+          "idx": 2,
+          "mode_of_payment": "Cash CDF",
+          "modified": "2026-10-31 02:14:03.354995",
+          "modified_by": "Administrator",
+          "name": "24frj29gbt",
+          "owner": "Administrator",
+          "parent": "ACC-SINV-2026-00013",
+          "parentfield": "payments",
+          "parenttype": "Sales Invoice",
+          "reference_no": null,
+          "type": "Cash"
+        }
+      ],
+      "pos_profile": "M1-04 New Depo",
+      "posa_pos_opening_shift": "POSA-OS-26-0000003",
+      "qty": 1,
+      "rounded_total": 230000,
+      "rounding_adjustment": 0,
+      "stock_ledger": [
+        {
+          "actual_qty": -1,
+          "is_cancelled": 0,
+          "item_code": "SPIKE-001",
+          "name": "4dbd8214b0",
+          "qty_after_transaction": -112,
+          "stock_value_difference": -80,
+          "warehouse": "New Depo - RS"
+        }
+      ],
+      "update_stock": 1
+    },
+    {
+      "base_grand_total": 10000.01,
+      "base_paid_amount": 0,
+      "base_rounded_total": 10000.01,
+      "base_rounding_adjustment": 0,
+      "conversion_rate": 0.000434783,
+      "currency": "CDF",
+      "debit_to": "Debtors - RS",
+      "docstatus": 1,
+      "doctype": "Sales Invoice",
+      "gl": [
+        {
+          "account": "Stock In Hand - RS",
+          "account_currency": "USD",
+          "credit": 8000,
+          "credit_in_account_currency": 8000,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "7e0abe61fd",
+          "party": null
+        },
+        {
+          "account": "Sales - RS",
+          "account_currency": "USD",
+          "credit": 10000.01,
+          "credit_in_account_currency": 10000.01,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "8868d6205d",
+          "party": null
+        },
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 10000.01,
+          "debit_in_account_currency": 10000.01,
+          "is_cancelled": 0,
+          "name": "9cb11f8a12",
+          "party": "SPIKE-02 Client A"
+        },
+        {
+          "account": "Cost of Goods Sold - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 8000,
+          "debit_in_account_currency": 8000,
+          "is_cancelled": 0,
+          "name": "ba71584fd8",
+          "party": null
+        }
+      ],
+      "grand_total": 23000000,
+      "input_rate": 230000,
+      "items": [
+        {
+          "amount": 23000000,
+          "base_amount": 10000.01,
+          "base_rate": 100,
+          "item_code": "SPIKE-001",
+          "qty": 100,
+          "rate": 230000
+        }
+      ],
+      "label": "large-exact-input",
+      "name": "ACC-SINV-2026-00014",
+      "outstanding_amount": 10000.01,
+      "paid_amount": 0,
+      "party_account_currency": "USD",
+      "payments": [],
+      "pos_profile": "M1-04 New Depo",
+      "posa_pos_opening_shift": "POSA-OS-26-0000003",
+      "qty": 100,
+      "rounded_total": 23000000,
+      "rounding_adjustment": 0,
+      "stock_ledger": [
+        {
+          "actual_qty": -100,
+          "is_cancelled": 0,
+          "item_code": "SPIKE-001",
+          "name": "5cafb49fd2",
+          "qty_after_transaction": -212,
+          "stock_value_difference": -8000,
+          "warehouse": "New Depo - RS"
+        }
+      ],
+      "update_stock": 1
+    },
+    {
+      "base_grand_total": 33.61,
+      "base_paid_amount": 0,
+      "base_rounded_total": 33.61,
+      "base_rounding_adjustment": 0,
+      "conversion_rate": 0.000434783,
+      "currency": "CDF",
+      "debit_to": "Debtors - RS",
+      "docstatus": 1,
+      "doctype": "Sales Invoice",
+      "gl": [
+        {
+          "account": "Cost of Goods Sold - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 80,
+          "debit_in_account_currency": 80,
+          "is_cancelled": 0,
+          "name": "02f4454437",
+          "party": null
+        },
+        {
+          "account": "Sales - RS",
+          "account_currency": "USD",
+          "credit": 33.61,
+          "credit_in_account_currency": 33.61,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "50a2f3f8de",
+          "party": null
+        },
+        {
+          "account": "Stock In Hand - RS",
+          "account_currency": "USD",
+          "credit": 80,
+          "credit_in_account_currency": 80,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "8139ee0147",
+          "party": null
+        },
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 33.61,
+          "debit_in_account_currency": 33.61,
+          "is_cancelled": 0,
+          "name": "ea5704247b",
+          "party": "SPIKE-02 Client A"
+        }
+      ],
+      "grand_total": 77310,
+      "input_rate": 78200,
+      "items": [
+        {
+          "amount": 78200,
+          "base_amount": 34,
+          "base_rate": 34,
+          "item_code": "SPIKE-001",
+          "qty": 1,
+          "rate": 78200
+        }
+      ],
+      "label": "C6-H",
+      "name": "ACC-SINV-2026-00015",
+      "outstanding_amount": 33.61,
+      "paid_amount": 0,
+      "party_account_currency": "USD",
+      "payments": [],
+      "pos_profile": "M1-04 New Depo",
+      "posa_pos_opening_shift": "POSA-OS-26-0000003",
+      "qty": 1,
+      "rounded_total": 77300,
+      "rounding_adjustment": -10,
+      "stock_ledger": [
+        {
+          "actual_qty": -1,
+          "is_cancelled": 0,
+          "item_code": "SPIKE-001",
+          "name": "71312be970",
+          "qty_after_transaction": -213,
+          "stock_value_difference": -80,
+          "warehouse": "New Depo - RS"
+        }
+      ],
+      "update_stock": 1
+    },
+    {
+      "base_grand_total": 33.62,
+      "base_paid_amount": 0,
+      "base_rounded_total": 33.63,
+      "base_rounding_adjustment": 0.01,
+      "conversion_rate": 0.000434783,
+      "currency": "CDF",
+      "debit_to": "Debtors - RS",
+      "docstatus": 1,
+      "doctype": "Sales Invoice",
+      "gl": [
+        {
+          "account": "Sales - RS",
+          "account_currency": "USD",
+          "credit": 33.62,
+          "credit_in_account_currency": 33.62,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "1f9a266892",
+          "party": null
+        },
+        {
+          "account": "Cost of Goods Sold - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 80,
+          "debit_in_account_currency": 80,
+          "is_cancelled": 0,
+          "name": "54e82e53a8",
+          "party": null
+        },
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 33.63,
+          "debit_in_account_currency": 33.63,
+          "is_cancelled": 0,
+          "name": "5eefc400b1",
+          "party": "SPIKE-02 Client A"
+        },
+        {
+          "account": "Round Off - RS",
+          "account_currency": "USD",
+          "credit": 0.01,
+          "credit_in_account_currency": 20,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "7f513be510",
+          "party": null
+        },
+        {
+          "account": "Stock In Hand - RS",
+          "account_currency": "USD",
+          "credit": 80,
+          "credit_in_account_currency": 80,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "a01acffdf9",
+          "party": null
+        }
+      ],
+      "grand_total": 77330,
+      "input_rate": 78200,
+      "items": [
+        {
+          "amount": 78200,
+          "base_amount": 34,
+          "base_rate": 34,
+          "item_code": "SPIKE-001",
+          "qty": 1,
+          "rate": 78200
+        }
+      ],
+      "label": "C6-upper",
+      "name": "ACC-SINV-2026-00016",
+      "outstanding_amount": 33.63,
+      "paid_amount": 0,
+      "party_account_currency": "USD",
+      "payments": [],
+      "pos_profile": "M1-04 New Depo",
+      "posa_pos_opening_shift": "POSA-OS-26-0000003",
+      "qty": 1,
+      "rounded_total": 77350,
+      "rounding_adjustment": 20,
+      "stock_ledger": [
+        {
+          "actual_qty": -1,
+          "is_cancelled": 0,
+          "item_code": "SPIKE-001",
+          "name": "49df299d1f",
+          "qty_after_transaction": -214,
+          "stock_value_difference": -80,
+          "warehouse": "New Depo - RS"
+        }
+      ],
+      "update_stock": 1
+    }
+  ],
+  "captured_at": "2026-10-31 02:13:58.750211",
+  "closing_shift": "POSA-CS-26-0000002",
+  "ledgers_unchanged_at_close": true,
+  "opening_shift": "POSA-OS-26-0000003",
+  "profile": "M1-04 New Depo",
+  "settings": {
+    "create_pos_invoice_instead_of_sales_invoice": 0,
+    "posa_allow_credit_sale": 1,
+    "posa_allow_multi_currency": 1,
+    "posa_allow_partial_payment": 1,
+    "posa_allow_submissions_in_background_job": 0,
+    "posa_allow_user_to_edit_additional_discount": 1,
+    "posa_block_sale_beyond_available_qty": 0,
+    "update_stock": 1
+  },
+  "site": "dev.localhost",
+  "unit_price_probe": {
+    "browser_verified": false,
+    "cdf_unit_price": 229999.79,
+    "conversion_rate": 0.000434783,
+    "exactly_230000": false,
+    "exchange_rate_date": "2026-10-30",
+    "plc_conversion_rate": 1,
+    "price_list_currency": "USD",
+    "unrounded_cdf": 229999.7930001863,
+    "usd_price": 100
+  }
+}

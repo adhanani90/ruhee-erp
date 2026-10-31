@@ -162,11 +162,11 @@ These are proposals and questions, not decisions:
 | Check | Result (pass / fail / workaround) | Evidence | Notes |
 | --- | --- | --- | --- |
 | C1 Install | | | |
-| C2 Posting | | | |
-| C3 CDF bill | | | |
+| C2 Posting | pass (local); staging/UI pending | [M1-04 local extracts](../ruhee_erp/spike/evidence/m1_04_local.json), [runbook](../ruhee_erp/spike/M1-04.md) | 30 Oct Toronto / 31 Oct site time: three separate Sales Invoices, one stock deduction each at submit; native shift close leaves invoice list and ledger hashes unchanged. Requires create_pos_invoice_instead_of_sales_invoice=0 and update_stock=1. |
+| C3 CDF bill | fail; staging/UI pending | [Saved invoice/GL/precision](../ruhee_erp/spike/evidence/m1_04_saved_precision.json), [runbook](../ruhee_erp/spike/M1-04.md) | Saved $100 line and grand_total 229,999.79 FC; rounded_total 230,000 FC, adjustment +0.21 FC / $0, no Round Off GL; Debtors Dr/Cr $100. Exact-input 23,000,000 FC: no rounding, no Round Off GL, Debtors Dr $10,000.01 (expected $10,000.00). Both rate fields precision 9, decimal(21,9). No compensation; candidates for #6 in runbook. |
 | C4 Cross-currency payment | | | |
-| C5 Part-payment | | | |
-| C6 Rounding (native direction, for Q1) | | | |
+| C5 Part-payment | pass (local server/report); staging/UI pending | [M1-04 local extracts](../ruhee_erp/spike/evidence/m1_04_local.json), [runbook](../ruhee_erp/spike/M1-04.md) | Exact-input 230,000 FC less 115,000 FC posts Cash CDF $50 / Cr Debtors $50; invoice and Accounts Receivable outstanding USD $50. Screenshots pending. |
+| C6 Rounding (native direction, for Q1) | partial overall; local proof complete, staging pending | [New C6 bill/GL extracts](../ruhee_erp/spike/evidence/m1_04_rounding.json), [runbook](../ruhee_erp/spike/M1-04.md) | 30 Oct Toronto / 31 Oct site time: native nearest 50 FC. H 00018: 77,310 -> 77,300 (-10 FC), Dr Debtors/Cr Sales $33.61, no Round Off. 00019: 77,326 -> 77,350 (+24 FC), Dr Debtors $33.63 / Cr Sales $33.62 / Cr Round Off $0.01; each also Dr COGS/Cr Stock $80. Q1 remains open. |
 | C7 Store rate (online and offline) | | | |
 | C8 Offline, two PCs | | | |
 | C9 Offline edge cases | | | |
