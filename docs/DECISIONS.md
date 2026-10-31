@@ -216,7 +216,7 @@ These are proposals and questions, not decisions:
 | C1 Install | | | |
 | C2 Posting | pass (local); staging/UI pending | [M1-04 local extracts](../ruhee_erp/spike/evidence/m1_04_local.json), [runbook](../ruhee_erp/spike/M1-04.md) | 30 Oct Toronto / 31 Oct site time: three separate Sales Invoices, one stock deduction each at submit; native shift close leaves invoice list and ledger hashes unchanged. Requires create_pos_invoice_instead_of_sales_invoice=0 and update_stock=1. |
 | C3 CDF bill | fail; staging/UI pending | [Saved invoice/GL/precision](../ruhee_erp/spike/evidence/m1_04_saved_precision.json), [runbook](../ruhee_erp/spike/M1-04.md) | Saved $100 line and grand_total 229,999.79 FC; rounded_total 230,000 FC, adjustment +0.21 FC / $0, no Round Off GL; Debtors Dr/Cr $100. Exact-input 23,000,000 FC: no rounding, no Round Off GL, Debtors Dr $10,000.01 (expected $10,000.00). Both rate fields precision 9, decimal(21,9). No compensation here; #6 investigation is in progress in PR #20. |
-| C4 Cross-currency payment | pending scratch restore | [M1-05 source audit/runbook](../ruhee_erp/spike/M1-05.md) | 30 Oct Toronto / 31 Oct site time: USD invoice, CDF original tender, company-specific Cash CDF mapping and profile multi-currency gate identified. No runtime GL result yet; scratch restore awaits Sam's local root authentication. No dev bill replay. |
+| C4 Cross-currency payment | native fail; workaround passes locally | [Native failure](../ruhee_erp/spike/evidence/m105_native_9.json), [store/PE GL](../ruhee_erp/spike/evidence/m105_store_prototype.json), [design](../ruhee_erp/spike/M1-05.md) | 30 Oct Toronto / 31 Oct site time: native USD/CDF rejected by account-currency validator. PE adapter: Dr Cash CDF $100.87 / Cr Debtors $100 / Cr Exchange income $0.87. Large accurate rate gives $10,086.96/$86.96; nine-place-value PE gives $10,086.97/$86.97. No dev replay. UI/staging/offline pending. |
 | C5 Part-payment | pass (local server/report); staging/UI pending | [M1-04 local extracts](../ruhee_erp/spike/evidence/m1_04_local.json), [runbook](../ruhee_erp/spike/M1-04.md) | Manually entered 230,000 FC line price (R1 value) less 115,000 FC paid posts Cash CDF $50 / Cr Debtors $50; invoice and Accounts Receivable outstanding USD $50. A natively priced equivalent was not executed. Screenshots pending. |
 | C6 Rounding (native direction, for Q1) | partial overall; local proof complete, staging pending | [C6 bill/GL extracts](../ruhee_erp/spike/evidence/m1_04_rounding.json), [runbook](../ruhee_erp/spike/M1-04.md) | 30 Oct Toronto / 31 Oct site time: native nearest 50 FC; ties (remainder exactly 25 FC) round down per source, not exercised. H 00018: 77,310 -> 77,300 (-10 FC), base adjustment $0.00, Dr Debtors/Cr Sales $33.61, no Round Off. 00019: 77,326 -> 77,350 (+24 FC), base adjustment $0.01, Dr Debtors $33.63 / Cr Sales $33.62 / Cr Round Off $0.01; each also Dr COGS/Cr Stock $80. Both outcomes match C6's cent threshold as revised in PR #22; Q1 remains open. |
 | C7 Store rate (online and offline) | | | |
@@ -251,3 +251,39 @@ Sam must enter MariaDB root credentials locally; no site configuration secret is
 read into the report. Actual missing prerequisites, native C3/C4/large/O results,
 12-place migration/new/old document evidence and C7 routing remain pending. No
 production hook, precision fixture or fork change is selected or deployed.
+
+## M1-05 measured design note — 2026-10-30 (31 Oct site time)
+
+[Complete source references, scratch results, route ranking and caveats](../ruhee_erp/spike/M1-05.md).
+The restored backup was pre-setup (zero Company/Sales Invoice rows). M1-03 seeded
+invented data on scratch only; this is not a current dev settings audit.
+
+Native Sales Invoice cannot post a CDF drawer when company/invoice currencies are
+both USD: `erpnext/controllers/accounts_controller.py:AccountsController.get_gl_dict`
+calls `validate_account_currency`. Configuration enables the feature but cannot
+remove this restriction. C4 fails at submit with no committed GL.
+
+Ranked candidate: retain a USD invoice allocation and post its CDF part through a
+Payment Entry orchestrated by a ruhee_erp rate adapter. The scratch prototype uses
+ERPNext `get_payment_entry`, ordinary insert/submit and a pre-submit deduction to
+Exchange income. It proves C's exact $100.87/$100/$0.87 GL and the large
+$10,086.96/$10,000/$86.96 GL using a referenced store record, even against company
+rate 9999. A deliberately truncated nine-place-value PE instead posts $10,086.97
+cash and $86.97 income; I2 can still balance while exact R7 valuation fails.
+
+The prototype is process-scoped, not a hooks.py registration or a production
+decision. Its scratch-only submitted rate record/link schema is not exported as
+a production DocType. App hooks/PE orchestration rank above a direct POS fork;
+browser integration, atomic/idempotent offline replay and returns remain unverified.
+Any production/fork choice needs approval, a dated DECISIONS entry and the listed
+AUT-CUR-01/03/04/05/06/10/12 and AUT-RATE-01 regressions. Payment rounding remains
+Q1-dependent (AUT-CUR-14); native normalization preserved 2320 FC with no 50 FC step.
+
+Precision is an independent prerequisite: invoice-only 12 places did not fix the
+source error or native C4. Six Property Setters plus migrate left three real
+columns at 9 despite metadata=12. Explicit final-metadata `MariaDBDatabase.updatedb`
+sync plus a freshly recomputed 12-place reciprocal fixed both measured C3 drifts;
+old saved invoices/GL remained unchanged. App-owned metadata with verified schema
+ordering could be a production route; a fixture alone is not proven sufficient.
+No Frappe, ERPNext or POS Awesome source edit, pin change, dev data change or queued
+bill retry occurred. No production precision fixture is selected here.

@@ -16,6 +16,8 @@ COMPANY = "Ruhee Spike"
 def guard():
 	if frappe.local.site != SCRATCH:
 		raise ValueError(f"Scratch-only experiment; expected {SCRATCH}")
+	if not frappe.conf.get("pause_scheduler"):
+		raise ValueError("Scratch scheduler must remain paused")
 	if not frappe.db.exists("Company", COMPANY):
 		raise ValueError("Restore the dev.localhost backup before running experiments")
 
@@ -427,6 +429,7 @@ def refresh_scratch_reciprocal():
 		order_by="date desc",
 		limit=1,
 	)
+
 	if not direct:
 		raise ValueError("Missing direct USD->CDF base rate")
 	name = frappe.db.get_value("Currency Exchange", {"from_currency": "CDF", "to_currency": "USD"})
@@ -446,3 +449,79 @@ def refresh_scratch_reciprocal():
 			}
 		)
 	)
+
+
+def payment_rounding_probe():
+	"""Exercise native tender normalization at 2320 without deciding Q1.
+
+	The manual-rate permission is on a copied profile only, not a changed stored
+	profile. This isolates the native normalizer; USD/CDF submission is blocked by
+	the separately reported account-currency validator.
+	"""
+	guard()
+	from posawesome.posawesome.api.payment_currency import normalize_invoice_payment_currencies
+
+	profile = frappe.copy_doc(frappe.get_doc("POS Profile", "M1-05 Native"))
+	profile.posa_allow_manual_payment_exchange_rate = 1
+	results = []
+	for source in ("currency_exchange", "manual"):
+		doc = frappe.get_doc(
+			{
+				"doctype": "Sales Invoice",
+				"company": COMPANY,
+				"currency": "USD",
+				"conversion_rate": 1,
+				"posting_date": nowdate(),
+				"pos_profile": "M1-05 Native",
+				"payments": [
+					{
+						"mode_of_payment": "Cash CDF",
+						"account": account("Cash CDF - New Depo"),
+						"amount": 1,
+						"posa_payment_currency": "CDF",
+						"posa_original_amount": 2320,
+						"posa_exchange_rate": 1 / 2320,
+						"posa_rate_source": source,
+					}
+				],
+			}
+		)
+		normalize_invoice_payment_currencies(doc, profile_doc=profile)
+		row = doc.payments[0]
+		results.append(
+			{
+				"input_rate_source": source,
+				"input_tender_cdf": 2320,
+				"output_tender_cdf": row.posa_original_amount,
+				"invoice_amount_usd": row.amount,
+				"base_amount_usd": row.base_amount,
+				"invoice_rate": row.posa_exchange_rate,
+				"account_amount_cdf": row.posa_account_amount,
+				"saved_invoice": False,
+			}
+		)
+	assert all(r["output_tender_cdf"] == 2320 for r in results)
+	print(
+		frappe.as_json(
+			{
+				"site": SCRATCH,
+				"native_normalization": results,
+				"rounds_to_50_fc": False,
+				"q1_policy_selected": False,
+			},
+			indent=2,
+		)
+	)
+
+
+def synchronize_precision_columns():
+	"""Scratch-only explicit schema sync after metadata/fixture processing.
+
+	The observed migrate left some columns at 9 despite live metadata=12. Use
+	Frappe's own schema sync with explicitly fetched final metadata, not raw SQL.
+	"""
+	guard()
+	for doctype in ("Sales Invoice", "Currency Exchange", "Sales Invoice Payment", "Payment Entry"):
+		frappe.clear_cache(doctype=doctype)
+		frappe.db.updatedb(doctype, meta=frappe.get_meta(doctype, cached=False))
+	print("Synchronized scratch columns from final app-owned precision metadata")

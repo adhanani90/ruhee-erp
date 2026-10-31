@@ -1,0 +1,232 @@
+{
+  "captured_at": "2026-10-31 03:14:23.203159",
+  "cases": [
+    {
+      "account_for_change_amount": "Cash USD - New Depo - RS",
+      "base_change_amount": 0,
+      "base_grand_total": 100,
+      "base_paid_amount": 100,
+      "case": "C3",
+      "change_amount": 0,
+      "conversion_rate": 0.000434782609,
+      "currency": "CDF",
+      "docstatus": 1,
+      "gl": [
+        {
+          "account": "Sales - RS",
+          "account_currency": "USD",
+          "credit": 100,
+          "credit_in_account_currency": 100,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "261bb5873c"
+        },
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 100,
+          "debit_in_account_currency": 100,
+          "is_cancelled": 0,
+          "name": "4d3df3f9c2"
+        },
+        {
+          "account": "Cost of Goods Sold - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 80,
+          "debit_in_account_currency": 80,
+          "is_cancelled": 0,
+          "name": "8121131d6a"
+        },
+        {
+          "account": "Stock In Hand - RS",
+          "account_currency": "USD",
+          "credit": 80,
+          "credit_in_account_currency": 80,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "976afffe8d"
+        },
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 100,
+          "credit_in_account_currency": 100,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "a24a62ee73"
+        },
+        {
+          "account": "Cash CDF - New Depo - RS",
+          "account_currency": "CDF",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 100,
+          "debit_in_account_currency": 230000,
+          "is_cancelled": 0,
+          "name": "c4bd59d51b"
+        }
+      ],
+      "grand_total": 230000,
+      "input_tender_cdf": 230000,
+      "items": [
+        {
+          "amount": 230000,
+          "base_amount": 100,
+          "base_rate": 100,
+          "item_code": "SPIKE-001",
+          "qty": 1,
+          "rate": 230000
+        }
+      ],
+      "name": "ACC-SINV-2026-00007",
+      "outstanding_amount": 0,
+      "paid_amount": 230000,
+      "payments": [
+        {
+          "account": "Cash CDF - New Depo - RS",
+          "amount": 230000,
+          "base_amount": 100,
+          "mode_of_payment": "Cash CDF",
+          "posa_account_amount": 230000,
+          "posa_company_exchange_rate": 0.000434782609,
+          "posa_exchange_rate": 1,
+          "posa_original_amount": 230000,
+          "posa_payment_currency": "CDF"
+        }
+      ],
+      "rounded_total": 230000,
+      "rounding_adjustment": 0
+    },
+    {
+      "account_for_change_amount": "Cash USD - New Depo - RS",
+      "base_change_amount": 0,
+      "base_grand_total": 10000,
+      "base_paid_amount": 10000,
+      "case": "CDF-large",
+      "change_amount": 0,
+      "conversion_rate": 0.000434782609,
+      "currency": "CDF",
+      "docstatus": 1,
+      "gl": [
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 10000,
+          "credit_in_account_currency": 10000,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "0c1d0904d6"
+        },
+        {
+          "account": "Cash CDF - New Depo - RS",
+          "account_currency": "CDF",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 10000,
+          "debit_in_account_currency": 23000000,
+          "is_cancelled": 0,
+          "name": "0cf094bdfd"
+        },
+        {
+          "account": "Cost of Goods Sold - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 8000,
+          "debit_in_account_currency": 8000,
+          "is_cancelled": 0,
+          "name": "47428a9b2d"
+        },
+        {
+          "account": "Sales - RS",
+          "account_currency": "USD",
+          "credit": 10000,
+          "credit_in_account_currency": 10000,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "9eb7d1550f"
+        },
+        {
+          "account": "Stock In Hand - RS",
+          "account_currency": "USD",
+          "credit": 8000,
+          "credit_in_account_currency": 8000,
+          "debit": 0,
+          "debit_in_account_currency": 0,
+          "is_cancelled": 0,
+          "name": "a8c244e9da"
+        },
+        {
+          "account": "Debtors - RS",
+          "account_currency": "USD",
+          "credit": 0,
+          "credit_in_account_currency": 0,
+          "debit": 10000,
+          "debit_in_account_currency": 10000,
+          "is_cancelled": 0,
+          "name": "fd71d64d19"
+        }
+      ],
+      "grand_total": 23000000,
+      "input_tender_cdf": 23000000,
+      "items": [
+        {
+          "amount": 23000000,
+          "base_amount": 10000,
+          "base_rate": 100,
+          "item_code": "SPIKE-001",
+          "qty": 100,
+          "rate": 230000
+        }
+      ],
+      "name": "ACC-SINV-2026-00008",
+      "outstanding_amount": 0,
+      "paid_amount": 23000000,
+      "payments": [
+        {
+          "account": "Cash CDF - New Depo - RS",
+          "amount": 23000000,
+          "base_amount": 10000,
+          "mode_of_payment": "Cash CDF",
+          "posa_account_amount": 23000000,
+          "posa_company_exchange_rate": 0.000434782609,
+          "posa_exchange_rate": 1,
+          "posa_original_amount": 23000000,
+          "posa_payment_currency": "CDF"
+        }
+      ],
+      "rounded_total": 23000000,
+      "rounding_adjustment": 0
+    },
+    {
+      "case": "C4",
+      "error": "Account Cash CDF - New Depo - RS is invalid. Account Currency must be USD",
+      "error_type": "ValidationError"
+    },
+    {
+      "case": "C4-large",
+      "error": "Account Cash CDF - New Depo - RS is invalid. Account Currency must be USD",
+      "error_type": "ValidationError"
+    },
+    {
+      "case": "O-unrounded-tender",
+      "error": "Account Cash CDF - New Depo - RS is invalid. Account Currency must be USD",
+      "error_type": "ValidationError"
+    }
+  ],
+  "cdf_unit_price": 230000,
+  "closing_shift": "POSA-CS-26-0000004",
+  "label": "synced_chain_12",
+  "opening_shift": "POSA-OS-26-0000004",
+  "rate": 0.000434782609,
+  "site": "m105.localhost"
+}
