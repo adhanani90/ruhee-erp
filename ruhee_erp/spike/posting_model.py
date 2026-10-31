@@ -321,3 +321,71 @@ def receivable_rows(customer, bills):
 		for row in rows
 		if row.get("voucher_no") in names
 	]
+
+
+def inspect_saved():
+	"""Read only: inspect the two saved M1-04 precision probes and live metadata."""
+	if frappe.local.site != "dev.localhost":
+		raise ValueError("These evidence invoice IDs belong only to dev.localhost")
+	rows = []
+	for name in ("ACC-SINV-2026-00012", "ACC-SINV-2026-00014"):
+		doc = frappe.get_doc("Sales Invoice", name)
+		if doc.company != COMPANY or doc.pos_profile != PROFILE or doc.docstatus != 1:
+			raise ValueError("Saved document differs from the M1-04 evidence scope")
+		row = {
+			key: doc.get(key)
+			for key in (
+				"name",
+				"docstatus",
+				"currency",
+				"conversion_rate",
+				"grand_total",
+				"rounded_total",
+				"rounding_adjustment",
+				"base_rounding_adjustment",
+				"base_grand_total",
+				"base_rounded_total",
+				"debit_to",
+				"outstanding_amount",
+			)
+		}
+		row["items"] = [
+			{
+				key: item.get(key)
+				for key in (
+					"item_code",
+					"qty",
+					"rate",
+					"amount",
+					"base_rate",
+					"base_amount",
+				)
+			}
+			for item in doc.items
+		]
+		row["gl"] = extract(name)["gl"]
+		row["resolved_conversion_rate_precision"] = doc.precision("conversion_rate")
+		rows.append(row)
+	metadata = []
+	for doctype, fieldname in (("Sales Invoice", "conversion_rate"), ("Currency Exchange", "exchange_rate")):
+		field = frappe.get_meta(doctype).get_field(fieldname)
+		metadata.append(
+			{
+				"doctype": doctype,
+				"fieldname": fieldname,
+				"fieldtype": field.fieldtype,
+				"precision": field.precision,
+				"database_column_type": frappe.db.get_column_type(doctype, fieldname),
+			}
+		)
+	print(
+		frappe.as_json(
+			{
+				"site": frappe.local.site,
+				"captured_at": str(now_datetime()),
+				"metadata": metadata,
+				"saved_invoices": rows,
+			},
+			indent=2,
+		)
+	)
