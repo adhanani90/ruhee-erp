@@ -24,6 +24,7 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 
 - **M1-02 (#3):** staging site to be created Mon 2 Nov.
 - **M1-03 (#4):** setup script done and run locally (`ruhee_erp/spike/setup_spike.py`); staging run and C1's screenshot wait on the M1-02 site.
+- **M1-05 (#6), Codex; Claude Code reviews:** started on `M1-05-cross-currency`; [source audit and scratch runbook](../ruhee_erp/spike/M1-05.md). Prepared guarded experiments; actual settings/GL/precision migration wait for Sam's root-authenticated restore to `m105.localhost`. #5 remains draft PR #19; dev baseline and queued bill untouched.
 
 ## Next
 
@@ -34,6 +35,7 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 ## Blocked or waiting
 
 - M1-03's staging run waits on the M1-02 staging site.
+- M1-05: Sam to create/restore scratch locally (commands in runbook); no password requested in chat. No experiments on dev.localhost. Staging freeze 4-6 Nov: no new rate records, item imports or config changes.
 - *Reported by Sam:* a trial site, `ruhee-staging.v.frappe.cloud`, exists on a shared bench. It is not used for M1 and is deleted once staging is up.
 - C1 and C12 need to know New Depo's browser and PC specification (Q9). Until then M1 uses any two PCs, and that is noted in the evidence.
 

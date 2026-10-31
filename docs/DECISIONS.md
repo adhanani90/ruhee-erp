@@ -164,10 +164,10 @@ These are proposals and questions, not decisions:
 | C1 Install | | | |
 | C2 Posting | | | |
 | C3 CDF bill | | | |
-| C4 Cross-currency payment | | | |
+| C4 Cross-currency payment | pending scratch restore | [M1-05 source audit/runbook](../ruhee_erp/spike/M1-05.md) | 30 Oct Toronto / 31 Oct site time: USD invoice, CDF original tender, company-specific Cash CDF mapping and profile multi-currency gate identified. No runtime GL result yet; scratch restore awaits Sam's local root authentication. No dev bill replay. |
 | C5 Part-payment | | | |
 | C6 Rounding (native direction, for Q1) | | | |
-| C7 Store rate (online and offline) | | | |
+| C7 Store rate (online and offline) | pending prototype | [M1-05 source audit/runbook](../ruhee_erp/spike/M1-05.md) | Store-record routing/GL prototype follows scratch native measurements; no online or offline pass claimed. Final offline result belongs to M1-07. |
 | C8 Offline, two PCs | | | |
 | C9 Offline edge cases | | | |
 | C10 Closing per currency | | | |
@@ -182,3 +182,20 @@ These are proposals and questions, not decisions:
 **Recommendation:** *to fill.*
 
 **Go/no-go decision (Sam):** *to fill*, with the date and the chosen path if a fallback is used.
+
+## M1-05 design note — 2026-10-30 (scratch execution pending)
+
+This is a source-backed investigation note, not approval of a production money
+change. [M1-05 audit, source references, candidate rankings and scratch runbook](../ruhee_erp/spike/M1-05.md).
+The native Sales Invoice mixin values and settles each tender through one effective
+conversion and handles excess as change; no separate R7 Exchange income line is
+constructed there. A USD invoice has conversion_rate=1, so raising that invoice
+field's precision alone cannot fix its CDF payment valuation or introduce the
+2320/2300 split. Payment Entry, app hook and minimal-fork routes must be compared
+against native scratch GL, preserving I2/I4/I6/I8 and one USD price list.
+
+Prepared code is guarded to `m105.localhost`, a restore of an existing dev backup.
+Sam must enter MariaDB root credentials locally; no site configuration secret is
+read into the report. Actual missing prerequisites, native C3/C4/large/O results,
+12-place migration/new/old document evidence and C7 routing remain pending. No
+production hook, precision fixture or fork change is selected or deployed.
