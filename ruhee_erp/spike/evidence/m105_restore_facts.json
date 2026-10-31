@@ -1,0 +1,13 @@
+{
+  "site": "m105.localhost",
+  "backup": "20261031_011624-dev_localhost-database.sql.gz",
+  "restored_company_count": 0,
+  "restored_sales_invoice_count": 0,
+  "backup_contains_company_insert": false,
+  "backup_contains_sales_invoice_insert": false,
+  "baseline_initialized_on_scratch_with": "ruhee_erp.spike.setup_spike.run",
+  "baseline_created_records_reported": 60,
+  "baseline_updated_settings_reported": 4,
+  "dev_database_queried_or_modified": false,
+  "queued_dev_bill_retried": false
+}
