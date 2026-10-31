@@ -1,0 +1,35 @@
+{
+  "captured_at": "2026-10-31 03:15:54.852637",
+  "dev_site_queried": false,
+  "old_native_invoice_and_gl_unchanged": true,
+  "pause_scheduler": true,
+  "saved_payment_entries": [
+    {
+      "gl_unchanged": true,
+      "name": "ACC-PAY-2026-00001",
+      "saved_base_received_amount": 100.87,
+      "saved_target_rate": 0.000434783
+    },
+    {
+      "gl_unchanged": true,
+      "name": "ACC-PAY-2026-00002",
+      "saved_base_received_amount": 10086.97,
+      "saved_target_rate": 0.000434783
+    },
+    {
+      "gl_unchanged": true,
+      "name": "ACC-PAY-2026-00003",
+      "saved_base_received_amount": 100.87,
+      "saved_target_rate": 0.000434782609
+    },
+    {
+      "gl_unchanged": true,
+      "name": "ACC-PAY-2026-00004",
+      "saved_base_received_amount": 10086.96,
+      "saved_target_rate": 0.000434782609
+    }
+  ],
+  "scratch_sales_invoice_count": 14,
+  "site": "m105.localhost",
+  "store_invoices_and_links_unchanged": true
+}

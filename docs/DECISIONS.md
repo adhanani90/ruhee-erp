@@ -164,10 +164,10 @@ These are proposals and questions, not decisions:
 | C1 Install | | | |
 | C2 Posting | | | |
 | C3 CDF bill | | | |
-| C4 Cross-currency payment | pending scratch restore | [M1-05 source audit/runbook](../ruhee_erp/spike/M1-05.md) | 30 Oct Toronto / 31 Oct site time: USD invoice, CDF original tender, company-specific Cash CDF mapping and profile multi-currency gate identified. No runtime GL result yet; scratch restore awaits Sam's local root authentication. No dev bill replay. |
+| C4 Cross-currency payment | native fail; workaround passes locally | [Native failure](../ruhee_erp/spike/evidence/m105_native_9.json), [store/PE GL](../ruhee_erp/spike/evidence/m105_store_prototype.json), [design](../ruhee_erp/spike/M1-05.md) | 30 Oct Toronto / 31 Oct site time: native USD/CDF rejected by account-currency validator. PE adapter: Dr Cash CDF $100.87 / Cr Debtors $100 / Cr Exchange income $0.87. Large accurate rate gives $10,086.96/$86.96; nine-place-value PE gives $10,086.97/$86.97. No dev replay. UI/staging/offline pending. |
 | C5 Part-payment | | | |
 | C6 Rounding (native direction, for Q1) | | | |
-| C7 Store rate (online and offline) | pending prototype | [M1-05 source audit/runbook](../ruhee_erp/spike/M1-05.md) | Store-record routing/GL prototype follows scratch native measurements; no online or offline pass claimed. Final offline result belongs to M1-07. |
+| C7 Store rate (online and offline) | workaround, local online pass; offline pending | [Store-record prototype](../ruhee_erp/spike/evidence/m105_store_prototype.json), [saved verification](../ruhee_erp/spike/evidence/m105_saved_verification.json) | Explicit submitted New Depo 2300/2320 record drives C3/C4/C5 despite company rate 9999; documents retain links. New 2400/2420 record leaves old invoices/PEs unchanged. Scoped server hook simulation + native PE; no installed production hook/fork. Final offline result belongs to M1-07. |
 | C8 Offline, two PCs | | | |
 | C9 Offline edge cases | | | |
 | C10 Closing per currency | | | |
@@ -199,3 +199,39 @@ Sam must enter MariaDB root credentials locally; no site configuration secret is
 read into the report. Actual missing prerequisites, native C3/C4/large/O results,
 12-place migration/new/old document evidence and C7 routing remain pending. No
 production hook, precision fixture or fork change is selected or deployed.
+
+## M1-05 measured design note — 2026-10-30 (31 Oct site time)
+
+[Complete source references, scratch results, route ranking and caveats](../ruhee_erp/spike/M1-05.md).
+The restored backup was pre-setup (zero Company/Sales Invoice rows). M1-03 seeded
+invented data on scratch only; this is not a current dev settings audit.
+
+Native Sales Invoice cannot post a CDF drawer when company/invoice currencies are
+both USD: `erpnext/controllers/accounts_controller.py:AccountsController.get_gl_dict`
+calls `validate_account_currency`. Configuration enables the feature but cannot
+remove this restriction. C4 fails at submit with no committed GL.
+
+Ranked candidate: retain a USD invoice allocation and post its CDF part through a
+Payment Entry orchestrated by a ruhee_erp rate adapter. The scratch prototype uses
+ERPNext `get_payment_entry`, ordinary insert/submit and a pre-submit deduction to
+Exchange income. It proves C's exact $100.87/$100/$0.87 GL and the large
+$10,086.96/$10,000/$86.96 GL using a referenced store record, even against company
+rate 9999. A deliberately truncated nine-place-value PE instead posts $10,086.97
+cash and $86.97 income; I2 can still balance while exact R7 valuation fails.
+
+The prototype is process-scoped, not a hooks.py registration or a production
+decision. Its scratch-only submitted rate record/link schema is not exported as
+a production DocType. App hooks/PE orchestration rank above a direct POS fork;
+browser integration, atomic/idempotent offline replay and returns remain unverified.
+Any production/fork choice needs approval, a dated DECISIONS entry and the listed
+AUT-CUR-01/03/04/05/06/10/12 and AUT-RATE-01 regressions. Payment rounding remains
+Q1-dependent (AUT-CUR-14); native normalization preserved 2320 FC with no 50 FC step.
+
+Precision is an independent prerequisite: invoice-only 12 places did not fix the
+source error or native C4. Six Property Setters plus migrate left three real
+columns at 9 despite metadata=12. Explicit final-metadata `MariaDBDatabase.updatedb`
+sync plus a freshly recomputed 12-place reciprocal fixed both measured C3 drifts;
+old saved invoices/GL remained unchanged. App-owned metadata with verified schema
+ordering could be a production route; a fixture alone is not proven sufficient.
+No Frappe, ERPNext or POS Awesome source edit, pin change, dev data change or queued
+bill retry occurred. No production precision fixture is selected here.

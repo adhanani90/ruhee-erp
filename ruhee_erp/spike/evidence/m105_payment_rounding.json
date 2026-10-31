@@ -1,0 +1,27 @@
+{
+  "native_normalization": [
+    {
+      "account_amount_cdf": 2320,
+      "base_amount_usd": 1.01,
+      "input_rate_source": "currency_exchange",
+      "input_tender_cdf": 2320,
+      "invoice_amount_usd": 1.01,
+      "invoice_rate": 0.000434783,
+      "output_tender_cdf": 2320,
+      "saved_invoice": false
+    },
+    {
+      "account_amount_cdf": 2320,
+      "base_amount_usd": 1,
+      "input_rate_source": "manual",
+      "input_tender_cdf": 2320,
+      "invoice_amount_usd": 1,
+      "invoice_rate": 0.0004310344827586207,
+      "output_tender_cdf": 2320,
+      "saved_invoice": false
+    }
+  ],
+  "q1_policy_selected": false,
+  "rounds_to_50_fc": false,
+  "site": "m105.localhost"
+}
