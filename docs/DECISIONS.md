@@ -163,11 +163,11 @@ These are proposals and questions, not decisions:
 | --- | --- | --- | --- |
 | C1 Install | | | |
 | C2 Posting | | | |
-| C3 CDF bill | | | |
-| C4 Cross-currency payment | native fail; workaround passes locally | [Native failure](../ruhee_erp/spike/evidence/m105_native_9.json), [store/PE GL](../ruhee_erp/spike/evidence/m105_store_prototype.json), [design](../ruhee_erp/spike/M1-05.md) | 30 Oct Toronto / 31 Oct site time: native USD/CDF rejected by account-currency validator. PE adapter: Dr Cash CDF $100.87 / Cr Debtors $100 / Cr Exchange income $0.87. Large accurate rate gives $10,086.96/$86.96; nine-place-value PE gives $10,086.97/$86.97. No dev replay. UI/staging/offline pending. |
+| C3 CDF bill | fail (precision) | [Native scratch GL](../ruhee_erp/spike/evidence/m105_native_9.json), [audit](../ruhee_erp/spike/M1-05-integration.md), [#5 draft](https://github.com/adhanani90/ruhee-erp/pull/19) | Native $100 line 229,999.79 FC; exact 23,000,000 FC bill posts $10,000.01. Scratch precision experiments do not close C3 or change dev/#5. |
+| C4 Cross-currency payment | workaround proposed | [Native failure](../ruhee_erp/spike/evidence/m105_native_9.json), [store/PE GL](../ruhee_erp/spike/evidence/m105_store_prototype.json), [integration gap](../ruhee_erp/spike/M1-05-integration.md) | Native USD/CDF rejected. Server bench harness gives exact example C/large PE GL, but no UI/submit/outbox wiring or unique PE request identity; AUT-OFF-01 unproven. Not an accepted online/offline workaround. |
 | C5 Part-payment | | | |
 | C6 Rounding (native direction, for Q1) | | | |
-| C7 Store rate (online and offline) | workaround, local online pass; offline pending | [Store-record prototype](../ruhee_erp/spike/evidence/m105_store_prototype.json), [saved verification](../ruhee_erp/spike/evidence/m105_saved_verification.json) | Explicit submitted New Depo 2300/2320 record drives C3/C4/C5 despite company rate 9999; documents retain links. New 2400/2420 record leaves old invoices/PEs unchanged. Scoped server hook simulation + native PE; no installed production hook/fork. Final offline result belongs to M1-07. |
+| C7 Store rate (online and offline) | partial | [Store-record harness](../ruhee_erp/spike/evidence/m105_store_prototype.json), [integration audit](../ruhee_erp/spike/M1-05-integration.md) | Direct base/higher record is stored and linked; explicit harness binding beats company rate 9999 and history is unchanged. Compatibility arithmetic still uses reciprocals. Manager entry, effective-time/store selection, UI and common submit/sync integration unproven; offline final result belongs to M1-07. |
 | C8 Offline, two PCs | | | |
 | C9 Offline edge cases | | | |
 | C10 Closing per currency | | | |
@@ -235,3 +235,55 @@ old saved invoices/GL remained unchanged. App-owned metadata with verified schem
 ordering could be a production route; a fixture alone is not proven sufficient.
 No Frappe, ERPNext or POS Awesome source edit, pin change, dev data change or queued
 bill retry occurred. No production precision fixture is selected here.
+
+## DRAFT — M1-05 POS payment integration and precision — 2026-10-30
+
+**Status: proposed, not approved or implemented.** No new D-number or production
+authorization is implied. [Full audit, command history, staging checks and estimate](../ruhee_erp/spike/M1-05-integration.md).
+
+Keep one authoritative USD price list and immutable store records containing exact
+direct base/higher quotes. The harness used literal 2300/2320 to create test data,
+then read those fields; it did not implement manager/effective-time selection.
+Reciprocals are compatibility values, not the accounting rate source. Derive cash
+valuation by direct division and assert native stored results agree to the cent;
+if not, block/retain the pending operation rather than compensate submitted GL.
+
+Propose a ruhee_erp server orchestrator for invoice plus linked CDF Payment Entry,
+shared by online submit and outbox replay. Capture tender currency/original amount,
+USD allocation, rate identity/direct quotes and stable operation identity in the
+same queued intent. Current `store_payment_prototype.run/payment` is a bench-only
+harness: no UI/submit/sync registration, request key or replay protection. Merely
+overriding the online HTTP method does not cover the outbox's internal Python call.
+Use verified app hooks/wrappers for both endpoints or a minimal POS Awesome fork
+delegating to the same service; no Frappe/ERPNext edits. Fork changes require their
+own approved dated entry and AUT coverage.
+
+Use a database-unique scoped bill/payment operation key, locked operation state,
+payload hash and persisted SI/PE references. Replay returns the same documents;
+changed payload under a used key is rejected. Handle incomplete invoice/payment
+states before acknowledgement, including native early replay returns and any
+commit boundaries. AUT-OFF-01 must prove sequential/concurrent/reload/crash replay
+creates one SI, one PE and one stock movement; AUT-OFF-02/03/04 cover failure/rate/
+association. This is a proposed design, not a passed idempotency result.
+
+Tested compatibility precision candidate: 12 places for Sales Invoice.conversion_rate,
+Currency Exchange.exchange_rate, Sales Invoice Payment.posa_exchange_rate and
+posa_company_exchange_rate, Payment Entry.source_exchange_rate and target_exchange_rate.
+Export app Property Setters/fixtures; use a versioned app migration plus verified
+ordered post-fixture schema sync and repeated-migrate assertions. Fixture alone
+left three columns at 9 in the observed migration. Preserve old recorded rates/GL;
+new direct quotes become new effective rate records, never rewritten history.
+All six are a tested configuration, not a proved minimal set for every route.
+
+Estimate **8-12 builder-days** including AUT integration (online milestone roughly
+4-6 within that total), plus 1-2 reviewer-days and at least a 24-hour offline soak;
+allow 2-4 extra builder-days if a maintained POS fork is required. Required evidence:
+AUT-CUR-01/03/04/05/06/10/12/14 (14 waits for Q1), AUT-RATE-01..06,
+AUT-OFF-01..04, relevant permissions and real POS-created bills/prints.
+Q1/Q2/Q5/Q6 remain gates, not assumed answers.
+
+If common routing fails, evaluate the minimal fork. If exact arithmetic or duplicate
+safety cannot be proved, do not acknowledge the CDF-on-USD transaction as paid or
+ship it as offline-ready. Report no-go/limited scope to Sam; an interim supervised
+online-only PE workflow needs an explicit scope decision. Staging migration/config
+work remains outside the 4-6 Nov freeze. PR #20 remains draft.
