@@ -26,7 +26,7 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 
 - **M1-02 (#3):** staging site to be created Mon 2 Nov.
 - **M1-03 (#4):** setup script done and run locally (`ruhee_erp/spike/setup_spike.py`); staging run and C1's screenshot wait on the M1-02 site.
-- **M1-04 (#5), Codex; Claude Code reviews:** [draft PR #19](https://github.com/adhanani90/ruhee-erp/pull/19); local C2/C5 pass, **C3 fail** (separate line-price and Debtors drift), **C6 partial overall** (new local H down 10 FC and +24 FC/Cr Round Off $0.01 proven; staging pending). No compensation. [Evidence, precision-ceiling check and #6 candidate matrix](../ruhee_erp/spike/M1-04.md). Staging/UI pending; then #6, then #10, each on its own branch/PR.
+- **M1-04 (#5), Codex; Claude Code reviews:** [PR #19](https://github.com/adhanani90/ruhee-erp/pull/19); local C2/C5 pass, **C3 fail** (line-price and Debtors drift), **C6 partial overall** (H posts no Round Off; +24 FC posts $0.01; staging pending). [Evidence and precision findings](../ruhee_erp/spike/M1-04.md). M1-05 (#6) is already in progress in [draft PR #20](https://github.com/adhanani90/ruhee-erp/pull/20); M1-09 (#10) is a separate returns card dependent on M1-04/M1-05 and M1-07's offline results.
 
 ## Next
 
@@ -37,11 +37,11 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 ## Blocked or waiting
 
 - M1-03's staging run waits on the M1-02 staging site.
-- M1-04 staging evidence waits until Mon 2 Nov. **Staging freeze Wed 4–Fri 6 Nov:** no new rate records, item imports or configuration changes while the offline test runs.
+- M1-04: staging rerun, C3/C5 screenshots and Sam's billing-screen pass remain pending; Claude Code cross-review is required before approval.
 - *Reported by Sam:* a trial site, `ruhee-staging.v.frappe.cloud`, exists on a shared bench. It is not used for M1 and is deleted once staging is up.
 - C1 and C12 need to know New Depo's browser and PC specification (Q9). Until then M1 uses any two PCs, and that is noted in the evidence.
 - *Staging freeze, Wed 4 – Fri 6 Nov (D-021):* no new rate records, item imports or configuration changes while C8 runs; no exceptions. Other staging work happens before or after it, and C8's server rate step runs separately on Sat 7 or Sun 8 Nov.
-- *STATUS and DECISIONS turn (D-023):* #19 next, then #20, then `m1-07-offline-sync`; each PR passing the turn updates this line. Until its turn, a PR keeps its status lines and results in its description.
+- *STATUS and DECISIONS turn (D-023):* #19 holds the turn; after #19 merges, #20 is next, then `m1-07-offline-sync`. Until its turn, a PR keeps its status lines and results in its description.
 
 ## Open questions
 

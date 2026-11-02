@@ -7,7 +7,9 @@ No rates, item prices, precision settings or submitted bills are adjusted here.
 """
 
 import hashlib
+import json
 import secrets
+from pathlib import Path
 
 import frappe
 from erpnext.accounts.report.accounts_receivable.accounts_receivable import execute as receivables
@@ -160,22 +162,57 @@ def run(site="dev.localhost", rounding_only=False):
 	assert all(b["doctype"] == "Sales Invoice" and b["docstatus"] == 1 for b in evidence["bills"])
 	assert all(sum(r.actual_qty for r in b["stock_ledger"]) == -b["qty"] for b in evidence["bills"])
 	assert evidence["ledgers_unchanged_at_close"]
-	if rounding_only:
-		h, upper = evidence["bills"]
-		assert (h["grand_total"], h["rounded_total"], h["rounding_adjustment"]) == (77310, 77300, -10)
-		assert (upper["grand_total"], upper["rounded_total"], upper["rounding_adjustment"]) == (
-			77326,
-			77350,
-			24,
-		)
-		assert any(r.account == "Round Off - RS" and r.credit == 0.01 for r in upper["gl"])
-	else:
+	assert_c6(evidence["bills"], upper_total=77326 if rounding_only else 77330)
+	if not rounding_only:
 		part_paid = next(b for b in evidence["bills"] if b["label"] == "C5-exact-input")
 		assert part_paid["outstanding_amount"] == 50
 		assert any(
 			r["voucher_no"] == part_paid["name"] and r["outstanding"] == 50
 			for r in evidence["accounts_receivable"]
 		)
+
+
+def assert_c6(bills, *, upper_total):
+	"""Check both saved C6 outcomes against the cent threshold, without deciding Q1."""
+	cases = [b for b in bills if b["label"] in ("C6-H", "C6-upper")]
+	assert sorted(b["label"] for b in cases) == ["C6-H", "C6-upper"]
+	expected = {
+		"C6-H": (77310, 77300, -10, 0),
+		"C6-upper": (upper_total, 77350, 77350 - upper_total, 0.01),
+	}
+	for row in cases:
+		assert row["currency"] == "CDF"
+		assert (
+			tuple(
+				row[key]
+				for key in ("grand_total", "rounded_total", "rounding_adjustment", "base_rounding_adjustment")
+			)
+			== expected[row["label"]]
+		)
+		assert flt(row["rounding_adjustment"] * row["conversion_rate"], 2) == row["base_rounding_adjustment"]
+		round_off = [entry for entry in row["gl"] if entry["account"] == "Round Off - RS"]
+		if row["label"] == "C6-H":
+			assert not round_off, "Example H rounds to $0.00: no Round Off entry is allowed"
+		else:
+			assert len(round_off) == 1, "The cent-valued difference must post once to Round Off"
+			assert (round_off[0]["debit"], round_off[0]["credit"]) == (0, 0.01)
+		assert all(not entry["is_cancelled"] for entry in row["gl"])
+		assert flt(sum(entry["debit"] - entry["credit"] for entry in row["gl"]), 2) == 0
+
+
+def verify_recorded_evidence():
+	"""Read only: replay the C6 assertions on both original, unmodified captures."""
+	results = {}
+	for filename, upper_total in (("m1_04_local.json", 77330), ("m1_04_rounding.json", 77326)):
+		evidence = json.loads((Path(__file__).parent / "evidence" / filename).read_text())
+		assert_c6(evidence["bills"], upper_total=upper_total)
+		assert evidence["ledgers_unchanged_at_close"]
+		assert evidence["before_close"] == evidence["after_close"]
+		assert not evidence["before_close"]["pos_invoices"]
+		assert all(b["doctype"] == "Sales Invoice" and b["docstatus"] == 1 for b in evidence["bills"])
+		assert all(sum(r["actual_qty"] for r in b["stock_ledger"]) == -b["qty"] for b in evidence["bills"])
+		results[filename] = "PASS: both C6 outcomes, stock movements and unchanged native close"
+	return results
 
 
 def prepare_profile(name=PROFILE):
