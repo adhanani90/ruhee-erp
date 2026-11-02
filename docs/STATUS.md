@@ -37,7 +37,7 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 ## Blocked or waiting
 
 - M1-03's staging run waits on the M1-02 staging site.
-- M1-04 (#5): staging rerun (after 6 Nov, D-021), C3/C5 screenshots, Sam's billing-screen verification and C3 re-proof remain for a later PR (D-026). Claude Code's independent review of `869d76c` is complete; its mandatory documentation corrections are addressed here. Sam's explicit approval of partial delivery in PR #19 remains required.
+- M1-04 (#5): staging rerun (after 6 Nov, D-021), C3/C5 screenshots, Sam's billing-screen verification and C3 re-proof remain for a later PR (D-026).
 - *Reported by Sam:* a trial site, `ruhee-staging.v.frappe.cloud`, exists on a shared bench. It is not used for M1 and is deleted once staging is up.
 - C1 and C12 need to know New Depo's browser and PC specification (Q9). Until then M1 uses any two PCs, and that is noted in the evidence.
 - *Staging freeze, Wed 4 – Fri 6 Nov (D-021):* no new rate records, item imports or configuration changes while C8 runs; no exceptions. Other staging work happens before or after it, and C8's server rate step runs separately on Sat 7 or Sun 8 Nov.
