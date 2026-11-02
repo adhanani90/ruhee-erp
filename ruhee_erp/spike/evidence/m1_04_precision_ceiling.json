@@ -1,0 +1,12 @@
+{
+  "captured_at": "2026-10-31 02:46:23.799056",
+  "copied_metadata_precision": "12",
+  "copied_resolved_precision": 12,
+  "docfield_precision_options": "\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9",
+  "flt_at_12_decimals": 0.000434782609,
+  "generated_definition_only_no_ddl": "decimal(21,12)",
+  "live_column_unchanged": "decimal(21,9)",
+  "live_precision_unchanged": "9",
+  "persisting_12_decimal_invoice_tested": false,
+  "site": "dev.localhost"
+}
