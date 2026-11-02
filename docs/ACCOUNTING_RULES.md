@@ -53,7 +53,7 @@ These are management accounts, not SYSCOHADA, plus Sales, Cost of goods sold, St
 | R5 | USD balance paid later in CDF | CDF = USD × the payment day's higher rate | Confirmed by owner |
 | R6 | USD balance paid in USD | No conversion | Confirmed by owner |
 | R7 | Valuing CDF received | At the store's base rate of the day. The whole gap to the USD settled, including any 50 FC rounding of the payment (R3, R5), goes to Exchange income; it can be negative on small amounts. | Plan-approved; payment rounding included by Sam, 30 Oct 2026; awaiting sign-off |
-| R8 | Month end | CDF accounts revalued at head office's base rate; the change goes to FX gain/loss | Plan-approved; awaiting sign-off |
+| R8 | Month end | CDF accounts revalued at head office's base rate; the change goes to FX gain/loss | Plan-approved; rate source Open (Q12) |
 | R9 | Remise | X% of the amount settled within N days, to Remises accordées | Plan-approved; basis and defaults Open (Q4) |
 | R10 | Daily close | Each drawer counted in its own currency; differences to Cash over/short, with a reason | Plan-approved; awaiting sign-off |
 | R11 | Rates | One or more records per store per day, each with base, higher and an effective time, entered by the manager before the first CDF bill. A mid-day change adds a record effective from its time; earlier records, and the documents that used them, are unchanged. Offline PCs take a manual entry with a manager PIN | Plan-approved; no-rate behaviour Open (Q5) |
@@ -61,7 +61,7 @@ These are management accounts, not SYSCOHADA, plus Sales, Cost of goods sold, St
 | R13 | Any return | A credit note created from the original bill: it copies the bill's items, prices and accounts and can't return more than was sold. Goods sold before go-live use POS Awesome's return without invoice, managers and head office only | Plan-approved |
 | R14 | Restocking | The manager marks each returned line back on the shelf or not. Back on the shelf re-adds stock at its original cost; otherwise no stock moves (an item missing at livraison, or damaged). See the mixed-return fallback below | Plan-approved; mechanism confirmed in C13 |
 | R15 | Credit-note rate | The credit note keeps the original bill's currency and rate, reversing exactly the USD value first recorded | Plan-approved; to confirm in C13 |
-| R16 | Settling a return | On an unpaid bill, the credit note lowers the USD balance. As credit, it becomes a USD credit used against later bills. As a cash refund, it is a negative payment from the drawer, in the currency and at the rate set by Q11 | Plan-approved; refund currency and rate Open (Q11) |
+| R16 | Settling a return | On an unpaid bill, the credit note lowers the USD balance. As credit, it becomes a USD credit used against later bills. As a cash refund, it is a negative payment from the drawer, in the currency and at the rate set by Q11 for a later-day refund, or by Q13 for a same-day refund of a bill paid wholly or partly in the other currency; example K shows a same-day refund in the currency paid | Plan-approved; refund currency and rate Open (Q11, Q13) |
 | R17 | Swap | A return of the line plus a new bill for the replacement, billed like any sale. Any difference is collected or refunded under R1–R6 and R16 | Plan-approved |
 
 **Mixed-return fallback (R14).** ERPNext's Update Stock setting applies to a whole credit note. If C13 shows that one credit note can't mix restocked and non-restocked lines, `ruhee_erp` splits the manager's single return into two credit notes against the same bill, created and printed together: one with stock update and one without. The manager still marks lines one by one, so the policy is unchanged.
@@ -130,7 +130,11 @@ Check figures: 46,000 ÷ 2300 = 20.00; 230,000 ÷ 2400 = 95.8333.
 | Q4 | R9, example G | Is the remise a percentage of the amount paid or of the bill? What are the default X and number of days? |
 | Q5 | R11, I6 | With no rate entered: block CDF bills, or use yesterday's with a warning? |
 | Q6 | Sign-off | Who signs these rules off: Sam's parents, an accountant, or both? |
+| Q8 | §3 expense categories and petty-cash accounts | Which expense categories? And, if Q10 approves the petty-cash float, what amounts? |
+| Q10 | §3 petty-cash accounts | Is the petty-cash float, a SPEC §16 proposal, approved or changed? |
 | Q11 | R16, example N | A later-day cash refund: return the amount originally paid in its currency, or the bill's USD value at that day's rate (and if so, base or higher)? |
+| Q12 | R8, example I | Which rate is "head office's base rate" at month end, given that rate records are per store (R11), and who sets it? |
+| Q13 | R16, I4 | A same-day cash refund of a bill paid wholly or partly in the other currency (for example C): which currency and amount go back, and how is the Exchange income booked on the payment treated? |
 
 ## 9. Sign-off
 
