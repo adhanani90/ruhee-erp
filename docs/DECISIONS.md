@@ -144,6 +144,58 @@ This file is append-only. Every entry gives the decision, the reason, the altern
 - **Alternatives:** managers only.
 - **Status:** Approved by Sam, 30 Oct 2026.
 
+## D-021 Staging freeze during the C8 offline test
+- **Decision:** staging is frozen Wed 4 – Fri 6 Nov 2026 while C8 runs: no new rate records, item imports or configuration changes, with no exceptions. Card M1-08's step that enters a server rate during the outage moves to a separate short offline run after the freeze (Sat 7 or Sun 8 Nov). Other staging work happens before or after the freeze.
+- **Why:** with staging unchanged, any bill lost, duplicated or re-rated during C8 is down to POS Awesome. PRs #19 and #20 proposed the freeze; issue #9's amendment of 31 Oct entered a server rate during the outage (31 Oct audit, F-01).
+- **Alternatives:** exempt that one rate entry; no freeze.
+- **Status:** Approved by Sam, 2 Nov 2026.
+
+## D-022 M1 currency coverage
+- **Decision:**
+  - M1 proves examples A, C and D (C3–C5). Examples B, E and F are recorded as unproven at the go/no-go and are proven in P2 by AUT-CUR-02, AUT-CUR-05 and AUT-CUR-06.
+  - C8 uses card M1-08's latest mix (issue #9, 31 Oct, 05:41Z): CDF bills paid in CDF, USD or both; no francs against USD bills or USD balances; no change given in another currency. C8 checks sync, not amounts, so its CDF bills paid in USD don't prove example B.
+- **Why:** SPEC §14 required M1 to prove examples A–F, but the M1 checks cover only A, C and D, and the evidence #9 cited for B and mixed tender isn't in #6 or PR #20 (31 Oct audit, F-09, F-10, F-34).
+- **Alternatives:** run B, E and F in M1-05 before the go/no-go; C8 without cross-currency payments (#9, 03:07Z); ACCEPTANCE C8 as first written.
+- **Status:** Approved by Sam, 2 Nov 2026. SPEC §14 and ACCEPTANCE C8 updated to match.
+
+## D-023 STATUS and DECISIONS, one open PR at a time
+- **Decision:** only one open PR at a time edits `docs/STATUS.md` or `docs/DECISIONS.md`. The others keep their status lines and results in the PR description until Sam gives them the turn, then rebase on `main` and add them. STATUS names the next holder, and each PR updates that line as it merges. After the 31 Oct audit's docs PR, the order is #19, #20, then `m1-07-offline-sync`.
+- **Why:** D-017 bars two tools from the same files in parallel, but every PR updates STATUS and each M1 card writes spike-report rows; PRs #19 and #20 and branch `m1-07-offline-sync` all edited both files (31 Oct audit, F-02).
+- **Alternatives:** treat STATUS and the spike-report rows as shared, each PR editing only its own lines.
+- **Status:** Approved by Sam, 2 Nov 2026. Amends D-017.
+
+## D-024 Claude Code may change the POS Awesome fork
+- **Decision:** the card's owner, Claude Code included, may commit changes Sam has approved to our fork in `apps/posawesome`, under AGENTS.md's fork rule. CLAUDE.md's read-only rule covers `apps/frappe` and `apps/erpnext` only.
+- **Why:** CLAUDE.md barred Claude Code from editing `apps/posawesome`, the bench's checkout of our fork, while AGENTS.md allows minimal fork changes; M1-05 and M1-07 may need one (31 Oct audit, F-27).
+- **Alternatives:** fork changes by Codex or Sam only.
+- **Status:** Approved by Sam, 2 Nov 2026.
+
+## D-025 Spike code never reaches production
+- **Decision:** before the production site is created (P5), a PR removes `ruhee_erp/spike/` from `main` (history keeps it), and that build is deployed first. Code outside the spike folder never imports from it; a prototype worth keeping moves into a real module first.
+- **Why:** staging and production share one bench group built from `main`, so the spike folder would otherwise reach production (31 Oct audit, F-04).
+- **Alternatives:** let it ship but never run.
+- **Status:** Approved by Sam, 2 Nov 2026.
+
+## D-026 Cards over several PRs, and departures already merged
+- **Decision:**
+  - A card may take several PRs when each says "Partially addresses #n" and Sam agrees in it. Otherwise one card is one branch and one PR.
+  - PR #16 (`.gitignore` alongside SPEC and ACCOUNTING_RULES), PR #17 (`pyproject.toml` outside its card's paths, no STATUS update), PR #21 (no STATUS update) and the 31 Oct audit's ACCOUNTING_RULES-only PR (no STATUS update) are approved exceptions. The rules are otherwise unchanged.
+- **Why:** M1-02 (PR #17) and M1-03 (PR #18) are each partly delivered and need a further PR (31 Oct audit, F-31, F-32).
+- **Alternatives:** one PR per card, with leftover work as new cards; loosening AGENTS.md to match the departures.
+- **Status:** Approved by Sam, 2 Nov 2026. Amends D-012 and D-017.
+
+## D-027 Phases stay undated
+- **Decision:** P2–P4 are an order of work, not dated phases; their pace follows the time Sam has. The fixed dates stay the go/no-go (9 Nov), the freeze (20 Nov), testing and stabilisation (23–28 Nov), cutover (29–30 Nov) and go-live (1 Dec). An open question needed before a phase falls due when that phase starts.
+- **Why:** STATUS and ACCOUNTING_RULES gate on phases that have no dates (31 Oct audit, F-24).
+- **Alternatives:** date each phase.
+- **Status:** Approved by Sam, 2 Nov 2026.
+
+## D-028 Hosting plan split
+- **Decision:** staging and production each run on a $25–50 plan: $50–100 a month in total, up to the $100 ceiling.
+- **Why:** SPEC §14 and DEPLOYMENT §11 gave about $50–75 a month for two sites on $25–50 plans, which spans $50–100 (31 Oct audit, F-29).
+- **Alternatives:** staging on $25 and production on $25–50, about $50–75 a month.
+- **Status:** Approved by Sam, 2 Nov 2026.
+
 ---
 
 ## Pending

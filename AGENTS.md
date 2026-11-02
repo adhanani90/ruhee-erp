@@ -11,7 +11,7 @@ The business is cash-only. Every bill is in USD or CDF, every customer balance i
 
 ### Sources of truth, in order
 
-1. `docs/ACCOUNTING_RULES.md`: money rules R1–R17, invariants I1–I9, worked examples A–N.
+1. `docs/ACCOUNTING_RULES.md`: money rules R1–R17, invariants I1–I9, worked examples A–O.
 2. `docs/SPEC.md`: requirements (`REQ-*`), scope, architecture.
 3. `docs/DECISIONS.md`: decisions, and the M1 spike report.
 4. `docs/ACCEPTANCE_TESTS.md`: spike checks C1–C13, automated tests `AUT-*`, manual tests `AT-*`.
@@ -111,9 +111,9 @@ Verify every command against the installed bench (`bench --help`) before relying
 
 ## 8. Pull requests and definition of done
 
-- One card is one branch and one PR. Never push to `main`. Sam squash-merges.
-- Every PR links its card, lists its spec references (`REQ-`, `R`, `I`, `C`, `AUT-`, `AT-`), lists the tests run with results, attaches the evidence the card asks for, names the source files and functions consulted, and updates `docs/STATUS.md`.
-- Cross-review is required for money rules, permissions, imports and migration, offline settings, and POS Awesome hooks. The reviewer gets the diff and the rules it must meet.
+- One card is one branch and one PR, unless each PR says "Partially addresses #n" and Sam agrees in it; then a card may take several PRs (D-026). Never push to `main`. Sam squash-merges.
+- Every PR links its card, lists its spec references (`REQ-`, `R`, `I`, `C`, `AUT-`, `AT-`), lists the tests run with results, attaches the evidence the card asks for, names the source files and functions consulted, and updates `docs/STATUS.md` (only the PR holding the turn edits `docs/STATUS.md` or `docs/DECISIONS.md`; the others keep their status lines and results in the PR description until Sam gives them the turn, D-023).
+- Cross-review is required for money rules, stock, permissions, imports and migration, offline settings, and POS Awesome hooks. The reviewer gets the diff and the rules it must meet.
 - A card is done when its acceptance criteria are met with evidence, tests pass locally and in CI, the PR contains no unrelated changes, and the docs are updated.
 
 ## 9. Session ritual

@@ -1,4 +1,4 @@
-# STATUS — as of 30 Oct 2026
+# STATUS — as of 2 Nov 2026
 
 **Phase:** P0 Foundations, in progress. **Next gate:** the M1 go/no-go, Mon 9 Nov (D-018).
 
@@ -19,6 +19,8 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 - *Confirmed:* M1 cards #3–#12 updated to the audit (30 Oct).
 - *Confirmed:* docs audit PR #16 merged 30 Oct (`ffd9766`); M1-02 prep PR #17 (`required_apps`) merged 30 Oct (`e68168c`).
 - *Confirmed:* M1-00 (#1) closed 30 Oct. *Reported by Sam,* with screenshots in #1: bench group on v16 in Cape Town; first deploy succeeded with frappe `2fcb939`, erpnext `9cd11b1`, posawesome `89ae16d`; Builder removed.
+- *Confirmed:* PR #21 merged 31 Oct (`208d5f7`): C12 and AT-27 check restored record counts.
+- *Confirmed:* 31 Oct audit triaged: D-021 to D-028 recorded, docs fixes merged, Q12 and Q13 added. The ACCOUNTING_RULES fixes go in their own docs-only PR, which needs a fresh sign-off.
 
 ## In progress
 
@@ -27,7 +29,7 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 
 ## Next
 
-1. M1-02 (#3) Deploy to the Frappe Cloud staging site and pin versions (Sam with Claude Code).
+1. M1-02 (#3) Deploy to the Frappe Cloud staging site and pin versions (Sam with Codex; Claude Code reviews).
 2. M1-03 to M1-10 (#4 to #11): the spike checks; M1-03 also captures C1's billing-screen screenshot.
 3. M1-11 (#12) Spike report and go/no-go.
 
@@ -36,6 +38,8 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 - M1-03's staging run waits on the M1-02 staging site.
 - *Reported by Sam:* a trial site, `ruhee-staging.v.frappe.cloud`, exists on a shared bench. It is not used for M1 and is deleted once staging is up.
 - C1 and C12 need to know New Depo's browser and PC specification (Q9). Until then M1 uses any two PCs, and that is noted in the evidence.
+- *Staging freeze, Wed 4 – Fri 6 Nov (D-021):* no new rate records, item imports or configuration changes while C8 runs; no exceptions. Other staging work happens before or after it, and C8's server rate step runs separately on Sat 7 or Sun 8 Nov.
+- *STATUS and DECISIONS turn (D-023):* #19 next, then #20, then `m1-07-offline-sync`; each PR passing the turn updates this line. Until its turn, a PR keeps its status lines and results in its description.
 
 ## Open questions
 
@@ -43,15 +47,17 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 | --- | --- | --- | --- |
 | Q1 | Round CDF to the nearest 50 FC, or always up? | P2 rates work | R1, R3, R5; AUT-CUR-08, AUT-CUR-14; AT-03 |
 | Q2 | Which rate applies to change given in the other currency? | P2 payment hooks | R12; AUT-CUR-18 |
-| Q3 | Load opening customer debts at go-live, or keep them in the old system? | P3 migration | REQ-MIG-01, AUT-MIG-02, limits and ageing at go-live |
+| Q3 | Load opening customer debts at go-live, or keep them in the old system? | P3 migration | REQ-MIG-01, REQ-CRED-08, AUT-MIG-02, limits and ageing at go-live |
 | Q4 | Is the remise X% of the amount paid or of the bill? Default X and number of days? | Go-live (manual remise in the MVP) | R9; AUT-CUR-07 (basis and amounts) |
-| Q5 | With no rate entered, block CDF bills or use yesterday's with a warning? | P2 rates work | R11, I6; AUT-CUR-13 |
+| Q5 | With no rate entered, block CDF bills or use yesterday's with a warning? | P2 rates work | R11, I6; AUT-CUR-13; AT-01 (no-rate case) |
 | Q6 | Who signs off ACCOUNTING_RULES: the parents, an accountant, or both? | P2 money code | All of P2 money work |
 | Q7 | Small cash sales at New Depo: keep paper plus one end-of-day bill, or enter each sale? | Go-live | AT-17 |
 | Q8 | Preset discount values, expense categories, and petty-cash float amounts if Q10 approves the float? | Go-live | REQ-PRICE-04, REQ-CASH-04 |
 | Q9 | New Depo: number of PCs and facturiers, browser and OS, internet provider; add a hotspot? | M1 (C1, C12) and go-live | Evidence quality; offline planning |
 | Q10 | Approve or change the proposals in SPEC §16? | Go-live | Listed items |
 | Q11 | A later-day cash refund: return the amount originally paid in its currency, or the bill's USD value at that day's rate (base or higher)? | P2 returns work | R16; AUT-RET-05; AT-16 |
+| Q12 | Month-end revaluation (R8): which rate is "head office's base rate", given that rate records are per store (R11), and who sets it? | P2 rates work | R8, example I; AUT-CUR-09 |
+| Q13 | A same-day cash refund of a bill paid wholly or partly in the other currency (for example C): which currency and amount go back, and how is the Exchange income booked on the payment treated? | P2 returns work | R16, I4; REQ-RET-05 |
 
 **Values not yet given:** Mbanzangu's X% (needed for the Mbanzangu rollout, not New Depo).
 
@@ -64,3 +70,4 @@ The plan set P0 for 26–29 Oct and M1 for 27 Oct – 2 Nov. P0 actually started
 1. POS Awesome on v16 (C1, C2), and holding the 9 Nov gate (D-018), which leaves 9 working days before the 20 Nov freeze.
 2. Accounting sign-off timing (Q6), since it gates the P2 money work.
 3. Offline data safety: verified in C8 and C9.
+4. Examples B, E and F stay unproven until P2 tests them (D-022).
