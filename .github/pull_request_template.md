@@ -23,6 +23,6 @@ REQ-… / R… / I… / C… / AUT-… / AT-…
 
 ## Cross-review
 - [ ] Not needed
-- [ ] Needed (money, permissions, imports, offline settings, POS Awesome hooks), reviewer:
+- [ ] Needed (money, stock, permissions, imports and migration, offline settings, POS Awesome hooks), reviewer:
 
 ## Found, not done

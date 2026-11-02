@@ -1,7 +1,7 @@
 # SPEC — Ruhee ERP, New Depo pilot
 
 **Status:** v1.0, from the architecture and implementation plan approved on 30 Oct 2026.
-**Related:** money rules in `ACCOUNTING_RULES.md`; tests in `ACCEPTANCE_TESTS.md`; open questions Q1–Q11 in `STATUS.md`; decisions in `DECISIONS.md`.
+**Related:** money rules in `ACCOUNTING_RULES.md`; tests in `ACCEPTANCE_TESTS.md`; open questions Q1–Q13 in `STATUS.md`; decisions in `DECISIONS.md`.
 
 Requirements are numbered `REQ-<area>-nn`. Anything not yet decided is marked **Open (Qn)**. Proposals the owners have not yet approved are listed in §16 and are not requirements.
 
@@ -82,7 +82,7 @@ The policies below are the owners'; the mechanics are rules R13–R17.
 - **REQ-RET-04** The manager marks each returned line as back on the shelf or not (R14). One return may contain both kinds of line.
   - If one credit note can't handle both, the system splits the return into two credit notes against the same bill: one updating stock, one not, created and printed together.
   - This fallback is confirmed or ruled out in M1 (C13).
-- **REQ-RET-05** A credit note reverses at the original bill's currency and rate (R15). The currency and rate for a refund made on a later day are **Open (Q11)**.
+- **REQ-RET-05** A credit note reverses at the original bill's currency and rate (R15). The currency and rate for a refund made on a later day are **Open (Q11)**, and for a same-day refund of a bill paid wholly or partly in the other currency **Open (Q13)**.
 - **REQ-RET-06** A swap is a return plus a new bill (R17).
 - **REQ-RET-07** POS Awesome may not support returns offline. Until M1 shows otherwise, returns are entered once the connection is back, from the printed bill.
 
@@ -143,7 +143,7 @@ The policies below are the owners'; the mechanics are rules R13–R17.
 
 **Components**
 
-- A Frappe Cloud private bench with two sites, staging and production. Each site needs a plan of $25 or more a month; the target is about $50–75 a month in total, under the $100 ceiling.
+- A Frappe Cloud private bench with two sites, staging and production. Each site needs a plan of $25 or more a month; both run on $25–50 plans, so the total is $50–100 a month, up to the $100 ceiling (D-028).
 - ERPNext and Frappe 16, pinned to one release.
 - POS Awesome, forked and pinned to a tested commit. It is the facturiers' billing screen and offline queue.
 - `ruhee_erp`: store rates, payment and return rules, print format, reports, settings as code, and tests.
@@ -173,7 +173,7 @@ The policies below are the owners'; the mechanics are rules R13–R17.
 
 - POS Awesome installs and runs on v16 on Frappe Cloud. One user reported a blank screen on v16 in February 2026.
 - It posts each bill as its own Sales Invoice with stock update.
-- Its multi-currency handling produces examples A–F using our store rates, not a fetched rate.
+- Its multi-currency handling produces examples A, C and D using our store rates, not a fetched rate. Examples B, E and F are proven in P2 instead (AUT-CUR-02, AUT-CUR-05, AUT-CUR-06; D-022).
 - Offline queues survive PC restarts and multi-day outages on two PCs.
 - A 5,000-item catalogue performs on New Depo's PCs.
 - A credit note on a CDF bill reverses at the bill's own rate, and refunds work from either drawer.
@@ -200,7 +200,7 @@ The policies below are the owners'; the mechanics are rules R13–R17.
 - Bills in USD or CDF at the store's rates under R1–R6, with payment method and share marked at billing, and CDF rounded to 50 FC.
 - Part-payments and credit as USD balances, with limits set only by head office. Later payments in either currency.
 - Stock deducted per bill, with overselling allowed. Opening stock loaded; receipts from Importation and local cash purchases recorded.
-- Returns, refunds and swaps by managers.
+- Returns, refunds and swaps by managers and head office.
 - The A4 bill, matching the paper flow.
 - Daily close per currency, with variances booked.
 - Offline billing and payments on each PC, or the fallback chosen at the M1 go/no-go.
@@ -217,7 +217,7 @@ The policies below are the owners'; the mechanics are rules R13–R17.
 5. Monthly P&L by store and combined, ready for the 31 Dec close.
 6. The Mbanzangu price builder, then Ruhee Depo and Mbanzangu go live.
 7. Store-to-store transfers.
-8. Later: Importation, WhatsApp statements, pre-orders, batch and expiry.
+8. Later: Importation, WhatsApp statements, pre-orders, expiry alerts.
 
 ## 16. Proposals awaiting the owners' approval (Q10)
 

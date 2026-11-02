@@ -78,7 +78,7 @@ Never change configuration in a browser without a matching fixture or PR. The on
 
 ## 7. Production setup and cutover (P5, 29–30 Nov)
 
-1. Create the production site and install the apps; settings arrive as fixtures.
+1. Merge a PR that removes `ruhee_erp/spike/` from `main` (history keeps it), and deploy that build (D-025). Then create the production site and install the apps; settings arrive as fixtures.
 2. Create users and roles. Turn on two-factor login for head office and admin.
 3. Import items and prices, after the validators pass.
 4. Import customers, with credit limits. Opening debts depend on Q3.
@@ -106,4 +106,4 @@ Never change configuration in a browser without a matching fixture or PR. The on
 
 ## 11. Costs
 
-Two sites on $25–50 plans come to about $50–75 a month, under the $100 ceiling. Watch usage after go-live, and move up a plan only if needed.
+Two sites on $25–50 plans come to $50–100 a month, up to the $100 ceiling (D-028). Watch usage after go-live, and move up a plan only if needed.

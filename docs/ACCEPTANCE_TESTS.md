@@ -12,7 +12,7 @@ A test marked **Blocked by Qn** cannot pass until that question is answered (see
 
 ## 1. M1 feasibility checks (C1–C13)
 
-The setup is described in `SPEC.md` §14 and card M1-03: company in USD, CDF enabled, New Depo as a store, 20 test items, 5 test customers (one with a $100 credit limit), rates 2300/2320.
+The setup is described in `SPEC.md` §14 and card M1-03: company in USD, CDF enabled, New Depo as a store, 20 test items, 5 test customers (one with a $100 credit limit), and ERPNext exchange rates for 2300 CDF per USD (both directions). The store rate record (2300/2320) that C4 and C7 use comes from card M1-05.
 
 | ID | Check | Passes when | Evidence |
 | --- | --- | --- | --- |
@@ -21,9 +21,9 @@ The setup is described in `SPEC.md` §14 and card M1-03: company in USD, CDF ena
 | C3 | CDF bill | A $100 item billed in CDF shows 230,000 FC and posts Debtors $100 (example A) | GL extract, bill screenshot |
 | C4 | Cross-currency payment | A $100 USD bill paid with 232,000 FC posts Cash CDF 232,000 FC valued at $100.87, Debtors −$100 and Exchange income $0.87 (example C), through POS Awesome or a prototype hook | GL extract; source file:function used |
 | C5 | Part-payment | A 230,000 FC bill with 115,000 FC paid leaves a $50.00 balance, visible on the billing screen and in the Accounts Receivable report (example D) | GL extract, two screenshots |
-| C6 | Rounding | A CDF total rounds to 50 FC, with the difference posted to Round-off. Record ERPNext's native direction (input for Q1) | Bill and GL extract |
+| C6 | Rounding | A CDF total rounds to 50 FC. A difference worth $0.01 or more, rounded to the cent, posts to Round-off; a smaller one posts nothing (example H), so use a total whose difference posts. Record ERPNext's native direction (input for Q1) | Bill and GL extract |
 | C7 | Store rate | A store-specific rate record, not ERPNext's company-wide rate, drives C3–C5 online, and is used by offline bills. A prototype is acceptable | GL extracts; note of the rate's code path |
-| C8 | Offline | Two PCs offline for at least 24 hours, through a browser and PC restart, each create 15 bills (cash, split, credit) and 2 later payments. Everything syncs, nothing lost or duplicated | Paper log, verification script output, screenshots |
+| C8 | Offline | Two PCs offline for at least 24 hours, through a browser and PC restart, each create 15 bills and 2 later payments in card M1-08's mix (#9, D-022): CDF bills paid in CDF, USD or both, as full, part or credit sales; no francs against USD bills or USD balances, so later payments are in USD; no change in another currency. Everything syncs, nothing lost or duplicated (C8 checks sync, not amounts) | Paper log, verification script output, screenshots |
 | C9 | Offline edge cases | An oversold item syncs into negative stock, and an over-limit credit bill lands as a draft for the manager. These bills are in addition to C8's: the same last unit of one item sold on both PCs, and one over-limit credit bill. Expected overall: 33 bills, 32 submitted, 1 draft. | Stock ledger, draft screenshot |
 | C10 | Closing | The shift close shows the CDF drawer in CDF; if not, the gap is written down with an estimate for a custom view | Closing screenshot, note |
 | C11 | Print | A bill prints from the billing screen through a custom A4 template | PDF |
@@ -52,7 +52,7 @@ Each test names its rule or example. Tests marked "Blocked" are written with the
 - **AUT-CUR-06** Example F: split payment, Exchange income $0.43.
 - **AUT-CUR-07** Example G: the remise as a deduction to Remises accordées. **Blocked by Q4** for the basis and amounts.
 - **AUT-CUR-08** Example H: rounding direction. **Blocked by Q1.**
-- **AUT-CUR-09** Example I: month-end revaluation, FX loss $9.25.
+- **AUT-CUR-09** Example I: month-end revaluation, FX loss $9.25. **Blocked by Q12** for the rate's source.
 - **AUT-CUR-10** I2 holds for every bill in A–I and O.
 - **AUT-CUR-11** I3: no customer entry posts to a non-USD receivable.
 - **AUT-CUR-12** I4: Exchange income comes only from R3/R5 entries.
@@ -62,6 +62,7 @@ Each test names its rule or example. Tests marked "Blocked" are written with the
 - **AUT-CUR-16** I5: after a close with a counted variance, each cash account equals the count in its own currency, and the variance is in Cash over/short.
 - **AUT-CUR-17** R6: a USD balance paid later in USD posts with no conversion and no Exchange income.
 - **AUT-CUR-18** R12: change given in the other currency. **Blocked by Q2.**
+- **AUT-CUR-19** REQ-CUR-07: ERPNext's external exchange-rate provider is switched off, and no bill, payment or credit note takes a rate from it.
 
 ### AUT-RATE — historical rates, I8 (P2)
 
@@ -230,3 +231,31 @@ Expected: oversold items are listed for the manager.
 **AT-27 Backup and restore.**
 Refs: `DEPLOYMENT.md`.
 Expected: the latest backup restores to a fresh site and opens, and its record counts (Company, Item, Customer, Sales Invoice, GL Entry) match the source site's.
+
+**AT-28 Two-factor login.**
+Refs: REQ-CTRL-05.
+Expected: head-office and admin accounts can't log in without the second factor.
+
+**AT-29 Cash to the office.**
+Refs: REQ-CASH-03.
+Expected: takings carried to the office are recorded as a transfer in each currency and confirmed on receipt.
+
+**AT-30 Printed statement.**
+Refs: REQ-CRED-07.
+Expected: a customer's statement prints, and its USD balance matches the customer's balance.
+
+**AT-31 Customer price list.**
+Refs: REQ-PRICE-05, I1.
+Expected: a customer on their own price list is billed at its prices, and the printed bill shows them.
+
+**AT-32 Cost and margin.**
+Refs: REQ-PRICE-06.
+Expected: a store manager can see cost prices and margins.
+
+**AT-33 French interface.**
+Refs: REQ-USER-05.
+Expected: the facturiers' and managers' screens are in French.
+
+**AT-34 Return without invoice.**
+Refs: REQ-RET-03, R13.
+Expected: a manager or head office can return goods sold before go-live without an invoice; a facturier can't.
