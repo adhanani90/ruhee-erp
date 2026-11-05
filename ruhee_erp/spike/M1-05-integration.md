@@ -1,9 +1,13 @@
 # M1-05 audit, integration gap and proposed implementation
 
 Owner Codex; reviewer Claude Code. Draft PR #20 remains a feasibility investigation.
-Reconciled against merged PRs #19, #22 and #23 on 2 Nov 2026.
-This note does not authorize deployment or claim POS/offline acceptance. C3 remains with [merged PR #19](https://github.com/adhanani90/ruhee-erp/pull/19);
-this PR does not re-prove or change that result. C4 **workaround proposed; server
+Reconciled against merged PRs #19, #22 and #23 on 2 Nov; corrected 5 Nov 2026.
+This note does not authorize deployment or claim POS/offline acceptance. C3 remains
+**failed** as in [merged PR #19](https://github.com/adhanani90/ruhee-erp/pull/19);
+[scratch findings and the proposed follow-up](M1-05.md#measured-results) supplement
+the native failure. Formal re-proof is proposed for M1-04 follow-up #5 after
+staging is ready, replacing the M1-05/before-9-Nov condition; Sam's explicit
+agreement in #20 remains pending. C4 **workaround proposed; server
 harness only**. C7's final result belongs to #8; online laboratory evidence is in
 the [design report](M1-05.md#design-report-online-store-rate-harness). Correct GL
 in a bench harness is narrower evidence than a working facturier/sync path.
@@ -119,6 +123,52 @@ protection**. `payment` sets `reference_no` to the opening shift, not a payment
 operation ID. Its invoice/rate links do not prevent duplicate PEs. AUT-OFF-01
 has not been run or passed for this adapter.
 
+### Store-rate binding gap
+
+At POS Awesome `89ae16d`, `invoice_processing/creation.py:_submit_invoice_once`
+calls the local `update_invoice` when creating a new invoice (around line 2011).
+`update_invoice` calls `invoice_processing/utils.py:resolve_erpnext_currency_rates`
+with the invoice's posting date (around lines 1647–1671), then assigns the result
+to `invoice_doc.conversion_rate`. The resolver's `get_latest_rate` looks up
+Currency Exchange by currency pair/date; it does not read our store record.
+Supplying a store rate in the incoming invoice therefore does not bind the saved
+rate through this path. This affects online submission as well as replay, not
+only sync. The existing-draft branch instead updates the document from the
+payload; early replay returns can skip creation entirely, so each path needs proof.
+
+`store_payment_prototype.py:store_rates` uses `unittest.mock.patch.object` to
+replace `creation.resolve_erpnext_currency_rates` and `payment_currency._resolve_rate`
+inside the harness context, restoring them on exit. That is how 00009 uses the
+explicit store record despite company rate 9999. It is **not a production
+integration**: no app hook registers it, other processes/workers do not inherit it,
+and a module-global replacement is not isolated to concurrent requests. It proves
+the selected calculations only under controlled laboratory orchestration.
+
+An HTTP `submit_invoice` wrapper that simply supplies a rate and delegates still
+reaches this internal overwrite. Likewise, Frappe
+`frappe/handler.py:execute_cmd` applies `override_whitelisted_methods` at HTTP
+dispatch; overriding the HTTP `update_invoice` endpoint does **not** intercept
+`_submit_invoice_once`'s direct Python call. A production replacement must bind
+the immutable store-record identity and direct quotes through draft creation,
+validation, submit, worker and replay, and keep line/tender/base amounts consistent.
+
+Candidate mechanisms, **all unverified and none selected or implemented**:
+
+| Candidate | Open mechanism and required proof |
+| --- | --- |
+| Sales Invoice `doc_events.before_validate` | Frappe `Document.run_before_save_methods` invokes it for save/submit. Whether it runs at the right point to restore the bound rate and recalculate all dependent amounts before every later normalization/validation is **unverified**. Prove new/existing drafts, sync and worker paths; an `on_submit` handler alone is too late to establish invoice valuation. |
+| `update_invoice` override or wrapper | An HTTP override alone misses the internal call. A supported way to cover both external draft saves and internal submission calls without runtime patching is **unverified**; demonstrate actual dispatch coverage before selecting this approach. |
+| Minimal POS Awesome fork under D-024 | A separately approved change could delegate rate binding to an app service at the internal resolution boundary. Exact extension point, ordering and coverage are **unverified**; requires Sam's approval, a dated decision and the fork change/review rules, not authorization from this spike. |
+
+Required future proof: compete with a different company/date rate, retain the
+original store snapshot across rate changes and replay, and assert exact saved
+line/tender/GL values for new/existing drafts and background work (C3–C5, C7,
+R11, I6/I8, AUT-RATE-01..06 and AUT-OFF-01). No such integration test was run.
+This gap is included in §6's **2–3 builder-day direct-rate service** line within
+the **8–12 day total**, not a completed prerequisite or a separate estimate.
+If no candidate covers these boundaries, reassess that estimate before committing
+to implementation; the successful runtime patch does not retire this work.
+
 ### Verified submission routes
 
 Source inspection only, at POS Awesome **89ae16d872e90727086b2550d7ca97958c9c4aa4**.
@@ -137,7 +187,10 @@ One HTTP override is a candidate for online plus `off`/`dual_write` replay, not
 proof of completed invoice/payment integration. `frappe/handler.py:execute_cmd`
 applies `override_whitelisted_method` to HTTP dispatch; it does not intercept the
 coordinator's internal Python call. Mode selection and real replay proof belong
-to M1-07 (#8). No mode is selected by this proposal.
+to M1-07 (#8). **The design and estimate assume replay in `off` mode** through the
+same HTTP endpoint as online billing; this planning assumption is not an approved
+mode selection or runtime acceptance. `setInvoiceOutboxMode` has no caller in the
+inspected `frontend/src` tree; no browser's persisted mode was checked.
 
 ### Background submission and acknowledgement
 
@@ -288,9 +341,13 @@ frontend or replay test; current production AUT coverage is not claimed.
 ## 6. Estimate and fallback
 
 **Planning input for M1-11, not authorization for P2.** Keep **8–12 builder-days**
-as the single estimate. The mode depends on M1-07 (#8); default replay fallback
-and background submission add recovery work. Sharing an HTTP endpoint reduces
-route count, but does not justify reducing this estimate.
+as the single estimate, assuming online billing plus offline replay in **`off`
+mode**, both through `posawesome.posawesome.api.invoices.submit_invoice`.
+Default replay's draft fallback, background submission, unresolved store-rate
+binding and PE idempotency still require work. Sharing an HTTP endpoint reduces
+route count, but does not justify reducing this estimate. If M1-07 (#8) selects
+another mode, reassess coverage and effort; `dual_write` and `coordinator` are
+source comparisons, not proven modes within this estimate.
 
 **Estimate: 8–12 focused builder-days**, one owner, including AUT work; an additional
 1-2 reviewer-days and at least a 24-hour two-PC offline soak are separate elapsed
@@ -298,13 +355,13 @@ dependencies. This is a planning estimate, not measured velocity or a promise.
 
 | Work | Builder-days |
 | --- | --- |
-| Exact direct-rate service, validated record selection and durable invoice/PE orchestration | 2-3 |
-| POS tender/rate snapshot, common online/outbox routing, replay identity and recovery | 3-4 |
+| Exact direct-rate service, validated record selection, binding across `update_invoice` and durable invoice/PE orchestration | 2-3 |
+| POS tender/rate snapshot, common online/`off` replay routing, replay identity and recovery | 3-4 |
 | Ordered precision migration, repeated-migrate/old-data and amount-bound tests | 1-2 |
 | AUT currency/rate/offline, cashier permissions, UI/printing and two-PC fixes | 2-3 |
 
-These total **8–12 cumulatively** for online plus offline, including route-mode,
-background and fallback investigation. Mode choice, extension coverage and a
+These total **8–12 cumulatively** for online plus `off` replay, including binding,
+background and fallback investigation. A different mode, extension coverage and a
 possible fork are risks to this planning estimate, not separate approved scopes.
 Unproven: effective-time/store selection, role permissions,
 exact direct arithmetic across supported amounts, schema persistence, real UI
