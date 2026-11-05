@@ -202,6 +202,7 @@ This file is append-only. Every entry gives the decision, the reason, the altern
 
 These are proposals and questions, not decisions:
 
+- [M1-05 payment integration proposal — DRAFT, not approved](../ruhee_erp/spike/M1-05-integration.md#3-draft-not-approved--submission-and-payment-integration).
 - Proposals awaiting the owners' approval: `SPEC.md` §16 (Q10).
 - Open questions Q1–Q11: `STATUS.md`.
 
@@ -215,8 +216,8 @@ These are proposals and questions, not decisions:
 | --- | --- | --- | --- |
 | C1 Install | | | |
 | C2 Posting | pass (local); staging/UI pending | [M1-04 local extracts](../ruhee_erp/spike/evidence/m1_04_local.json), [runbook](../ruhee_erp/spike/M1-04.md) | 30 Oct Toronto / 31 Oct site time: three separate Sales Invoices, one stock deduction each at submit; native shift close leaves invoice list and ledger hashes unchanged. Requires create_pos_invoice_instead_of_sales_invoice=0 and update_stock=1. |
-| C3 CDF bill | fail; staging/UI pending | [Saved invoice/GL/precision](../ruhee_erp/spike/evidence/m1_04_saved_precision.json), [runbook](../ruhee_erp/spike/M1-04.md) | Saved $100 line and grand_total 229,999.79 FC; rounded_total 230,000 FC, adjustment +0.21 FC / $0, no Round Off GL; Debtors Dr/Cr $100. Exact-input 23,000,000 FC: no rounding, no Round Off GL, Debtors Dr $10,000.01 (expected $10,000.00). Both rate fields precision 9, decimal(21,9). No compensation here; #6 investigation is in progress in PR #20. |
-| C4 Cross-currency payment | | | |
+| C3 CDF bill | fail; staging/UI pending | [Original saved invoice/GL/precision](../ruhee_erp/spike/evidence/m1_04_saved_precision.json), [M1-04 runbook](../ruhee_erp/spike/M1-04.md); [scratch 00007/00008](../ruhee_erp/spike/evidence/m105_native_synced_12.json), [store-bound 00009](../ruhee_erp/spike/evidence/m105_store_prototype.json), [findings and follow-up](../ruhee_erp/spike/M1-05.md#measured-results) | Saved $100 line and grand_total 229,999.79 FC; rounded_total 230,000 FC, adjustment +0.21 FC / $0, no Round Off GL; Debtors Dr/Cr $100. Exact-input 23,000,000 FC: no rounding, no Round Off GL, Debtors Dr $10,000.01 (expected $10,000.00). Both rate fields precision 9, decimal(21,9). No compensation here. M1-05 laboratory findings: full six-column 12-place sync plus fresh reciprocal corrects 00007 to 230,000 FC/$100 and 00008 to 23,000,000 FC/$10,000.00; process-patched store record drives 00009 to 230,000 FC/$100 despite company rate 9999. These do not establish staging/UI acceptance; original failure retained. Proposed 5 Nov resolution: formal re-proof in M1-04 follow-up #5 after staging is ready, replacing the M1-05/before-9-Nov condition; Sam's explicit agreement in #20 remains pending. |
+| C4 Cross-currency payment | workaround proposed; server harness only | [Native failure](../ruhee_erp/spike/evidence/m105_native_9.json), [exact PE GL](../ruhee_erp/spike/evidence/m105_store_prototype.json), [design report](../ruhee_erp/spike/M1-05.md) | Cash CDF 232,000 FC valued at $100.87; Cr Debtors $100; Cr Exchange income $0.87. Native USD/CDF submit fails. Missing POS integration and Payment Entry replay protection remain open; no production or offline acceptance claimed. |
 | C5 Part-payment | pass (local server/report); staging/UI pending | [M1-04 local extracts](../ruhee_erp/spike/evidence/m1_04_local.json), [runbook](../ruhee_erp/spike/M1-04.md) | Manually entered 230,000 FC line price (R1 value) less 115,000 FC paid posts Cash CDF $50 / Cr Debtors $50; invoice and Accounts Receivable outstanding USD $50. A natively priced equivalent was not executed. Screenshots pending. |
 | C6 Rounding (native direction, for Q1) | partial overall; local proof complete, staging pending | [C6 bill/GL extracts](../ruhee_erp/spike/evidence/m1_04_rounding.json), [runbook](../ruhee_erp/spike/M1-04.md) | 30 Oct Toronto / 31 Oct site time: native nearest 50 FC; ties (remainder exactly 25 FC) round down per source, not exercised. H 00018: 77,310 -> 77,300 (-10 FC), base adjustment $0.00, Dr Debtors/Cr Sales $33.61, no Round Off. 00019: 77,326 -> 77,350 (+24 FC), base adjustment $0.01, Dr Debtors $33.63 / Cr Sales $33.62 / Cr Round Off $0.01; each also Dr COGS/Cr Stock $80. Both outcomes match C6's cent threshold as revised in PR #22; Q1 remains open. |
 | C7 Store rate (online and offline) | | | |
@@ -234,3 +235,27 @@ These are proposals and questions, not decisions:
 **Recommendation:** *to fill.*
 
 **Go/no-go decision (Sam):** *to fill*, with the date and the chosen path if a fallback is used.
+
+## M1-05 design note — 2026-11-02
+
+**Design report, not an approved decision; corrected 5 Nov 2026.**
+
+Card #6, owner Codex; independent reviewer Claude Code. C4 remains **workaround
+proposed; server harness only**. [Design report and recorded GL](../ruhee_erp/spike/M1-05.md)
+separate the laboratory observations from real POS operation and contain the
+online store-rate findings; C7's final result belongs to #8. C3 remains failed;
+the row above preserves the native failure and adds scratch findings. Formal
+re-proof is proposed for M1-04 follow-up #5 after staging is ready, subject to
+Sam's explicit agreement in #20 to replace his earlier M1-05/before-9-Nov condition.
+
+[Draft integration assessment](../ruhee_erp/spike/M1-05-integration.md) compares
+online, off, dual_write, coordinator and background submission paths at POS Awesome
+89ae16d, including a source-only Sales Invoice on_submit hook alternative and
+unverified transaction/replay tests. Store-rate binding across `update_invoice`
+remains unverified; its process-scoped resolver patch is a laboratory mechanism.
+The Payment Entry adapter has neither POS integration nor replay protection.
+The **8–12 builder-day** estimate assumes replay in `off` mode and includes binding
+in the 2–3 day direct-rate service line. It is planning input for M1-11; #8's mode
+findings may require reassessment, and it does not authorize P2.
+D-022 leaves examples B, E and F unproven in M1 and assigned to P2. Accounting
+sign-off remains pending. No production hook, migration or fork change is selected.

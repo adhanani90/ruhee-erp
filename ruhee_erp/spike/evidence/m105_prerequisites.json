@@ -1,0 +1,137 @@
+{
+  "captured_at": "2026-10-31 03:07:51.567526",
+  "currencies": [
+    {
+      "enabled": 1,
+      "name": "USD",
+      "smallest_currency_fraction_value": 0.01
+    },
+    {
+      "enabled": 1,
+      "name": "CDF",
+      "smallest_currency_fraction_value": 50
+    }
+  ],
+  "modes": [
+    {
+      "accounts": [
+        {
+          "company": "Ruhee Spike",
+          "currency": "USD",
+          "default_account": "Cash USD - New Depo - RS"
+        }
+      ],
+      "enabled": 1,
+      "name": "Cash USD",
+      "type": "Cash"
+    },
+    {
+      "accounts": [
+        {
+          "company": "Ruhee Spike",
+          "currency": "CDF",
+          "default_account": "Cash CDF - New Depo - RS"
+        }
+      ],
+      "enabled": 1,
+      "name": "Cash CDF",
+      "type": "Cash"
+    }
+  ],
+  "profiles": [
+    {
+      "account_for_change_amount": null,
+      "allowed_currencies": [],
+      "company": "Ruhee Spike",
+      "create_pos_invoice_instead_of_sales_invoice": 0,
+      "currency": "USD",
+      "missing_schema_fields": [
+        "posa_enable_multi_currency_payments",
+        "posa_allow_payment_currency_selection",
+        "posa_default_payment_currency",
+        "posa_allow_manual_payment_exchange_rate"
+      ],
+      "name": "New Depo",
+      "payments": [
+        {
+          "allow_in_returns": 0,
+          "creation": "2026-10-31 03:07:40.156362",
+          "default": 1,
+          "docstatus": 0,
+          "doctype": "POS Payment Method",
+          "idx": 1,
+          "mode_of_payment": "Cash USD",
+          "modified": "2026-10-31 03:07:40.156362",
+          "modified_by": "Administrator",
+          "name": "1hq8f0sc7r",
+          "owner": "Administrator",
+          "parent": "New Depo",
+          "parentfield": "payments",
+          "parenttype": "POS Profile"
+        },
+        {
+          "allow_in_returns": 0,
+          "creation": "2026-10-31 03:07:40.156362",
+          "default": 0,
+          "docstatus": 0,
+          "doctype": "POS Payment Method",
+          "idx": 2,
+          "mode_of_payment": "Cash CDF",
+          "modified": "2026-10-31 03:07:40.156362",
+          "modified_by": "Administrator",
+          "name": "1hqk0eu233",
+          "owner": "Administrator",
+          "parent": "New Depo",
+          "parentfield": "payments",
+          "parenttype": "POS Profile"
+        }
+      ],
+      "posa_allow_manual_payment_exchange_rate": null,
+      "posa_allow_multi_currency": 0,
+      "posa_allow_payment_currency_selection": null,
+      "posa_default_payment_currency": null,
+      "posa_enable_multi_currency_payments": null,
+      "posa_use_pos_awesome_payments": 0,
+      "selling_price_list": "Standard Selling",
+      "update_stock": 1
+    }
+  ],
+  "rates": [
+    {
+      "date": "2026-10-30",
+      "exchange_rate": 0.000434783,
+      "for_selling": 1,
+      "from_currency": "CDF",
+      "name": "2026-10-30-CDF-USD-Selling-Buying",
+      "to_currency": "USD"
+    },
+    {
+      "date": "2026-10-30",
+      "exchange_rate": 2300,
+      "for_selling": 1,
+      "from_currency": "USD",
+      "name": "2026-10-30-USD-CDF-Selling-Buying",
+      "to_currency": "CDF"
+    }
+  ],
+  "settings": {
+    "Accounts Settings": {
+      "allow_multi_currency_invoices_against_single_party_account": 1,
+      "allow_pegged_currencies_exchange_rates": 0,
+      "auto_reconcile_payments": 0,
+      "automatically_fetch_payment_terms": 0,
+      "exchange_gain_loss_posting_date": "Payment",
+      "fetch_payment_schedule_in_payment_request": 1,
+      "make_payment_via_journal_entry": 0,
+      "round_row_wise_tax": 0,
+      "show_payment_schedule_in_print": 0,
+      "unlink_advance_payment_on_cancelation_of_order": 1,
+      "unlink_payment_on_cancellation_of_invoice": 1
+    },
+    "Currency Exchange Settings": {
+      "disabled": 1
+    },
+    "POS Settings": {}
+  },
+  "site": "m105.localhost"
+}
