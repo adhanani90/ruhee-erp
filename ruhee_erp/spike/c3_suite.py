@@ -19,8 +19,9 @@ def main():
 	parser.add_argument("--output", type=Path, required=True)
 	parser.add_argument("--resume-after-customize", action="store_true")
 	parser.add_argument("--resume-after-reload", action="store_true")
+	parser.add_argument("--resume-after-migrate", action="store_true")
 	args = parser.parse_args()
-	resume = args.resume_after_customize or args.resume_after_reload
+	resume = args.resume_after_customize or args.resume_after_reload or args.resume_after_migrate
 	args.output.mkdir(parents=True, exist_ok=resume)
 	summary = (
 		json.loads((args.output / "summary.json").read_text())
@@ -69,18 +70,30 @@ def main():
 	def compare(label, before, after, schema_unchanged=False):
 		keys = ("snapshots", "payments", "rates", "store_rates")
 		metadata_added = []
+		metadata_changed = []
 		if schema_unchanged:
 			keys += ("columns", "trace", "amount_trace")
-			if label in ("customize", "reload"):
+			if label in ("customize", "reload", "migrate"):
 				old, new = ({r["name"]: r for r in state["setters"]} for state in (before, after))
-				assert all(new.get(name) == row for name, row in old.items()), (
-					"Existing setters must be identical"
-				)
+				for name, row in old.items():
+					assert name in new, f"Setter removed: {name}"
+					if row != new[name]:
+						assert label == "migrate" and name in (
+							"Sales Invoice-posa_pos_opening_shift-no_copy",
+							"Sales Invoice-update_outstanding_for_self-default",
+						), f"Unexpected setter change: {name}"
+						changed = {k for k in row.keys() | new[name].keys() if row.get(k) != new[name].get(k)}
+						assert changed == {"creation"}, f"Unexpected fixture changes: {name}: {changed}"
+						metadata_changed.append({"before": row, "after": new[name]})
 				metadata_added = [new[name] for name in sorted(new.keys() - old.keys())]
 				allowed = (
 					{(dt, None, "field_order") for dt in before["columns"]}
 					if label == "customize"
-					else {(dt, "naming_series", "options") for dt in ("Sales Invoice", "Payment Entry")}
+					else (
+						{(dt, "naming_series", "options") for dt in ("Sales Invoice", "Payment Entry")}
+						if label == "reload"
+						else set()
+					)
 				)
 				assert all((r["doc_type"], r["field_name"], r["property"]) in allowed for r in metadata_added)
 			else:
@@ -91,7 +104,13 @@ def main():
 			hashes[key] = hashlib.sha256(json.dumps(before[key], sort_keys=True).encode()).hexdigest()
 		summary["preservation"] = [row for row in summary["preservation"] if row["stage"] != label]
 		summary["preservation"].append(
-			{"stage": label, "full_records_equal": True, "sha256": hashes, "metadata_added": metadata_added}
+			{
+				"stage": label,
+				"full_records_equal": True,
+				"sha256": hashes,
+				"metadata_added": metadata_added,
+				"metadata_changed": metadata_changed,
+			}
 		)
 
 	try:
@@ -100,11 +119,19 @@ def main():
 			after = read("after_customize")
 			compare("customize", stable, after, True)
 			stable = after
-			if args.resume_after_reload:
+			if args.resume_after_reload or args.resume_after_migrate:
 				after = read("after_reload")
 				compare("reload", stable, after, True)
 				stable = after
-			label = "resume_after_reload" if args.resume_after_reload else "resume_readback"
+			if args.resume_after_migrate:
+				after = read("after_migrate")
+				compare("migrate", stable, after, True)
+				stable = after
+			label = (
+				"resume_after_migrate"
+				if args.resume_after_migrate
+				else ("resume_after_reload" if args.resume_after_reload else "resume_readback")
+			)
 			compare(label, stable, audit(label), True)
 		else:
 			execute("prepare", "c3_probe.prepare")
@@ -137,7 +164,11 @@ def main():
 			("reload", "c3_probe.resync", None),
 			("migrate", None, ["migrate", "--skip-search-index"]),
 		):
-			if resume and (label == "customize" or (args.resume_after_reload and label == "reload")):
+			if resume and (
+				label == "customize"
+				or (label == "reload" and (args.resume_after_reload or args.resume_after_migrate))
+				or (label == "migrate" and args.resume_after_migrate)
+			):
 				continue
 			execute(label, method, command=command)
 			after = audit(f"after_{label}")
