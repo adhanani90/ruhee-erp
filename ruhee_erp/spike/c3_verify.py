@@ -173,7 +173,14 @@ def payment_check(values, usd=10000):
 	equal("GL.row_count", len(rows), 3)
 	for row in rows:
 		equal(f"GL.{row['name']}.is_cancelled", row["is_cancelled"], 0)
+		equal(f"GL.{row['name']}.transaction_currency", row["transaction_currency"], "CDF")
+		equal(
+			f"GL.{row['name']}.transaction_exchange_rate", row["transaction_exchange_rate"], flt(1 / 2300, 12)
+		)
 	store = values["rate_context"]["store"]
+	if store:
+		equal("store.docstatus", store["docstatus"], 1)
+		equal("store.name", store["name"], doc.get("ruhee_c3_rate") or doc.get("ruhee_c7_rate"))
 	equal("store.base", store.get("base") if store else None, 2300)
 	equal("store.higher", store.get("higher") if store else None, 2320)
 	return errors
@@ -294,7 +301,13 @@ def audit(site, invoices, rates=None, payments=None):
 		"commits": app_commits(),
 		"spike_sha256": {
 			name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
-			for name in ("c3_precision.py", "c3_probe.py", "c3_verify.py")
+			for name in (
+				"c3_precision.py",
+				"c3_probe.py",
+				"c3_verify.py",
+				"c3_payment_probe.py",
+				"c3_suite.py",
+			)
 		},
 		"trace": field_trace(),
 		"setters": setters,

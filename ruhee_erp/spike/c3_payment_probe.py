@@ -97,6 +97,8 @@ def run(label):
 	pe.insert()
 	pe.submit()
 	pe.reload()
+	si.reload()
+	assert si.outstanding_amount == 0
 	values = c3_verify.snapshot(c3_verify.DISPOSABLE, payment=pe.name)
 	errors = c3_verify.payment_check(values)
 	if label == "baseline":
