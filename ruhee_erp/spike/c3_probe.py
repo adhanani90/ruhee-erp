@@ -45,7 +45,7 @@ def prepare():
 				"permissions": [{"role": "System Manager", "read": 1, "write": 1, "create": 1, "submit": 1}],
 			}
 		).insert()
-	for doctype in ("Sales Invoice", "Currency Exchange"):
+	for doctype in ("Sales Invoice", "Currency Exchange", "Payment Entry"):
 		if not frappe.get_meta(doctype).has_field("ruhee_c3_rate"):
 			create_custom_field(
 				doctype,
@@ -287,11 +287,32 @@ def phase(label):
 def customize():
 	"""Exercise the actual Customize Form save method on disposable, without UI claims."""
 	guard()
-	doc = frappe.get_doc("Customize Form")
-	doc.doc_type = "Sales Invoice"
-	doc.run_method("fetch_to_customize")
-	doc.run_method("save_customization")
+	for doctype in dict(c3_verify.FIELDS):
+		doc = frappe.get_doc("Customize Form")
+		doc.doc_type = doctype
+		doc.run_method("fetch_to_customize")
+		doc.run_method("save_customization")
 	c3_precision.inspect(c3_verify.DISPOSABLE)
+
+
+def preflight_control():
+	"""Propose unrelated drift in memory; no table/setter is changed for this test."""
+	guard()
+	_, plans = c3_precision.preflight()
+	meta = frappe.get_meta("Payment Entry", cached=False)
+	meta.get_field("source_exchange_rate").precision = "8"
+	plan = c3_precision.schema_plan("Payment Entry", meta)
+	try:
+		c3_precision.assert_plan(plan, c3_verify.FIELDS)
+	except ValueError as exc:
+		assert "source_exchange_rate" in str(exc), exc
+		print(
+			frappe.as_json(
+				{"clean_plans": plans, "rejected_proposal": plan, "rejection": str(exc), "writes": []}
+			)
+		)
+	else:
+		raise AssertionError("The unrelated-column proposal must be rejected")
 
 
 def resync():
