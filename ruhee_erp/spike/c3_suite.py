@@ -11,7 +11,7 @@ import json
 import subprocess
 from pathlib import Path
 
-SITE = "c3-precision.localhost"
+SITE = "c3-precision-review.localhost"
 
 
 def main():
@@ -30,15 +30,21 @@ def main():
 		if result.returncode:
 			print(result.stdout[-8000:], flush=True)
 			raise RuntimeError(f"{label} failed; see {args.output}")
-		value = None
+		values = []
 		decoder = json.JSONDecoder()
-		for i, char in enumerate(result.stdout):
-			if char == "{":
+		i = 0
+		while i < len(result.stdout):
+			if result.stdout[i] == "{":
 				try:
-					value, _ = decoder.raw_decode(result.stdout[i:])
-					break
-				except ValueError:
+					value, length = decoder.raw_decode(result.stdout[i:])
+					values.append(value)
+					i += length
 					continue
+				except ValueError:
+					pass
+			i += 1
+		# Some methods print a preliminary trace and bench prints a small return receipt.
+		value = max(values, key=lambda v: len(json.dumps(v))) if values else None
 		if value is not None:
 			content = json.dumps(value, indent=2, sort_keys=True).encode()
 			with (args.output / f"{label}.json.gz").open("wb") as stream:

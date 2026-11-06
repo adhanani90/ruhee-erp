@@ -7,7 +7,7 @@ from pathlib import Path
 import frappe
 from frappe.utils import flt
 
-DISPOSABLE = "c3-precision.localhost"
+DISPOSABLE = "c3-precision-review.localhost"
 STAGING = "ruhee-staging.c.frappe.cloud"
 ALLOWED_SITES = frozenset((DISPOSABLE, STAGING))
 COMPANY = "Ruhee Spike"
