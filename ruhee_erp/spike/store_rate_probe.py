@@ -535,13 +535,33 @@ def run():
 def verify_saved():
 	"""Fresh-process readback, including the old PR #20 synthetic documents."""
 	guard()
+	frappe.clear_cache()
+	assert frappe.override_whitelisted_method(SUBMIT) == "ruhee_erp.spike.store_rate_hooks.submit_invoice"
 	evidence = json.loads(Path(__file__).with_name("store_rate_results.json").read_text())
 	checks = []
 	for i, result in enumerate(evidence["cases"]):
+		payload = result["invoice"].copy()
+		if result["case"].startswith("C4"):
+			payload["payments"] = [
+				{
+					"mode_of_payment": "Cash CDF",
+					"account": account("Cash CDF - New Depo"),
+					"amount": 100,
+					"posa_original_amount": 232000,
+					"posa_payment_currency": "CDF",
+				}
+			]
+		context = {
+			"pos_profile": PROFILE,
+			"posa_pos_opening_shift": payload["posa_pos_opening_shift"],
+			"due_date": payload["due_date"],
+		}
+		response = dispatch(payload, context)
+		assert response["name"] == result["response"]["name"] and response["docstatus"] == 1
 		current = snapshot(result["response"]["name"])
 		assert digest(current) == evidence["history"]["after"][i]
 		assert_amounts(current, result["case"].split("-")[0])
-		checks.append({"case": result["case"], "unchanged": True})
+		checks.append({"case": result["case"], "unchanged": True, "typed_dispatch_replay": True})
 	# These are the pre-existing invented C3 control and store-bound invoices
 	# documented by PR #20. Never modify/reallocate them in this probe.
 	old = [

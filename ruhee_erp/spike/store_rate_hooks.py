@@ -48,7 +48,7 @@ def bind_rate(doc, method=None):
 
 
 @frappe.whitelist()
-def submit_invoice(invoice, data, submit_in_background=False):
+def submit_invoice(invoice: str, data: str, submit_in_background: bool = False):
 	"""HTTP override for online / default 'off' replay; native submit still runs."""
 	from posawesome.posawesome.api.invoice_processing.creation import submit_invoice as native_submit
 

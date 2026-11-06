@@ -1,28 +1,34 @@
 {
-  "captured_at": "2026-11-06 08:22:04.658661",
+  "captured_at": "2026-11-06 08:30:40.044748",
   "checks": [
     {
       "case": "C3-new",
+      "typed_dispatch_replay": true,
       "unchanged": true
     },
     {
       "case": "C3-existing",
+      "typed_dispatch_replay": true,
       "unchanged": true
     },
     {
       "case": "C4-new",
+      "typed_dispatch_replay": true,
       "unchanged": true
     },
     {
       "case": "C4-existing",
+      "typed_dispatch_replay": true,
       "unchanged": true
     },
     {
       "case": "C5-new",
+      "typed_dispatch_replay": true,
       "unchanged": true
     },
     {
       "case": "C5-existing",
+      "typed_dispatch_replay": true,
       "unchanged": true
     }
   ],
