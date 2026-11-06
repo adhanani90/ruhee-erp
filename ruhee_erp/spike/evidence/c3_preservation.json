@@ -1,0 +1,216 @@
+{
+  "commits": {
+    "erpnext": "9cd11b19575bfc34f092a24f6c8b368c4dd69481",
+    "frappe": "2fcb9397a1f1da353b21e53d2f97ec56653acd02",
+    "posawesome": "89ae16d872e90727086b2550d7ca97958c9c4aa4",
+    "ruhee_erp": "81f8ce661fa6efb78f53862216a1f3d970b816cf"
+  },
+  "first_precision_setter_creation": "2026-11-06 06:26:31.776447",
+  "fresh_rate": {
+    "creation": "2026-11-06 06:31:16.911338",
+    "date": "2026-11-04",
+    "docstatus": 0,
+    "doctype": "Currency Exchange",
+    "exchange_rate": 0.000434782609,
+    "for_buying": 1,
+    "for_selling": 1,
+    "from_currency": "CDF",
+    "idx": 0,
+    "modified": "2026-11-06 06:31:16.911338",
+    "modified_by": "Administrator",
+    "name": "2026-11-04-CDF-USD-Selling-Buying",
+    "owner": "Administrator",
+    "ruhee_c3_rate": "vbgtisogif",
+    "to_currency": "USD"
+  },
+  "historical_capture_limitation": "Initial baseline capture precedes native shift close. That native operation changed only modified and pos_closing_entry, before the first precision Property Setter. All other saved fields and every GL field match; no post-close/pre-precision full hash was captured.",
+  "historical_controls": [
+    {
+      "all_other_saved_fields_identical": true,
+      "captured_before_native_close_sha256": "00ed8b125376d9931a7e8d7ac7571c37b38b99eea345e76104db24fab17938d4",
+      "current_sha256": "dfd8e22672cd13e2446f13b2e4e58fecdebcd58611a1d2834213652b3c6f3218",
+      "gl_identical": true,
+      "invoice": "ACC-SINV-2026-00001",
+      "invoice_modified_before_first_precision_setter": true,
+      "only_differences": {
+        "modified": {
+          "after_close": "2026-11-06 06:25:59.568726",
+          "before_close": "2026-11-06 06:25:56.707745"
+        },
+        "pos_closing_entry": {
+          "after_close": "POSA-CS-26-0000001",
+          "before_close": null
+        }
+      }
+    },
+    {
+      "all_other_saved_fields_identical": true,
+      "captured_before_native_close_sha256": "7dd6edb2df679e2996da7a65ca40c99d2034f7ba69c4dfdd7af00153d50d5e52",
+      "current_sha256": "3304ecd77ccecbee6c2962221021dd41d9ccb14c20953a7a549b8c272a2f1c89",
+      "gl_identical": true,
+      "invoice": "ACC-SINV-2026-00002",
+      "invoice_modified_before_first_precision_setter": true,
+      "only_differences": {
+        "modified": {
+          "after_close": "2026-11-06 06:25:59.572611",
+          "before_close": "2026-11-06 06:25:57.729266"
+        },
+        "pos_closing_entry": {
+          "after_close": "POSA-CS-26-0000001",
+          "before_close": null
+        }
+      }
+    }
+  ],
+  "idempotence": {
+    "complete_audited_state_identical": true,
+    "first_changes": [],
+    "second_changes": []
+  },
+  "old_rate": {
+    "creation": "2026-11-06 06:25:52.428733",
+    "date": "2026-10-31",
+    "docstatus": 0,
+    "doctype": "Currency Exchange",
+    "exchange_rate": 0.000434783,
+    "for_buying": 1,
+    "for_selling": 1,
+    "from_currency": "CDF",
+    "idx": 0,
+    "modified": "2026-11-06 06:25:52.428733",
+    "modified_by": "Administrator",
+    "name": "2026-10-31-CDF-USD-Selling-Buying",
+    "owner": "Administrator",
+    "ruhee_c3_rate": "s63h9f440t",
+    "to_currency": "USD"
+  },
+  "old_rate_unchanged": true,
+  "setters": [
+    {
+      "creation": "2026-11-06 06:26:31.776447",
+      "doc_type": "Currency Exchange",
+      "field_name": "exchange_rate",
+      "modified": "2026-11-06 06:26:31.776447",
+      "name": "Currency Exchange-exchange_rate-precision",
+      "value": "12"
+    },
+    {
+      "creation": "2026-11-06 06:30:02.274054",
+      "doc_type": "GL Entry",
+      "field_name": "transaction_exchange_rate",
+      "modified": "2026-11-06 06:30:02.274054",
+      "name": "GL Entry-transaction_exchange_rate-precision",
+      "value": "12"
+    },
+    {
+      "creation": "2026-11-06 06:28:42.057359",
+      "doc_type": "Sales Invoice Payment",
+      "field_name": "posa_company_exchange_rate",
+      "modified": "2026-11-06 06:28:42.057359",
+      "name": "Sales Invoice Payment-posa_company_exchange_rate-precision",
+      "value": "12"
+    },
+    {
+      "creation": "2026-11-06 06:27:24.351580",
+      "doc_type": "Sales Invoice",
+      "field_name": "conversion_rate",
+      "modified": "2026-11-06 06:27:24.351580",
+      "name": "Sales Invoice-conversion_rate-precision",
+      "value": "12"
+    }
+  ],
+  "site": "c3-precision.localhost",
+  "spike_sha256": {
+    "c3_precision.py": "1baa2b514019839c828e82d32fa1f4c128b4cdb31db9f171cb8fec85cd6d16dc",
+    "c3_probe.py": "01a6738dee10bbabb77654ba864bedb2a8c792bd71fb60d7c9f49923aa164ca9",
+    "c3_verify.py": "fdec99f102e94a49e1741d2c231ccf1e2bf12f79bdaf6b8d571d8b1966e3b854"
+  },
+  "trace": [
+    {
+      "column": "decimal(21,12)",
+      "doctype": "Currency Exchange",
+      "field": "exchange_rate",
+      "precision": "12"
+    },
+    {
+      "column": "decimal(21,12)",
+      "doctype": "Sales Invoice",
+      "field": "conversion_rate",
+      "precision": "12"
+    },
+    {
+      "column": "decimal(21,12)",
+      "doctype": "Sales Invoice Payment",
+      "field": "posa_company_exchange_rate",
+      "precision": "12"
+    },
+    {
+      "column": "decimal(21,12)",
+      "doctype": "GL Entry",
+      "field": "transaction_exchange_rate",
+      "precision": "12"
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "Sales Invoice",
+      "field": "plc_conversion_rate",
+      "precision": "9"
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "Sales Invoice Payment",
+      "field": "posa_exchange_rate",
+      "precision": ""
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "Payment Entry",
+      "field": "source_exchange_rate",
+      "precision": "9"
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "Payment Entry",
+      "field": "target_exchange_rate",
+      "precision": "9"
+    },
+    {
+      "column": null,
+      "doctype": "Sales Invoice Advance",
+      "field": "exchange_rate",
+      "precision": null
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "GL Entry",
+      "field": "reporting_currency_exchange_rate",
+      "precision": "9"
+    }
+  ],
+  "verification": [
+    {
+      "commits": {
+        "erpnext": "9cd11b19575bfc34f092a24f6c8b368c4dd69481",
+        "frappe": "2fcb9397a1f1da353b21e53d2f97ec56653acd02",
+        "posawesome": "89ae16d872e90727086b2550d7ca97958c9c4aa4",
+        "ruhee_erp": "81f8ce661fa6efb78f53862216a1f3d970b816cf"
+      },
+      "errors": [],
+      "invoice": "ACC-SINV-2026-00017",
+      "qty": 1,
+      "sha256": "75cede3c3bead7d15787bafbc38a34fb4ae3cf97cf4afa54127e9c5e56fcb590"
+    },
+    {
+      "commits": {
+        "erpnext": "9cd11b19575bfc34f092a24f6c8b368c4dd69481",
+        "frappe": "2fcb9397a1f1da353b21e53d2f97ec56653acd02",
+        "posawesome": "89ae16d872e90727086b2550d7ca97958c9c4aa4",
+        "ruhee_erp": "81f8ce661fa6efb78f53862216a1f3d970b816cf"
+      },
+      "errors": [],
+      "invoice": "ACC-SINV-2026-00018",
+      "qty": 100,
+      "sha256": "816beb489861ca1bd7794c14432040bb7c4f679bfdb8550ec0907a4b402e4527"
+    }
+  ]
+}

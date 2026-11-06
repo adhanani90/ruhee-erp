@@ -198,3 +198,60 @@ def run(site, invoice, qty=1):
 	)
 	assert not errors, errors
 	return {"invoice": invoice, "arithmetic_checks": "pass", "C3_acceptance": "not claimed"}
+
+
+def audit(site, invoices, rates=None):
+	"""Stable read-only state for idempotence, old-data and update-survival comparisons."""
+	guard(site)
+	setters = frappe.get_all(
+		"Property Setter",
+		filters={"property": "precision", "doc_type": ["in", [dt for dt, _ in FIELDS]]},
+		fields=["name", "doc_type", "field_name", "value", "creation", "modified"],
+		order_by="name",
+	)
+	output = {
+		"site": site,
+		"commits": app_commits(),
+		"spike_sha256": {
+			name: hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
+			for name in ("c3_precision.py", "c3_probe.py", "c3_verify.py")
+		},
+		"trace": field_trace(),
+		"setters": [s for s in setters if (s.doc_type, s.field_name) in FIELDS],
+		"snapshots": {name: snapshot(site, name) for name in invoices},
+		"rates": {name: frappe.get_doc("Currency Exchange", name).as_dict() for name in rates or []},
+	}
+	amount_fields = (
+		("Sales Invoice Item", "rate"),
+		("Sales Invoice Item", "amount"),
+		("Sales Invoice Item", "base_amount"),
+		("Sales Invoice", "grand_total"),
+		("Sales Invoice", "rounded_total"),
+		("Sales Invoice", "base_grand_total"),
+		("Sales Invoice", "outstanding_amount"),
+		("Sales Invoice Payment", "amount"),
+		("Sales Invoice Payment", "base_amount"),
+		("Sales Invoice Payment", "posa_original_amount"),
+		("Sales Invoice Payment", "posa_account_amount"),
+		("GL Entry", "debit"),
+		("GL Entry", "credit"),
+		("GL Entry", "debit_in_account_currency"),
+		("GL Entry", "debit_in_transaction_currency"),
+		("Ruhee C3 Spike Rate", "base"),
+		("Ruhee C3 Spike Rate", "higher"),
+	)
+	output["amount_trace"] = []
+	for doctype, field in amount_fields:
+		if not frappe.db.exists("DocType", doctype):
+			continue
+		df = frappe.get_meta(doctype).get_field(field)
+		output["amount_trace"].append(
+			{
+				"doctype": doctype,
+				"field": field,
+				"fieldtype": df.fieldtype,
+				"declared_precision": df.precision,
+				"column": frappe.db.get_column_type(doctype, field),
+			}
+		)
+	print(frappe.as_json(output))
