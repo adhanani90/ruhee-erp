@@ -19,7 +19,9 @@ def run(site, through=4):
 		raise ValueError("Pause the disposable site's scheduler first")
 	if frappe.session.user != "Administrator":
 		raise ValueError("Use bench execute as Administrator for this schema experiment")
-	changes = []
+	# DDL can commit independently: reject an unexpected field/setter/column
+	# anywhere in the selected set before applying the first change.
+	setters = {}
 	for doctype, field in FIELDS[:through]:
 		df = frappe.get_meta(doctype, cached=False).get_field(field)
 		if not df or df.fieldtype != "Float":
@@ -32,6 +34,20 @@ def run(site, through=4):
 		)
 		if setter and setter.value != "12":
 			raise ValueError(f"Conflicting existing precision setter for {doctype}.{field}")
+		column = frappe.db.get_column_type(doctype, field)
+		if column not in ("decimal(21,9)", "decimal(21,12)") or str(df.precision) not in (
+			"",
+			"None",
+			"9",
+			"12",
+		):
+			raise ValueError(
+				f"Untested precision/column for {doctype}.{field}; refusing a possible narrowing"
+			)
+		setters[(doctype, field)] = setter
+	changes = []
+	for doctype, field in FIELDS[:through]:
+		setter = setters[(doctype, field)]
 		if not setter:
 			make_property_setter(doctype, field, "precision", "12", "Data")
 			changes.append(f"Property Setter: {doctype}.{field}")

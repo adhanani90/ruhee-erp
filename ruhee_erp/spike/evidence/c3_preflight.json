@@ -1,0 +1,87 @@
+{
+  "audited_state_sha256": "2543038ce43eb50d0b82f6307cee579fc43f0052b97708cd290fd238872c92db",
+  "commits": {
+    "erpnext": "9cd11b19575bfc34f092a24f6c8b368c4dd69481",
+    "frappe": "2fcb9397a1f1da353b21e53d2f97ec56653acd02",
+    "posawesome": "89ae16d872e90727086b2550d7ca97958c9c4aa4",
+    "ruhee_erp": "0a2a2bbb0f422bba4a14f726918e1501f97e261e"
+  },
+  "first_changes": [],
+  "note": "Preflight now validates every selected field/setter/column before the first mutation. The existing native field-isolation and lifecycle evidence is unchanged; the delivered script was rerun twice without changes.",
+  "persistent_state_unchanged": true,
+  "second_changes": [],
+  "site": "c3-precision.localhost",
+  "snapshot_hashes": {
+    "ACC-SINV-2026-00001": "dfd8e22672cd13e2446f13b2e4e58fecdebcd58611a1d2834213652b3c6f3218",
+    "ACC-SINV-2026-00002": "3304ecd77ccecbee6c2962221021dd41d9ccb14c20953a7a549b8c272a2f1c89",
+    "ACC-SINV-2026-00017": "75cede3c3bead7d15787bafbc38a34fb4ae3cf97cf4afa54127e9c5e56fcb590",
+    "ACC-SINV-2026-00018": "816beb489861ca1bd7794c14432040bb7c4f679bfdb8550ec0907a4b402e4527"
+  },
+  "spike_sha256": {
+    "c3_precision.py": "59b609c99c57bb84d4e09c92a7729e0e224abf4a57b5e8aeb5d420f01d85d9ff",
+    "c3_probe.py": "01a6738dee10bbabb77654ba864bedb2a8c792bd71fb60d7c9f49923aa164ca9",
+    "c3_verify.py": "744b1e0745ed3bcc003a4c80c7230ee0a4ec37c187b1c60d79885ae1176c352c"
+  },
+  "trace": [
+    {
+      "column": "decimal(21,12)",
+      "doctype": "Currency Exchange",
+      "field": "exchange_rate",
+      "precision": "12"
+    },
+    {
+      "column": "decimal(21,12)",
+      "doctype": "Sales Invoice",
+      "field": "conversion_rate",
+      "precision": "12"
+    },
+    {
+      "column": "decimal(21,12)",
+      "doctype": "Sales Invoice Payment",
+      "field": "posa_company_exchange_rate",
+      "precision": "12"
+    },
+    {
+      "column": "decimal(21,12)",
+      "doctype": "GL Entry",
+      "field": "transaction_exchange_rate",
+      "precision": "12"
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "Sales Invoice",
+      "field": "plc_conversion_rate",
+      "precision": "9"
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "Sales Invoice Payment",
+      "field": "posa_exchange_rate",
+      "precision": ""
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "Payment Entry",
+      "field": "source_exchange_rate",
+      "precision": "9"
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "Payment Entry",
+      "field": "target_exchange_rate",
+      "precision": "9"
+    },
+    {
+      "column": null,
+      "doctype": "Sales Invoice Advance",
+      "field": "exchange_rate",
+      "precision": null
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "GL Entry",
+      "field": "reporting_currency_exchange_rate",
+      "precision": "9"
+    }
+  ]
+}
