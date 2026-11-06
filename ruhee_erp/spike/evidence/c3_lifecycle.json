@@ -1,0 +1,1108 @@
+{
+  "C3_acceptance": "not claimed",
+  "amount_trace": [
+    {
+      "column": "decimal(21,9)",
+      "declared_precision": null,
+      "doctype": "Sales Invoice Item",
+      "field": "rate",
+      "fieldtype": "Currency"
+    },
+    {
+      "column": "decimal(21,9)",
+      "declared_precision": null,
+      "doctype": "Sales Invoice Item",
+      "field": "amount",
+      "fieldtype": "Currency"
+    },
+    {
+      "column": "decimal(21,9)",
+      "declared_precision": null,
+      "doctype": "Sales Invoice Item",
+      "field": "base_amount",
+      "fieldtype": "Currency"
+    },
+    {
+      "column": "decimal(21,9)",
+      "declared_precision": null,
+      "doctype": "Sales Invoice",
+      "field": "grand_total",
+      "fieldtype": "Currency"
+    },
+    {
+      "column": "decimal(21,9)",
+      "declared_precision": null,
+      "doctype": "Sales Invoice",
+      "field": "rounded_total",
+      "fieldtype": "Currency"
+    },
+    {
+      "column": "decimal(21,9)",
+      "declared_precision": null,
+      "doctype": "Sales Invoice",
+      "field": "base_grand_total",
+      "fieldtype": "Currency"
+    },
+    {
+      "column": "decimal(21,9)",
+      "declared_precision": null,
+      "doctype": "Sales Invoice",
+      "field": "outstanding_amount",
+      "fieldtype": "Currency"
+    },
+    {
+      "column": "decimal(21,9)",
+      "declared_precision": null,
+      "doctype": "Sales Invoice Payment",
+      "field": "amount",
+      "fieldtype": "Currency"
+    },
+    {
+      "column": "decimal(21,9)",
+      "declared_precision": null,
+      "doctype": "Sales Invoice Payment",
+      "field": "base_amount",
+      "fieldtype": "Currency"
+    },
+    {
+      "column": "decimal(21,9)",
+      "declared_precision": "9",
+      "doctype": "Sales Invoice Payment",
+      "field": "posa_original_amount",
+      "fieldtype": "Currency"
+    },
+    {
+      "column": "decimal(21,9)",
+      "declared_precision": "",
+      "doctype": "Sales Invoice Payment",
+      "field": "posa_account_amount",
+      "fieldtype": "Currency"
+    },
+    {
+      "column": "decimal(21,9)",
+      "declared_precision": null,
+      "doctype": "GL Entry",
+      "field": "debit",
+      "fieldtype": "Currency"
+    },
+    {
+      "column": "decimal(21,9)",
+      "declared_precision": null,
+      "doctype": "GL Entry",
+      "field": "credit",
+      "fieldtype": "Currency"
+    },
+    {
+      "column": "decimal(21,9)",
+      "declared_precision": null,
+      "doctype": "GL Entry",
+      "field": "debit_in_account_currency",
+      "fieldtype": "Currency"
+    },
+    {
+      "column": "decimal(21,9)",
+      "declared_precision": null,
+      "doctype": "GL Entry",
+      "field": "debit_in_transaction_currency",
+      "fieldtype": "Currency"
+    },
+    {
+      "column": "int(11)",
+      "declared_precision": "",
+      "doctype": "Ruhee C3 Spike Rate",
+      "field": "base",
+      "fieldtype": "Int"
+    },
+    {
+      "column": "int(11)",
+      "declared_precision": "",
+      "doctype": "Ruhee C3 Spike Rate",
+      "field": "higher",
+      "fieldtype": "Int"
+    }
+  ],
+  "commits": {
+    "erpnext": "9cd11b19575bfc34f092a24f6c8b368c4dd69481",
+    "frappe": "2fcb9397a1f1da353b21e53d2f97ec56653acd02",
+    "posawesome": "89ae16d872e90727086b2550d7ca97958c9c4aa4",
+    "ruhee_erp": "81f8ce661fa6efb78f53862216a1f3d970b816cf"
+  },
+  "current_snapshot_hashes": {
+    "ACC-SINV-2026-00001": "dfd8e22672cd13e2446f13b2e4e58fecdebcd58611a1d2834213652b3c6f3218",
+    "ACC-SINV-2026-00002": "3304ecd77ccecbee6c2962221021dd41d9ccb14c20953a7a549b8c272a2f1c89",
+    "ACC-SINV-2026-00017": "75cede3c3bead7d15787bafbc38a34fb4ae3cf97cf4afa54127e9c5e56fcb590",
+    "ACC-SINV-2026-00018": "816beb489861ca1bd7794c14432040bb7c4f679bfdb8550ec0907a4b402e4527"
+  },
+  "customize": {
+    "site": "c3-precision.localhost",
+    "trace": [
+      {
+        "column": "decimal(21,12)",
+        "doctype": "Currency Exchange",
+        "field": "exchange_rate",
+        "precision": "12"
+      },
+      {
+        "column": "decimal(21,12)",
+        "doctype": "Sales Invoice",
+        "field": "conversion_rate",
+        "precision": "12"
+      },
+      {
+        "column": "decimal(21,12)",
+        "doctype": "Sales Invoice Payment",
+        "field": "posa_company_exchange_rate",
+        "precision": "12"
+      },
+      {
+        "column": "decimal(21,12)",
+        "doctype": "GL Entry",
+        "field": "transaction_exchange_rate",
+        "precision": "12"
+      },
+      {
+        "column": "decimal(21,9)",
+        "doctype": "Sales Invoice",
+        "field": "plc_conversion_rate",
+        "precision": "9"
+      },
+      {
+        "column": "decimal(21,9)",
+        "doctype": "Sales Invoice Payment",
+        "field": "posa_exchange_rate",
+        "precision": ""
+      },
+      {
+        "column": "decimal(21,9)",
+        "doctype": "Payment Entry",
+        "field": "source_exchange_rate",
+        "precision": "9"
+      },
+      {
+        "column": "decimal(21,9)",
+        "doctype": "Payment Entry",
+        "field": "target_exchange_rate",
+        "precision": "9"
+      },
+      {
+        "column": null,
+        "doctype": "Sales Invoice Advance",
+        "field": "exchange_rate",
+        "precision": null
+      },
+      {
+        "column": "decimal(21,9)",
+        "doctype": "GL Entry",
+        "field": "reporting_currency_exchange_rate",
+        "precision": "9"
+      }
+    ]
+  },
+  "forced_resync": {
+    "after_force_reload": [
+      {
+        "column": "decimal(21,12)",
+        "doctype": "Currency Exchange",
+        "field": "exchange_rate",
+        "precision": "12"
+      },
+      {
+        "column": "decimal(21,12)",
+        "doctype": "Sales Invoice",
+        "field": "conversion_rate",
+        "precision": "12"
+      },
+      {
+        "column": "decimal(21,12)",
+        "doctype": "Sales Invoice Payment",
+        "field": "posa_company_exchange_rate",
+        "precision": "12"
+      },
+      {
+        "column": "decimal(21,12)",
+        "doctype": "GL Entry",
+        "field": "transaction_exchange_rate",
+        "precision": "12"
+      },
+      {
+        "column": "decimal(21,9)",
+        "doctype": "Sales Invoice",
+        "field": "plc_conversion_rate",
+        "precision": "9"
+      },
+      {
+        "column": "decimal(21,9)",
+        "doctype": "Sales Invoice Payment",
+        "field": "posa_exchange_rate",
+        "precision": ""
+      },
+      {
+        "column": "decimal(21,9)",
+        "doctype": "Payment Entry",
+        "field": "source_exchange_rate",
+        "precision": "9"
+      },
+      {
+        "column": "decimal(21,9)",
+        "doctype": "Payment Entry",
+        "field": "target_exchange_rate",
+        "precision": "9"
+      },
+      {
+        "column": null,
+        "doctype": "Sales Invoice Advance",
+        "field": "exchange_rate",
+        "precision": null
+      },
+      {
+        "column": "decimal(21,9)",
+        "doctype": "GL Entry",
+        "field": "reporting_currency_exchange_rate",
+        "precision": "9"
+      }
+    ]
+  },
+  "migrate": {
+    "after": {
+      "site": "c3-precision.localhost",
+      "trace": [
+        {
+          "column": "decimal(21,12)",
+          "doctype": "Currency Exchange",
+          "field": "exchange_rate",
+          "precision": "12"
+        },
+        {
+          "column": "decimal(21,12)",
+          "doctype": "Sales Invoice",
+          "field": "conversion_rate",
+          "precision": "12"
+        },
+        {
+          "column": "decimal(21,12)",
+          "doctype": "Sales Invoice Payment",
+          "field": "posa_company_exchange_rate",
+          "precision": "12"
+        },
+        {
+          "column": "decimal(21,12)",
+          "doctype": "GL Entry",
+          "field": "transaction_exchange_rate",
+          "precision": "12"
+        },
+        {
+          "column": "decimal(21,9)",
+          "doctype": "Sales Invoice",
+          "field": "plc_conversion_rate",
+          "precision": "9"
+        },
+        {
+          "column": "decimal(21,9)",
+          "doctype": "Sales Invoice Payment",
+          "field": "posa_exchange_rate",
+          "precision": ""
+        },
+        {
+          "column": "decimal(21,9)",
+          "doctype": "Payment Entry",
+          "field": "source_exchange_rate",
+          "precision": "9"
+        },
+        {
+          "column": "decimal(21,9)",
+          "doctype": "Payment Entry",
+          "field": "target_exchange_rate",
+          "precision": "9"
+        },
+        {
+          "column": null,
+          "doctype": "Sales Invoice Advance",
+          "field": "exchange_rate",
+          "precision": null
+        },
+        {
+          "column": "decimal(21,9)",
+          "doctype": "GL Entry",
+          "field": "reporting_currency_exchange_rate",
+          "precision": "9"
+        }
+      ]
+    },
+    "command": "bench --site c3-precision.localhost migrate --skip-search-index",
+    "exit_code": 0,
+    "repair_script_reapplied": false
+  },
+  "old_and_fresh_rates_unchanged_across_lifecycle": true,
+  "phases": [
+    {
+      "cases": [
+        {
+          "base_grand_total": 100.0,
+          "case": "C3-01",
+          "errors": [
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "source.exchange_rate (old nine-place value is insufficient)"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "conversion_rate"
+            },
+            {
+              "actual": 229999.79,
+              "expected": 230000,
+              "field": "grand_total"
+            },
+            {
+              "actual": 0.21,
+              "expected": 0,
+              "field": "rounding_adjustment"
+            },
+            {
+              "actual": 229999.79,
+              "expected": 230000,
+              "field": "items.rate"
+            },
+            {
+              "actual": 229999.79,
+              "expected": 230000,
+              "field": "items.amount"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "payments.posa_company_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.1b6088f260.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.4d7f6d837d.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.4f5bf8547a.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.78d5178447.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.cbc5f03650.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.d6e8663e53.transaction_exchange_rate"
+            }
+          ],
+          "invoice": "ACC-SINV-2026-00001",
+          "unit_price": 229999.79
+        },
+        {
+          "base_grand_total": 10000.0,
+          "case": "C3-02",
+          "errors": [
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "source.exchange_rate (old nine-place value is insufficient)"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "conversion_rate"
+            },
+            {
+              "actual": 22999979.0,
+              "expected": 23000000,
+              "field": "grand_total"
+            },
+            {
+              "actual": 10000.01,
+              "expected": 10000,
+              "field": "base_rounded_total"
+            },
+            {
+              "actual": 10000.01,
+              "expected": 10000,
+              "field": "base_paid_amount"
+            },
+            {
+              "actual": 21.0,
+              "expected": 0,
+              "field": "rounding_adjustment"
+            },
+            {
+              "actual": 0.01,
+              "expected": 0,
+              "field": "base_rounding_adjustment"
+            },
+            {
+              "actual": 229999.79,
+              "expected": 230000,
+              "field": "items.rate"
+            },
+            {
+              "actual": 22999979.0,
+              "expected": 23000000,
+              "field": "items.amount"
+            },
+            {
+              "actual": 10000.01,
+              "expected": 10000,
+              "field": "payments.base_amount"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "payments.posa_company_exchange_rate"
+            },
+            {
+              "actual": 10000.01,
+              "expected": 10000,
+              "field": "GL.Debtors.debit"
+            },
+            {
+              "actual": 10000.01,
+              "expected": 10000,
+              "field": "GL.Debtors.credit"
+            },
+            {
+              "actual": 10000.01,
+              "expected": 10000,
+              "field": "GL.Cash.debit"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.501ff08428.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.6c3a3a0c5e.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.95ed1111d6.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.a44e974fb2.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.b210e03b64.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.d14feb4bc4.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.f6fb52d9f4.transaction_exchange_rate"
+            },
+            {
+              "actual": "Round Off - RS",
+              "field": "GL.unexpected_account"
+            }
+          ],
+          "invoice": "ACC-SINV-2026-00002",
+          "unit_price": 229999.79
+        },
+        {
+          "base_grand_total": 3000.0,
+          "case": "unit-3000",
+          "errors": [],
+          "invoice": "ACC-SINV-2026-00003",
+          "unit_price": 6899993.79
+        },
+        {
+          "base_grand_total": 3200.0,
+          "case": "unit-3200",
+          "errors": [],
+          "invoice": "ACC-SINV-2026-00004",
+          "unit_price": 7359993.38
+        }
+      ],
+      "phase": "baseline",
+      "trace": [
+        {
+          "column": "decimal(21,9)",
+          "doctype": "Currency Exchange",
+          "field": "exchange_rate",
+          "precision": "9"
+        },
+        {
+          "column": "decimal(21,9)",
+          "doctype": "Sales Invoice",
+          "field": "conversion_rate",
+          "precision": "9"
+        },
+        {
+          "column": "decimal(21,9)",
+          "doctype": "Sales Invoice Payment",
+          "field": "posa_company_exchange_rate",
+          "precision": ""
+        },
+        {
+          "column": "decimal(21,9)",
+          "doctype": "GL Entry",
+          "field": "transaction_exchange_rate",
+          "precision": "9"
+        }
+      ]
+    },
+    {
+      "cases": [
+        {
+          "base_grand_total": 100.0,
+          "case": "C3-01",
+          "errors": [
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "conversion_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "payments.posa_company_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.8e2227d30a.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.924068939e.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.955c4876f9.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.9cf25a5183.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.b64de21e47.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.dbe72d9b68.transaction_exchange_rate"
+            }
+          ],
+          "invoice": "ACC-SINV-2026-00005",
+          "unit_price": 230000.0
+        },
+        {
+          "base_grand_total": 10000.0,
+          "case": "C3-02",
+          "errors": [
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "conversion_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "payments.posa_company_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.0527800c48.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.184c4ac586.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.22a3418fb6.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.3d56c5e4cb.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.41911a3852.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.836e004b8e.transaction_exchange_rate"
+            }
+          ],
+          "invoice": "ACC-SINV-2026-00006",
+          "unit_price": 230000.0
+        },
+        {
+          "base_grand_total": 3000.0,
+          "case": "unit-3000",
+          "errors": [],
+          "invoice": "ACC-SINV-2026-00007",
+          "unit_price": 6900000.0
+        },
+        {
+          "base_grand_total": 3200.0,
+          "case": "unit-3200",
+          "errors": [],
+          "invoice": "ACC-SINV-2026-00008",
+          "unit_price": 7359999.99
+        }
+      ],
+      "phase": "source",
+      "trace": [
+        {
+          "column": "decimal(21,12)",
+          "doctype": "Currency Exchange",
+          "field": "exchange_rate",
+          "precision": "12"
+        },
+        {
+          "column": "decimal(21,9)",
+          "doctype": "Sales Invoice",
+          "field": "conversion_rate",
+          "precision": "9"
+        },
+        {
+          "column": "decimal(21,9)",
+          "doctype": "Sales Invoice Payment",
+          "field": "posa_company_exchange_rate",
+          "precision": ""
+        },
+        {
+          "column": "decimal(21,9)",
+          "doctype": "GL Entry",
+          "field": "transaction_exchange_rate",
+          "precision": "9"
+        }
+      ]
+    },
+    {
+      "cases": [
+        {
+          "base_grand_total": 100.0,
+          "case": "C3-01",
+          "errors": [
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "payments.posa_company_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.053a323dfb.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.107407c7f5.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.10b5019559.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.47581f3667.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.a7047e6e7a.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.c92d9ee8fb.transaction_exchange_rate"
+            }
+          ],
+          "invoice": "ACC-SINV-2026-00009",
+          "unit_price": 230000.0
+        },
+        {
+          "base_grand_total": 10000.0,
+          "case": "C3-02",
+          "errors": [
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "payments.posa_company_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.100bed5f85.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.257c8dbd7d.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.325f60e29c.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.363de0c302.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.56eaa01f37.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.f522e2358e.transaction_exchange_rate"
+            }
+          ],
+          "invoice": "ACC-SINV-2026-00010",
+          "unit_price": 230000.0
+        },
+        {
+          "base_grand_total": 3000.0,
+          "case": "unit-3000",
+          "errors": [],
+          "invoice": "ACC-SINV-2026-00011",
+          "unit_price": 6900000.0
+        },
+        {
+          "base_grand_total": 3200.0,
+          "case": "unit-3200",
+          "errors": [],
+          "invoice": "ACC-SINV-2026-00012",
+          "unit_price": 7359999.99
+        }
+      ],
+      "phase": "invoice",
+      "trace": [
+        {
+          "column": "decimal(21,12)",
+          "doctype": "Currency Exchange",
+          "field": "exchange_rate",
+          "precision": "12"
+        },
+        {
+          "column": "decimal(21,12)",
+          "doctype": "Sales Invoice",
+          "field": "conversion_rate",
+          "precision": "12"
+        },
+        {
+          "column": "decimal(21,9)",
+          "doctype": "Sales Invoice Payment",
+          "field": "posa_company_exchange_rate",
+          "precision": ""
+        },
+        {
+          "column": "decimal(21,9)",
+          "doctype": "GL Entry",
+          "field": "transaction_exchange_rate",
+          "precision": "9"
+        }
+      ]
+    },
+    {
+      "cases": [
+        {
+          "base_grand_total": 100.0,
+          "case": "C3-01",
+          "errors": [
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.0b4372cdaf.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.74f6731ca8.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.9f09c44c8b.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.af9d2081c3.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.c113a3c982.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.ec585776c1.transaction_exchange_rate"
+            }
+          ],
+          "invoice": "ACC-SINV-2026-00013",
+          "unit_price": 230000.0
+        },
+        {
+          "base_grand_total": 10000.0,
+          "case": "C3-02",
+          "errors": [
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.2cbb3e41a8.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.57e53e432c.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.98ed311159.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.af80537362.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.d41c634e69.transaction_exchange_rate"
+            },
+            {
+              "actual": 0.000434783,
+              "expected": 0.000434782609,
+              "field": "GL.e33a158c67.transaction_exchange_rate"
+            }
+          ],
+          "invoice": "ACC-SINV-2026-00014",
+          "unit_price": 230000.0
+        },
+        {
+          "base_grand_total": 3000.0,
+          "case": "unit-3000",
+          "errors": [],
+          "invoice": "ACC-SINV-2026-00015",
+          "unit_price": 6900000.0
+        },
+        {
+          "base_grand_total": 3200.0,
+          "case": "unit-3200",
+          "errors": [],
+          "invoice": "ACC-SINV-2026-00016",
+          "unit_price": 7359999.99
+        }
+      ],
+      "phase": "payment",
+      "trace": [
+        {
+          "column": "decimal(21,12)",
+          "doctype": "Currency Exchange",
+          "field": "exchange_rate",
+          "precision": "12"
+        },
+        {
+          "column": "decimal(21,12)",
+          "doctype": "Sales Invoice",
+          "field": "conversion_rate",
+          "precision": "12"
+        },
+        {
+          "column": "decimal(21,12)",
+          "doctype": "Sales Invoice Payment",
+          "field": "posa_company_exchange_rate",
+          "precision": "12"
+        },
+        {
+          "column": "decimal(21,9)",
+          "doctype": "GL Entry",
+          "field": "transaction_exchange_rate",
+          "precision": "9"
+        }
+      ]
+    },
+    {
+      "cases": [
+        {
+          "base_grand_total": 100.0,
+          "case": "C3-01",
+          "errors": [],
+          "invoice": "ACC-SINV-2026-00017",
+          "unit_price": 230000.0
+        },
+        {
+          "base_grand_total": 10000.0,
+          "case": "C3-02",
+          "errors": [],
+          "invoice": "ACC-SINV-2026-00018",
+          "unit_price": 230000.0
+        },
+        {
+          "base_grand_total": 3000.0,
+          "case": "unit-3000",
+          "errors": [],
+          "invoice": "ACC-SINV-2026-00019",
+          "unit_price": 6900000.0
+        },
+        {
+          "base_grand_total": 3200.0,
+          "case": "unit-3200",
+          "errors": [],
+          "invoice": "ACC-SINV-2026-00020",
+          "unit_price": 7359999.99
+        }
+      ],
+      "phase": "ledger",
+      "trace": [
+        {
+          "column": "decimal(21,12)",
+          "doctype": "Currency Exchange",
+          "field": "exchange_rate",
+          "precision": "12"
+        },
+        {
+          "column": "decimal(21,12)",
+          "doctype": "Sales Invoice",
+          "field": "conversion_rate",
+          "precision": "12"
+        },
+        {
+          "column": "decimal(21,12)",
+          "doctype": "Sales Invoice Payment",
+          "field": "posa_company_exchange_rate",
+          "precision": "12"
+        },
+        {
+          "column": "decimal(21,12)",
+          "doctype": "GL Entry",
+          "field": "transaction_exchange_rate",
+          "precision": "12"
+        }
+      ]
+    }
+  ],
+  "post_lifecycle_verification": [
+    {
+      "errors": [],
+      "invoice": "ACC-SINV-2026-00017",
+      "qty": 1,
+      "sha256": "75cede3c3bead7d15787bafbc38a34fb4ae3cf97cf4afa54127e9c5e56fcb590"
+    },
+    {
+      "errors": [],
+      "invoice": "ACC-SINV-2026-00018",
+      "qty": 100,
+      "sha256": "816beb489861ca1bd7794c14432040bb7c4f679bfdb8550ec0907a4b402e4527"
+    }
+  ],
+  "saved_invoices_and_gl_unchanged_across_lifecycle": true,
+  "site": "c3-precision.localhost",
+  "spike_sha256": {
+    "c3_precision.py": "1baa2b514019839c828e82d32fa1f4c128b4cdb31db9f171cb8fec85cd6d16dc",
+    "c3_probe.py": "01a6738dee10bbabb77654ba864bedb2a8c792bd71fb60d7c9f49923aa164ca9",
+    "c3_verify.py": "744b1e0745ed3bcc003a4c80c7230ee0a4ec37c187b1c60d79885ae1176c352c"
+  },
+  "trace": [
+    {
+      "column": "decimal(21,12)",
+      "doctype": "Currency Exchange",
+      "field": "exchange_rate",
+      "precision": "12"
+    },
+    {
+      "column": "decimal(21,12)",
+      "doctype": "Sales Invoice",
+      "field": "conversion_rate",
+      "precision": "12"
+    },
+    {
+      "column": "decimal(21,12)",
+      "doctype": "Sales Invoice Payment",
+      "field": "posa_company_exchange_rate",
+      "precision": "12"
+    },
+    {
+      "column": "decimal(21,12)",
+      "doctype": "GL Entry",
+      "field": "transaction_exchange_rate",
+      "precision": "12"
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "Sales Invoice",
+      "field": "plc_conversion_rate",
+      "precision": "9"
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "Sales Invoice Payment",
+      "field": "posa_exchange_rate",
+      "precision": ""
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "Payment Entry",
+      "field": "source_exchange_rate",
+      "precision": "9"
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "Payment Entry",
+      "field": "target_exchange_rate",
+      "precision": "9"
+    },
+    {
+      "column": null,
+      "doctype": "Sales Invoice Advance",
+      "field": "exchange_rate",
+      "precision": null
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "GL Entry",
+      "field": "reporting_currency_exchange_rate",
+      "precision": "9"
+    }
+  ]
+}
