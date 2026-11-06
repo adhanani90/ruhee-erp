@@ -23,7 +23,7 @@ for (const conversion_rate of [0.000434783, 0.000434782609]) {
     );
     cases.push({
       conversion_rate,
-      usd
+      usd,
       raw,
       // These inputs are not ties: ordinary two-decimal rounding is unambiguous.
       line_at_two_decimals: Number(raw.toFixed(2)),
