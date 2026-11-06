@@ -79,6 +79,30 @@ def prepare():
 		)
 		profile.append("applicable_for_users", {"user": "Administrator"})
 		profile.insert()
+	price_list = frappe.db.get_value("POS Profile", PROFILE, "selling_price_list")
+	for usd in (3000, 3200):
+		item_code = f"C3-UNIT-{usd}"
+		if not frappe.db.exists("Item", item_code):
+			frappe.get_doc(
+				{
+					"doctype": "Item",
+					"item_code": item_code,
+					"item_name": f"C3 invented unit {usd} USD",
+					"item_group": "Products",
+					"stock_uom": "Nos",
+					"is_stock_item": 1,
+					"valuation_rate": usd * 0.8,
+				}
+			).insert()
+		if not frappe.db.exists("Item Price", {"item_code": item_code, "price_list": price_list}):
+			frappe.get_doc(
+				{
+					"doctype": "Item Price",
+					"item_code": item_code,
+					"price_list": price_list,
+					"price_list_rate": usd,
+				}
+			).insert()
 	print("Invented C3 baseline ready; no precision changed")
 
 
@@ -176,7 +200,14 @@ def phase(label):
 		("unit-3000", 3000, 1),
 		("unit-3200", 3200, 1),
 	):
-		unit = flt(usd * rates["plc_conversion_rate"] / rates["conversion_rate"], 2)
+		item_code = "SPIKE-001" if usd == 100 else f"C3-UNIT-{usd}"
+		price = frappe.db.get_value(
+			"Item Price",
+			{"item_code": item_code, "price_list": profile.selling_price_list},
+			"price_list_rate",
+		)
+		assert price == usd, "Keep one authoritative USD catalogue for the boundary items"
+		unit = flt(price * rates["plc_conversion_rate"] / rates["conversion_rate"], 2)
 		tender = usd * qty * rate_doc.base
 		payload = {
 			"doctype": "Sales Invoice",
@@ -200,7 +231,7 @@ def phase(label):
 			"account_for_change_amount": profile.account_for_change_amount,
 			"items": [
 				{
-					"item_code": "SPIKE-001",
+					"item_code": item_code,
 					"qty": qty,
 					"rate": unit,
 					"price_list_rate": unit,
