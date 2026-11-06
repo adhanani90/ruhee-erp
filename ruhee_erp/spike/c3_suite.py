@@ -18,11 +18,13 @@ def main():
 	parser = argparse.ArgumentParser(description=__doc__)
 	parser.add_argument("--output", type=Path, required=True)
 	parser.add_argument("--resume-after-customize", action="store_true")
+	parser.add_argument("--resume-after-reload", action="store_true")
 	args = parser.parse_args()
-	args.output.mkdir(parents=True, exist_ok=args.resume_after_customize)
+	resume = args.resume_after_customize or args.resume_after_reload
+	args.output.mkdir(parents=True, exist_ok=resume)
 	summary = (
 		json.loads((args.output / "summary.json").read_text())
-		if args.resume_after_customize
+		if resume
 		else {"site": SITE, "commands": [], "preservation": [], "C3_acceptance": "not claimed"}
 	)
 
@@ -69,30 +71,41 @@ def main():
 		metadata_added = []
 		if schema_unchanged:
 			keys += ("columns", "trace", "amount_trace")
-			if label == "customize":
+			if label in ("customize", "reload"):
 				old, new = ({r["name"]: r for r in state["setters"]} for state in (before, after))
 				assert all(new.get(name) == row for name, row in old.items()), (
 					"Existing setters must be identical"
 				)
 				metadata_added = [new[name] for name in sorted(new.keys() - old.keys())]
-				assert all(r["property"] == "field_order" and not r["field_name"] for r in metadata_added)
+				allowed = (
+					{(dt, None, "field_order") for dt in before["columns"]}
+					if label == "customize"
+					else {(dt, "naming_series", "options") for dt in ("Sales Invoice", "Payment Entry")}
+				)
+				assert all((r["doc_type"], r["field_name"], r["property"]) in allowed for r in metadata_added)
 			else:
 				keys += ("setters",)
 		hashes = {}
 		for key in keys:
 			assert before[key] == after[key], f"{label}: changed complete {key}"
 			hashes[key] = hashlib.sha256(json.dumps(before[key], sort_keys=True).encode()).hexdigest()
+		summary["preservation"] = [row for row in summary["preservation"] if row["stage"] != label]
 		summary["preservation"].append(
 			{"stage": label, "full_records_equal": True, "sha256": hashes, "metadata_added": metadata_added}
 		)
 
 	try:
-		if args.resume_after_customize:
+		if resume:
 			stable = read("lifecycle_before")
 			after = read("after_customize")
 			compare("customize", stable, after, True)
-			compare("resume_readback", after, audit("resume_readback"), True)
 			stable = after
+			if args.resume_after_reload:
+				after = read("after_reload")
+				compare("reload", stable, after, True)
+				stable = after
+			label = "resume_after_reload" if args.resume_after_reload else "resume_readback"
+			compare(label, stable, audit(label), True)
 		else:
 			execute("prepare", "c3_probe.prepare")
 			initial = audit("default")
@@ -124,7 +137,7 @@ def main():
 			("reload", "c3_probe.resync", None),
 			("migrate", None, ["migrate", "--skip-search-index"]),
 		):
-			if args.resume_after_customize and label == "customize":
+			if resume and (label == "customize" or (args.resume_after_reload and label == "reload")):
 				continue
 			execute(label, method, command=command)
 			after = audit(f"after_{label}")
