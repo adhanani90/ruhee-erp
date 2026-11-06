@@ -1,0 +1,47 @@
+{
+  "captured_at": "2026-11-06 08:22:04.658661",
+  "checks": [
+    {
+      "case": "C3-new",
+      "unchanged": true
+    },
+    {
+      "case": "C3-existing",
+      "unchanged": true
+    },
+    {
+      "case": "C4-new",
+      "unchanged": true
+    },
+    {
+      "case": "C4-existing",
+      "unchanged": true
+    },
+    {
+      "case": "C5-new",
+      "unchanged": true
+    },
+    {
+      "case": "C5-existing",
+      "unchanged": true
+    }
+  ],
+  "preexisting_controls_read_only": [
+    {
+      "grand_total": 230000.0,
+      "name": "ACC-SINV-2026-00007",
+      "rate": 0.000434782609
+    },
+    {
+      "grand_total": 23000000.0,
+      "name": "ACC-SINV-2026-00008",
+      "rate": 0.000434782609
+    },
+    {
+      "grand_total": 230000.0,
+      "name": "ACC-SINV-2026-00009",
+      "rate": 0.000434782609
+    }
+  ],
+  "site": "m105.localhost"
+}

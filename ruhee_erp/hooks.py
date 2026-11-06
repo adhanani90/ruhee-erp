@@ -10,6 +10,20 @@ app_license = "gpl-3.0"
 
 required_apps = ["erpnext", "posawesome"]
 
+# M1-05 / C7 experiment only (Sam's explicit scoped exception to D-025).
+# Handlers are inert outside m105.localhost and the dedicated C7 profile.
+# Remove ALL of these entries in the D-025 removal PR before production.
+doc_events = {
+	"Sales Invoice": {
+		"before_validate": "ruhee_erp.spike.store_rate_hooks.bind_rate",
+		"on_submit": "ruhee_erp.spike.store_rate_hooks.settle_cdf_tender",
+	},
+	"Payment Entry": {"before_validate": "ruhee_erp.spike.store_rate_hooks.bind_payment_rate"},
+}
+override_whitelisted_methods = {
+	"posawesome.posawesome.api.invoices.submit_invoice": "ruhee_erp.spike.store_rate_hooks.submit_invoice",
+}
+
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
 # 	{
