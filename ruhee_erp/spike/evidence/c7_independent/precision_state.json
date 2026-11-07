@@ -1,0 +1,35 @@
+{
+ "site": "c7run1.localhost",
+ "rate_fields": [
+  {
+   "field": "Currency Exchange.exchange_rate",
+   "declared_precision": "9",
+   "setter": null,
+   "column": "decimal(21,9)"
+  },
+  {
+   "field": "Sales Invoice.conversion_rate",
+   "declared_precision": "9",
+   "setter": null,
+   "column": "decimal(21,9)"
+  },
+  {
+   "field": "Sales Invoice Payment.posa_company_exchange_rate",
+   "declared_precision": "",
+   "setter": null,
+   "column": "decimal(21,9)"
+  },
+  {
+   "field": "Payment Entry.target_exchange_rate",
+   "declared_precision": "9",
+   "setter": null,
+   "column": "decimal(21,9)"
+  },
+  {
+   "field": "GL Entry.transaction_exchange_rate",
+   "declared_precision": "9",
+   "setter": null,
+   "column": "decimal(21,9)"
+  }
+ ]
+}

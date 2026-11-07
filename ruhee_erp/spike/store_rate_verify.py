@@ -447,3 +447,34 @@ def from_harness(results_dir, out=None):
 			indent=1,
 		)
 	)
+
+
+RATE_FIELDS = (
+	("Currency Exchange", "exchange_rate"),
+	("Sales Invoice", "conversion_rate"),
+	("Sales Invoice Payment", "posa_company_exchange_rate"),
+	("Payment Entry", "target_exchange_rate"),
+	("GL Entry", "transaction_exchange_rate"),
+)
+
+
+def precision_state():
+	"""Read-only: declared precision, setters and actual column types of the rate fields."""
+	if not site_enabled():
+		raise ValueError("Read-only verifier for disposable C7 sites only")
+	rows = []
+	for doctype, fieldname in RATE_FIELDS:
+		field = frappe.get_meta(doctype, cached=False).get_field(fieldname)
+		rows.append(
+			{
+				"field": f"{doctype}.{fieldname}",
+				"declared_precision": field.precision if field else None,
+				"setter": frappe.db.get_value(
+					"Property Setter",
+					{"doc_type": doctype, "field_name": fieldname, "property": "precision"},
+					"value",
+				),
+				"column": frappe.db.get_column_type(doctype, fieldname),
+			}
+		)
+	print(json.dumps({"site": frappe.local.site, "rate_fields": rows}, indent=1))

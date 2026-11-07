@@ -767,6 +767,42 @@ async function syncNow(page) {
 }
 
 const FLOWS = {
+  // Read-only: the browser's actual outbox mode and offline flags (no sale).
+  async client_settings(session) {
+    const settings = await session.page.evaluate(async () => {
+      const db = await new Promise((resolve, reject) => {
+        const req = indexedDB.open("posawesome_offline");
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => reject(req.error);
+      });
+      const tables = [...db.objectStoreNames];
+      const rows = tables.includes("settings")
+        ? await new Promise((resolve) => {
+            const req = db
+              .transaction("settings", "readonly")
+              .objectStore("settings")
+              .getAll();
+            req.onsuccess = () => resolve(req.result);
+          })
+        : [];
+      db.close();
+      const pick = (row) => row && (row.key || row.name || row.id);
+      return {
+        indexeddb_tables: tables,
+        settings_rows: rows
+          .filter((row) => /outbox|manual_offline/.test(String(pick(row))))
+          .map((row) => ({ key: pick(row), value: row.value })),
+        local_storage: Object.fromEntries(
+          Object.keys(localStorage)
+            .filter((k) => /outbox_mode|manual_offline/.test(k))
+            .map((k) => [k, localStorage.getItem(k)])
+        ),
+        navigator_online: navigator.onLine,
+      };
+    });
+    return [{ step: "client_settings", settings }];
+  },
+
   // R11/I8: A issued before the replacement and synced after it keeps its rate;
   // B issued after it uses the replacement; C issued after it with the
   // superseded cached rate is not submitted or repriced.
