@@ -127,7 +127,77 @@ dedicated `before_*`/`after_*` audits supply the preservation evidence after
 closing. Do not use the phase file's pre-close timestamps as the preservation
 baseline.
 
-The tested local full-application and inspection commands are:
+Before calling the application or inspection commands directly, complete the
+field prerequisite below. The standalone suite's setup already runs this POS
+Awesome patch; M1-03 alone does not establish that the field exists.
+
+### Per-payment field prerequisite (corrected after the combined run)
+
+**Staging's current schema is unverified.** Before applying #24 on any target,
+check both metadata and the physical column for
+`Sales Invoice Payment.posa_company_exchange_rate`. Do not infer its presence
+from the installed app version or a completed Patch Log entry. At the pinned
+Frappe revision, `installer.install_app` calls `set_all_patches_as_completed`
+during a fresh install; that does not execute this POS Awesome patch.
+
+Open the target's console from its bench root:
+
+```bash
+bench --site <site> console
+```
+
+Run this read-only inspection in that console, retaining its output:
+
+```python
+doctype = "Sales Invoice Payment"
+fieldname = "posa_company_exchange_rate"
+field = frappe.get_meta(doctype, cached=False).get_field(fieldname)
+column = next(
+    (row for row in frappe.db.get_table_columns_description("tab" + doctype)
+     if row["name"] == fieldname),
+    None,
+)
+print({
+    "field_present": field is not None,
+    "fieldtype": field.fieldtype if field else None,
+    "precision": field.precision if field else None,
+    "column": dict(column) if column else None,
+})
+```
+
+Both must be present before proceeding; the field must be a Float. A fresh
+default-precision baseline has `decimal(21,9)` and empty declared precision.
+An already widened site may have `decimal(21,12)` and its precision setter;
+never reset it to manufacture a baseline. If only metadata or only the column
+is present, stop and report schema drift; do not bypass preflight or repair it
+with ad hoc DDL.
+
+If both are missing, the verified prerequisite for an authorized setup is
+POS Awesome's own patch, not a change to #24's widening script:
+
+```bash
+bench --site <site> execute posawesome.patches.add_per_payment_multi_currency_fields.execute
+```
+
+This is a schema mutation: `execute` creates missing Custom Fields across
+several DocTypes, updates existing field definitions, and clears their caches.
+On a populated site, capture the existing schema, setters and business records
+before this prerequisite as well as before widening. Run it only within the
+target's approved setup/change scope. No staging inspection or patch execution
+is claimed here. Reopen the console and repeat the read-only check afterward;
+stop if the metadata and physical column are still inconsistent. A later
+`migrate` or the Patch Log alone is not proof that the missing field was created.
+
+Claude Code's combined run verified this sequence on two fresh isolated sites:
+M1-03 -> field check / POS Awesome patch when missing -> default-precision
+capture -> #24 `run`, `inspect` and idempotence check -> #25 C7 setup -> browser
+scenarios -> read-only saved-record verification. The first site's pre-patch
+capture had no column; after the patch it was `decimal(21,9)`, and after #24 it
+was `decimal(21,12)`. See the committed [combined evidence and sequence](https://github.com/adhanani90/ruhee-erp/blob/8cf62577707c442e27c12a1fe63c53c1627bff47/ruhee_erp/spike/evidence/c7_combined_24/README.md#sequence-on-s1-and-s2),
+[S1-A0 missing-field captures](https://github.com/adhanani90/ruhee-erp/tree/8cf62577707c442e27c12a1fe63c53c1627bff47/ruhee_erp/spike/evidence/c7_combined_24/s1/precision/a0_before_pos_patch)
+and [S1 precision summary](https://github.com/adhanani90/ruhee-erp/blob/8cf62577707c442e27c12a1fe63c53c1627bff47/ruhee_erp/spike/evidence/c7_combined_24/s1/precision_summary.json).
+
+### Apply and inspect after the prerequisite
 
 ```bash
 bench --site c3-precision-review.localhost execute ruhee_erp.spike.c3_precision.run --kwargs '{"site":"c3-precision-review.localhost"}'
@@ -187,12 +257,14 @@ REQ-PRICE-01; D-023/D-025/D-026. Q1/Q2/Q5/Q6 remain unanswered.
 - Frappe `custom/doctype/property_setter/property_setter.py:make_property_setter`;
   `custom/doctype/customize_form/customize_form.py:fetch_to_customize/save_customization`;
   `__init__.py:reload_doctype`; `core/doctype/doctype/doctype.py:DocType.on_update`;
-  `commands/utils.py:execute`; `installer.py:_new_site/install_db`.
+  `commands/utils.py:execute/console`; `installer.py:_new_site/install_db/install_app/set_all_patches_as_completed`.
 - ERPNext `accounts/doctype/payment_entry/payment_entry.py:get_payment_entry`,
   `PaymentEntry.validate/set_source_exchange_rate/set_target_exchange_rate/set_amounts_in_company_currency/set_transaction_currency_and_rate/build_gl_map`.
 - POS Awesome `api/invoice_processing/creation.py:update_invoice/submit_invoice`,
   `utils.py:resolve_erpnext_currency_rates`; native closing methods named in
-  `c3_probe.phase`; frontend `utils/erpnextCurrency.ts:priceListToSelectedCurrency`.
+  `c3_probe.phase`; frontend `utils/erpnextCurrency.ts:priceListToSelectedCurrency`;
+  `patches/add_per_payment_multi_currency_fields.py:FIELDS_BY_DOCTYPE/execute`
+  and its entry in `patches.txt` (same server source at `89ae16d` and `71fcee8`).
 - #25 at reviewed `ac4b76b`, read only:
   `store_rate_hooks.py:bind_payment_rate/settle_cdf_tender`. No #25 code is
   imported into this experiment or changed for integration.
@@ -237,8 +309,10 @@ ledger and complete before/after captures are in
 - Local repository smoke: 1 integration test passed. Cached pre-commit checks
   passed; final CI results and exact PR head are recorded in the PR description.
 
-Claude Code can use the PR head containing this source, apply the full script
-before #25 setup, and independently validate the combination. The original
+For a combined run, check/create the POS Awesome per-payment field first as
+documented above, capture the default baseline, then apply the full #24 script
+before #25 setup. Claude Code's completed combination used #24 `8ba5b32`,
+#25 `7f91668` and fork `71fcee8`; results are recorded in PR #25. The original
 reciprocal boundary, browser/cache evidence, staging evidence, other tender
 paths, production fixtures and cashier permissions remain unproven. Never mark
 C3 passed from this handoff.
