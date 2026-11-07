@@ -655,6 +655,32 @@ export async function sale(session, name, { offline = false } = {}) {
   const payment = await readPayment(page);
   await page.screenshot({ path: `${OUT}/${name}-payment.png` });
   const result = await submit(page, trace, { offline });
+  if (offline) {
+    // No HTTP call: the client's own persisted queue entry is the outbound payload.
+    const persisted = await page.evaluate(async () => {
+      const db = await new Promise((resolve, reject) => {
+        const req = indexedDB.open("posawesome_offline");
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => reject(req.error);
+      });
+      const rows = await new Promise((resolve) => {
+        const req = db
+          .transaction("write_queue", "readonly")
+          .objectStore("write_queue")
+          .getAll();
+        req.onsuccess = () => resolve(req.result);
+      });
+      db.close();
+      return (
+        rows
+          .sort((a, b) =>
+            String(a.created_at).localeCompare(String(b.created_at))
+          )
+          .at(-1)?.payload || null
+      );
+    });
+    result.request = persisted;
+  }
   await page.screenshot({
     path: `${OUT}/${name}-${Date.now()}-after-submit.png`,
   });
@@ -670,6 +696,9 @@ export async function sale(session, name, { offline = false } = {}) {
     },
     displayed: { cart, payment },
     outbound: payloadSummary(result.request),
+    outbound_source: offline
+      ? "IndexedDB write_queue (offline save)"
+      : "HTTP submit_invoice request",
     outbound_raw_keys: result.request ? Object.keys(result.request) : null,
     response: result.response,
     toasts: result.toasts,

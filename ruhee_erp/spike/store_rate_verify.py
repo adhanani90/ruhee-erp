@@ -216,3 +216,234 @@ def run(request_ids=None, expect=None, out=None):
 	if out:
 		Path(out).write_text(text)  # operator-supplied bench argument; never web-exposed
 	print(text)
+
+
+# Requirement-based expectations (ACCOUNTING_RULES R1-R7, examples A, C, D; Prompt 6
+# sections 3-5). They state what SHOULD be saved, so a gap shows as a failure.
+C4_PE = {
+	"Cash CDF - New Depo": {"debit": 100.87, "debit_fc": 232000},
+	"Debtors": {"credit": 100},
+	"Exchange income": {"credit": 0.87},
+}
+EXPECT = {
+	"c3_01": {
+		"invoice_count": 1,
+		"docstatus": 1,
+		"rate_base": 2300,
+		"grand_total": 230000,
+		"base_grand_total": 100,
+		"outstanding_amount": 0,
+		"line_rate": [230000],
+		"gl": {
+			"Debtors": {"debit": 100, "credit": 100},
+			"Cash CDF - New Depo": {"debit": 100, "debit_fc": 230000},
+		},
+		"stock_ledger_entries": 1,
+	},
+	"c3_02": {
+		"invoice_count": 1,
+		"docstatus": 1,
+		"rate_base": 2300,
+		"grand_total": 23000000,
+		"base_grand_total": 10000,
+		"outstanding_amount": 0,
+		"line_rate": [230000],
+		"gl": {
+			"Debtors": {"debit": 10000, "credit": 10000},
+			"Cash CDF - New Depo": {"debit": 10000, "debit_fc": 23000000},
+		},
+	},
+	"c4": {
+		"invoice_count": 1,
+		"docstatus": 1,
+		"rate_base": 2300,
+		"currency": "USD",
+		"grand_total": 100,
+		"outstanding_amount": 0,
+		"payment_entries": 1,
+		"gl": {"Debtors": {"debit": 100}},
+		"pe_gl": C4_PE,
+		"stock_ledger_entries": 1,
+	},
+	"c4_large": {
+		"invoice_count": 1,
+		"docstatus": 1,
+		"rate_base": 2300,
+		"currency": "USD",
+		"grand_total": 10000,
+		"outstanding_amount": 0,
+		"payment_entries": 1,
+		"pe_gl": {
+			"Cash CDF - New Depo": {"debit": 10086.96, "debit_fc": 23200000},
+			"Debtors": {"credit": 10000},
+			"Exchange income": {"credit": 86.96},
+		},
+	},
+	"c5": {
+		"invoice_count": 1,
+		"docstatus": 1,
+		"rate_base": 2300,
+		"grand_total": 230000,
+		"base_grand_total": 100,
+		"outstanding_amount": 50,
+		"gl": {
+			"Debtors": {"debit": 100, "credit": 50},
+			"Cash CDF - New Depo": {"debit": 50, "debit_fc": 115000},
+		},
+	},
+	"line_3200": {
+		"invoice_count": 1,
+		"docstatus": 1,
+		"rate_base": 2300,
+		"grand_total": 7360000,
+		"base_grand_total": 3200,
+		"line_rate": [7360000],
+		"gl": {
+			"Debtors": {"debit": 3200, "credit": 3200},
+			"Cash CDF - New Depo": {"debit": 3200, "debit_fc": 7360000},
+		},
+	},
+	# Diagnostic: 240,000 FC tendered on a $100 bill is gross tender, not the net
+	# payment, so nothing may be saved.
+	"diag_240k": {"invoice_count": 0},
+	# Regression only, outside D-022's formal M1 scope: example B (R2).
+	"b_cdf_bill_usd_tender": {
+		"invoice_count": 1,
+		"docstatus": 1,
+		"outstanding_amount": 0,
+		"gl": {
+			"Debtors": {"debit": 100, "credit": 100},
+			"Cash USD - New Depo": {"debit": 100, "debit_fc": 100},
+		},
+	},
+}
+# Flows: requirement per bill, keyed by flow and role.
+FLOW_EXPECT = {
+	"recovery_online": {
+		"failed_bill": {"invoice_count": 1, "docstatus": 1, "payment_entries": 1, "pe_gl": C4_PE}
+	},
+	"recovery_offline_draft": {
+		"queued_bill": {"invoice_count": 1, "docstatus": 1, "payment_entries": 1, "pe_gl": C4_PE}
+	},
+	"recovery_network": {
+		"queued_bill": {
+			"invoice_count": 1,
+			"docstatus": 1,
+			"payment_entries": 1,
+			"pe_gl": C4_PE,
+			"stock_ledger_entries": 1,
+		}
+	},
+	"lost_response": {
+		"bill": {
+			"invoice_count": 1,
+			"docstatus": 1,
+			"payment_entries": 1,
+			"pe_gl": C4_PE,
+			"stock_ledger_entries": 1,
+		}
+	},
+	"concurrent_replay": {
+		"bill": {
+			"invoice_count": 1,
+			"docstatus": 1,
+			"payment_entries": 1,
+			"pe_gl": C4_PE,
+			"stock_ledger_entries": 1,
+		}
+	},
+	"effective_time": {
+		"A_before_replacement": {
+			"invoice_count": 1,
+			"docstatus": 1,
+			"rate_base": 2300,
+			"line_rate": [230000],
+		},
+		"C_after_replacement_superseded": {
+			"invoice_count": 1,
+			"docstatus": 0,
+			"rate_base": 2300,
+			"line_rate": [230000],
+			"hold": True,
+		},
+		"B_new_after_replacement": {
+			"invoice_count": 1,
+			"docstatus": 1,
+			"rate_base": 2400,
+			"line_rate": [240000],
+		},
+	},
+}
+
+
+def _check_extra(state, expect):
+	errors = []
+	inv = state["invoices"][0] if state["invoices"] else None
+	if not inv:
+		return errors
+	if "rate_base" in expect and flt((inv.get("rate_record") or {}).get("base")) != expect["rate_base"]:
+		errors.append(f"bound base {(inv.get('rate_record') or {}).get('base')} != {expect['rate_base']}")
+	if expect.get("hold") and not inv.get("ruhee_c7_hold"):
+		errors.append("no hold reason recorded")
+	return errors
+
+
+def _request_id(sale):
+	return ((sale or {}).get("outbound") or {}).get("posa_client_request_id")
+
+
+def _flow_bills(name, steps):
+	by_step = {s["step"]: s for s in steps}
+	if name == "effective_time":
+		return {
+			"A_before_replacement": _request_id(by_step["A_offline_before_replacement"]["sale"]),
+			"C_after_replacement_superseded": _request_id(
+				by_step["C_offline_after_replacement_superseded_rate"]["sale"]
+			),
+			"B_new_after_replacement": _request_id(by_step["B_online_after_replacement"]["sale"]),
+		}
+	if name == "recovery_online":
+		return {"failed_bill": _request_id(by_step["first_attempt_failed"]["sale"])}
+	if name in ("recovery_offline_draft", "recovery_network"):
+		return {"queued_bill": _request_id(by_step["queued_offline"]["sale"])}
+	if name == "lost_response":
+		return {"bill": _request_id(by_step["first_submit_response_lost"]["sale"])}
+	if name == "concurrent_replay":
+		return {"bill": by_step["four_concurrent_replays"]["request_id"]}
+	return {}
+
+
+def from_harness(results_dir, out=None):
+	"""Grade every c7_browser.mjs output in ``results_dir`` against the requirements above."""
+	if not site_enabled():
+		raise ValueError("Read-only verifier for disposable C7 sites only")
+	summary = {"site": frappe.local.site, "scenarios": {}}
+	for path in sorted(Path(results_dir).glob("*.json")):
+		data = json.loads(path.read_text())
+		name = data.get("scenario")
+		if not name or name not in {**EXPECT, **FLOW_EXPECT}:
+			continue
+		bills = {"sale": _request_id(data)} if name in EXPECT else _flow_bills(name, data.get("steps") or [])
+		expectations = {"sale": EXPECT[name]} if name in EXPECT else FLOW_EXPECT[name]
+		graded = {}
+		for role, request_id in bills.items():
+			state = (
+				by_request_id(request_id)
+				if request_id
+				else {"invoice_count": 0, "invoices": [], "ledger": []}
+			)
+			errors = _check(state, expectations[role]) + _check_extra(state, expectations[role])
+			graded[role] = {"request_id": request_id, "pass": not errors, "errors": errors, "saved": state}
+		summary["scenarios"][name] = {"harness_error": data.get("harness_error"), "bills": graded}
+	text = json.dumps(summary, indent=1, default=str, sort_keys=True)
+	if out:
+		Path(out).write_text(text)  # operator-supplied bench argument; never web-exposed
+	print(
+		json.dumps(
+			{
+				name: {role: (b["pass"], b["errors"]) for role, b in s["bills"].items()}
+				for name, s in summary["scenarios"].items()
+			},
+			indent=1,
+		)
+	)
