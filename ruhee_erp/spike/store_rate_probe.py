@@ -1,8 +1,12 @@
-"""M1-05 C7 online: real handler/native submit, supported hooks, read-only profiler.
+"""SUPERSEDED (6 Nov 2026, Prompt 6). Historical evidence for ac4b76b only.
 
-Run with PYTHONPATH=/tmp/ruhee-c7 from the bench, on disposable m105.localhost.
-Existing scratch evidence is preserved. No precision/schema widening, module
-monkeypatch, browser/offline acceptance or production idempotency claim.
+This probe hand-built its payloads with the store-rate line price already in
+them (review finding B1), so it never proved the client. It is kept, unchanged,
+for the record of what ac4b76b showed. Its payloads also lack the binding fields
+the reworked hooks now require, so it refuses to run.
+
+Current evidence: c7_browser.mjs drives the real POS client and
+store_rate_verify.py reads the saved results. See store_rate_report.md.
 """
 
 import hashlib
@@ -17,7 +21,10 @@ import frappe
 from frappe.custom.doctype.custom_field.custom_field import create_custom_field
 from frappe.utils import flt, now_datetime, nowdate
 
-from ruhee_erp.spike.store_rate_hooks import PROFILE, RATE_TYPE, SITE, SUBMIT
+from ruhee_erp.spike.store_rate_hooks import RATE_TYPE, SUBMIT
+
+PROFILE = "C7 New Depo"
+SITE = "m105.localhost"  # where ac4b76b ran; recorded in its historical evidence
 
 COMPANY = "Ruhee Spike"
 TRACE = []
@@ -37,10 +44,9 @@ WATCH = {
 
 
 def guard():
-	if frappe.local.site != SITE or not frappe.conf.get("pause_scheduler"):
-		raise ValueError("Only the paused disposable m105.localhost site is allowed")
-	if frappe.session.user != "Administrator":
-		raise ValueError("Run the spike with bench execute as Administrator")
+	raise ValueError(
+		"store_rate_probe is superseded: use c7_browser.mjs and store_rate_verify.py (store_rate_report.md)"
+	)
 
 
 def profile(frame, event, arg):

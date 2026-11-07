@@ -10,15 +10,21 @@ app_license = "gpl-3.0"
 
 required_apps = ["erpnext", "posawesome"]
 
-# M1-05 / C7 experiment only (Sam's explicit scoped exception to D-025).
-# Handlers are inert outside m105.localhost and the dedicated C7 profile.
-# Remove ALL of these entries in the D-025 removal PR before production.
+# M1-05 / C7 experiment only. Sam's scoped exception (Prompt 6, 6 Nov 2026) allows
+# these spike references on branch m1-c7-store-rate ONLY: never merge them into main
+# and never deploy them. Handlers are inert unless site_config sets ruhee_c7_spike=1
+# (with the scheduler paused) and the POS Profile has ruhee_c7_store_rate set.
+# Remove ALL six entries in the D-025 removal PR; see store_rate_report.md.
 doc_events = {
 	"Sales Invoice": {
 		"before_validate": "ruhee_erp.spike.store_rate_hooks.bind_rate",
+		"validate": "ruhee_erp.spike.store_rate_hooks.check_lines",
 		"on_submit": "ruhee_erp.spike.store_rate_hooks.settle_cdf_tender",
 	},
-	"Payment Entry": {"before_validate": "ruhee_erp.spike.store_rate_hooks.bind_payment_rate"},
+	"Payment Entry": {
+		"before_validate": "ruhee_erp.spike.store_rate_hooks.bind_payment_rate",
+		"validate": "ruhee_erp.spike.store_rate_hooks.value_cdf_received",
+	},
 }
 override_whitelisted_methods = {
 	"posawesome.posawesome.api.invoices.submit_invoice": "ruhee_erp.spike.store_rate_hooks.submit_invoice",
