@@ -1,0 +1,1764 @@
+{
+ "scenarios": {
+  "b_cdf_bill_usd_tender": {
+   "bills": {
+    "sale": {
+     "errors": [
+      "SI GL Cash USD - New Depo.debit_fc 24.0 != 100"
+     ],
+     "pass": false,
+     "request_id": "inv-mw5zmzwg-62a4ba0d-53d9-4fbf-b449-41051522f77d",
+     "saved": {
+      "invoice_count": 1,
+      "invoices": [
+       {
+        "base_grand_total": 100.0,
+        "base_paid_amount": 416.63,
+        "base_rounded_total": 100.0,
+        "conversion_rate": 0.000416667,
+        "created": "2026-11-07 06:53:46.009852",
+        "currency": "CDF",
+        "digest": "fc1fcaddd9165257648beb62d2aff2bd817477a5ea5ddbef7ad20ebdadf76152",
+        "docstatus": 1,
+        "gl": {
+         "Cash USD - New Depo": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 100.0,
+          "debit_fc": 24.0
+         },
+         "Cost of Goods Sold": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 80.0,
+          "debit_fc": 80.0
+         },
+         "Debtors": {
+          "credit": 100.0,
+          "credit_fc": 100.0,
+          "debit": 100.0,
+          "debit_fc": 100.0
+         },
+         "Sales": {
+          "credit": 100.0,
+          "credit_fc": 100.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         },
+         "Stock In Hand": {
+          "credit": 80.0,
+          "credit_fc": 80.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         }
+        },
+        "grand_total": 240000.0,
+        "invoice_payments": [
+         {
+          "amount": 999900.0,
+          "base_amount": 416.63,
+          "mode_of_payment": "Cash USD",
+          "posa_original_amount": 100.0,
+          "posa_payment_currency": "USD"
+         }
+        ],
+        "items": [
+         {
+          "amount": 240000.0,
+          "base_amount": 100.0,
+          "item_code": "SPIKE-001",
+          "price_list_rate": 240000.0,
+          "qty": 1.0,
+          "rate": 240000.0,
+          "ruhee_c7_usd_price": 100.0
+         }
+        ],
+        "name": "ACC-SINV-2026-00016",
+        "outstanding_amount": 0.0,
+        "paid_amount": 999900.0,
+        "payment_entries": [],
+        "posa_client_request_id": "inv-mw5zmzwg-62a4ba0d-53d9-4fbf-b449-41051522f77d",
+        "posting_date": "2026-11-07",
+        "posting_time": "6:53:55.553939",
+        "rate_record": {
+         "base": 2400.0,
+         "effective_from": "2026-11-07 06:40:14.554107",
+         "higher": 2420.0,
+         "name": "g5el80hjg9",
+         "pos_profile": "C7 New Depo"
+        },
+        "rounded_total": 240000.0,
+        "ruhee_c7_allocation_usd": 0.0,
+        "ruhee_c7_base": 2400.0,
+        "ruhee_c7_higher": 2420.0,
+        "ruhee_c7_hold": null,
+        "ruhee_c7_issued_at": "2026-11-07T06:53:55.265+01:00",
+        "ruhee_c7_issued_at_local": "2026-11-07 06:53:55.265000",
+        "ruhee_c7_rate": "g5el80hjg9",
+        "ruhee_c7_tender_cdf": 0.0,
+        "stock_ledger_entries": 1
+       }
+      ],
+      "ledger": [
+       {
+        "creation": "2026-11-07 06:53:55.328406",
+        "error_message": null,
+        "invoice_name": "ACC-SINV-2026-00016",
+        "modified": "2026-11-07 06:53:55.771869",
+        "name": "9a46945284576270050f6dee34fff74fbd7110f06e18bbe4893f59207a4557ed",
+        "state": "POST_SUBMIT_DONE"
+       }
+      ],
+      "request_id": "inv-mw5zmzwg-62a4ba0d-53d9-4fbf-b449-41051522f77d"
+     }
+    }
+   },
+   "harness_error": null
+  },
+  "c3_01": {
+   "bills": {
+    "sale": {
+     "errors": [],
+     "pass": true,
+     "request_id": "inv-mw5yw1ul-550ed78e-be75-4955-97c1-32f3805323ee",
+     "saved": {
+      "invoice_count": 1,
+      "invoices": [
+       {
+        "base_grand_total": 100.0,
+        "base_paid_amount": 100.0,
+        "base_rounded_total": 100.0,
+        "conversion_rate": 0.000434783,
+        "created": "2026-11-07 06:32:51.255195",
+        "currency": "CDF",
+        "digest": "ef33ee6cf15332bd44add2403367cf0935fb61e806457af7fd99aea810706837",
+        "docstatus": 1,
+        "gl": {
+         "Cash CDF - New Depo": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 100.0,
+          "debit_fc": 230000.0
+         },
+         "Cost of Goods Sold": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 80.0,
+          "debit_fc": 80.0
+         },
+         "Debtors": {
+          "credit": 100.0,
+          "credit_fc": 100.0,
+          "debit": 100.0,
+          "debit_fc": 100.0
+         },
+         "Sales": {
+          "credit": 100.0,
+          "credit_fc": 100.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         },
+         "Stock In Hand": {
+          "credit": 80.0,
+          "credit_fc": 80.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         }
+        },
+        "grand_total": 230000.0,
+        "invoice_payments": [
+         {
+          "amount": 230000.0,
+          "base_amount": 100.0,
+          "mode_of_payment": "Cash CDF",
+          "posa_original_amount": 230000.0,
+          "posa_payment_currency": "CDF"
+         }
+        ],
+        "items": [
+         {
+          "amount": 230000.0,
+          "base_amount": 100.0,
+          "item_code": "SPIKE-001",
+          "price_list_rate": 230000.0,
+          "qty": 1.0,
+          "rate": 230000.0,
+          "ruhee_c7_usd_price": 100.0
+         }
+        ],
+        "name": "ACC-SINV-2026-00004",
+        "outstanding_amount": 0.0,
+        "paid_amount": 230000.0,
+        "payment_entries": [],
+        "posa_client_request_id": "inv-mw5yw1ul-550ed78e-be75-4955-97c1-32f3805323ee",
+        "posting_date": "2026-11-07",
+        "posting_time": "6:32:58.540363",
+        "rate_record": {
+         "base": 2300.0,
+         "effective_from": "2026-11-07 00:00:00",
+         "higher": 2320.0,
+         "name": "8u6cc64686",
+         "pos_profile": "C7 New Depo"
+        },
+        "rounded_total": 230000.0,
+        "ruhee_c7_allocation_usd": 0.0,
+        "ruhee_c7_base": 2300.0,
+        "ruhee_c7_higher": 2320.0,
+        "ruhee_c7_hold": null,
+        "ruhee_c7_issued_at": "2026-11-07T06:32:58.078+01:00",
+        "ruhee_c7_issued_at_local": "2026-11-07 06:32:58.078000",
+        "ruhee_c7_rate": "8u6cc64686",
+        "ruhee_c7_tender_cdf": 0.0,
+        "stock_ledger_entries": 1
+       }
+      ],
+      "ledger": [
+       {
+        "creation": "2026-11-07 06:32:58.194432",
+        "error_message": null,
+        "invoice_name": "ACC-SINV-2026-00004",
+        "modified": "2026-11-07 06:32:58.884042",
+        "name": "20d80adc1633e4726778490fc9d8839aa9a54c0d3ce165cc8e3c0f31a40197c9",
+        "state": "POST_SUBMIT_DONE"
+       }
+      ],
+      "request_id": "inv-mw5yw1ul-550ed78e-be75-4955-97c1-32f3805323ee"
+     }
+    }
+   },
+   "harness_error": null
+  },
+  "c3_02": {
+   "bills": {
+    "sale": {
+     "errors": [
+      "base_grand_total 10000.01 != 10000",
+      "SI GL Debtors.debit 10000.01 != 10000",
+      "SI GL Debtors.credit 10000.01 != 10000",
+      "SI GL Cash CDF - New Depo.debit 10000.01 != 10000"
+     ],
+     "pass": false,
+     "request_id": "inv-mw5ytnkx-3df906c3-b7d4-4236-b588-33dedad028ce",
+     "saved": {
+      "invoice_count": 1,
+      "invoices": [
+       {
+        "base_grand_total": 10000.01,
+        "base_paid_amount": 10000.01,
+        "base_rounded_total": 10000.01,
+        "conversion_rate": 0.000434783,
+        "created": "2026-11-07 06:30:59.469053",
+        "currency": "CDF",
+        "digest": "06b67e8281c3762410e0ceababde0e4ebd0ee0ac0e2f728560e7d5633a93f7c4",
+        "docstatus": 1,
+        "gl": {
+         "Cash CDF - New Depo": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 10000.01,
+          "debit_fc": 23000000.0
+         },
+         "Cost of Goods Sold": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 8000.0,
+          "debit_fc": 8000.0
+         },
+         "Debtors": {
+          "credit": 10000.01,
+          "credit_fc": 10000.01,
+          "debit": 10000.01,
+          "debit_fc": 10000.01
+         },
+         "Sales": {
+          "credit": 10000.01,
+          "credit_fc": 10000.01,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         },
+         "Stock In Hand": {
+          "credit": 8000.0,
+          "credit_fc": 8000.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         }
+        },
+        "grand_total": 23000000.0,
+        "invoice_payments": [
+         {
+          "amount": 23000000.0,
+          "base_amount": 10000.01,
+          "mode_of_payment": "Cash CDF",
+          "posa_original_amount": 23000000.0,
+          "posa_payment_currency": "CDF"
+         }
+        ],
+        "items": [
+         {
+          "amount": 23000000.0,
+          "base_amount": 10000.01,
+          "item_code": "SPIKE-001",
+          "price_list_rate": 230000.0,
+          "qty": 100.0,
+          "rate": 230000.0,
+          "ruhee_c7_usd_price": 100.0
+         }
+        ],
+        "name": "ACC-SINV-2026-00001",
+        "outstanding_amount": 0.0,
+        "paid_amount": 23000000.0,
+        "payment_entries": [],
+        "posa_client_request_id": "inv-mw5ytnkx-3df906c3-b7d4-4236-b588-33dedad028ce",
+        "posting_date": "2026-11-07",
+        "posting_time": "6:31:06.756459",
+        "rate_record": {
+         "base": 2300.0,
+         "effective_from": "2026-11-07 00:00:00",
+         "higher": 2320.0,
+         "name": "8u6cc64686",
+         "pos_profile": "C7 New Depo"
+        },
+        "rounded_total": 23000000.0,
+        "ruhee_c7_allocation_usd": 0.0,
+        "ruhee_c7_base": 2300.0,
+        "ruhee_c7_higher": 2320.0,
+        "ruhee_c7_hold": null,
+        "ruhee_c7_issued_at": "2026-11-07T06:31:06.273+01:00",
+        "ruhee_c7_issued_at_local": "2026-11-07 06:31:06.273000",
+        "ruhee_c7_rate": "8u6cc64686",
+        "ruhee_c7_tender_cdf": 0.0,
+        "stock_ledger_entries": 1
+       }
+      ],
+      "ledger": [
+       {
+        "creation": "2026-11-07 06:31:06.384064",
+        "error_message": null,
+        "invoice_name": "ACC-SINV-2026-00001",
+        "modified": "2026-11-07 06:31:07.399501",
+        "name": "0d20fcf47eedf05556302f43f77d68abbdaf775fe0b723e1466176f3f4848141",
+        "state": "POST_SUBMIT_DONE"
+       }
+      ],
+      "request_id": "inv-mw5ytnkx-3df906c3-b7d4-4236-b588-33dedad028ce"
+     }
+    }
+   },
+   "harness_error": null
+  },
+  "c4": {
+   "bills": {
+    "sale": {
+     "errors": [],
+     "pass": true,
+     "request_id": "inv-mw5yu8xx-6e7e1f68-d01a-4e2a-9391-0aa774883303",
+     "saved": {
+      "invoice_count": 1,
+      "invoices": [
+       {
+        "base_grand_total": 100.0,
+        "base_paid_amount": 0.0,
+        "base_rounded_total": 100.0,
+        "conversion_rate": 1.0,
+        "created": "2026-11-07 06:31:24.332358",
+        "currency": "USD",
+        "digest": "775014c20454fa6e4893289dd9ad2f6c375a72c0042e87739312fe9b22d0ab48",
+        "docstatus": 1,
+        "gl": {
+         "Cost of Goods Sold": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 80.0,
+          "debit_fc": 80.0
+         },
+         "Debtors": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 100.0,
+          "debit_fc": 100.0
+         },
+         "Sales": {
+          "credit": 100.0,
+          "credit_fc": 100.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         },
+         "Stock In Hand": {
+          "credit": 80.0,
+          "credit_fc": 80.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         }
+        },
+        "grand_total": 100.0,
+        "invoice_payments": [],
+        "items": [
+         {
+          "amount": 100.0,
+          "base_amount": 100.0,
+          "item_code": "SPIKE-001",
+          "price_list_rate": 100.0,
+          "qty": 1.0,
+          "rate": 100.0,
+          "ruhee_c7_usd_price": 100.0
+         }
+        ],
+        "name": "ACC-SINV-2026-00002",
+        "outstanding_amount": 0.0,
+        "paid_amount": 0.0,
+        "payment_entries": [
+         {
+          "base_received_amount": 100.87,
+          "deductions": [
+           {
+            "account": "Exchange income - RS",
+            "amount": -0.87
+           }
+          ],
+          "docstatus": 1,
+          "gl": {
+           "Cash CDF - New Depo": {
+            "credit": 0.0,
+            "credit_fc": 0.0,
+            "debit": 100.87,
+            "debit_fc": 232000.0
+           },
+           "Debtors": {
+            "credit": 100.0,
+            "credit_fc": 100.0,
+            "debit": 0.0,
+            "debit_fc": 0.0
+           },
+           "Exchange income": {
+            "credit": 0.87,
+            "credit_fc": 0.87,
+            "debit": 0.0,
+            "debit_fc": 0.0
+           }
+          },
+          "name": "ACC-PAY-2026-00001",
+          "paid_amount": 100.0,
+          "received_amount": 232000.0,
+          "ruhee_c7_rate": "8u6cc64686",
+          "target_exchange_rate": 0.000434783
+         }
+        ],
+        "posa_client_request_id": "inv-mw5yu8xx-6e7e1f68-d01a-4e2a-9391-0aa774883303",
+        "posting_date": "2026-11-07",
+        "posting_time": "6:31:34.348093",
+        "rate_record": {
+         "base": 2300.0,
+         "effective_from": "2026-11-07 00:00:00",
+         "higher": 2320.0,
+         "name": "8u6cc64686",
+         "pos_profile": "C7 New Depo"
+        },
+        "rounded_total": 100.0,
+        "ruhee_c7_allocation_usd": 100.0,
+        "ruhee_c7_base": 2300.0,
+        "ruhee_c7_higher": 2320.0,
+        "ruhee_c7_hold": null,
+        "ruhee_c7_issued_at": "2026-11-07T06:31:33.957+01:00",
+        "ruhee_c7_issued_at_local": "2026-11-07 06:31:33.957000",
+        "ruhee_c7_rate": "8u6cc64686",
+        "ruhee_c7_tender_cdf": 232000.0,
+        "stock_ledger_entries": 1
+       }
+      ],
+      "ledger": [
+       {
+        "creation": "2026-11-07 06:31:34.058009",
+        "error_message": null,
+        "invoice_name": "ACC-SINV-2026-00002",
+        "modified": "2026-11-07 06:31:35.131788",
+        "name": "7fab69f85315f8528954a90540b712e2c71a49a7817228f48778005517cf34e8",
+        "state": "POST_SUBMIT_DONE"
+       }
+      ],
+      "request_id": "inv-mw5yu8xx-6e7e1f68-d01a-4e2a-9391-0aa774883303"
+     }
+    }
+   },
+   "harness_error": null
+  },
+  "c4_large": {
+   "bills": {
+    "sale": {
+     "errors": [],
+     "pass": true,
+     "request_id": "inv-mw5yuw0s-1193da83-bff3-4f43-bf1e-f01d73a24dff",
+     "saved": {
+      "invoice_count": 1,
+      "invoices": [
+       {
+        "base_grand_total": 10000.0,
+        "base_paid_amount": 0.0,
+        "base_rounded_total": 10000.0,
+        "conversion_rate": 1.0,
+        "created": "2026-11-07 06:31:54.550583",
+        "currency": "USD",
+        "digest": "15f7d54fbad329ecc11dcad37723fde357d2d7a8ca7c5d8201b278b49133e6f9",
+        "docstatus": 1,
+        "gl": {
+         "Cost of Goods Sold": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 8000.0,
+          "debit_fc": 8000.0
+         },
+         "Debtors": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 10000.0,
+          "debit_fc": 10000.0
+         },
+         "Sales": {
+          "credit": 10000.0,
+          "credit_fc": 10000.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         },
+         "Stock In Hand": {
+          "credit": 8000.0,
+          "credit_fc": 8000.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         }
+        },
+        "grand_total": 10000.0,
+        "invoice_payments": [],
+        "items": [
+         {
+          "amount": 10000.0,
+          "base_amount": 10000.0,
+          "item_code": "SPIKE-001",
+          "price_list_rate": 100.0,
+          "qty": 100.0,
+          "rate": 100.0,
+          "ruhee_c7_usd_price": 100.0
+         }
+        ],
+        "name": "ACC-SINV-2026-00003",
+        "outstanding_amount": 0.0,
+        "paid_amount": 0.0,
+        "payment_entries": [
+         {
+          "base_received_amount": 10086.96,
+          "deductions": [
+           {
+            "account": "Exchange income - RS",
+            "amount": -86.96
+           }
+          ],
+          "docstatus": 1,
+          "gl": {
+           "Cash CDF - New Depo": {
+            "credit": 0.0,
+            "credit_fc": 0.0,
+            "debit": 10086.96,
+            "debit_fc": 23200000.0
+           },
+           "Debtors": {
+            "credit": 10000.0,
+            "credit_fc": 10000.0,
+            "debit": 0.0,
+            "debit_fc": 0.0
+           },
+           "Exchange income": {
+            "credit": 86.96,
+            "credit_fc": 86.96,
+            "debit": 0.0,
+            "debit_fc": 0.0
+           }
+          },
+          "name": "ACC-PAY-2026-00002",
+          "paid_amount": 10000.0,
+          "received_amount": 23200000.0,
+          "ruhee_c7_rate": "8u6cc64686",
+          "target_exchange_rate": 0.000434783
+         }
+        ],
+        "posa_client_request_id": "inv-mw5yuw0s-1193da83-bff3-4f43-bf1e-f01d73a24dff",
+        "posting_date": "2026-11-07",
+        "posting_time": "6:32:04.304201",
+        "rate_record": {
+         "base": 2300.0,
+         "effective_from": "2026-11-07 00:00:00",
+         "higher": 2320.0,
+         "name": "8u6cc64686",
+         "pos_profile": "C7 New Depo"
+        },
+        "rounded_total": 10000.0,
+        "ruhee_c7_allocation_usd": 10000.0,
+        "ruhee_c7_base": 2300.0,
+        "ruhee_c7_higher": 2320.0,
+        "ruhee_c7_hold": null,
+        "ruhee_c7_issued_at": "2026-11-07T06:32:03.869+01:00",
+        "ruhee_c7_issued_at_local": "2026-11-07 06:32:03.869000",
+        "ruhee_c7_rate": "8u6cc64686",
+        "ruhee_c7_tender_cdf": 23200000.0,
+        "stock_ledger_entries": 1
+       }
+      ],
+      "ledger": [
+       {
+        "creation": "2026-11-07 06:32:03.991108",
+        "error_message": null,
+        "invoice_name": "ACC-SINV-2026-00003",
+        "modified": "2026-11-07 06:32:04.885167",
+        "name": "44fb13e743fd6c674100c366cdbbbea2b723cbab8d6612fd7c39a492ce71973a",
+        "state": "POST_SUBMIT_DONE"
+       }
+      ],
+      "request_id": "inv-mw5yuw0s-1193da83-bff3-4f43-bf1e-f01d73a24dff"
+     }
+    }
+   },
+   "harness_error": null
+  },
+  "c5": {
+   "bills": {
+    "sale": {
+     "errors": [],
+     "pass": true,
+     "request_id": "inv-mw5ywmsu-e507aec6-662e-49f5-bf9d-4294ad71fcc9",
+     "saved": {
+      "invoice_count": 1,
+      "invoices": [
+       {
+        "base_grand_total": 100.0,
+        "base_paid_amount": 50.0,
+        "base_rounded_total": 100.0,
+        "conversion_rate": 0.000434783,
+        "created": "2026-11-07 06:33:15.318233",
+        "currency": "CDF",
+        "digest": "8cb8991ac682ee639b4a18da95dbbffb13dab48f92bff176601829a29310ac84",
+        "docstatus": 1,
+        "gl": {
+         "Cash CDF - New Depo": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 50.0,
+          "debit_fc": 115000.0
+         },
+         "Cost of Goods Sold": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 80.0,
+          "debit_fc": 80.0
+         },
+         "Debtors": {
+          "credit": 50.0,
+          "credit_fc": 50.0,
+          "debit": 100.0,
+          "debit_fc": 100.0
+         },
+         "Sales": {
+          "credit": 100.0,
+          "credit_fc": 100.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         },
+         "Stock In Hand": {
+          "credit": 80.0,
+          "credit_fc": 80.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         }
+        },
+        "grand_total": 230000.0,
+        "invoice_payments": [
+         {
+          "amount": 115000.0,
+          "base_amount": 50.0,
+          "mode_of_payment": "Cash CDF",
+          "posa_original_amount": 115000.0,
+          "posa_payment_currency": "CDF"
+         }
+        ],
+        "items": [
+         {
+          "amount": 230000.0,
+          "base_amount": 100.0,
+          "item_code": "SPIKE-001",
+          "price_list_rate": 230000.0,
+          "qty": 1.0,
+          "rate": 230000.0,
+          "ruhee_c7_usd_price": 100.0
+         }
+        ],
+        "name": "ACC-SINV-2026-00005",
+        "outstanding_amount": 50.0,
+        "paid_amount": 115000.0,
+        "payment_entries": [],
+        "posa_client_request_id": "inv-mw5ywmsu-e507aec6-662e-49f5-bf9d-4294ad71fcc9",
+        "posting_date": "2026-11-07",
+        "posting_time": "6:33:25.773582",
+        "rate_record": {
+         "base": 2300.0,
+         "effective_from": "2026-11-07 00:00:00",
+         "higher": 2320.0,
+         "name": "8u6cc64686",
+         "pos_profile": "C7 New Depo"
+        },
+        "rounded_total": 230000.0,
+        "ruhee_c7_allocation_usd": 0.0,
+        "ruhee_c7_base": 2300.0,
+        "ruhee_c7_higher": 2320.0,
+        "ruhee_c7_hold": null,
+        "ruhee_c7_issued_at": "2026-11-07T06:33:25.230+01:00",
+        "ruhee_c7_issued_at_local": "2026-11-07 06:33:25.230000",
+        "ruhee_c7_rate": "8u6cc64686",
+        "ruhee_c7_tender_cdf": 0.0,
+        "stock_ledger_entries": 1
+       }
+      ],
+      "ledger": [
+       {
+        "creation": "2026-11-07 06:33:25.339254",
+        "error_message": null,
+        "invoice_name": "ACC-SINV-2026-00005",
+        "modified": "2026-11-07 06:33:26.158429",
+        "name": "2217cfdbeb740af4e8c437b28110ff6b366dc01239151147c5abc78be82e40e7",
+        "state": "POST_SUBMIT_DONE"
+       }
+      ],
+      "request_id": "inv-mw5ywmsu-e507aec6-662e-49f5-bf9d-4294ad71fcc9"
+     }
+    }
+   },
+   "harness_error": null
+  },
+  "concurrent_replay": {
+   "bills": {
+    "bill": {
+     "errors": [],
+     "pass": true,
+     "request_id": "inv-mw5z44sn-0353258b-ec31-40ce-8038-37560ece4eb8",
+     "saved": {
+      "invoice_count": 1,
+      "invoices": [
+       {
+        "base_grand_total": 100.0,
+        "base_paid_amount": 0.0,
+        "base_rounded_total": 100.0,
+        "conversion_rate": 1.0,
+        "created": "2026-11-07 06:39:05.351254",
+        "currency": "USD",
+        "digest": "f9b6c554c57f4ef9b36c4ba5d63fd22ff665990ab715d1c059de62facb544cc3",
+        "docstatus": 1,
+        "gl": {
+         "Cost of Goods Sold": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 80.0,
+          "debit_fc": 80.0
+         },
+         "Debtors": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 100.0,
+          "debit_fc": 100.0
+         },
+         "Sales": {
+          "credit": 100.0,
+          "credit_fc": 100.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         },
+         "Stock In Hand": {
+          "credit": 80.0,
+          "credit_fc": 80.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         }
+        },
+        "grand_total": 100.0,
+        "invoice_payments": [],
+        "items": [
+         {
+          "amount": 100.0,
+          "base_amount": 100.0,
+          "item_code": "SPIKE-001",
+          "price_list_rate": 100.0,
+          "qty": 1.0,
+          "rate": 100.0,
+          "ruhee_c7_usd_price": 100.0
+         }
+        ],
+        "name": "ACC-SINV-2026-00012",
+        "outstanding_amount": 0.0,
+        "paid_amount": 0.0,
+        "payment_entries": [
+         {
+          "base_received_amount": 100.87,
+          "deductions": [
+           {
+            "account": "Exchange income - RS",
+            "amount": -0.87
+           }
+          ],
+          "docstatus": 1,
+          "gl": {
+           "Cash CDF - New Depo": {
+            "credit": 0.0,
+            "credit_fc": 0.0,
+            "debit": 100.87,
+            "debit_fc": 232000.0
+           },
+           "Debtors": {
+            "credit": 100.0,
+            "credit_fc": 100.0,
+            "debit": 0.0,
+            "debit_fc": 0.0
+           },
+           "Exchange income": {
+            "credit": 0.87,
+            "credit_fc": 0.87,
+            "debit": 0.0,
+            "debit_fc": 0.0
+           }
+          },
+          "name": "ACC-PAY-2026-00006",
+          "paid_amount": 100.0,
+          "received_amount": 232000.0,
+          "ruhee_c7_rate": "8u6cc64686",
+          "target_exchange_rate": 0.000434783
+         }
+        ],
+        "posa_client_request_id": "inv-mw5z44sn-0353258b-ec31-40ce-8038-37560ece4eb8",
+        "posting_date": "2026-11-07",
+        "posting_time": "6:39:18.992923",
+        "rate_record": {
+         "base": 2300.0,
+         "effective_from": "2026-11-07 00:00:00",
+         "higher": 2320.0,
+         "name": "8u6cc64686",
+         "pos_profile": "C7 New Depo"
+        },
+        "rounded_total": 100.0,
+        "ruhee_c7_allocation_usd": 100.0,
+        "ruhee_c7_base": 2300.0,
+        "ruhee_c7_higher": 2320.0,
+        "ruhee_c7_hold": null,
+        "ruhee_c7_issued_at": "2026-11-07T06:39:15.144+01:00",
+        "ruhee_c7_issued_at_local": "2026-11-07 06:39:15.144000",
+        "ruhee_c7_rate": "8u6cc64686",
+        "ruhee_c7_tender_cdf": 232000.0,
+        "stock_ledger_entries": 1
+       }
+      ],
+      "ledger": [
+       {
+        "creation": "2026-11-07 06:39:18.678075",
+        "error_message": null,
+        "invoice_name": "ACC-SINV-2026-00012",
+        "modified": "2026-11-07 06:39:19.557703",
+        "name": "66fbad5cb88c9e23494d67f04e0c3440f242369c98f95cd351b1e186b4c6ef27",
+        "state": "POST_SUBMIT_DONE"
+       }
+      ],
+      "request_id": "inv-mw5z44sn-0353258b-ec31-40ce-8038-37560ece4eb8"
+     }
+    }
+   },
+   "harness_error": null
+  },
+  "diag_240k": {
+   "bills": {
+    "sale": {
+     "errors": [],
+     "pass": true,
+     "request_id": "inv-mw5yxsol-5fd63aa2-5ce3-4a3f-87b1-6fac730ddcfb",
+     "saved": {
+      "invoice_count": 0,
+      "invoices": [],
+      "ledger": [],
+      "request_id": "inv-mw5yxsol-5fd63aa2-5ce3-4a3f-87b1-6fac730ddcfb"
+     }
+    }
+   },
+   "harness_error": null
+  },
+  "effective_time": {
+   "bills": {
+    "A_before_replacement": {
+     "errors": [],
+     "pass": true,
+     "request_id": "inv-mw5z4q53-a4243c20-18a2-4fe4-90e7-80be274e564d",
+     "saved": {
+      "invoice_count": 1,
+      "invoices": [
+       {
+        "base_grand_total": 100.0,
+        "base_paid_amount": 100.0,
+        "base_rounded_total": 100.0,
+        "conversion_rate": 0.000434783,
+        "created": "2026-11-07 06:40:55.243497",
+        "currency": "CDF",
+        "digest": "41038db444ab0e2cba2d9d2e24513c4ca889fb78993c56230cef6be3182de1c5",
+        "docstatus": 1,
+        "gl": {
+         "Cash CDF - New Depo": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 100.0,
+          "debit_fc": 230000.0
+         },
+         "Cost of Goods Sold": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 80.0,
+          "debit_fc": 80.0
+         },
+         "Debtors": {
+          "credit": 100.0,
+          "credit_fc": 100.0,
+          "debit": 100.0,
+          "debit_fc": 100.0
+         },
+         "Sales": {
+          "credit": 100.0,
+          "credit_fc": 100.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         },
+         "Stock In Hand": {
+          "credit": 80.0,
+          "credit_fc": 80.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         }
+        },
+        "grand_total": 230000.0,
+        "invoice_payments": [
+         {
+          "amount": 230000.0,
+          "base_amount": 100.0,
+          "mode_of_payment": "Cash CDF",
+          "posa_original_amount": 230000.0,
+          "posa_payment_currency": "CDF"
+         }
+        ],
+        "items": [
+         {
+          "amount": 230000.0,
+          "base_amount": 100.0,
+          "item_code": "SPIKE-001",
+          "price_list_rate": 230000.0,
+          "qty": 1.0,
+          "rate": 230000.0,
+          "ruhee_c7_usd_price": 100.0
+         }
+        ],
+        "name": "ACC-SINV-2026-00013",
+        "outstanding_amount": 0.0,
+        "paid_amount": 230000.0,
+        "payment_entries": [],
+        "posa_client_request_id": "inv-mw5z4q53-a4243c20-18a2-4fe4-90e7-80be274e564d",
+        "posting_date": "2026-11-07",
+        "posting_time": "6:40:55.974051",
+        "rate_record": {
+         "base": 2300.0,
+         "effective_from": "2026-11-07 00:00:00",
+         "higher": 2320.0,
+         "name": "8u6cc64686",
+         "pos_profile": "C7 New Depo"
+        },
+        "rounded_total": 230000.0,
+        "ruhee_c7_allocation_usd": 0.0,
+        "ruhee_c7_base": 2300.0,
+        "ruhee_c7_higher": 2320.0,
+        "ruhee_c7_hold": null,
+        "ruhee_c7_issued_at": "2026-11-07T06:39:42.808+01:00",
+        "ruhee_c7_issued_at_local": "2026-11-07 06:39:42.808000",
+        "ruhee_c7_rate": "8u6cc64686",
+        "ruhee_c7_tender_cdf": 0.0,
+        "stock_ledger_entries": 1
+       }
+      ],
+      "ledger": [
+       {
+        "creation": "2026-11-07 06:40:54.967551",
+        "error_message": null,
+        "invoice_name": "ACC-SINV-2026-00013",
+        "modified": "2026-11-07 06:40:56.585291",
+        "name": "d7d09089b0893a71ad65fece051192426dc4bac9ddd27a6a5a225048e5798246",
+        "state": "POST_SUBMIT_DONE"
+       }
+      ],
+      "request_id": "inv-mw5z4q53-a4243c20-18a2-4fe4-90e7-80be274e564d"
+     }
+    },
+    "B_new_after_replacement": {
+     "errors": [],
+     "pass": true,
+     "request_id": "inv-mw5z6uz8-350224df-c2a3-4430-a29d-2394b59a3d4e",
+     "saved": {
+      "invoice_count": 1,
+      "invoices": [
+       {
+        "base_grand_total": 100.0,
+        "base_paid_amount": 100.0,
+        "base_rounded_total": 100.0,
+        "conversion_rate": 0.000416667,
+        "created": "2026-11-07 06:41:15.803442",
+        "currency": "CDF",
+        "digest": "ebb48aaecc16e0925af3ba6347d94a94ad91f76f779181f782c21829a8e06b4a",
+        "docstatus": 1,
+        "gl": {
+         "Cash CDF - New Depo": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 100.0,
+          "debit_fc": 240000.0
+         },
+         "Cost of Goods Sold": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 80.0,
+          "debit_fc": 80.0
+         },
+         "Debtors": {
+          "credit": 100.0,
+          "credit_fc": 100.0,
+          "debit": 100.0,
+          "debit_fc": 100.0
+         },
+         "Sales": {
+          "credit": 100.0,
+          "credit_fc": 100.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         },
+         "Stock In Hand": {
+          "credit": 80.0,
+          "credit_fc": 80.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         }
+        },
+        "grand_total": 240000.0,
+        "invoice_payments": [
+         {
+          "amount": 240000.0,
+          "base_amount": 100.0,
+          "mode_of_payment": "Cash CDF",
+          "posa_original_amount": 240000.0,
+          "posa_payment_currency": "CDF"
+         }
+        ],
+        "items": [
+         {
+          "amount": 240000.0,
+          "base_amount": 100.0,
+          "item_code": "SPIKE-001",
+          "price_list_rate": 240000.0,
+          "qty": 1.0,
+          "rate": 240000.0,
+          "ruhee_c7_usd_price": 100.0
+         }
+        ],
+        "name": "ACC-SINV-2026-00015",
+        "outstanding_amount": 0.0,
+        "paid_amount": 240000.0,
+        "payment_entries": [],
+        "posa_client_request_id": "inv-mw5z6uz8-350224df-c2a3-4430-a29d-2394b59a3d4e",
+        "posting_date": "2026-11-07",
+        "posting_time": "6:41:23.051890",
+        "rate_record": {
+         "base": 2400.0,
+         "effective_from": "2026-11-07 06:40:14.554107",
+         "higher": 2420.0,
+         "name": "g5el80hjg9",
+         "pos_profile": "C7 New Depo"
+        },
+        "rounded_total": 240000.0,
+        "ruhee_c7_allocation_usd": 0.0,
+        "ruhee_c7_base": 2400.0,
+        "ruhee_c7_higher": 2420.0,
+        "ruhee_c7_hold": null,
+        "ruhee_c7_issued_at": "2026-11-07T06:41:22.389+01:00",
+        "ruhee_c7_issued_at_local": "2026-11-07 06:41:22.389000",
+        "ruhee_c7_rate": "g5el80hjg9",
+        "ruhee_c7_tender_cdf": 0.0,
+        "stock_ledger_entries": 1
+       }
+      ],
+      "ledger": [
+       {
+        "creation": "2026-11-07 06:41:22.554987",
+        "error_message": null,
+        "invoice_name": "ACC-SINV-2026-00015",
+        "modified": "2026-11-07 06:41:23.724732",
+        "name": "d25bd79405d36f4dc4a2117ae386d579ebd2080587deb14a0d21f039814afba9",
+        "state": "POST_SUBMIT_DONE"
+       }
+      ],
+      "request_id": "inv-mw5z6uz8-350224df-c2a3-4430-a29d-2394b59a3d4e"
+     }
+    },
+    "C_after_replacement_superseded": {
+     "errors": [],
+     "pass": true,
+     "request_id": "inv-mw5z60qa-e71ed9da-75d7-4077-beb7-648b0eeb2504",
+     "saved": {
+      "invoice_count": 1,
+      "invoices": [
+       {
+        "base_grand_total": 100.0,
+        "base_paid_amount": 100.0,
+        "base_rounded_total": 100.0,
+        "conversion_rate": 0.000434783,
+        "created": "2026-11-07 06:40:57.626393",
+        "currency": "CDF",
+        "digest": "ff7379ae592aedb4dc841c909a740d1b80d6e74e2b0eb655fd3ca16048d42b96",
+        "docstatus": 0,
+        "gl": {},
+        "grand_total": 230000.0,
+        "invoice_payments": [
+         {
+          "amount": 230000.0,
+          "base_amount": 100.0,
+          "mode_of_payment": "Cash CDF",
+          "posa_original_amount": 230000.0,
+          "posa_payment_currency": "CDF"
+         }
+        ],
+        "items": [
+         {
+          "amount": 230000.0,
+          "base_amount": 100.0,
+          "item_code": "SPIKE-001",
+          "price_list_rate": 230000.0,
+          "qty": 1.0,
+          "rate": 230000.0,
+          "ruhee_c7_usd_price": 100.0
+         }
+        ],
+        "name": "ACC-SINV-2026-00014",
+        "outstanding_amount": 0.0,
+        "paid_amount": 230000.0,
+        "payment_entries": [],
+        "posa_client_request_id": "inv-mw5z60qa-e71ed9da-75d7-4077-beb7-648b0eeb2504",
+        "posting_date": "2026-11-07",
+        "posting_time": "6:40:57.684207",
+        "rate_record": {
+         "base": 2300.0,
+         "effective_from": "2026-11-07 00:00:00",
+         "higher": 2320.0,
+         "name": "8u6cc64686",
+         "pos_profile": "C7 New Depo"
+        },
+        "rounded_total": 230000.0,
+        "ruhee_c7_allocation_usd": 0.0,
+        "ruhee_c7_base": 2300.0,
+        "ruhee_c7_higher": 2320.0,
+        "ruhee_c7_hold": "taux 8u6cc64686 remplac\u00e9 par g5el80hjg9 (2400.0/2420.0) \u00e0 l'heure d'\u00e9mission",
+        "ruhee_c7_issued_at": "2026-11-07T06:40:43.186+01:00",
+        "ruhee_c7_issued_at_local": "2026-11-07 06:40:43.186000",
+        "ruhee_c7_rate": "8u6cc64686",
+        "ruhee_c7_tender_cdf": 0.0,
+        "stock_ledger_entries": 0
+       }
+      ],
+      "ledger": [],
+      "request_id": "inv-mw5z60qa-e71ed9da-75d7-4077-beb7-648b0eeb2504"
+     }
+    }
+   },
+   "harness_error": null
+  },
+  "line_3200": {
+   "bills": {
+    "sale": {
+     "errors": [],
+     "pass": true,
+     "request_id": "inv-mw5yx56y-d07235a0-713a-4f01-b4ef-a266ac42ce40",
+     "saved": {
+      "invoice_count": 1,
+      "invoices": [
+       {
+        "base_grand_total": 3200.0,
+        "base_paid_amount": 3200.0,
+        "base_rounded_total": 3200.0,
+        "conversion_rate": 0.000434783,
+        "created": "2026-11-07 06:33:42.716574",
+        "currency": "CDF",
+        "digest": "91feab22da23a2cb553ed6a58429ca1483de5024eb3dc4d4cda731a3e7d6c339",
+        "docstatus": 1,
+        "gl": {
+         "Cash CDF - New Depo": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 3200.0,
+          "debit_fc": 7360000.0
+         },
+         "Cost of Goods Sold": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 2500.0,
+          "debit_fc": 2500.0
+         },
+         "Debtors": {
+          "credit": 3200.0,
+          "credit_fc": 3200.0,
+          "debit": 3200.0,
+          "debit_fc": 3200.0
+         },
+         "Sales": {
+          "credit": 3200.0,
+          "credit_fc": 3200.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         },
+         "Stock In Hand": {
+          "credit": 2500.0,
+          "credit_fc": 2500.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         }
+        },
+        "grand_total": 7360000.0,
+        "invoice_payments": [
+         {
+          "amount": 7360000.0,
+          "base_amount": 3200.0,
+          "mode_of_payment": "Cash CDF",
+          "posa_original_amount": 7360000.0,
+          "posa_payment_currency": "CDF"
+         }
+        ],
+        "items": [
+         {
+          "amount": 7360000.0,
+          "base_amount": 3200.0,
+          "item_code": "C7-UNIT-3200",
+          "price_list_rate": 7360000.0,
+          "qty": 1.0,
+          "rate": 7360000.0,
+          "ruhee_c7_usd_price": 3200.0
+         }
+        ],
+        "name": "ACC-SINV-2026-00006",
+        "outstanding_amount": 0.0,
+        "paid_amount": 7360000.0,
+        "payment_entries": [],
+        "posa_client_request_id": "inv-mw5yx56y-d07235a0-713a-4f01-b4ef-a266ac42ce40",
+        "posting_date": "2026-11-07",
+        "posting_time": "6:33:49.495610",
+        "rate_record": {
+         "base": 2300.0,
+         "effective_from": "2026-11-07 00:00:00",
+         "higher": 2320.0,
+         "name": "8u6cc64686",
+         "pos_profile": "C7 New Depo"
+        },
+        "rounded_total": 7360000.0,
+        "ruhee_c7_allocation_usd": 0.0,
+        "ruhee_c7_base": 2300.0,
+        "ruhee_c7_higher": 2320.0,
+        "ruhee_c7_hold": null,
+        "ruhee_c7_issued_at": "2026-11-07T06:33:49.066+01:00",
+        "ruhee_c7_issued_at_local": "2026-11-07 06:33:49.066000",
+        "ruhee_c7_rate": "8u6cc64686",
+        "ruhee_c7_tender_cdf": 0.0,
+        "stock_ledger_entries": 1
+       }
+      ],
+      "ledger": [
+       {
+        "creation": "2026-11-07 06:33:49.177489",
+        "error_message": null,
+        "invoice_name": "ACC-SINV-2026-00006",
+        "modified": "2026-11-07 06:33:49.872423",
+        "name": "bd0f366c4f45eea6db29303fd6e07de9bed83009be2fac13072fd1a46b200fdf",
+        "state": "POST_SUBMIT_DONE"
+       }
+      ],
+      "request_id": "inv-mw5yx56y-d07235a0-713a-4f01-b4ef-a266ac42ce40"
+     }
+    }
+   },
+   "harness_error": null
+  },
+  "lost_response": {
+   "bills": {
+    "bill": {
+     "errors": [],
+     "pass": true,
+     "request_id": "inv-mw5z26fx-386939ae-300a-48a9-b38b-13b2f094ec2e",
+     "saved": {
+      "invoice_count": 1,
+      "invoices": [
+       {
+        "base_grand_total": 100.0,
+        "base_paid_amount": 0.0,
+        "base_rounded_total": 100.0,
+        "conversion_rate": 1.0,
+        "created": "2026-11-07 06:37:34.234438",
+        "currency": "USD",
+        "digest": "73befaee22f71a567040f2faa68c27466edbd2f46ed1163333bbdaa15ce04a5a",
+        "docstatus": 1,
+        "gl": {
+         "Cost of Goods Sold": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 80.0,
+          "debit_fc": 80.0
+         },
+         "Debtors": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 100.0,
+          "debit_fc": 100.0
+         },
+         "Sales": {
+          "credit": 100.0,
+          "credit_fc": 100.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         },
+         "Stock In Hand": {
+          "credit": 80.0,
+          "credit_fc": 80.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         }
+        },
+        "grand_total": 100.0,
+        "invoice_payments": [],
+        "items": [
+         {
+          "amount": 100.0,
+          "base_amount": 100.0,
+          "item_code": "SPIKE-001",
+          "price_list_rate": 100.0,
+          "qty": 1.0,
+          "rate": 100.0,
+          "ruhee_c7_usd_price": 100.0
+         }
+        ],
+        "name": "ACC-SINV-2026-00011",
+        "outstanding_amount": 0.0,
+        "paid_amount": 0.0,
+        "payment_entries": [
+         {
+          "base_received_amount": 100.87,
+          "deductions": [
+           {
+            "account": "Exchange income - RS",
+            "amount": -0.87
+           }
+          ],
+          "docstatus": 1,
+          "gl": {
+           "Cash CDF - New Depo": {
+            "credit": 0.0,
+            "credit_fc": 0.0,
+            "debit": 100.87,
+            "debit_fc": 232000.0
+           },
+           "Debtors": {
+            "credit": 100.0,
+            "credit_fc": 100.0,
+            "debit": 0.0,
+            "debit_fc": 0.0
+           },
+           "Exchange income": {
+            "credit": 0.87,
+            "credit_fc": 0.87,
+            "debit": 0.0,
+            "debit_fc": 0.0
+           }
+          },
+          "name": "ACC-PAY-2026-00005",
+          "paid_amount": 100.0,
+          "received_amount": 232000.0,
+          "ruhee_c7_rate": "8u6cc64686",
+          "target_exchange_rate": 0.000434783
+         }
+        ],
+        "posa_client_request_id": "inv-mw5z26fx-386939ae-300a-48a9-b38b-13b2f094ec2e",
+        "posting_date": "2026-11-07",
+        "posting_time": "6:37:44.419081",
+        "rate_record": {
+         "base": 2300.0,
+         "effective_from": "2026-11-07 00:00:00",
+         "higher": 2320.0,
+         "name": "8u6cc64686",
+         "pos_profile": "C7 New Depo"
+        },
+        "rounded_total": 100.0,
+        "ruhee_c7_allocation_usd": 100.0,
+        "ruhee_c7_base": 2300.0,
+        "ruhee_c7_higher": 2320.0,
+        "ruhee_c7_hold": null,
+        "ruhee_c7_issued_at": "2026-11-07T06:37:43.965+01:00",
+        "ruhee_c7_issued_at_local": "2026-11-07 06:37:43.965000",
+        "ruhee_c7_rate": "8u6cc64686",
+        "ruhee_c7_tender_cdf": 232000.0,
+        "stock_ledger_entries": 1
+       }
+      ],
+      "ledger": [
+       {
+        "creation": "2026-11-07 06:37:44.122388",
+        "error_message": null,
+        "invoice_name": "ACC-SINV-2026-00011",
+        "modified": "2026-11-07 06:37:44.999453",
+        "name": "ed69c5af32a7fe90994497e7e1999248d82beccb2f2fa3d57c61a08dad41e21d",
+        "state": "POST_SUBMIT_DONE"
+       }
+      ],
+      "request_id": "inv-mw5z26fx-386939ae-300a-48a9-b38b-13b2f094ec2e"
+     }
+    }
+   },
+   "harness_error": null
+  },
+  "recovery_network": {
+   "bills": {
+    "queued_bill": {
+     "errors": [],
+     "pass": true,
+     "request_id": "inv-mw5z0s6j-381e0424-ab46-4ebe-83e9-964a1e96260d",
+     "saved": {
+      "invoice_count": 1,
+      "invoices": [
+       {
+        "base_grand_total": 100.0,
+        "base_paid_amount": 0.0,
+        "base_rounded_total": 100.0,
+        "conversion_rate": 1.0,
+        "created": "2026-11-07 06:37:17.061696",
+        "currency": "USD",
+        "digest": "806544913e36d3c73c5cbdc50dee22ec932a7b2d14b2471b8a3dd1f2ae5e4b65",
+        "docstatus": 1,
+        "gl": {
+         "Cost of Goods Sold": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 80.0,
+          "debit_fc": 80.0
+         },
+         "Debtors": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 100.0,
+          "debit_fc": 100.0
+         },
+         "Sales": {
+          "credit": 100.0,
+          "credit_fc": 100.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         },
+         "Stock In Hand": {
+          "credit": 80.0,
+          "credit_fc": 80.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         }
+        },
+        "grand_total": 100.0,
+        "invoice_payments": [],
+        "items": [
+         {
+          "amount": 100.0,
+          "base_amount": 100.0,
+          "item_code": "SPIKE-001",
+          "price_list_rate": 100.0,
+          "qty": 1.0,
+          "rate": 100.0,
+          "ruhee_c7_usd_price": 100.0
+         }
+        ],
+        "name": "ACC-SINV-2026-00010",
+        "outstanding_amount": 0.0,
+        "paid_amount": 0.0,
+        "payment_entries": [
+         {
+          "base_received_amount": 100.87,
+          "deductions": [
+           {
+            "account": "Exchange income - RS",
+            "amount": -0.87
+           }
+          ],
+          "docstatus": 1,
+          "gl": {
+           "Cash CDF - New Depo": {
+            "credit": 0.0,
+            "credit_fc": 0.0,
+            "debit": 100.87,
+            "debit_fc": 232000.0
+           },
+           "Debtors": {
+            "credit": 100.0,
+            "credit_fc": 100.0,
+            "debit": 0.0,
+            "debit_fc": 0.0
+           },
+           "Exchange income": {
+            "credit": 0.87,
+            "credit_fc": 0.87,
+            "debit": 0.0,
+            "debit_fc": 0.0
+           }
+          },
+          "name": "ACC-PAY-2026-00004",
+          "paid_amount": 100.0,
+          "received_amount": 232000.0,
+          "ruhee_c7_rate": "8u6cc64686",
+          "target_exchange_rate": 0.000434783
+         }
+        ],
+        "posa_client_request_id": "inv-mw5z0s6j-381e0424-ab46-4ebe-83e9-964a1e96260d",
+        "posting_date": "2026-11-07",
+        "posting_time": "6:37:17.442922",
+        "rate_record": {
+         "base": 2300.0,
+         "effective_from": "2026-11-07 00:00:00",
+         "higher": 2320.0,
+         "name": "8u6cc64686",
+         "pos_profile": "C7 New Depo"
+        },
+        "rounded_total": 100.0,
+        "ruhee_c7_allocation_usd": 100.0,
+        "ruhee_c7_base": 2300.0,
+        "ruhee_c7_higher": 2320.0,
+        "ruhee_c7_hold": null,
+        "ruhee_c7_issued_at": "2026-11-07T06:36:38.828+01:00",
+        "ruhee_c7_issued_at_local": "2026-11-07 06:36:38.828000",
+        "ruhee_c7_rate": "8u6cc64686",
+        "ruhee_c7_tender_cdf": 232000.0,
+        "stock_ledger_entries": 1
+       }
+      ],
+      "ledger": [
+       {
+        "creation": "2026-11-07 06:37:16.910095",
+        "error_message": null,
+        "invoice_name": "ACC-SINV-2026-00010",
+        "modified": "2026-11-07 06:37:18.082343",
+        "name": "ff279a792f92de7538975d799495221f60c9b55f5e2ef9f19a77a1b3e4f98aac",
+        "state": "POST_SUBMIT_DONE"
+       }
+      ],
+      "request_id": "inv-mw5z0s6j-381e0424-ab46-4ebe-83e9-964a1e96260d"
+     }
+    }
+   },
+   "harness_error": null
+  },
+  "recovery_offline_draft": {
+   "bills": {
+    "queued_bill": {
+     "errors": [
+      "docstatus 0 != 1",
+      "payment entries 0 != 1",
+      "PE GL Cash CDF - New Depo.debit None != 100.87",
+      "PE GL Cash CDF - New Depo.debit_fc None != 232000",
+      "PE GL Debtors.credit None != 100",
+      "PE GL Exchange income.credit None != 0.87"
+     ],
+     "pass": false,
+     "request_id": "inv-mw5yzvu6-a136e987-d058-48bf-b6db-4681ac13b634",
+     "saved": {
+      "invoice_count": 1,
+      "invoices": [
+       {
+        "base_grand_total": 100.0,
+        "base_paid_amount": 0.0,
+        "base_rounded_total": 100.0,
+        "conversion_rate": 1.0,
+        "created": "2026-11-07 06:36:09.205809",
+        "currency": "USD",
+        "digest": "0ac2e34bf7514757496ffab9b51590796d24020b8ac0dd01a8eb73b48dbffa2b",
+        "docstatus": 0,
+        "gl": {},
+        "grand_total": 100.0,
+        "invoice_payments": [],
+        "items": [
+         {
+          "amount": 100.0,
+          "base_amount": 100.0,
+          "item_code": "SPIKE-001",
+          "price_list_rate": 100.0,
+          "qty": 1.0,
+          "rate": 100.0,
+          "ruhee_c7_usd_price": 100.0
+         }
+        ],
+        "name": "ACC-SINV-2026-00009",
+        "outstanding_amount": 100.0,
+        "paid_amount": 0.0,
+        "payment_entries": [],
+        "posa_client_request_id": "inv-mw5yzvu6-a136e987-d058-48bf-b6db-4681ac13b634",
+        "posting_date": "2026-11-07",
+        "posting_time": "6:36:09.242939",
+        "rate_record": {
+         "base": 2300.0,
+         "effective_from": "2026-11-07 00:00:00",
+         "higher": 2320.0,
+         "name": "8u6cc64686",
+         "pos_profile": "C7 New Depo"
+        },
+        "rounded_total": 100.0,
+        "ruhee_c7_allocation_usd": 100.0,
+        "ruhee_c7_base": 2300.0,
+        "ruhee_c7_higher": 2320.0,
+        "ruhee_c7_hold": null,
+        "ruhee_c7_issued_at": "2026-11-07T06:35:56.911+01:00",
+        "ruhee_c7_issued_at_local": "2026-11-07 06:35:56.911000",
+        "ruhee_c7_rate": "8u6cc64686",
+        "ruhee_c7_tender_cdf": 232000.0,
+        "stock_ledger_entries": 0
+       }
+      ],
+      "ledger": [],
+      "request_id": "inv-mw5yzvu6-a136e987-d058-48bf-b6db-4681ac13b634"
+     }
+    }
+   },
+   "harness_error": null
+  },
+  "recovery_online": {
+   "bills": {
+    "failed_bill": {
+     "errors": [],
+     "pass": true,
+     "request_id": "inv-mw5yz6xi-2916c97a-c047-42e4-8e03-fffad6bbdfe5",
+     "saved": {
+      "invoice_count": 1,
+      "invoices": [
+       {
+        "base_grand_total": 100.0,
+        "base_paid_amount": 0.0,
+        "base_rounded_total": 100.0,
+        "conversion_rate": 1.0,
+        "created": "2026-11-07 06:35:14.825723",
+        "currency": "USD",
+        "digest": "66fa4d20f11616e8946a5c8308a9131f179427b1d8aa10ccb726d13fdb67af90",
+        "docstatus": 1,
+        "gl": {
+         "Cost of Goods Sold": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 80.0,
+          "debit_fc": 80.0
+         },
+         "Debtors": {
+          "credit": 0.0,
+          "credit_fc": 0.0,
+          "debit": 100.0,
+          "debit_fc": 100.0
+         },
+         "Sales": {
+          "credit": 100.0,
+          "credit_fc": 100.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         },
+         "Stock In Hand": {
+          "credit": 80.0,
+          "credit_fc": 80.0,
+          "debit": 0.0,
+          "debit_fc": 0.0
+         }
+        },
+        "grand_total": 100.0,
+        "invoice_payments": [],
+        "items": [
+         {
+          "amount": 100.0,
+          "base_amount": 100.0,
+          "item_code": "SPIKE-001",
+          "price_list_rate": 100.0,
+          "qty": 1.0,
+          "rate": 100.0,
+          "ruhee_c7_usd_price": 100.0
+         }
+        ],
+        "name": "ACC-SINV-2026-00008",
+        "outstanding_amount": 0.0,
+        "paid_amount": 0.0,
+        "payment_entries": [
+         {
+          "base_received_amount": 100.87,
+          "deductions": [
+           {
+            "account": "Exchange income - RS",
+            "amount": -0.87
+           }
+          ],
+          "docstatus": 1,
+          "gl": {
+           "Cash CDF - New Depo": {
+            "credit": 0.0,
+            "credit_fc": 0.0,
+            "debit": 100.87,
+            "debit_fc": 232000.0
+           },
+           "Debtors": {
+            "credit": 100.0,
+            "credit_fc": 100.0,
+            "debit": 0.0,
+            "debit_fc": 0.0
+           },
+           "Exchange income": {
+            "credit": 0.87,
+            "credit_fc": 0.87,
+            "debit": 0.0,
+            "debit_fc": 0.0
+           }
+          },
+          "name": "ACC-PAY-2026-00003",
+          "paid_amount": 100.0,
+          "received_amount": 232000.0,
+          "ruhee_c7_rate": "8u6cc64686",
+          "target_exchange_rate": 0.000434783
+         }
+        ],
+        "posa_client_request_id": "inv-mw5yz6xi-2916c97a-c047-42e4-8e03-fffad6bbdfe5",
+        "posting_date": "2026-11-07",
+        "posting_time": "6:35:33.600227",
+        "rate_record": {
+         "base": 2300.0,
+         "effective_from": "2026-11-07 00:00:00",
+         "higher": 2320.0,
+         "name": "8u6cc64686",
+         "pos_profile": "C7 New Depo"
+        },
+        "rounded_total": 100.0,
+        "ruhee_c7_allocation_usd": 100.0,
+        "ruhee_c7_base": 2300.0,
+        "ruhee_c7_higher": 2320.0,
+        "ruhee_c7_hold": null,
+        "ruhee_c7_issued_at": "2026-11-07T06:35:24.631+01:00",
+        "ruhee_c7_issued_at_local": "2026-11-07 06:35:24.631000",
+        "ruhee_c7_rate": "8u6cc64686",
+        "ruhee_c7_tender_cdf": 232000.0,
+        "stock_ledger_entries": 1
+       }
+      ],
+      "ledger": [
+       {
+        "creation": "2026-11-07 06:35:33.327282",
+        "error_message": null,
+        "invoice_name": "ACC-SINV-2026-00008",
+        "modified": "2026-11-07 06:35:34.208961",
+        "name": "e3ef4bbdd6b1302952c8e94304bb3bab062a0446fbe8aa3795325afd6d04b558",
+        "state": "POST_SUBMIT_DONE"
+       }
+      ],
+      "request_id": "inv-mw5yz6xi-2916c97a-c047-42e4-8e03-fffad6bbdfe5"
+     }
+    }
+   },
+   "harness_error": null
+  }
+ },
+ "site": "c7run1.localhost"
+}

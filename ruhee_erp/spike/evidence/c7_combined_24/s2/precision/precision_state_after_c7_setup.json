@@ -1,0 +1,35 @@
+{
+ "rate_fields": [
+  {
+   "column": "decimal(21,12)",
+   "declared_precision": "12",
+   "field": "Currency Exchange.exchange_rate",
+   "setter": "12"
+  },
+  {
+   "column": "decimal(21,12)",
+   "declared_precision": "12",
+   "field": "Sales Invoice.conversion_rate",
+   "setter": "12"
+  },
+  {
+   "column": "decimal(21,12)",
+   "declared_precision": "12",
+   "field": "Sales Invoice Payment.posa_company_exchange_rate",
+   "setter": "12"
+  },
+  {
+   "column": "decimal(21,12)",
+   "declared_precision": "12",
+   "field": "Payment Entry.target_exchange_rate",
+   "setter": "12"
+  },
+  {
+   "column": "decimal(21,12)",
+   "declared_precision": "12",
+   "field": "GL Entry.transaction_exchange_rate",
+   "setter": "12"
+  }
+ ],
+ "site": "c3-precision-review.localhost"
+}

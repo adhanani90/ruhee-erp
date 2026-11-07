@@ -1,0 +1,77 @@
+{
+ "scenario": "c3_02",
+ "harness_error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('Spike Item 100 USD', { exact: true }).first()\u001b[22m\n",
+ "queue": {
+  "databases": [
+   {
+    "name": "posawesome_offline",
+    "version": 180
+   }
+  ],
+  "tables": {
+   "posawesome_offline.write_queue": [],
+   "posawesome_offline.invoice_outbox": []
+  },
+  "local_storage_journal": [],
+  "store_rate_cache": [
+   {
+    "name": "imgdeq00e2",
+    "company": "Ruhee Spike",
+    "pos_profile": "C7 New Depo",
+    "store": "New Depo",
+    "effective_from": "2026-11-07 00:00:00",
+    "base": 2300,
+    "higher": 2320,
+    "fetched_at": "2026-11-07T06:47:13.066Z",
+    "source": "server"
+   }
+  ]
+ },
+ "http": [
+  {
+   "at": "2026-11-07T06:46:52.219Z",
+   "kind": "request",
+   "method": "ruhee_erp.spike.store_rate_hooks.get_store_rate",
+   "body": {
+    "pos_profile": "C7 New Depo"
+   }
+  },
+  {
+   "at": "2026-11-07T06:46:52.454Z",
+   "kind": "response",
+   "method": "ruhee_erp.spike.store_rate_hooks.get_store_rate",
+   "status": 200,
+   "body": {
+    "message": {
+     "name": "imgdeq00e2",
+     "found": true,
+     "base": 2300,
+     "higher": 2320
+    }
+   }
+  },
+  {
+   "at": "2026-11-07T06:47:13.050Z",
+   "kind": "request",
+   "method": "ruhee_erp.spike.store_rate_hooks.get_store_rate",
+   "body": {
+    "pos_profile": "C7 New Depo"
+   }
+  },
+  {
+   "at": "2026-11-07T06:47:13.070Z",
+   "kind": "response",
+   "method": "ruhee_erp.spike.store_rate_hooks.get_store_rate",
+   "status": 200,
+   "body": {
+    "message": {
+     "name": "imgdeq00e2",
+     "found": true,
+     "base": 2300,
+     "higher": 2320
+    }
+   }
+  }
+ ],
+ "console": []
+}

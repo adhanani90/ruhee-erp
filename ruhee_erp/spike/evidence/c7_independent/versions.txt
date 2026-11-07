@@ -1,0 +1,9 @@
+frappe 2fcb9397a1f1da353b21e53d2f97ec56653acd02 dirty=0
+erpnext 9cd11b19575bfc34f092a24f6c8b368c4dd69481 dirty=0
+posawesome 71fcee8ecb3391ebb0bbba8934ff2acc18bfbf99 dirty=0 bundle=1794004035820
+ruhee_erp bf8e3e939844c3fa85e250141e8b0d0f05dd90c9 dirty=69 src=/home/dhana/c7bench/apps/ruhee_erp
+Python 3.14.4
+mariadbd  Ver 11.8.6-MariaDB-5ubuntu0.1 from Ubuntu for debian-linux-gnu on x86_64 (-- Please help get to 10k stars at https://github.com/MariaDB/Server)
+v24.22.2
+scenario run at ruhee_erp 0a17e09e366fa7cb31ffc79a3fdfafe18503a20c dirty=0; setup ran at bf8e3e9 (setup/hooks code identical to 0a17e09)
+continuation at ruhee_erp 22aaa1aa5b200e308186f087d459c5c23d19b345 (harness-only change)

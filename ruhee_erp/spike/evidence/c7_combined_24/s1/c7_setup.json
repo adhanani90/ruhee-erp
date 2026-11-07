@@ -1,0 +1,39 @@
+{
+ "rate_record_print": {
+  "base": 2300,
+  "effective_from": "2026-11-07 00:00:00",
+  "higher": 2320,
+  "name": "imgdeq00e2"
+ },
+ "report": {
+  "created": [
+   "POS Awesome per-payment currency fields (installed patch, re-run)",
+   "DocType Ruhee C7 Store Rate",
+   "Sales Invoice.ruhee_c7_rate",
+   "Sales Invoice.ruhee_c7_base",
+   "Sales Invoice.ruhee_c7_higher",
+   "Sales Invoice.ruhee_c7_issued_at",
+   "Sales Invoice.ruhee_c7_issued_at_local",
+   "Sales Invoice.ruhee_c7_hold",
+   "Sales Invoice.ruhee_c7_tender_cdf",
+   "Sales Invoice.ruhee_c7_allocation_usd",
+   "Sales Invoice Item.ruhee_c7_usd_price",
+   "Payment Entry.ruhee_c7_rate",
+   "Payment Entry.ruhee_c7_tender_cdf",
+   "Payment Entry.ruhee_c7_allocation_usd",
+   "POS Profile.ruhee_c7_store_rate",
+   "POS Profile C7 New Depo (copy of New Depo)",
+   "Currency Exchange USD->CDF 2026-11-07 = 9999 (12 places)",
+   "Currency Exchange CDF->USD 2026-11-07 = 0.000100010001 (12 places)",
+   "Ruhee C7 Store Rate imgdeq00e2: 2300/2320 from 2026-11-07 00:00",
+   "Item C7-UNIT-3200",
+   "Item Price C7-UNIT-3200 Standard Selling $3,200.00",
+   "Stock Entry MAT-STE-2026-00001 (Material Receipt, invented): ['SPIKE-001', 'C7-UNIT-3200']",
+   "facturier password and terminal PIN, in site private/c7_secrets.json (mode 600)",
+   "POS Opening Shift POSA-OS-26-0000001 for facturier.spike@example.com"
+  ],
+  "existing": [],
+  "site": "c3-precision-review.localhost",
+  "test_date": "2026-11-07"
+ }
+}

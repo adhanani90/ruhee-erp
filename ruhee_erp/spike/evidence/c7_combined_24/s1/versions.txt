@@ -1,0 +1,7 @@
+frappe 2fcb9397a1f1da353b21e53d2f97ec56653acd02 dirty=0
+erpnext 9cd11b19575bfc34f092a24f6c8b368c4dd69481 dirty=0
+posawesome 71fcee8ecb3391ebb0bbba8934ff2acc18bfbf99 dirty=0 bundle=1794032729238
+ruhee_erp 054d9c6dd72234e17cae207185ed473e020b37c3 dirty=0 src=/home/dhana/c7bench/src/ruhee_erp_combo
+Python 3.14.4
+mariadbd  Ver 11.8.6-MariaDB-5ubuntu0.1 from Ubuntu for debian-linux-gnu on x86_64 (-- Please help get to 10k stars at https://github.com/MariaDB/Server)
+v24.22.2

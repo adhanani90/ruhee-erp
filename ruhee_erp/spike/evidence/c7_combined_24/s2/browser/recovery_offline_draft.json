@@ -1,0 +1,700 @@
+{
+ "scenario": "recovery_offline_draft",
+ "steps": [
+  {
+   "step": "queued_offline",
+   "sale": {
+    "scenario": "c4",
+    "inputs": {
+     "currency": "USD",
+     "item": "SPIKE-001",
+     "qty": 1,
+     "method": "Cash CDF",
+     "tender_currency": "CDF",
+     "typed_tender": "client default"
+    },
+    "displayed": {
+     "cart": {
+      "fields": {
+       "Search, scan or browse item": "",
+       "Items Group": "ALL",
+       "Price List": "Standard Selling",
+       "Customer": "",
+       "Currency": "USD",
+       "Price List USD to USD": "1",
+       "Conversion Rate": "1",
+       "Search items or barcode": "",
+       "Additional Discount": ""
+      },
+      "cart": [
+       "Name Rate Available QTY UOM C7 Unit 3200 USD $ 3200 200 Nos Spike Item 100 USD $ 100 9898 Nos Spike Paint 4L $ 25 0 Nos Spike Paint 20L $ 95 0 Nos Spike Cement Bag $ 12.5 0 Nos Spike Nails 1kg $ 3 0 Nos Spike Screws Box $ 4.5 0 Nos Spike Hammer $ 8 0 Nos Spike Wheelbarrow $ 65 0 Nos Spike PVC Pipe 3m $ 6 0 Nos Spike Tap $ 11 0 Nos Spike Cable 10m $ 14 0 Nos Spike Switch $ 2.5 0 Nos Spike Bulb $ 1.5 0 Nos Spike Padlock $ 7 0 Nos Spike Roofing Sheet $ 18 0 Nos Spike Tile Box $ 22 0 Nos Spike Glue 1L $ 5 0 Nos Spike Brush $ 2 0 Nos Spike Ladder $ 45 0 Nos Spike Rope 20m $ 6.5 0 Nos",
+       "Name QTY Rate Amount Actions Spike Item 100 USD $ 100.00 $ 100.00"
+      ],
+      "active_sale_total": "$100.00"
+     },
+     "payment": {
+      "fields": {
+       "Paid Amount": "100.00",
+       "Change (USD)": "0.00",
+       "Tender Currency": "USD",
+       "Amount": "0.00",
+       "Net Total": "$100.00",
+       "Tax and Charges": "$0.00",
+       "Total Amount": "$100.00",
+       "Item / Rate Discounts": "0.00",
+       "Additional Discount": "0.00",
+       "Total Discount": "0.00",
+       "Grand Total": "100.00",
+       "Rounded Total": "100.00",
+       "Sales Person": ""
+      },
+      "base_difference": "$ 0.00",
+      "methods": [
+       {
+        "name": "Cash USD",
+        "Tender Currency": "USD",
+        "Amount": "0.00",
+        "invoice_equivalent": "$0.00"
+       },
+       {
+        "name": "Cash CDF",
+        "Tender Currency": "CDF",
+        "Amount": "232,000.00",
+        "invoice_equivalent": "$100.00"
+       }
+      ]
+     }
+    },
+    "outbound": {
+     "currency": "USD",
+     "pos_profile": "C7 New Depo",
+     "conversion_rate": 1,
+     "posa_client_request_id": "inv-mw62fbmx-7061dbd1-ff4b-498c-b682-ee97c92b8606",
+     "ruhee_c7_rate": "4me5mj2m51",
+     "ruhee_c7_base": 2300,
+     "ruhee_c7_higher": 2320,
+     "ruhee_c7_issued_at": "2026-11-07T08:11:56.073+01:00",
+     "grand_total": 100,
+     "rounded_total": 100,
+     "items": [
+      {
+       "item_code": "SPIKE-001",
+       "qty": 1,
+       "price_list_rate": 100,
+       "rate": 100,
+       "amount": 100,
+       "ruhee_c7_usd_price": 100
+      }
+     ],
+     "payments": [
+      {
+       "mode_of_payment": "Cash CDF",
+       "amount": 100,
+       "base_amount": 100,
+       "posa_payment_currency": "CDF",
+       "posa_original_amount": 232000,
+       "posa_exchange_rate": 0.0004310344827586207,
+       "posa_rate_source": "store_rate"
+      }
+     ]
+    },
+    "outbound_source": "IndexedDB write_queue (offline save)",
+    "outbound_raw_keys": [
+     "data",
+     "invoice"
+    ],
+    "response": null,
+    "toasts": [
+     "1",
+     "2",
+     "Connection Lost\nYou are not connected to Internet. Retry after sometime."
+    ]
+   },
+   "queue": {
+    "databases": [
+     {
+      "name": "posawesome_offline",
+      "version": 180
+     }
+    ],
+    "tables": {
+     "posawesome_offline.write_queue": [
+      {
+       "queue_id": 1,
+       "status": "pending",
+       "retry_count": 0,
+       "last_error": null,
+       "created_at": "2026-11-07T07:11:56.089Z",
+       "request_id": "invoice:inv-mw62fbmx-7061dbd1-ff4b-498c-b682-ee97c92b8606",
+       "invoice": {
+        "currency": "USD",
+        "grand_total": 100,
+        "rounded_total": 100,
+        "ruhee_c7_rate": "4me5mj2m51",
+        "ruhee_c7_base": 2300,
+        "ruhee_c7_higher": 2320,
+        "ruhee_c7_issued_at": "2026-11-07T08:11:56.073+01:00",
+        "items": [
+         {
+          "item_code": "SPIKE-001",
+          "qty": 1,
+          "rate": 100,
+          "ruhee_c7_usd_price": 100
+         }
+        ],
+        "payments": [
+         {
+          "mode_of_payment": "Cash CDF",
+          "amount": 100,
+          "posa_payment_currency": "CDF",
+          "posa_original_amount": 232000
+         }
+        ]
+       }
+      }
+     ],
+     "posawesome_offline.invoice_outbox": []
+    },
+    "local_storage_journal": [],
+    "store_rate_cache": [
+     {
+      "name": "4me5mj2m51",
+      "company": "Ruhee Spike",
+      "pos_profile": "C7 New Depo",
+      "store": "New Depo",
+      "effective_from": "2026-11-07 00:00:00",
+      "base": 2300,
+      "higher": 2320,
+      "fetched_at": "2026-11-07T07:11:36.134Z",
+      "source": "server"
+     }
+    ]
+   }
+  },
+  {
+   "step": "inject",
+   "result": {
+    "inject_submit_failures": 1
+   }
+  },
+  {
+   "step": "after_sync",
+   "queue": {
+    "databases": [
+     {
+      "name": "posawesome_offline",
+      "version": 180
+     }
+    ],
+    "tables": {
+     "posawesome_offline.write_queue": [
+      {
+       "queue_id": 1,
+       "status": "synced",
+       "retry_count": 0,
+       "last_error": null,
+       "created_at": "2026-11-07T07:11:56.089Z",
+       "request_id": "invoice:inv-mw62fbmx-7061dbd1-ff4b-498c-b682-ee97c92b8606",
+       "invoice": {
+        "currency": "USD",
+        "grand_total": 100,
+        "rounded_total": 100,
+        "ruhee_c7_rate": "4me5mj2m51",
+        "ruhee_c7_base": 2300,
+        "ruhee_c7_higher": 2320,
+        "ruhee_c7_issued_at": "2026-11-07T08:11:56.073+01:00",
+        "items": [
+         {
+          "item_code": "SPIKE-001",
+          "qty": 1,
+          "rate": 100,
+          "ruhee_c7_usd_price": 100
+         }
+        ],
+        "payments": [
+         {
+          "mode_of_payment": "Cash CDF",
+          "amount": 100,
+          "posa_payment_currency": "CDF",
+          "posa_original_amount": 232000
+         }
+        ]
+       }
+      }
+     ],
+     "posawesome_offline.invoice_outbox": []
+    },
+    "local_storage_journal": [],
+    "store_rate_cache": [
+     {
+      "name": "4me5mj2m51",
+      "company": "Ruhee Spike",
+      "pos_profile": "C7 New Depo",
+      "store": "New Depo",
+      "effective_from": "2026-11-07 00:00:00",
+      "base": 2300,
+      "higher": 2320,
+      "fetched_at": "2026-11-07T07:11:36.134Z",
+      "source": "server"
+     }
+    ]
+   },
+   "http": [
+    {
+     "at": "2026-11-07T07:11:35.907Z",
+     "kind": "request",
+     "method": "ruhee_erp.spike.store_rate_hooks.get_store_rate",
+     "body": {
+      "pos_profile": "C7 New Depo"
+     }
+    },
+    {
+     "at": "2026-11-07T07:11:36.135Z",
+     "kind": "response",
+     "method": "ruhee_erp.spike.store_rate_hooks.get_store_rate",
+     "status": 200,
+     "body": {
+      "message": {
+       "name": "4me5mj2m51",
+       "found": true,
+       "base": 2300,
+       "higher": 2320
+      }
+     }
+    },
+    {
+     "at": "2026-11-07T07:12:08.060Z",
+     "kind": "request",
+     "method": "posawesome.posawesome.api.invoices.submit_invoice",
+     "body": {
+      "invoice": {
+       "doctype": "Sales Invoice",
+       "is_pos": 1,
+       "ignore_pricing_rule": 0,
+       "company": "Ruhee Spike",
+       "pos_profile": "C7 New Depo",
+       "posa_show_custom_name_marker_on_print": 0,
+       "update_stock": 1,
+       "currency": "USD",
+       "conversion_rate": 1,
+       "price_list_currency": "USD",
+       "plc_conversion_rate": 1,
+       "ruhee_c7_rate": "4me5mj2m51",
+       "ruhee_c7_base": 2300,
+       "ruhee_c7_higher": 2320,
+       "campaign": null,
+       "selling_price_list": "Standard Selling",
+       "naming_series": null,
+       "customer": "SPIKE-02 Client A",
+       "customer_name": "SPIKE-02 Client A",
+       "is_return": 0,
+       "items": [
+        {
+         "item_code": "SPIKE-001",
+         "item_name": "Spike Item 100 USD",
+         "name_overridden": 0,
+         "posa_row_id": "6pi681367v8",
+         "posa_offers": "[]",
+         "posa_offer_applied": 0,
+         "posa_is_offer": 0,
+         "posa_is_replace": null,
+         "is_free_item": 0,
+         "qty": 1,
+         "uom": "Nos",
+         "conversion_factor": 1,
+         "is_stock_item": 1,
+         "discount_percentage": 0,
+         "posa_notes": "",
+         "posa_delivery_date": null,
+         "ruhee_c7_usd_price": 100,
+         "rate": 100,
+         "base_rate": 100,
+         "price_list_rate": 100,
+         "base_price_list_rate": 100,
+         "amount": 100,
+         "base_amount": 100,
+         "discount_amount": 0,
+         "base_discount_amount": 0
+        }
+       ],
+       "packed_items": [],
+       "total": 100,
+       "net_total": 100,
+       "base_total": 100,
+       "base_net_total": 100,
+       "discount_amount": 0,
+       "base_discount_amount": 0,
+       "additional_discount_percentage": 0,
+       "apply_discount_on": null,
+       "pricing_rules": null,
+       "taxes": [],
+       "grand_total": 100,
+       "base_grand_total": 100,
+       "rounded_total": 100,
+       "base_rounded_total": 100,
+       "posa_pos_opening_shift": "POSA-OS-26-0000001",
+       "payments": [
+        {
+         "mode_of_payment": "Cash USD",
+         "amount": 0,
+         "default": 1,
+         "base_amount": 0,
+         "posa_default_payment_currency": "USD",
+         "posa_payment_currency": "USD",
+         "posa_original_amount": 0,
+         "posa_exchange_rate": 1,
+         "posa_company_exchange_rate": 1,
+         "posa_rate_date": "2026-11-07",
+         "posa_rate_source": "same_currency",
+         "_posa_rate_error": null,
+         "_posa_auto_remainder": false,
+         "posa_account_amount": 0
+        },
+        {
+         "mode_of_payment": "Cash CDF",
+         "amount": 100,
+         "default": 0,
+         "base_amount": 100,
+         "posa_default_payment_currency": "CDF",
+         "posa_payment_currency": "CDF",
+         "posa_original_amount": 232000,
+         "posa_exchange_rate": 0.0004310344827586207,
+         "posa_company_exchange_rate": 0.0004310344827586207,
+         "posa_rate_date": "2026-11-07",
+         "posa_rate_source": "store_rate",
+         "_posa_rate_error": null,
+         "_posa_auto_remainder": false
+        }
+       ],
+       "posa_change_returns": [],
+       "posa_change_returned": 0,
+       "posa_remaining_change": 0,
+       "posa_offers": [],
+       "posa_coupons": [],
+       "posa_delivery_charges": null,
+       "posa_delivery_charges_rate": 0,
+       "posa_notes": null,
+       "posa_authorization_code": null,
+       "posa_return_valid_upto": null,
+       "posting_date": "2026-11-07",
+       "ignore_default_fields": 1,
+       "posa_is_offer_applied": 0,
+       "posa_delivery_date": null,
+       "shipping_address_name": null,
+       "credit_change": 0,
+       "paid_change": 0,
+       "posa_client_request_id": "inv-mw62fbmx-7061dbd1-ff4b-498c-b682-ee97c92b8606",
+       "write_off_amount": 0,
+       "base_write_off_amount": 0,
+       "ruhee_c7_issued_at": "2026-11-07T08:11:56.073+01:00",
+       "loyalty_amount": 0,
+       "redeem_loyalty_points": 0,
+       "loyalty_points": 0
+      },
+      "data": {
+       "total_change": 0,
+       "paid_change": 0,
+       "credit_change": 0,
+       "is_credit_sale": 0,
+       "is_write_off_change": 0,
+       "write_off_amount": 0,
+       "redeemed_customer_credit": 0,
+       "customer_credit_dict": [],
+       "gift_card_redemptions": [],
+       "is_cashback": true,
+       "idempotency_key": "inv-mw62fbmx-7061dbd1-ff4b-498c-b682-ee97c92b8606",
+       "client_request_id": "inv-mw62fbmx-7061dbd1-ff4b-498c-b682-ee97c92b8606"
+      }
+     }
+    },
+    {
+     "at": "2026-11-07T07:12:08.099Z",
+     "kind": "request",
+     "method": "posawesome.posawesome.api.invoices.update_invoice",
+     "body": {
+      "data": {
+       "doctype": "Sales Invoice",
+       "is_pos": 1,
+       "ignore_pricing_rule": 0,
+       "company": "Ruhee Spike",
+       "pos_profile": "C7 New Depo",
+       "posa_show_custom_name_marker_on_print": 0,
+       "update_stock": 1,
+       "currency": "USD",
+       "conversion_rate": 1,
+       "price_list_currency": "USD",
+       "plc_conversion_rate": 1,
+       "ruhee_c7_rate": "4me5mj2m51",
+       "ruhee_c7_base": 2300,
+       "ruhee_c7_higher": 2320,
+       "campaign": null,
+       "selling_price_list": "Standard Selling",
+       "naming_series": null,
+       "customer": "SPIKE-02 Client A",
+       "customer_name": "SPIKE-02 Client A",
+       "is_return": 0,
+       "items": [
+        {
+         "item_code": "SPIKE-001",
+         "item_name": "Spike Item 100 USD",
+         "name_overridden": 0,
+         "posa_row_id": "6pi681367v8",
+         "posa_offers": "[]",
+         "posa_offer_applied": 0,
+         "posa_is_offer": 0,
+         "posa_is_replace": null,
+         "is_free_item": 0,
+         "qty": 1,
+         "uom": "Nos",
+         "conversion_factor": 1,
+         "is_stock_item": 1,
+         "discount_percentage": 0,
+         "posa_notes": "",
+         "posa_delivery_date": null,
+         "ruhee_c7_usd_price": 100,
+         "rate": 100,
+         "base_rate": 100,
+         "price_list_rate": 100,
+         "base_price_list_rate": 100,
+         "amount": 100,
+         "base_amount": 100,
+         "discount_amount": 0,
+         "base_discount_amount": 0
+        }
+       ],
+       "packed_items": [],
+       "total": 100,
+       "net_total": 100,
+       "base_total": 100,
+       "base_net_total": 100,
+       "discount_amount": 0,
+       "base_discount_amount": 0,
+       "additional_discount_percentage": 0,
+       "apply_discount_on": null,
+       "pricing_rules": null,
+       "taxes": [],
+       "grand_total": 100,
+       "base_grand_total": 100,
+       "rounded_total": 100,
+       "base_rounded_total": 100,
+       "posa_pos_opening_shift": "POSA-OS-26-0000001",
+       "payments": [
+        {
+         "mode_of_payment": "Cash USD",
+         "amount": 0,
+         "default": 1,
+         "base_amount": 0,
+         "posa_default_payment_currency": "USD",
+         "posa_payment_currency": "USD",
+         "posa_original_amount": 0,
+         "posa_exchange_rate": 1,
+         "posa_company_exchange_rate": 1,
+         "posa_rate_date": "2026-11-07",
+         "posa_rate_source": "same_currency",
+         "_posa_rate_error": null,
+         "_posa_auto_remainder": false,
+         "posa_account_amount": 0
+        },
+        {
+         "mode_of_payment": "Cash CDF",
+         "amount": 100,
+         "default": 0,
+         "base_amount": 100,
+         "posa_default_payment_currency": "CDF",
+         "posa_payment_currency": "CDF",
+         "posa_original_amount": 232000,
+         "posa_exchange_rate": 0.0004310344827586207,
+         "posa_company_exchange_rate": 0.0004310344827586207,
+         "posa_rate_date": "2026-11-07",
+         "posa_rate_source": "store_rate",
+         "_posa_rate_error": null,
+         "_posa_auto_remainder": false
+        }
+       ],
+       "posa_change_returns": [],
+       "posa_change_returned": 0,
+       "posa_remaining_change": 0,
+       "posa_offers": [],
+       "posa_coupons": [],
+       "posa_delivery_charges": null,
+       "posa_delivery_charges_rate": 0,
+       "posa_notes": null,
+       "posa_authorization_code": null,
+       "posa_return_valid_upto": null,
+       "posting_date": "2026-11-07",
+       "ignore_default_fields": 1,
+       "posa_is_offer_applied": 0,
+       "posa_delivery_date": null,
+       "shipping_address_name": null,
+       "credit_change": 0,
+       "paid_change": 0,
+       "posa_client_request_id": "inv-mw62fbmx-7061dbd1-ff4b-498c-b682-ee97c92b8606",
+       "write_off_amount": 0,
+       "base_write_off_amount": 0,
+       "ruhee_c7_issued_at": "2026-11-07T08:11:56.073+01:00",
+       "loyalty_amount": 0,
+       "redeem_loyalty_points": 0,
+       "loyalty_points": 0
+      }
+     }
+    },
+    {
+     "at": "2026-11-07T07:12:08.100Z",
+     "kind": "response",
+     "method": "posawesome.posawesome.api.invoices.submit_invoice",
+     "status": 417,
+     "body": {
+      "exc_type": "ValidationError",
+      "server_messages": [
+       "Essai C7 : échec de validation provoqué (récupérable)."
+      ]
+     }
+    },
+    {
+     "at": "2026-11-07T07:12:08.359Z",
+     "kind": "response",
+     "method": "posawesome.posawesome.api.invoices.update_invoice",
+     "status": 200,
+     "body": {
+      "message": {
+       "name": "ACC-SINV-2026-00003",
+       "docstatus": 0,
+       "status": "Draft",
+       "conversion_rate": 1,
+       "grand_total": 100,
+       "ruhee_c7_rate": "4me5mj2m51"
+      },
+      "server_messages": [
+       "Payment methods refreshed. Please review before proceeding."
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "step": "after_browser_restart",
+   "queue": {
+    "databases": [
+     {
+      "name": "posawesome_offline",
+      "version": 180
+     }
+    ],
+    "tables": {
+     "posawesome_offline.write_queue": [
+      {
+       "queue_id": 1,
+       "status": "synced",
+       "retry_count": 0,
+       "last_error": null,
+       "created_at": "2026-11-07T07:11:56.089Z",
+       "request_id": "invoice:inv-mw62fbmx-7061dbd1-ff4b-498c-b682-ee97c92b8606",
+       "invoice": {
+        "currency": "USD",
+        "grand_total": 100,
+        "rounded_total": 100,
+        "ruhee_c7_rate": "4me5mj2m51",
+        "ruhee_c7_base": 2300,
+        "ruhee_c7_higher": 2320,
+        "ruhee_c7_issued_at": "2026-11-07T08:11:56.073+01:00",
+        "items": [
+         {
+          "item_code": "SPIKE-001",
+          "qty": 1,
+          "rate": 100,
+          "ruhee_c7_usd_price": 100
+         }
+        ],
+        "payments": [
+         {
+          "mode_of_payment": "Cash CDF",
+          "amount": 100,
+          "posa_payment_currency": "CDF",
+          "posa_original_amount": 232000
+         }
+        ]
+       }
+      }
+     ],
+     "posawesome_offline.invoice_outbox": []
+    },
+    "local_storage_journal": [],
+    "store_rate_cache": [
+     {
+      "name": "4me5mj2m51",
+      "company": "Ruhee Spike",
+      "pos_profile": "C7 New Depo",
+      "store": "New Depo",
+      "effective_from": "2026-11-07 00:00:00",
+      "base": 2300,
+      "higher": 2320,
+      "fetched_at": "2026-11-07T07:11:36.134Z",
+      "source": "server"
+     }
+    ]
+   }
+  }
+ ],
+ "queue": {
+  "databases": [
+   {
+    "name": "posawesome_offline",
+    "version": 180
+   }
+  ],
+  "tables": {
+   "posawesome_offline.write_queue": [
+    {
+     "queue_id": 1,
+     "status": "synced",
+     "retry_count": 0,
+     "last_error": null,
+     "created_at": "2026-11-07T07:11:56.089Z",
+     "request_id": "invoice:inv-mw62fbmx-7061dbd1-ff4b-498c-b682-ee97c92b8606",
+     "invoice": {
+      "currency": "USD",
+      "grand_total": 100,
+      "rounded_total": 100,
+      "ruhee_c7_rate": "4me5mj2m51",
+      "ruhee_c7_base": 2300,
+      "ruhee_c7_higher": 2320,
+      "ruhee_c7_issued_at": "2026-11-07T08:11:56.073+01:00",
+      "items": [
+       {
+        "item_code": "SPIKE-001",
+        "qty": 1,
+        "rate": 100,
+        "ruhee_c7_usd_price": 100
+       }
+      ],
+      "payments": [
+       {
+        "mode_of_payment": "Cash CDF",
+        "amount": 100,
+        "posa_payment_currency": "CDF",
+        "posa_original_amount": 232000
+       }
+      ]
+     }
+    }
+   ],
+   "posawesome_offline.invoice_outbox": []
+  },
+  "local_storage_journal": [],
+  "store_rate_cache": [
+   {
+    "name": "4me5mj2m51",
+    "company": "Ruhee Spike",
+    "pos_profile": "C7 New Depo",
+    "store": "New Depo",
+    "effective_from": "2026-11-07 00:00:00",
+    "base": 2300,
+    "higher": 2320,
+    "fetched_at": "2026-11-07T07:11:36.134Z",
+    "source": "server"
+   }
+  ]
+ },
+ "http": [],
+ "console": []
+}

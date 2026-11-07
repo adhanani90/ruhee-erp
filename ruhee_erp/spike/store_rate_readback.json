@@ -1,0 +1,53 @@
+{
+  "captured_at": "2026-11-06 08:30:40.044748",
+  "checks": [
+    {
+      "case": "C3-new",
+      "typed_dispatch_replay": true,
+      "unchanged": true
+    },
+    {
+      "case": "C3-existing",
+      "typed_dispatch_replay": true,
+      "unchanged": true
+    },
+    {
+      "case": "C4-new",
+      "typed_dispatch_replay": true,
+      "unchanged": true
+    },
+    {
+      "case": "C4-existing",
+      "typed_dispatch_replay": true,
+      "unchanged": true
+    },
+    {
+      "case": "C5-new",
+      "typed_dispatch_replay": true,
+      "unchanged": true
+    },
+    {
+      "case": "C5-existing",
+      "typed_dispatch_replay": true,
+      "unchanged": true
+    }
+  ],
+  "preexisting_controls_read_only": [
+    {
+      "grand_total": 230000.0,
+      "name": "ACC-SINV-2026-00007",
+      "rate": 0.000434782609
+    },
+    {
+      "grand_total": 23000000.0,
+      "name": "ACC-SINV-2026-00008",
+      "rate": 0.000434782609
+    },
+    {
+      "grand_total": 230000.0,
+      "name": "ACC-SINV-2026-00009",
+      "rate": 0.000434782609
+    }
+  ],
+  "site": "m105.localhost"
+}

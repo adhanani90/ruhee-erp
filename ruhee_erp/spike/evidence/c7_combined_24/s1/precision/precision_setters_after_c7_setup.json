@@ -1,0 +1,27 @@
+[
+ {
+  "doc_type": "Payment Entry",
+  "field_name": "target_exchange_rate",
+  "value": "12"
+ },
+ {
+  "doc_type": "GL Entry",
+  "field_name": "transaction_exchange_rate",
+  "value": "12"
+ },
+ {
+  "doc_type": "Sales Invoice Payment",
+  "field_name": "posa_company_exchange_rate",
+  "value": "12"
+ },
+ {
+  "doc_type": "Sales Invoice",
+  "field_name": "conversion_rate",
+  "value": "12"
+ },
+ {
+  "doc_type": "Currency Exchange",
+  "field_name": "exchange_rate",
+  "value": "12"
+ }
+]
