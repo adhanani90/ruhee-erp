@@ -1057,6 +1057,14 @@ async function main() {
   const session = await open();
   log("login", await login(session.page));
   await unlock(session.page);
+  // A fresh browser profile downloads the item catalogue in the background first.
+  await session.page
+    .waitForFunction(
+      () => /Spike Item 100 USD/.test(document.body.innerText),
+      null,
+      { timeout: 300000 }
+    )
+    .catch(() => log("item catalogue not visible after 5 minutes"));
   const results = [];
   for (const name of scenarios) {
     log("scenario", name);
