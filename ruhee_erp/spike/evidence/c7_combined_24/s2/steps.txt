@@ -1,0 +1,32 @@
+### 2026-11-07T02:04:11-05:00 versions
+frappe 2fcb9397a1f1da353b21e53d2f97ec56653acd02 dirty=0
+erpnext 9cd11b19575bfc34f092a24f6c8b368c4dd69481 dirty=0
+posawesome 71fcee8ecb3391ebb0bbba8934ff2acc18bfbf99 dirty=0 bundle=1794032729238
+ruhee_erp 054d9c6dd72234e17cae207185ed473e020b37c3 dirty=0 src=/home/dhana/c7bench/src/ruhee_erp_combo
+### 2026-11-07T02:04:11-05:00 new-site c3-precision-review.localhost (sites-combo2)
+### 2026-11-07T02:05:12-05:00 install-app erpnext
+### 2026-11-07T02:07:14-05:00 install-app posawesome
+### 2026-11-07T02:08:07-05:00 install-app ruhee_erp
+### 2026-11-07T02:08:10-05:00 M1-03 setup_spike.run
+### 2026-11-07T02:09:06-05:00 POS Awesome add_per_payment_multi_currency_fields.execute
+### 2026-11-07T02:09:13-05:00 PR #24 precision
+### 2026-11-07T02:09:13-05:00 pr24 default_columns
+default_columns exit=0
+### 2026-11-07T02:09:14-05:00 pr24 default_trace
+default_trace exit=0
+### 2026-11-07T02:09:15-05:00 pr24 default_precision_state
+default_precision_state exit=0
+### 2026-11-07T02:09:17-05:00 pr24 audit_before
+audit_before exit=0
+### 2026-11-07T02:09:18-05:00 pr24 precision_run
+precision_run exit=0
+### 2026-11-07T02:09:20-05:00 pr24 audit_after
+audit_after exit=0
+### 2026-11-07T02:09:21-05:00 pr24 inspect
+inspect exit=0
+### 2026-11-07T02:09:22-05:00 pr24 applied_columns
+applied_columns exit=0
+### 2026-11-07T02:09:23-05:00 pr24 idempotence
+idempotence exit=0
+### 2026-11-07T02:09:25-05:00 C7 store_rate_setup.run
+### 2026-11-07T02:09:38-05:00 done setup

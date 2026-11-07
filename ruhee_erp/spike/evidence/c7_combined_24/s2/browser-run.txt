@@ -1,0 +1,96 @@
+2026-11-07T07:10:06.873Z login 200
+2026-11-07T07:10:31.139Z scenario c4
+2026-11-07T07:11:05.419Z scenario c4_large
+2026-11-07T07:11:37.759Z scenario recovery_offline_draft
+[
+ {
+  "scenario": "c4",
+  "response": {
+   "message": {
+    "name": "ACC-SINV-2026-00001",
+    "docstatus": 1,
+    "status": 1
+   }
+  },
+  "payload": {
+   "currency": "USD",
+   "pos_profile": "C7 New Depo",
+   "conversion_rate": 1,
+   "posa_client_request_id": "inv-mw62dxsi-dd5e3b8e-ee0a-4aaf-9033-dbefe162f2e6",
+   "ruhee_c7_rate": "4me5mj2m51",
+   "ruhee_c7_base": 2300,
+   "ruhee_c7_higher": 2320,
+   "ruhee_c7_issued_at": "2026-11-07T08:10:51.475+01:00",
+   "grand_total": 100,
+   "rounded_total": 100,
+   "items": [
+    {
+     "item_code": "SPIKE-001",
+     "qty": 1,
+     "price_list_rate": 100,
+     "rate": 100,
+     "amount": 100,
+     "ruhee_c7_usd_price": 100
+    }
+   ],
+   "payments": [
+    {
+     "mode_of_payment": "Cash CDF",
+     "amount": 100,
+     "base_amount": 100,
+     "posa_payment_currency": "CDF",
+     "posa_original_amount": 232000,
+     "posa_exchange_rate": 0.0004310344827586207,
+     "posa_rate_source": "store_rate"
+    }
+   ]
+  }
+ },
+ {
+  "scenario": "c4_large",
+  "response": {
+   "message": {
+    "name": "ACC-SINV-2026-00002",
+    "docstatus": 1,
+    "status": 1
+   }
+  },
+  "payload": {
+   "currency": "USD",
+   "pos_profile": "C7 New Depo",
+   "conversion_rate": 1,
+   "posa_client_request_id": "inv-mw62erpu-2bbc4760-80ce-4dc5-a020-d3341b46670e",
+   "ruhee_c7_rate": "4me5mj2m51",
+   "ruhee_c7_base": 2300,
+   "ruhee_c7_higher": 2320,
+   "ruhee_c7_issued_at": "2026-11-07T08:11:30.259+01:00",
+   "grand_total": 10000,
+   "rounded_total": 10000,
+   "items": [
+    {
+     "item_code": "SPIKE-001",
+     "qty": 100,
+     "price_list_rate": 100,
+     "rate": 100,
+     "amount": 10000,
+     "ruhee_c7_usd_price": 100
+    }
+   ],
+   "payments": [
+    {
+     "mode_of_payment": "Cash CDF",
+     "amount": 10000,
+     "base_amount": 10000,
+     "posa_payment_currency": "CDF",
+     "posa_original_amount": 23200000,
+     "posa_exchange_rate": 0.0004310344827586207,
+     "posa_rate_source": "store_rate"
+    }
+   ]
+  }
+ },
+ {
+  "scenario": "recovery_offline_draft"
+ }
+]
+browser exit=0

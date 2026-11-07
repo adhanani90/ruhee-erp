@@ -1,0 +1,42 @@
+### 2026-11-07T01:32:36-05:00 versions
+frappe 2fcb9397a1f1da353b21e53d2f97ec56653acd02 dirty=0
+erpnext 9cd11b19575bfc34f092a24f6c8b368c4dd69481 dirty=0
+posawesome 71fcee8ecb3391ebb0bbba8934ff2acc18bfbf99 dirty=0 bundle=1794032729238
+ruhee_erp 054d9c6dd72234e17cae207185ed473e020b37c3 dirty=0 src=/home/dhana/c7bench/src/ruhee_erp_combo
+### 2026-11-07T01:32:37-05:00 new-site c3-precision-review.localhost
+### 2026-11-07T01:33:36-05:00 install-app erpnext
+### 2026-11-07T01:35:39-05:00 install-app posawesome
+### 2026-11-07T01:36:27-05:00 install-app ruhee_erp
+### 2026-11-07T01:36:30-05:00 M1-03 setup_spike.run
+### 2026-11-07T01:37:07-05:00 PR #24 precision: bash /home/dhana/c7bench/pr24-phase.sh c3-precision-review.localhost /home/dhana/c7bench/runs/combined-24-8ba5b32-25-7f91668
+### 2026-11-07T01:37:07-05:00 pr24 default_columns
+default_columns exit=0
+### 2026-11-07T01:37:08-05:00 pr24 default_trace
+default_trace exit=0
+### 2026-11-07T01:37:09-05:00 pr24 default_precision_state
+default_precision_state exit=1
+### 2026-11-07T01:38:06-05:00 continuation: POS Awesome add_per_payment_multi_currency_fields.execute (fresh install marked it done without running it)
+patch exit=0
+### 2026-11-07T01:38:10-05:00 PR #24 precision (rerun after POS patch)
+### 2026-11-07T01:38:10-05:00 pr24 default_columns
+default_columns exit=0
+### 2026-11-07T01:38:11-05:00 pr24 default_trace
+default_trace exit=0
+### 2026-11-07T01:38:11-05:00 pr24 default_precision_state
+default_precision_state exit=0
+### 2026-11-07T01:38:12-05:00 pr24 audit_before
+audit_before exit=0
+### 2026-11-07T01:38:13-05:00 pr24 precision_run
+precision_run exit=0
+### 2026-11-07T01:38:15-05:00 pr24 audit_after
+audit_after exit=0
+### 2026-11-07T01:38:15-05:00 pr24 inspect
+inspect exit=0
+### 2026-11-07T01:38:16-05:00 pr24 applied_columns
+applied_columns exit=0
+### 2026-11-07T01:38:17-05:00 pr24 idempotence
+idempotence exit=0
+### 2026-11-07T01:38:46-05:00 C7 store_rate_setup.run
+setup exit=0
+### 2026-11-07T01:38:52-05:00 precision as installed
+### 2026-11-07T01:38:54-05:00 done setup

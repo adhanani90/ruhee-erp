@@ -1,0 +1,224 @@
+{
+ "app_commits": {
+  "erpnext": "9cd11b19575bfc34f092a24f6c8b368c4dd69481",
+  "frappe": "2fcb9397a1f1da353b21e53d2f97ec56653acd02",
+  "posawesome": "71fcee8ecb3391ebb0bbba8934ff2acc18bfbf99",
+  "ruhee_erp": "054d9c6dd72234e17cae207185ed473e020b37c3"
+ },
+ "existing_records_equal_across_pr24": {
+  "payments": {
+   "count": 0,
+   "equal": true
+  },
+  "rates": {
+   "count": 2,
+   "equal": true
+  },
+  "snapshots": {
+   "count": 0,
+   "equal": true
+  },
+  "store_rates": {
+   "count": 0,
+   "equal": true
+  }
+ },
+ "five_fields": {
+  "Currency Exchange.exchange_rate": {
+   "after_browser_run": {
+    "column": "decimal(21,12)",
+    "declared_precision": "12",
+    "setter": "12"
+   },
+   "after_c7_setup": {
+    "column": "decimal(21,12)",
+    "declared_precision": "12",
+    "setter": "12"
+   },
+   "after_pr24_run": {
+    "column": "decimal(21,12)"
+   },
+   "default": {
+    "column": "decimal(21,9)",
+    "declared_precision": "9",
+    "setter": null
+   }
+  },
+  "GL Entry.transaction_exchange_rate": {
+   "after_browser_run": {
+    "column": "decimal(21,12)",
+    "declared_precision": "12",
+    "setter": "12"
+   },
+   "after_c7_setup": {
+    "column": "decimal(21,12)",
+    "declared_precision": "12",
+    "setter": "12"
+   },
+   "after_pr24_run": {
+    "column": "decimal(21,12)"
+   },
+   "default": {
+    "column": "decimal(21,9)",
+    "declared_precision": "9",
+    "setter": null
+   }
+  },
+  "Payment Entry.target_exchange_rate": {
+   "after_browser_run": {
+    "column": "decimal(21,12)",
+    "declared_precision": "12",
+    "setter": "12"
+   },
+   "after_c7_setup": {
+    "column": "decimal(21,12)",
+    "declared_precision": "12",
+    "setter": "12"
+   },
+   "after_pr24_run": {
+    "column": "decimal(21,12)"
+   },
+   "default": {
+    "column": "decimal(21,9)",
+    "declared_precision": "9",
+    "setter": null
+   }
+  },
+  "Sales Invoice Payment.posa_company_exchange_rate": {
+   "after_browser_run": {
+    "column": "decimal(21,12)",
+    "declared_precision": "12",
+    "setter": "12"
+   },
+   "after_c7_setup": {
+    "column": "decimal(21,12)",
+    "declared_precision": "12",
+    "setter": "12"
+   },
+   "after_pr24_run": {
+    "column": "decimal(21,12)"
+   },
+   "default": {
+    "column": "decimal(21,9)",
+    "declared_precision": "",
+    "setter": null
+   }
+  },
+  "Sales Invoice.conversion_rate": {
+   "after_browser_run": {
+    "column": "decimal(21,12)",
+    "declared_precision": "12",
+    "setter": "12"
+   },
+   "after_c7_setup": {
+    "column": "decimal(21,12)",
+    "declared_precision": "12",
+    "setter": "12"
+   },
+   "after_pr24_run": {
+    "column": "decimal(21,12)"
+   },
+   "default": {
+    "column": "decimal(21,9)",
+    "declared_precision": "9",
+    "setter": null
+   }
+  }
+ },
+ "pr24_inspect_after_browser": [
+  {
+   "column": "decimal(21,12)",
+   "doctype": "Currency Exchange",
+   "field": "exchange_rate",
+   "precision": "12"
+  },
+  {
+   "column": "decimal(21,12)",
+   "doctype": "Sales Invoice",
+   "field": "conversion_rate",
+   "precision": "12"
+  },
+  {
+   "column": "decimal(21,12)",
+   "doctype": "Sales Invoice Payment",
+   "field": "posa_company_exchange_rate",
+   "precision": "12"
+  },
+  {
+   "column": "decimal(21,12)",
+   "doctype": "GL Entry",
+   "field": "transaction_exchange_rate",
+   "precision": "12"
+  },
+  {
+   "column": "decimal(21,12)",
+   "doctype": "Payment Entry",
+   "field": "target_exchange_rate",
+   "precision": "12"
+  }
+ ],
+ "pr24_preflight_operations": {
+  "Currency Exchange": [
+   {
+    "action": "change_type",
+    "field": "exchange_rate"
+   }
+  ],
+  "GL Entry": [
+   {
+    "action": "change_type",
+    "field": "transaction_exchange_rate"
+   }
+  ],
+  "Payment Entry": [
+   {
+    "action": "change_type",
+    "field": "target_exchange_rate"
+   }
+  ],
+  "Sales Invoice": [
+   {
+    "action": "change_type",
+    "field": "conversion_rate"
+   }
+  ],
+  "Sales Invoice Payment": [
+   {
+    "action": "change_type",
+    "field": "posa_company_exchange_rate"
+   }
+  ]
+ },
+ "pr24_run_changes": [
+  "Property Setter: Currency Exchange.exchange_rate",
+  "Schema sync: Currency Exchange",
+  "Property Setter: Sales Invoice.conversion_rate",
+  "Schema sync: Sales Invoice",
+  "Property Setter: Sales Invoice Payment.posa_company_exchange_rate",
+  "Schema sync: Sales Invoice Payment",
+  "Property Setter: GL Entry.transaction_exchange_rate",
+  "Schema sync: GL Entry",
+  "Property Setter: Payment Entry.target_exchange_rate",
+  "Schema sync: Payment Entry"
+ ],
+ "pr24_second_run_changes": [],
+ "site_label": "S2",
+ "unchanged_fields": {
+  "GL Entry.reporting_currency_exchange_rate": [
+   "decimal(21,9)",
+   "decimal(21,9)"
+  ],
+  "Payment Entry.source_exchange_rate": [
+   "decimal(21,9)",
+   "decimal(21,9)"
+  ],
+  "Sales Invoice Payment.posa_exchange_rate": [
+   "decimal(21,9)",
+   "decimal(21,9)"
+  ],
+  "Sales Invoice.plc_conversion_rate": [
+   "decimal(21,9)",
+   "decimal(21,9)"
+  ]
+ }
+}

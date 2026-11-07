@@ -1,0 +1,62 @@
+[
+ {
+  "column": "decimal(21,9)",
+  "doctype": "Currency Exchange",
+  "field": "exchange_rate",
+  "precision": "9"
+ },
+ {
+  "column": "decimal(21,9)",
+  "doctype": "Sales Invoice",
+  "field": "conversion_rate",
+  "precision": "9"
+ },
+ {
+  "column": null,
+  "doctype": "Sales Invoice Payment",
+  "field": "posa_company_exchange_rate",
+  "precision": null
+ },
+ {
+  "column": "decimal(21,9)",
+  "doctype": "GL Entry",
+  "field": "transaction_exchange_rate",
+  "precision": "9"
+ },
+ {
+  "column": "decimal(21,9)",
+  "doctype": "Payment Entry",
+  "field": "target_exchange_rate",
+  "precision": "9"
+ },
+ {
+  "column": "decimal(21,9)",
+  "doctype": "Sales Invoice",
+  "field": "plc_conversion_rate",
+  "precision": "9"
+ },
+ {
+  "column": null,
+  "doctype": "Sales Invoice Payment",
+  "field": "posa_exchange_rate",
+  "precision": null
+ },
+ {
+  "column": "decimal(21,9)",
+  "doctype": "Payment Entry",
+  "field": "source_exchange_rate",
+  "precision": "9"
+ },
+ {
+  "column": null,
+  "doctype": "Sales Invoice Advance",
+  "field": "exchange_rate",
+  "precision": null
+ },
+ {
+  "column": "decimal(21,9)",
+  "doctype": "GL Entry",
+  "field": "reporting_currency_exchange_rate",
+  "precision": "9"
+ }
+]

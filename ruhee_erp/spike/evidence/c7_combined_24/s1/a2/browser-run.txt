@@ -1,0 +1,384 @@
+2026-11-07T06:50:31.793Z login 200
+2026-11-07T06:50:39.955Z scenario c3_01
+2026-11-07T06:51:05.144Z scenario c3_02
+2026-11-07T06:51:32.408Z scenario c4
+2026-11-07T06:52:00.139Z scenario c4_large
+2026-11-07T06:52:33.206Z scenario c5
+2026-11-07T06:53:03.691Z scenario line_3200
+2026-11-07T06:53:48.992Z scenario diag_240k
+2026-11-07T06:54:17.180Z scenario b_cdf_bill_usd_tender
+2026-11-07T06:54:41.978Z scenario recovery_online
+2026-11-07T06:55:15.933Z scenario recovery_offline_draft
+2026-11-07T06:56:42.627Z scenario recovery_network
+2026-11-07T06:57:47.731Z scenario lost_response
+2026-11-07T06:59:21.038Z scenario concurrent_replay
+2026-11-07T07:00:00.941Z scenario effective_time
+2026-11-07T07:02:06.486Z scenario client_settings
+[
+ {
+  "scenario": "c3_01",
+  "response": {
+   "message": {
+    "name": "ACC-SINV-2026-00004",
+    "docstatus": 1,
+    "status": 1
+   }
+  },
+  "payload": {
+   "currency": "CDF",
+   "pos_profile": "C7 New Depo",
+   "conversion_rate": 0.0004347826086956522,
+   "posa_client_request_id": "inv-mw61obxt-2664fded-39f0-4a66-8edf-5be5dca2f56a",
+   "ruhee_c7_rate": "imgdeq00e2",
+   "ruhee_c7_base": 2300,
+   "ruhee_c7_higher": 2320,
+   "ruhee_c7_issued_at": "2026-11-07T07:50:56.754+01:00",
+   "grand_total": 230000,
+   "rounded_total": 230000,
+   "items": [
+    {
+     "item_code": "SPIKE-001",
+     "qty": 1,
+     "price_list_rate": 230000,
+     "rate": 230000,
+     "amount": 230000,
+     "ruhee_c7_usd_price": 100
+    }
+   ],
+   "payments": [
+    {
+     "mode_of_payment": "Cash CDF",
+     "amount": 230000,
+     "base_amount": 100,
+     "posa_payment_currency": "CDF",
+     "posa_original_amount": 230000,
+     "posa_exchange_rate": 1,
+     "posa_rate_source": "same_currency"
+    }
+   ]
+  }
+ },
+ {
+  "scenario": "c3_02",
+  "response": {
+   "message": {
+    "name": "ACC-SINV-2026-00005",
+    "docstatus": 1,
+    "status": 1
+   }
+  },
+  "payload": {
+   "currency": "CDF",
+   "pos_profile": "C7 New Depo",
+   "conversion_rate": 0.0004347826086956522,
+   "posa_client_request_id": "inv-mw61ox8e-dcfb6ba5-03bc-4ff6-a239-d16ee507c2eb",
+   "ruhee_c7_rate": "imgdeq00e2",
+   "ruhee_c7_base": 2300,
+   "ruhee_c7_higher": 2320,
+   "ruhee_c7_issued_at": "2026-11-07T07:51:24.350+01:00",
+   "grand_total": 23000000,
+   "rounded_total": 23000000,
+   "items": [
+    {
+     "item_code": "SPIKE-001",
+     "qty": 100,
+     "price_list_rate": 230000,
+     "rate": 230000,
+     "amount": 23000000,
+     "ruhee_c7_usd_price": 100
+    }
+   ],
+   "payments": [
+    {
+     "mode_of_payment": "Cash CDF",
+     "amount": 23000000,
+     "base_amount": 10000,
+     "posa_payment_currency": "CDF",
+     "posa_original_amount": 23000000,
+     "posa_exchange_rate": 1,
+     "posa_rate_source": "same_currency"
+    }
+   ]
+  }
+ },
+ {
+  "scenario": "c4",
+  "response": {
+   "message": {
+    "name": "ACC-SINV-2026-00006",
+    "docstatus": 1,
+    "status": 1
+   }
+  },
+  "payload": {
+   "currency": "USD",
+   "pos_profile": "C7 New Depo",
+   "conversion_rate": 1,
+   "posa_client_request_id": "inv-mw61pibw-0ad882dd-ba50-498d-9b0e-88c896a8292a",
+   "ruhee_c7_rate": "imgdeq00e2",
+   "ruhee_c7_base": 2300,
+   "ruhee_c7_higher": 2320,
+   "ruhee_c7_issued_at": "2026-11-07T07:51:51.692+01:00",
+   "grand_total": 100,
+   "rounded_total": 100,
+   "items": [
+    {
+     "item_code": "SPIKE-001",
+     "qty": 1,
+     "price_list_rate": 100,
+     "rate": 100,
+     "amount": 100,
+     "ruhee_c7_usd_price": 100
+    }
+   ],
+   "payments": [
+    {
+     "mode_of_payment": "Cash CDF",
+     "amount": 100,
+     "base_amount": 100,
+     "posa_payment_currency": "CDF",
+     "posa_original_amount": 232000,
+     "posa_exchange_rate": 0.0004310344827586207,
+     "posa_rate_source": "store_rate"
+    }
+   ]
+  }
+ },
+ {
+  "scenario": "c4_large",
+  "response": {
+   "message": {
+    "name": "ACC-SINV-2026-00007",
+    "docstatus": 1,
+    "status": 1
+   }
+  },
+  "payload": {
+   "currency": "USD",
+   "pos_profile": "C7 New Depo",
+   "conversion_rate": 1,
+   "posa_client_request_id": "inv-mw61q5vd-e382d5d2-782c-4709-b6cb-ec9589d75251",
+   "ruhee_c7_rate": "imgdeq00e2",
+   "ruhee_c7_base": 2300,
+   "ruhee_c7_higher": 2320,
+   "ruhee_c7_issued_at": "2026-11-07T07:52:22.201+01:00",
+   "grand_total": 10000,
+   "rounded_total": 10000,
+   "items": [
+    {
+     "item_code": "SPIKE-001",
+     "qty": 100,
+     "price_list_rate": 100,
+     "rate": 100,
+     "amount": 10000,
+     "ruhee_c7_usd_price": 100
+    }
+   ],
+   "payments": [
+    {
+     "mode_of_payment": "Cash CDF",
+     "amount": 10000,
+     "base_amount": 10000,
+     "posa_payment_currency": "CDF",
+     "posa_original_amount": 23200000,
+     "posa_exchange_rate": 0.0004310344827586207,
+     "posa_rate_source": "store_rate"
+    }
+   ]
+  }
+ },
+ {
+  "scenario": "c5",
+  "response": {
+   "message": {
+    "name": "ACC-SINV-2026-00008",
+    "docstatus": 1,
+    "status": 1
+   }
+  },
+  "payload": {
+   "currency": "CDF",
+   "pos_profile": "C7 New Depo",
+   "conversion_rate": 0.0004347826086956522,
+   "posa_client_request_id": "inv-mw61qv8t-43aa19b4-db8c-4951-94bd-8803eee90f3e",
+   "ruhee_c7_rate": "imgdeq00e2",
+   "ruhee_c7_base": 2300,
+   "ruhee_c7_higher": 2320,
+   "ruhee_c7_issued_at": "2026-11-07T07:52:55.085+01:00",
+   "grand_total": 230000,
+   "rounded_total": 230000,
+   "items": [
+    {
+     "item_code": "SPIKE-001",
+     "qty": 1,
+     "price_list_rate": 230000,
+     "rate": 230000,
+     "amount": 230000,
+     "ruhee_c7_usd_price": 100
+    }
+   ],
+   "payments": [
+    {
+     "mode_of_payment": "Cash CDF",
+     "amount": 115000,
+     "base_amount": 50,
+     "posa_payment_currency": "CDF",
+     "posa_original_amount": 115000,
+     "posa_exchange_rate": 1,
+     "posa_rate_source": "same_currency"
+    }
+   ]
+  }
+ },
+ {
+  "scenario": "line_3200",
+  "response": {
+   "message": {
+    "name": "ACC-SINV-2026-00009",
+    "docstatus": 1,
+    "status": 1
+   }
+  },
+  "payload": {
+   "currency": "CDF",
+   "pos_profile": "C7 New Depo",
+   "conversion_rate": 0.0004347826086956522,
+   "posa_client_request_id": "inv-mw61rf85-bcb99bc3-2470-4b8e-9ddb-d27a8749f7c3",
+   "ruhee_c7_rate": "imgdeq00e2",
+   "ruhee_c7_base": 2300,
+   "ruhee_c7_higher": 2320,
+   "ruhee_c7_issued_at": "2026-11-07T07:53:20.981+01:00",
+   "grand_total": 7360000,
+   "rounded_total": 7360000,
+   "items": [
+    {
+     "item_code": "C7-UNIT-3200",
+     "qty": 1,
+     "price_list_rate": 7360000,
+     "rate": 7360000,
+     "amount": 7360000,
+     "ruhee_c7_usd_price": 3200
+    }
+   ],
+   "payments": [
+    {
+     "mode_of_payment": "Cash CDF",
+     "amount": 7360000,
+     "base_amount": 3200,
+     "posa_payment_currency": "CDF",
+     "posa_original_amount": 7360000,
+     "posa_exchange_rate": 1,
+     "posa_rate_source": "same_currency"
+    }
+   ]
+  }
+ },
+ {
+  "scenario": "diag_240k",
+  "response": {
+   "exc_type": "ValidationError",
+   "server_messages": [
+    "240000.0 FC couvrent 103.45 USD, plus que les 100.0 USD dus. Enregistrer le montant net ; la monnaie rendue se gère à la main."
+   ]
+  },
+  "payload": {
+   "currency": "USD",
+   "pos_profile": "C7 New Depo",
+   "conversion_rate": 1,
+   "posa_client_request_id": "inv-mw61shls-b29e2faf-83b7-4c78-8efa-44e74386b063",
+   "ruhee_c7_rate": "imgdeq00e2",
+   "ruhee_c7_base": 2300,
+   "ruhee_c7_higher": 2320,
+   "ruhee_c7_issued_at": "2026-11-07T07:54:10.721+01:00",
+   "grand_total": 100,
+   "rounded_total": 100,
+   "items": [
+    {
+     "item_code": "SPIKE-001",
+     "qty": 1,
+     "price_list_rate": 100,
+     "rate": 100,
+     "amount": 100,
+     "ruhee_c7_usd_price": 100
+    }
+   ],
+   "payments": [
+    {
+     "mode_of_payment": "Cash CDF",
+     "amount": 103.45,
+     "base_amount": 103.45,
+     "posa_payment_currency": "CDF",
+     "posa_original_amount": 240000,
+     "posa_exchange_rate": 0.0004310344827586207,
+     "posa_rate_source": "store_rate"
+    }
+   ]
+  }
+ },
+ {
+  "scenario": "b_cdf_bill_usd_tender",
+  "response": {
+   "message": {
+    "name": "ACC-SINV-2026-00011",
+    "docstatus": 1,
+    "status": 1
+   }
+  },
+  "payload": {
+   "currency": "CDF",
+   "pos_profile": "C7 New Depo",
+   "conversion_rate": 0.0004347826086956522,
+   "posa_client_request_id": "inv-mw61t0rz-1294e9fc-c7ce-4228-875c-0239162270d0",
+   "ruhee_c7_rate": "imgdeq00e2",
+   "ruhee_c7_base": 2300,
+   "ruhee_c7_higher": 2320,
+   "ruhee_c7_issued_at": "2026-11-07T07:54:35.567+01:00",
+   "grand_total": 230000,
+   "rounded_total": 230000,
+   "items": [
+    {
+     "item_code": "SPIKE-001",
+     "qty": 1,
+     "price_list_rate": 230000,
+     "rate": 230000,
+     "amount": 230000,
+     "ruhee_c7_usd_price": 100
+    }
+   ],
+   "payments": [
+    {
+     "mode_of_payment": "Cash USD",
+     "amount": 230000,
+     "base_amount": 100,
+     "posa_payment_currency": "USD",
+     "posa_original_amount": 100,
+     "posa_exchange_rate": 2300,
+     "posa_rate_source": "store_rate"
+    }
+   ]
+  }
+ },
+ {
+  "scenario": "recovery_online"
+ },
+ {
+  "scenario": "recovery_offline_draft",
+  "error": "TimeoutError: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('input[name=pos-terminal-unlock-pin]') to be visible\u001b[22m\n"
+ },
+ {
+  "scenario": "recovery_network"
+ },
+ {
+  "scenario": "lost_response"
+ },
+ {
+  "scenario": "concurrent_replay"
+ },
+ {
+  "scenario": "effective_time"
+ },
+ {
+  "scenario": "client_settings"
+ }
+]
+browser exit=0

@@ -1,0 +1,909 @@
+{
+ "clean_71fcee8_bundle_version": "1794032729238",
+ "equal": 150,
+ "files": 150,
+ "formal_run_bundle_version": "1794004035820",
+ "normalisation": "chunk-hash suffix -XXXXXXXX.js/.css -> -HASH, 13-digit version stamp -> VERSION",
+ "rows": [
+  {
+   "clean_71fcee8_build": "BarcodePrinting-fFt_C-1y.js",
+   "file": "js/BarcodePrinting.js",
+   "formal_run_build": "BarcodePrinting-VM5F7fTV.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "CashMovementView-BtgNTf-9.js",
+   "file": "js/CashMovementView.js",
+   "formal_run_build": "CashMovementView-BhY_N00p.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "ClosingDialog-CMUcbMzk.js",
+   "file": "js/ClosingDialog.js",
+   "formal_run_build": "ClosingDialog-BFhEDDIU.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "CustomerDisplay-DJhWSsvX.js",
+   "file": "js/CustomerDisplay.js",
+   "formal_run_build": "CustomerDisplay-aG14fHEV.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "CustomerDisplayLayout-efhDvDhH.js",
+   "file": "js/CustomerDisplayLayout.js",
+   "formal_run_build": "CustomerDisplayLayout-DoIbCnH4.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "DatabaseUsageGadget-C4pMYwtX.js",
+   "file": "js/DatabaseUsageGadget.js",
+   "formal_run_build": "DatabaseUsageGadget-BdceBv8i.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "DefaultLayout-BkdeAHNj.js",
+   "file": "js/DefaultLayout.js",
+   "formal_run_build": "DefaultLayout-Cwr3K7yj.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "GiftCardsView-BlUXEgOC.js",
+   "file": "js/GiftCardsView.js",
+   "formal_run_build": "GiftCardsView-DMOQBXx6.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "ItemsSelector-t2faFVp7.js",
+   "file": "js/ItemsSelector.js",
+   "formal_run_build": "ItemsSelector-DjH2miJ9.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "LoadingOverlay-BBUDKzb_.js",
+   "file": "js/LoadingOverlay.js",
+   "formal_run_build": "LoadingOverlay-yHJqtto0.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "PayView-Bj8FyOVg.js",
+   "file": "js/PayView.js",
+   "formal_run_build": "PayView-DNmT9nZK.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "Pos-CbKuvQ6J.js",
+   "file": "js/Pos.js",
+   "formal_run_build": "Pos-0ysuvRcz.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "PurchaseOrders-BTzBeqLj.js",
+   "file": "js/PurchaseOrders.js",
+   "formal_run_build": "PurchaseOrders-CLu-5lPR.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "Reports-wiFIhbIc.js",
+   "file": "js/Reports.js",
+   "formal_run_build": "Reports-CurzEC2K.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "ServerUsageGadget-CVdeWI5n.js",
+   "file": "js/ServerUsageGadget.js",
+   "formal_run_build": "ServerUsageGadget-uxvIqh3P.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "api-Ct6O2TOO.js",
+   "file": "js/api.js",
+   "formal_run_build": "api-Ct6O2TOO.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "branding-DKOgJMYf.js",
+   "file": "js/branding.js",
+   "formal_run_build": "branding-DKOgJMYf.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "browserCompatibility-DlyODFsY.js",
+   "file": "js/browserCompatibility.js",
+   "formal_run_build": "browserCompatibility-DlyODFsY.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "cash_movements-BDE6H6-c.js",
+   "file": "js/cash_movements.js",
+   "formal_run_build": "cash_movements-BGK3q7S9.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "employeeStore-CfoCalQy.js",
+   "file": "js/employeeStore.js",
+   "formal_run_build": "employeeStore-CfoCalQy.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "format-ptGhx187.js",
+   "file": "js/format.js",
+   "formal_run_build": "format-bsH0NE2m.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "invoiceOutbox-C8ZrkOC-.js",
+   "file": "js/invoiceOutbox.js",
+   "formal_run_build": "invoiceOutbox-BcLI2bUA.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "invoiceStore-BQq49Xek.js",
+   "file": "js/invoiceStore.js",
+   "formal_run_build": "invoiceStore-B0EnCTVl.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "JsBarcode.all.min.js",
+   "file": "js/libs/JsBarcode.all.min.js",
+   "formal_run_build": "JsBarcode.all.min.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "dexie.min.js",
+   "file": "js/libs/dexie.min.js",
+   "formal_run_build": "dexie.min.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "html2pdf.bundle.min.js",
+   "file": "js/libs/html2pdf.bundle.min.js",
+   "formal_run_build": "html2pdf.bundle.min.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "opencv.js",
+   "file": "js/libs/opencv.js",
+   "formal_run_build": "opencv.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "workbox-sw.js",
+   "file": "js/libs/workbox-sw.js",
+   "formal_run_build": "workbox-sw.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "loader-utils-OTd9nOmY.js",
+   "file": "js/loader-utils.js",
+   "formal_run_build": "loader-utils-OTd9nOmY.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "loader-BVGaymFG.js",
+   "file": "js/loader.js",
+   "formal_run_build": "loader-D-Acr4JU.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "materialdesignicons-webfont-B7mPwVP_.ttf",
+   "file": "js/materialdesignicons-webfont-B7mPwVP_.ttf",
+   "formal_run_build": "materialdesignicons-webfont-B7mPwVP_.ttf",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "materialdesignicons-webfont-CSr8KVlo.eot",
+   "file": "js/materialdesignicons-webfont-CSr8KVlo.eot",
+   "formal_run_build": "materialdesignicons-webfont-CSr8KVlo.eot",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "materialdesignicons-webfont-Dp5v-WZN.woff2",
+   "file": "js/materialdesignicons-webfont-Dp5v-WZN.woff2",
+   "formal_run_build": "materialdesignicons-webfont-Dp5v-WZN.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "materialdesignicons-webfont-PXm3-2wK.woff",
+   "file": "js/materialdesignicons-webfont-PXm3-2wK.woff",
+   "formal_run_build": "materialdesignicons-webfont-PXm3-2wK.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "index-XG9d-Ixn.js",
+   "file": "js/offline/index.js",
+   "formal_run_build": "index-9Q-DOZM_.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "openingCache-DYIuxFTT.js",
+   "file": "js/openingCache.js",
+   "formal_run_build": "openingCache-DxQqX-h4.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "paymentPrintFormat-LJWowG2S.js",
+   "file": "js/paymentPrintFormat.js",
+   "formal_run_build": "paymentPrintFormat-DA9UCERk.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "pos-BuGonphY.png",
+   "file": "js/pos-BuGonphY.png",
+   "formal_run_build": "pos-BuGonphY.png",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "posUiTemplate-ClyG87l6.js",
+   "file": "js/posUiTemplate.js",
+   "formal_run_build": "posUiTemplate-DcfOnDLG.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "itemWorker.js",
+   "file": "js/posapp/workers/itemWorker.js",
+   "formal_run_build": "itemWorker.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "opencvWorker.js",
+   "file": "js/posapp/workers/opencvWorker.js",
+   "formal_run_build": "opencvWorker.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "posawesome-BFyW5Rih.js",
+   "file": "js/posawesome.js",
+   "formal_run_build": "posawesome-CVwegtI4.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "qzTray-DYvg7FaA.js",
+   "file": "js/qzTray.js",
+   "formal_run_build": "qzTray-CWjeI-AK.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-100-normal-DDeB9qQX.woff2",
+   "file": "js/roboto-cyrillic-100-normal-DDeB9qQX.woff2",
+   "formal_run_build": "roboto-cyrillic-100-normal-DDeB9qQX.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-100-normal-DjiTchmu.woff",
+   "file": "js/roboto-cyrillic-100-normal-DjiTchmu.woff",
+   "formal_run_build": "roboto-cyrillic-100-normal-DjiTchmu.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-300-normal-BoeCr7ev.woff2",
+   "file": "js/roboto-cyrillic-300-normal-BoeCr7ev.woff2",
+   "formal_run_build": "roboto-cyrillic-300-normal-BoeCr7ev.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-300-normal-D568C3aM.woff",
+   "file": "js/roboto-cyrillic-300-normal-D568C3aM.woff",
+   "formal_run_build": "roboto-cyrillic-300-normal-D568C3aM.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-400-normal-DAIM1_dR.woff2",
+   "file": "js/roboto-cyrillic-400-normal-DAIM1_dR.woff2",
+   "formal_run_build": "roboto-cyrillic-400-normal-DAIM1_dR.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-400-normal-DZJji7Rx.woff",
+   "file": "js/roboto-cyrillic-400-normal-DZJji7Rx.woff",
+   "formal_run_build": "roboto-cyrillic-400-normal-DZJji7Rx.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-500-normal-BI4HuXre.woff",
+   "file": "js/roboto-cyrillic-500-normal-BI4HuXre.woff",
+   "formal_run_build": "roboto-cyrillic-500-normal-BI4HuXre.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-500-normal-hCeO1jFL.woff2",
+   "file": "js/roboto-cyrillic-500-normal-hCeO1jFL.woff2",
+   "formal_run_build": "roboto-cyrillic-500-normal-hCeO1jFL.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-700-normal-BiSG5NnW.woff2",
+   "file": "js/roboto-cyrillic-700-normal-BiSG5NnW.woff2",
+   "formal_run_build": "roboto-cyrillic-700-normal-BiSG5NnW.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-700-normal-KqaQ5bNp.woff",
+   "file": "js/roboto-cyrillic-700-normal-KqaQ5bNp.woff",
+   "formal_run_build": "roboto-cyrillic-700-normal-KqaQ5bNp.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-900-normal-D-__gutZ.woff",
+   "file": "js/roboto-cyrillic-900-normal-D-__gutZ.woff",
+   "formal_run_build": "roboto-cyrillic-900-normal-D-__gutZ.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-900-normal-D4rFC7QP.woff2",
+   "file": "js/roboto-cyrillic-900-normal-D4rFC7QP.woff2",
+   "formal_run_build": "roboto-cyrillic-900-normal-D4rFC7QP.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-ext-100-normal-MvowFrs7.woff",
+   "file": "js/roboto-cyrillic-ext-100-normal-MvowFrs7.woff",
+   "formal_run_build": "roboto-cyrillic-ext-100-normal-MvowFrs7.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-ext-100-normal-eVx91DwW.woff2",
+   "file": "js/roboto-cyrillic-ext-100-normal-eVx91DwW.woff2",
+   "formal_run_build": "roboto-cyrillic-ext-100-normal-eVx91DwW.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-ext-300-normal-CUPJdUZp.woff2",
+   "file": "js/roboto-cyrillic-ext-300-normal-CUPJdUZp.woff2",
+   "formal_run_build": "roboto-cyrillic-ext-300-normal-CUPJdUZp.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-ext-300-normal-DQdcc27I.woff",
+   "file": "js/roboto-cyrillic-ext-300-normal-DQdcc27I.woff",
+   "formal_run_build": "roboto-cyrillic-ext-300-normal-DQdcc27I.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-ext-400-normal-DtZHuW6i.woff",
+   "file": "js/roboto-cyrillic-ext-400-normal-DtZHuW6i.woff",
+   "formal_run_build": "roboto-cyrillic-ext-400-normal-DtZHuW6i.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-ext-400-normal-DzMWdK87.woff2",
+   "file": "js/roboto-cyrillic-ext-400-normal-DzMWdK87.woff2",
+   "formal_run_build": "roboto-cyrillic-ext-400-normal-DzMWdK87.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-ext-500-normal-B7rQpwPu.woff2",
+   "file": "js/roboto-cyrillic-ext-500-normal-B7rQpwPu.woff2",
+   "formal_run_build": "roboto-cyrillic-ext-500-normal-B7rQpwPu.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-ext-500-normal-C927yMrb.woff",
+   "file": "js/roboto-cyrillic-ext-500-normal-C927yMrb.woff",
+   "formal_run_build": "roboto-cyrillic-ext-500-normal-C927yMrb.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-ext-700-normal-BuQgZIrO.woff",
+   "file": "js/roboto-cyrillic-ext-700-normal-BuQgZIrO.woff",
+   "formal_run_build": "roboto-cyrillic-ext-700-normal-BuQgZIrO.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-ext-700-normal-UFn0vR9r.woff2",
+   "file": "js/roboto-cyrillic-ext-700-normal-UFn0vR9r.woff2",
+   "formal_run_build": "roboto-cyrillic-ext-700-normal-UFn0vR9r.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-ext-900-normal-Bfn4Lcxa.woff2",
+   "file": "js/roboto-cyrillic-ext-900-normal-Bfn4Lcxa.woff2",
+   "formal_run_build": "roboto-cyrillic-ext-900-normal-Bfn4Lcxa.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-cyrillic-ext-900-normal-rPl6pXVq.woff",
+   "file": "js/roboto-cyrillic-ext-900-normal-rPl6pXVq.woff",
+   "formal_run_build": "roboto-cyrillic-ext-900-normal-rPl6pXVq.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-greek-100-normal-BQXKmI1c.woff2",
+   "file": "js/roboto-greek-100-normal-BQXKmI1c.woff2",
+   "formal_run_build": "roboto-greek-100-normal-BQXKmI1c.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-greek-100-normal-Cj05wnyc.woff",
+   "file": "js/roboto-greek-100-normal-Cj05wnyc.woff",
+   "formal_run_build": "roboto-greek-100-normal-Cj05wnyc.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-greek-300-normal-CTj2MfNN.woff",
+   "file": "js/roboto-greek-300-normal-CTj2MfNN.woff",
+   "formal_run_build": "roboto-greek-300-normal-CTj2MfNN.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-greek-300-normal-Cnub06j7.woff2",
+   "file": "js/roboto-greek-300-normal-Cnub06j7.woff2",
+   "formal_run_build": "roboto-greek-300-normal-Cnub06j7.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-greek-400-normal-CcizSnRP.woff",
+   "file": "js/roboto-greek-400-normal-CcizSnRP.woff",
+   "formal_run_build": "roboto-greek-400-normal-CcizSnRP.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-greek-400-normal-jFM2czAU.woff2",
+   "file": "js/roboto-greek-400-normal-jFM2czAU.woff2",
+   "formal_run_build": "roboto-greek-400-normal-jFM2czAU.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-greek-500-normal-BJMS0heP.woff2",
+   "file": "js/roboto-greek-500-normal-BJMS0heP.woff2",
+   "formal_run_build": "roboto-greek-500-normal-BJMS0heP.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-greek-500-normal-BLLWU9W-.woff",
+   "file": "js/roboto-greek-500-normal-BLLWU9W-.woff",
+   "formal_run_build": "roboto-greek-500-normal-BLLWU9W-.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-greek-700-normal-BcGn9doz.woff2",
+   "file": "js/roboto-greek-700-normal-BcGn9doz.woff2",
+   "formal_run_build": "roboto-greek-700-normal-BcGn9doz.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-greek-700-normal-D3kmAf0K.woff",
+   "file": "js/roboto-greek-700-normal-D3kmAf0K.woff",
+   "formal_run_build": "roboto-greek-700-normal-D3kmAf0K.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-greek-900-normal-BCuSXpbA.woff2",
+   "file": "js/roboto-greek-900-normal-BCuSXpbA.woff2",
+   "formal_run_build": "roboto-greek-900-normal-BCuSXpbA.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-greek-900-normal-BgnqCuci.woff",
+   "file": "js/roboto-greek-900-normal-BgnqCuci.woff",
+   "formal_run_build": "roboto-greek-900-normal-BgnqCuci.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-100-normal-DlpfXJCk.woff2",
+   "file": "js/roboto-latin-100-normal-DlpfXJCk.woff2",
+   "formal_run_build": "roboto-latin-100-normal-DlpfXJCk.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-100-normal-DsByyiuu.woff",
+   "file": "js/roboto-latin-100-normal-DsByyiuu.woff",
+   "formal_run_build": "roboto-latin-100-normal-DsByyiuu.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-300-normal-CztWkFGs.woff2",
+   "file": "js/roboto-latin-300-normal-CztWkFGs.woff2",
+   "formal_run_build": "roboto-latin-300-normal-CztWkFGs.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-300-normal-KByCBsad.woff",
+   "file": "js/roboto-latin-300-normal-KByCBsad.woff",
+   "formal_run_build": "roboto-latin-300-normal-KByCBsad.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-400-normal-068yxgMN.woff",
+   "file": "js/roboto-latin-400-normal-068yxgMN.woff",
+   "formal_run_build": "roboto-latin-400-normal-068yxgMN.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-400-normal-CNwBRw8h.woff2",
+   "file": "js/roboto-latin-400-normal-CNwBRw8h.woff2",
+   "formal_run_build": "roboto-latin-400-normal-CNwBRw8h.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-500-normal-CC5nhZkh.woff",
+   "file": "js/roboto-latin-500-normal-CC5nhZkh.woff",
+   "formal_run_build": "roboto-latin-500-normal-CC5nhZkh.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-500-normal-CkrA1NAy.woff2",
+   "file": "js/roboto-latin-500-normal-CkrA1NAy.woff2",
+   "formal_run_build": "roboto-latin-500-normal-CkrA1NAy.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-700-normal-CXeAXeti.woff2",
+   "file": "js/roboto-latin-700-normal-CXeAXeti.woff2",
+   "formal_run_build": "roboto-latin-700-normal-CXeAXeti.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-700-normal-DUekQERp.woff",
+   "file": "js/roboto-latin-700-normal-DUekQERp.woff",
+   "formal_run_build": "roboto-latin-700-normal-DUekQERp.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-900-normal-93zEKV3C.woff2",
+   "file": "js/roboto-latin-900-normal-93zEKV3C.woff2",
+   "formal_run_build": "roboto-latin-900-normal-93zEKV3C.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-900-normal-BcoNiyza.woff",
+   "file": "js/roboto-latin-900-normal-BcoNiyza.woff",
+   "formal_run_build": "roboto-latin-900-normal-BcoNiyza.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-ext-100-normal-1LaByAVy.woff2",
+   "file": "js/roboto-latin-ext-100-normal-1LaByAVy.woff2",
+   "formal_run_build": "roboto-latin-ext-100-normal-1LaByAVy.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-ext-100-normal-C9SEjVkl.woff",
+   "file": "js/roboto-latin-ext-100-normal-C9SEjVkl.woff",
+   "formal_run_build": "roboto-latin-ext-100-normal-C9SEjVkl.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-ext-300-normal-BOz0oSmX.woff2",
+   "file": "js/roboto-latin-ext-300-normal-BOz0oSmX.woff2",
+   "formal_run_build": "roboto-latin-ext-300-normal-BOz0oSmX.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-ext-300-normal-Tcf9y2tg.woff",
+   "file": "js/roboto-latin-ext-300-normal-Tcf9y2tg.woff",
+   "formal_run_build": "roboto-latin-ext-300-normal-Tcf9y2tg.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-ext-400-normal-ZYmyxeOy.woff2",
+   "file": "js/roboto-latin-ext-400-normal-ZYmyxeOy.woff2",
+   "formal_run_build": "roboto-latin-ext-400-normal-ZYmyxeOy.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-ext-400-normal-eTRLN0Nt.woff",
+   "file": "js/roboto-latin-ext-400-normal-eTRLN0Nt.woff",
+   "formal_run_build": "roboto-latin-ext-400-normal-eTRLN0Nt.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-ext-500-normal-C_ARlJGk.woff2",
+   "file": "js/roboto-latin-ext-500-normal-C_ARlJGk.woff2",
+   "formal_run_build": "roboto-latin-ext-500-normal-C_ARlJGk.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-ext-500-normal-FFcS8vBN.woff",
+   "file": "js/roboto-latin-ext-500-normal-FFcS8vBN.woff",
+   "formal_run_build": "roboto-latin-ext-500-normal-FFcS8vBN.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-ext-700-normal-70GS1MYH.woff2",
+   "file": "js/roboto-latin-ext-700-normal-70GS1MYH.woff2",
+   "formal_run_build": "roboto-latin-ext-700-normal-70GS1MYH.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-ext-700-normal-BS1OuQqR.woff",
+   "file": "js/roboto-latin-ext-700-normal-BS1OuQqR.woff",
+   "formal_run_build": "roboto-latin-ext-700-normal-BS1OuQqR.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-ext-900-normal-BxNYdyfz.woff2",
+   "file": "js/roboto-latin-ext-900-normal-BxNYdyfz.woff2",
+   "formal_run_build": "roboto-latin-ext-900-normal-BxNYdyfz.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-latin-ext-900-normal-Bz1ftnVH.woff",
+   "file": "js/roboto-latin-ext-900-normal-Bz1ftnVH.woff",
+   "formal_run_build": "roboto-latin-ext-900-normal-Bz1ftnVH.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-math-100-normal-C9POPBfd.woff",
+   "file": "js/roboto-math-100-normal-C9POPBfd.woff",
+   "formal_run_build": "roboto-math-100-normal-C9POPBfd.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-math-100-normal-DesmuRQJ.woff2",
+   "file": "js/roboto-math-100-normal-DesmuRQJ.woff2",
+   "formal_run_build": "roboto-math-100-normal-DesmuRQJ.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-math-300-normal-BMxwzQmU.woff2",
+   "file": "js/roboto-math-300-normal-BMxwzQmU.woff2",
+   "formal_run_build": "roboto-math-300-normal-BMxwzQmU.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-math-300-normal-BU9CUCyj.woff",
+   "file": "js/roboto-math-300-normal-BU9CUCyj.woff",
+   "formal_run_build": "roboto-math-300-normal-BU9CUCyj.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-math-400-normal-B3wgz80t.woff2",
+   "file": "js/roboto-math-400-normal-B3wgz80t.woff2",
+   "formal_run_build": "roboto-math-400-normal-B3wgz80t.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-math-400-normal-rzxYvyVt.woff",
+   "file": "js/roboto-math-400-normal-rzxYvyVt.woff",
+   "formal_run_build": "roboto-math-400-normal-rzxYvyVt.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-math-500-normal-CFNaIMFC.woff2",
+   "file": "js/roboto-math-500-normal-CFNaIMFC.woff2",
+   "formal_run_build": "roboto-math-500-normal-CFNaIMFC.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-math-500-normal-DaFX-ZC8.woff",
+   "file": "js/roboto-math-500-normal-DaFX-ZC8.woff",
+   "formal_run_build": "roboto-math-500-normal-DaFX-ZC8.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-math-700-normal-VUAI6Bz2.woff2",
+   "file": "js/roboto-math-700-normal-VUAI6Bz2.woff2",
+   "formal_run_build": "roboto-math-700-normal-VUAI6Bz2.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-math-700-normal-pYD1nhov.woff",
+   "file": "js/roboto-math-700-normal-pYD1nhov.woff",
+   "formal_run_build": "roboto-math-700-normal-pYD1nhov.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-math-900-normal-Cwczpm6u.woff",
+   "file": "js/roboto-math-900-normal-Cwczpm6u.woff",
+   "formal_run_build": "roboto-math-900-normal-Cwczpm6u.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-math-900-normal-DVW2yWT0.woff2",
+   "file": "js/roboto-math-900-normal-DVW2yWT0.woff2",
+   "formal_run_build": "roboto-math-900-normal-DVW2yWT0.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-symbols-100-normal-B-PMwc8r.woff2",
+   "file": "js/roboto-symbols-100-normal-B-PMwc8r.woff2",
+   "formal_run_build": "roboto-symbols-100-normal-B-PMwc8r.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-symbols-100-normal-DxTU_ofi.woff",
+   "file": "js/roboto-symbols-100-normal-DxTU_ofi.woff",
+   "formal_run_build": "roboto-symbols-100-normal-DxTU_ofi.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-symbols-300-normal-BtHl5mYl.woff2",
+   "file": "js/roboto-symbols-300-normal-BtHl5mYl.woff2",
+   "formal_run_build": "roboto-symbols-300-normal-BtHl5mYl.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-symbols-300-normal-kyoSXp-d.woff",
+   "file": "js/roboto-symbols-300-normal-kyoSXp-d.woff",
+   "formal_run_build": "roboto-symbols-300-normal-kyoSXp-d.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-symbols-400-normal-Tzuungub.woff",
+   "file": "js/roboto-symbols-400-normal-Tzuungub.woff",
+   "formal_run_build": "roboto-symbols-400-normal-Tzuungub.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-symbols-400-normal-fF1SLJBj.woff2",
+   "file": "js/roboto-symbols-400-normal-fF1SLJBj.woff2",
+   "formal_run_build": "roboto-symbols-400-normal-fF1SLJBj.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-symbols-500-normal-BXFTxrNR.woff2",
+   "file": "js/roboto-symbols-500-normal-BXFTxrNR.woff2",
+   "formal_run_build": "roboto-symbols-500-normal-BXFTxrNR.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-symbols-500-normal-CAhAe-ik.woff",
+   "file": "js/roboto-symbols-500-normal-CAhAe-ik.woff",
+   "formal_run_build": "roboto-symbols-500-normal-CAhAe-ik.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-symbols-700-normal-CuuvBBxy.woff",
+   "file": "js/roboto-symbols-700-normal-CuuvBBxy.woff",
+   "formal_run_build": "roboto-symbols-700-normal-CuuvBBxy.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-symbols-700-normal-rJi6RjIy.woff2",
+   "file": "js/roboto-symbols-700-normal-rJi6RjIy.woff2",
+   "formal_run_build": "roboto-symbols-700-normal-rJi6RjIy.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-symbols-900-normal-CRdpsJ80.woff2",
+   "file": "js/roboto-symbols-900-normal-CRdpsJ80.woff2",
+   "formal_run_build": "roboto-symbols-900-normal-CRdpsJ80.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-symbols-900-normal-eLBWAlN7.woff",
+   "file": "js/roboto-symbols-900-normal-eLBWAlN7.woff",
+   "formal_run_build": "roboto-symbols-900-normal-eLBWAlN7.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-vietnamese-100-normal-CB-fthhe.woff",
+   "file": "js/roboto-vietnamese-100-normal-CB-fthhe.woff",
+   "formal_run_build": "roboto-vietnamese-100-normal-CB-fthhe.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-vietnamese-100-normal-DCm82-f1.woff2",
+   "file": "js/roboto-vietnamese-100-normal-DCm82-f1.woff2",
+   "formal_run_build": "roboto-vietnamese-100-normal-DCm82-f1.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-vietnamese-300-normal-CNeuLW5X.woff2",
+   "file": "js/roboto-vietnamese-300-normal-CNeuLW5X.woff2",
+   "formal_run_build": "roboto-vietnamese-300-normal-CNeuLW5X.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-vietnamese-300-normal-DXBG9gdz.woff",
+   "file": "js/roboto-vietnamese-300-normal-DXBG9gdz.woff",
+   "formal_run_build": "roboto-vietnamese-300-normal-DXBG9gdz.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-vietnamese-400-normal-CDDxGrUb.woff2",
+   "file": "js/roboto-vietnamese-400-normal-CDDxGrUb.woff2",
+   "formal_run_build": "roboto-vietnamese-400-normal-CDDxGrUb.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-vietnamese-400-normal-DmXaN3yE.woff",
+   "file": "js/roboto-vietnamese-400-normal-DmXaN3yE.woff",
+   "formal_run_build": "roboto-vietnamese-400-normal-DmXaN3yE.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-vietnamese-500-normal-DW96CsrR.woff",
+   "file": "js/roboto-vietnamese-500-normal-DW96CsrR.woff",
+   "formal_run_build": "roboto-vietnamese-500-normal-DW96CsrR.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-vietnamese-500-normal-HYpufUYk.woff2",
+   "file": "js/roboto-vietnamese-500-normal-HYpufUYk.woff2",
+   "formal_run_build": "roboto-vietnamese-500-normal-HYpufUYk.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-vietnamese-700-normal-Dz0HwF-w.woff",
+   "file": "js/roboto-vietnamese-700-normal-Dz0HwF-w.woff",
+   "formal_run_build": "roboto-vietnamese-700-normal-Dz0HwF-w.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-vietnamese-700-normal-iKxYNAzq.woff2",
+   "file": "js/roboto-vietnamese-700-normal-iKxYNAzq.woff2",
+   "formal_run_build": "roboto-vietnamese-700-normal-iKxYNAzq.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-vietnamese-900-normal-BPWZ525Q.woff",
+   "file": "js/roboto-vietnamese-900-normal-BPWZ525Q.woff",
+   "formal_run_build": "roboto-vietnamese-900-normal-BPWZ525Q.woff",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "roboto-vietnamese-900-normal-D60pXI5H.woff2",
+   "file": "js/roboto-vietnamese-900-normal-D60pXI5H.woff2",
+   "formal_run_build": "roboto-vietnamese-900-normal-D60pXI5H.woff2",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "smartTender-Cz55o80b.js",
+   "file": "js/smartTender.js",
+   "formal_run_build": "smartTender-Cz55o80b.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "storeRateBinding-AXudlmyO.js",
+   "file": "js/storeRateBinding.js",
+   "formal_run_build": "storeRateBinding-DZZodGB0.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "style-B7zND_2V.css",
+   "file": "js/style.css",
+   "formal_run_build": "style-B7zND_2V.css",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "sw-updater-BjTzbEgJ.js",
+   "file": "js/sw-updater.js",
+   "formal_run_build": "sw-updater-Dx_rtxwH.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "updateStore-BDxvdBnm.js",
+   "file": "js/updateStore.js",
+   "formal_run_build": "updateStore-BDxvdBnm.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "useNetwork-Zibx36rq.js",
+   "file": "js/useNetwork.js",
+   "formal_run_build": "useNetwork-DzNGjFG5.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "useRtl-Bawm5Uud.js",
+   "file": "js/useRtl.js",
+   "formal_run_build": "useRtl-B_1OPVLB.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "vendor-CB5cbpoF.js",
+   "file": "js/vendor.js",
+   "formal_run_build": "vendor-CB5cbpoF.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "version.json",
+   "file": "js/version.json",
+   "formal_run_build": "version.json",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "vue-DTsI_ExY.js",
+   "file": "js/vue.js",
+   "formal_run_build": "vue-DTsI_ExY.js",
+   "normalised_equal": true
+  },
+  {
+   "clean_71fcee8_build": "vuetify-CRdhmWqc.js",
+   "file": "js/vuetify.js",
+   "formal_run_build": "vuetify-CRdhmWqc.js",
+   "normalised_equal": true
+  }
+ ]
+}

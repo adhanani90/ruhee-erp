@@ -1,0 +1,55 @@
+{
+ "invoice_count": 1,
+ "invoices": [
+  {
+   "base_grand_total": 100.0,
+   "base_paid_amount": 0.0,
+   "base_rounded_total": 100.0,
+   "conversion_rate": 1.0,
+   "created": "2026-11-07 07:55:57.127620",
+   "currency": "USD",
+   "digest": "8fa8d6edf646894435d6610bd9f339ebe9747d4b5e90745b9b6db0caef1b2f20",
+   "docstatus": 0,
+   "gl": {},
+   "grand_total": 100.0,
+   "invoice_payments": [],
+   "items": [
+    {
+     "amount": 100.0,
+     "base_amount": 100.0,
+     "item_code": "SPIKE-001",
+     "price_list_rate": 100.0,
+     "qty": 1.0,
+     "rate": 100.0,
+     "ruhee_c7_usd_price": 100.0
+    }
+   ],
+   "name": "ACC-SINV-2026-00013",
+   "outstanding_amount": 100.0,
+   "paid_amount": 0.0,
+   "payment_entries": [],
+   "posa_client_request_id": "inv-mw61uah3-fd6de1bd-4ec7-4aae-88c3-fdca87bbc54e",
+   "posting_date": "2026-11-07",
+   "posting_time": "7:55:57.281795",
+   "rate_record": {
+    "base": 2300.0,
+    "effective_from": "2026-11-07 00:00:00",
+    "higher": 2320.0,
+    "name": "imgdeq00e2",
+    "pos_profile": "C7 New Depo"
+   },
+   "rounded_total": 100.0,
+   "ruhee_c7_allocation_usd": 100.0,
+   "ruhee_c7_base": 2300.0,
+   "ruhee_c7_higher": 2320.0,
+   "ruhee_c7_hold": null,
+   "ruhee_c7_issued_at": "2026-11-07T07:55:34.793+01:00",
+   "ruhee_c7_issued_at_local": "2026-11-07 07:55:34.793000",
+   "ruhee_c7_rate": "imgdeq00e2",
+   "ruhee_c7_tender_cdf": 232000.0,
+   "stock_ledger_entries": 0
+  }
+ ],
+ "ledger": [],
+ "request_id": "inv-mw61uah3-fd6de1bd-4ec7-4aae-88c3-fdca87bbc54e"
+}

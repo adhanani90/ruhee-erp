@@ -1,0 +1,47 @@
+[
+ [
+  "tabCurrency Exchange",
+  "exchange_rate",
+  "decimal(21,12)"
+ ],
+ [
+  "tabGL Entry",
+  "reporting_currency_exchange_rate",
+  "decimal(21,9)"
+ ],
+ [
+  "tabGL Entry",
+  "transaction_exchange_rate",
+  "decimal(21,12)"
+ ],
+ [
+  "tabPayment Entry",
+  "source_exchange_rate",
+  "decimal(21,9)"
+ ],
+ [
+  "tabPayment Entry",
+  "target_exchange_rate",
+  "decimal(21,12)"
+ ],
+ [
+  "tabSales Invoice",
+  "conversion_rate",
+  "decimal(21,12)"
+ ],
+ [
+  "tabSales Invoice",
+  "plc_conversion_rate",
+  "decimal(21,9)"
+ ],
+ [
+  "tabSales Invoice Payment",
+  "posa_company_exchange_rate",
+  "decimal(21,12)"
+ ],
+ [
+  "tabSales Invoice Payment",
+  "posa_exchange_rate",
+  "decimal(21,9)"
+ ]
+]
