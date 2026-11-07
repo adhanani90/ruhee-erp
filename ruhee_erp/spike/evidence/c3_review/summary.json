@@ -1,0 +1,972 @@
+{
+  "C3_acceptance": "not claimed",
+  "commands": [
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_probe.prepare",
+        "--kwargs",
+        "{}"
+      ],
+      "exit_code": 0,
+      "label": "prepare"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "default"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_probe.preflight_control",
+        "--kwargs",
+        "{}"
+      ],
+      "exit_code": 0,
+      "label": "preflight_control"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_probe.phase",
+        "--kwargs",
+        "{\"label\": \"baseline\"}"
+      ],
+      "exit_code": 0,
+      "label": "phase_baseline"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_payment_probe.run",
+        "--kwargs",
+        "{\"label\": \"baseline\"}"
+      ],
+      "exit_code": 0,
+      "label": "payment_baseline"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "before_1"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_precision.run",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\", \"through\": 1}"
+      ],
+      "exit_code": 0,
+      "label": "precision_1"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "after_1"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_probe.phase",
+        "--kwargs",
+        "{\"label\": \"source\"}"
+      ],
+      "exit_code": 0,
+      "label": "phase_source"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "before_2"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_precision.run",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\", \"through\": 2}"
+      ],
+      "exit_code": 0,
+      "label": "precision_2"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "after_2"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_probe.phase",
+        "--kwargs",
+        "{\"label\": \"invoice\"}"
+      ],
+      "exit_code": 0,
+      "label": "phase_invoice"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "before_3"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_precision.run",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\", \"through\": 3}"
+      ],
+      "exit_code": 0,
+      "label": "precision_3"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "after_3"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_probe.phase",
+        "--kwargs",
+        "{\"label\": \"payment\"}"
+      ],
+      "exit_code": 0,
+      "label": "phase_payment"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "before_4"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_precision.run",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\", \"through\": 4}"
+      ],
+      "exit_code": 0,
+      "label": "precision_4"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "after_4"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_probe.phase",
+        "--kwargs",
+        "{\"label\": \"ledger\"}"
+      ],
+      "exit_code": 0,
+      "label": "phase_ledger"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "before_5"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_precision.run",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\", \"through\": 5}"
+      ],
+      "exit_code": 0,
+      "label": "precision_5"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "after_5"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_payment_probe.run",
+        "--kwargs",
+        "{\"label\": \"revised\"}"
+      ],
+      "exit_code": 0,
+      "label": "payment_revised"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "lifecycle_before"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_precision.run",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "idempotence_1"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "idempotence_after_1"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_precision.run",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "idempotence_2"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "idempotence_after_2"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_probe.customize",
+        "--kwargs",
+        "{}"
+      ],
+      "exit_code": 0,
+      "label": "customize"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "after_customize"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "resume_readback"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_probe.resync",
+        "--kwargs",
+        "{}"
+      ],
+      "exit_code": 0,
+      "label": "reload"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "after_reload"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "resume_after_reload"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "migrate",
+        "--skip-search-index"
+      ],
+      "exit_code": 0,
+      "label": "migrate"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "after_migrate"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.audit_all",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "resume_after_migrate"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_precision.inspect",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\"}"
+      ],
+      "exit_code": 0,
+      "label": "inspect_final"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.run",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\", \"invoice\": \"ACC-SINV-2026-00018\", \"qty\": 1.0}"
+      ],
+      "exit_code": 0,
+      "label": "verify_ACC-SINV-2026-00018"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.run",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\", \"invoice\": \"ACC-SINV-2026-00019\", \"qty\": 100.0}"
+      ],
+      "exit_code": 0,
+      "label": "verify_ACC-SINV-2026-00019"
+    },
+    {
+      "argv": [
+        "bench",
+        "--site",
+        "c3-precision-review.localhost",
+        "execute",
+        "ruhee_erp.spike.c3_verify.payment",
+        "--kwargs",
+        "{\"site\": \"c3-precision-review.localhost\", \"name\": \"ACC-PAY-2026-00002\"}"
+      ],
+      "exit_code": 0,
+      "label": "verify_payment"
+    }
+  ],
+  "preservation": [
+    {
+      "full_records_equal": true,
+      "sha256": {
+        "payments": "cd3df28eaa84e0be82e524fb15701a324a75653fe7a7e257194bf988af164dde",
+        "rates": "656f24361a282732c5356867c085b0e1d4952692390169fbca5a1c1df0dd72d8",
+        "snapshots": "c53112195c6d13e0d1e964040cad4a2e1fc3182d772ac59b811d712c4624df80",
+        "store_rates": "498e7fbcbeb632ff38adabb104700185884f2030282e2e57e80bb5847bda35ff"
+      },
+      "stage": "precision_1"
+    },
+    {
+      "full_records_equal": true,
+      "sha256": {
+        "payments": "cd3df28eaa84e0be82e524fb15701a324a75653fe7a7e257194bf988af164dde",
+        "rates": "188293818d01d0bfbcb0145ca227fbd340f657bcee6b4eea29577a5bca350684",
+        "snapshots": "e6e0fa9f4ecd4e92e3a4a610d0aa02fa51a092fc733aa536a3bfabc751104fc1",
+        "store_rates": "c2e2888fad7bfb9c2c62c29ea356396c86f13237eff749d7e03680585784cf41"
+      },
+      "stage": "precision_2"
+    },
+    {
+      "full_records_equal": true,
+      "sha256": {
+        "payments": "cd3df28eaa84e0be82e524fb15701a324a75653fe7a7e257194bf988af164dde",
+        "rates": "fb0bd3b5350bc46bf5aa2112b520f60b27453130903984f4ad7f6a5be59512c4",
+        "snapshots": "1aa8dab942380f3a656eb74f50912def8f62540cf4dfb941bc719b4a4ed1e053",
+        "store_rates": "f4ac784ea51174dd4c02735b05f3fac98c5c2af5af4f837029f5d07e4c9bfb80"
+      },
+      "stage": "precision_3"
+    },
+    {
+      "full_records_equal": true,
+      "sha256": {
+        "payments": "cd3df28eaa84e0be82e524fb15701a324a75653fe7a7e257194bf988af164dde",
+        "rates": "8cc4f749cc23069596914be2867bb34ef881d587b69766e2795a6a213646e7fe",
+        "snapshots": "d4185bc90b5a521c3762e75e40d59096aea199e238be2300409796805c6460f0",
+        "store_rates": "9a94ddcc23381c64c64a01206240b61fc4a37bc97afc825d42f18a3b38e2a3b9"
+      },
+      "stage": "precision_4"
+    },
+    {
+      "full_records_equal": true,
+      "sha256": {
+        "payments": "cd3df28eaa84e0be82e524fb15701a324a75653fe7a7e257194bf988af164dde",
+        "rates": "dfede4c39f1a703e154f155ad51cd05d78e0b25e83bab9e74243fc92a6e20254",
+        "snapshots": "efe86f21791f222f74f1ba2df6b9450f0211381216da3bcdb2e65b1747b575b7",
+        "store_rates": "985d6d61edd26f1a0beaac8056a457a6655bc6bbd264637ece67a76be382f2f4"
+      },
+      "stage": "precision_5"
+    },
+    {
+      "full_records_equal": true,
+      "sha256": {
+        "amount_trace": "cf6b5a0c63b36e211d0882562713515aa952048d847735f08075e782fc5cda96",
+        "columns": "6cd6087e4ee62c56e61cafeebe0acf8caf75687256d3a28ef6baaabad02a3c0f",
+        "payments": "325339d8dfb35951cab60f0c1202b649c9cc3d0ed75b7250d47cc362c20f153e",
+        "rates": "9d9413f151113235fd852c7ec422b2ea6d1c6ea0938cf1aaf940b1b68951fd51",
+        "setters": "2330daa5ecbd0aad30a45a194893dd669493c09907c3444153ee29877cb52404",
+        "snapshots": "49a114d6392355e38f793a775fd6f84a0a2934cbdfd735fe49eeed3f6f810837",
+        "store_rates": "2083e8be10d7fc977cfdd198b4a53ce52f15074ac94253225efe5e08a460f950",
+        "trace": "81df90858838e342a6f2e4de45754beb4680b4ca7d4708ea793899891260974f"
+      },
+      "stage": "idempotence_1"
+    },
+    {
+      "full_records_equal": true,
+      "sha256": {
+        "amount_trace": "cf6b5a0c63b36e211d0882562713515aa952048d847735f08075e782fc5cda96",
+        "columns": "6cd6087e4ee62c56e61cafeebe0acf8caf75687256d3a28ef6baaabad02a3c0f",
+        "payments": "325339d8dfb35951cab60f0c1202b649c9cc3d0ed75b7250d47cc362c20f153e",
+        "rates": "9d9413f151113235fd852c7ec422b2ea6d1c6ea0938cf1aaf940b1b68951fd51",
+        "setters": "2330daa5ecbd0aad30a45a194893dd669493c09907c3444153ee29877cb52404",
+        "snapshots": "49a114d6392355e38f793a775fd6f84a0a2934cbdfd735fe49eeed3f6f810837",
+        "store_rates": "2083e8be10d7fc977cfdd198b4a53ce52f15074ac94253225efe5e08a460f950",
+        "trace": "81df90858838e342a6f2e4de45754beb4680b4ca7d4708ea793899891260974f"
+      },
+      "stage": "idempotence_2"
+    },
+    {
+      "full_records_equal": true,
+      "metadata_added": [],
+      "sha256": {
+        "amount_trace": "cf6b5a0c63b36e211d0882562713515aa952048d847735f08075e782fc5cda96",
+        "columns": "6cd6087e4ee62c56e61cafeebe0acf8caf75687256d3a28ef6baaabad02a3c0f",
+        "payments": "325339d8dfb35951cab60f0c1202b649c9cc3d0ed75b7250d47cc362c20f153e",
+        "rates": "9d9413f151113235fd852c7ec422b2ea6d1c6ea0938cf1aaf940b1b68951fd51",
+        "setters": "c2cd4b44b8b38d7e3ee1084362255da3aeccf1301140e3cb5e5324738402a6d9",
+        "snapshots": "49a114d6392355e38f793a775fd6f84a0a2934cbdfd735fe49eeed3f6f810837",
+        "store_rates": "2083e8be10d7fc977cfdd198b4a53ce52f15074ac94253225efe5e08a460f950",
+        "trace": "81df90858838e342a6f2e4de45754beb4680b4ca7d4708ea793899891260974f"
+      },
+      "stage": "resume_readback"
+    },
+    {
+      "full_records_equal": true,
+      "metadata_added": [],
+      "sha256": {
+        "amount_trace": "cf6b5a0c63b36e211d0882562713515aa952048d847735f08075e782fc5cda96",
+        "columns": "6cd6087e4ee62c56e61cafeebe0acf8caf75687256d3a28ef6baaabad02a3c0f",
+        "payments": "325339d8dfb35951cab60f0c1202b649c9cc3d0ed75b7250d47cc362c20f153e",
+        "rates": "9d9413f151113235fd852c7ec422b2ea6d1c6ea0938cf1aaf940b1b68951fd51",
+        "setters": "65c4ff2a9cc301e938d376579a8ed7fc726c35f0135ad12386cad019b7b0064a",
+        "snapshots": "49a114d6392355e38f793a775fd6f84a0a2934cbdfd735fe49eeed3f6f810837",
+        "store_rates": "2083e8be10d7fc977cfdd198b4a53ce52f15074ac94253225efe5e08a460f950",
+        "trace": "81df90858838e342a6f2e4de45754beb4680b4ca7d4708ea793899891260974f"
+      },
+      "stage": "resume_after_reload"
+    },
+    {
+      "full_records_equal": true,
+      "metadata_added": [
+        {
+          "_assign": null,
+          "_comments": null,
+          "_liked_by": null,
+          "_user_tags": null,
+          "creation": "2026-11-06 23:11:28.433731",
+          "default_value": null,
+          "doc_type": "Currency Exchange",
+          "docstatus": 0,
+          "doctype_or_field": "DocType",
+          "field_name": null,
+          "idx": 0,
+          "is_system_generated": 0,
+          "modified": "2026-11-06 23:11:28.433731",
+          "modified_by": "Administrator",
+          "module": null,
+          "name": "Currency Exchange-main-field_order",
+          "owner": "Administrator",
+          "property": "field_order",
+          "property_type": "Data",
+          "row_name": null,
+          "value": "[\"ruhee_c3_rate\", \"date\", \"from_currency\", \"to_currency\", \"exchange_rate\", \"column_break_5\", \"for_buying\", \"for_selling\"]"
+        },
+        {
+          "_assign": null,
+          "_comments": null,
+          "_liked_by": null,
+          "_user_tags": null,
+          "creation": "2026-11-06 23:11:29.193446",
+          "default_value": null,
+          "doc_type": "Payment Entry",
+          "docstatus": 0,
+          "doctype_or_field": "DocType",
+          "field_name": null,
+          "idx": 0,
+          "is_system_generated": 0,
+          "modified": "2026-11-06 23:11:29.193446",
+          "modified_by": "Administrator",
+          "module": null,
+          "name": "Payment Entry-main-field_order",
+          "owner": "Administrator",
+          "property": "field_order",
+          "property_type": "Data",
+          "row_name": null,
+          "value": "[\"ruhee_c3_rate\", \"type_of_payment\", \"naming_series\", \"payment_type\", \"payment_order_status\", \"column_break_5\", \"posting_date\", \"company\", \"mode_of_payment\", \"party_section\", \"party_type\", \"party\", \"party_name\", \"book_advance_payments_in_separate_party_account\", \"reconcile_on_advance_payment_date\", \"apply_tds\", \"tax_withholding_category\", \"column_break_11\", \"bank_account\", \"party_bank_account\", \"contact_person\", \"contact_email\", \"payment_accounts_section\", \"paid_from\", \"paid_from_account_type\", \"paid_from_account_currency\", \"column_break_18\", \"paid_to\", \"paid_to_account_type\", \"paid_to_account_currency\", \"payment_amounts_section\", \"paid_amount\", \"paid_amount_after_tax\", \"source_exchange_rate\", \"base_paid_amount\", \"base_paid_amount_after_tax\", \"column_break_21\", \"received_amount\", \"received_amount_after_tax\", \"target_exchange_rate\", \"base_received_amount\", \"base_received_amount_after_tax\", \"section_break_14\", \"get_outstanding_invoices\", \"get_outstanding_orders\", \"references\", \"section_break_34\", \"total_allocated_amount\", \"base_total_allocated_amount\", \"column_break_36\", \"unallocated_amount\", \"difference_amount\", \"write_off_difference_amount\", \"taxes_and_charges_section\", \"purchase_taxes_and_charges_template\", \"sales_taxes_and_charges_template\", \"taxes\", \"section_break_60\", \"base_total_taxes_and_charges\", \"column_break_61\", \"total_taxes_and_charges\", \"deductions_or_loss_section\", \"deductions\", \"section_tax_withholding_entry\", \"tax_withholding_group\", \"ignore_tax_withholding_threshold\", \"override_tax_withholding_entries\", \"tax_withholding_entries\", \"transaction_references\", \"reference_no\", \"posa_client_request_id\", \"column_break_23\", \"reference_date\", \"clearance_date\", \"accounting_dimensions_section\", \"project\", \"dimension_col_break\", \"cost_center\", \"section_break_12\", \"status\", \"custom_remarks\", \"remarks\", \"base_in_words\", \"is_opening\", \"title\", \"column_break_16\", \"letter_head\", \"print_heading\", \"bank\", \"bank_account_no\", \"payment_order\", \"in_words\", \"amended_from\", \"auto_repeat_section\", \"auto_repeat\"]"
+        },
+        {
+          "_assign": null,
+          "_comments": null,
+          "_liked_by": null,
+          "_user_tags": null,
+          "creation": "2026-11-06 23:11:29.010146",
+          "default_value": null,
+          "doc_type": "Sales Invoice Payment",
+          "docstatus": 0,
+          "doctype_or_field": "DocType",
+          "field_name": null,
+          "idx": 0,
+          "is_system_generated": 0,
+          "modified": "2026-11-06 23:11:29.010146",
+          "modified_by": "Administrator",
+          "module": null,
+          "name": "Sales Invoice Payment-main-field_order",
+          "owner": "Administrator",
+          "property": "field_order",
+          "property_type": "Data",
+          "row_name": null,
+          "value": "[\"default\", \"mode_of_payment\", \"posa_payment_currency\", \"posa_original_amount\", \"posa_exchange_rate\", \"posa_company_exchange_rate\", \"posa_rate_date\", \"posa_rate_source\", \"amount\", \"reference_no\", \"column_break_3\", \"account\", \"posa_account_currency\", \"posa_account_amount\", \"type\", \"base_amount\", \"clearance_date\"]"
+        },
+        {
+          "_assign": null,
+          "_comments": null,
+          "_liked_by": null,
+          "_user_tags": null,
+          "creation": "2026-11-06 23:11:28.626936",
+          "default_value": null,
+          "doc_type": "Sales Invoice",
+          "docstatus": 0,
+          "doctype_or_field": "DocType",
+          "field_name": null,
+          "idx": 0,
+          "is_system_generated": 0,
+          "modified": "2026-11-06 23:11:28.626936",
+          "modified_by": "Administrator",
+          "module": null,
+          "name": "Sales Invoice-main-field_order",
+          "owner": "Administrator",
+          "property": "field_order",
+          "property_type": "Data",
+          "row_name": null,
+          "value": "[\"ruhee_c3_rate\", \"customer_section\", \"company\", \"company_tax_id\", \"naming_series\", \"customer\", \"customer_name\", \"tax_id\", \"column_break1\", \"posting_date\", \"posting_time\", \"set_posting_time\", \"due_date\", \"posa_return_valid_upto\", \"column_break_14\", \"is_pos\", \"pos_profile\", \"posa_pos_opening_shift\", \"posa_cashier\", \"posa_below_cost_override\", \"posa_below_cost_override_by\", \"posa_below_cost_override_reason\", \"posa_below_cost_override_details\", \"posa_is_printed\", \"posa_client_request_id\", \"is_consolidated\", \"is_return\", \"return_against\", \"update_outstanding_for_self\", \"update_billed_amount_in_sales_order\", \"update_billed_amount_in_delivery_note\", \"is_debit_note\", \"apply_tds\", \"amended_from\", \"is_created_using_pos\", \"pos_closing_entry\", \"has_subcontracted\", \"accounting_dimensions_section\", \"cost_center\", \"dimension_col_break\", \"project\", \"currency_and_price_list\", \"currency\", \"conversion_rate\", \"column_break2\", \"selling_price_list\", \"price_list_currency\", \"plc_conversion_rate\", \"ignore_pricing_rule\", \"items_section\", \"scan_barcode\", \"last_scanned_warehouse\", \"update_stock\", \"column_break_39\", \"set_warehouse\", \"set_target_warehouse\", \"section_break_42\", \"items\", \"section_break_30\", \"total_qty\", \"total_net_weight\", \"column_break_32\", \"base_total\", \"base_net_total\", \"column_break_52\", \"total\", \"net_total\", \"taxes_section\", \"tax_category\", \"taxes_and_charges\", \"posa_delivery_charges\", \"posa_delivery_charges_rate\", \"column_break_38\", \"shipping_rule\", \"column_break_55\", \"incoterm\", \"named_place\", \"section_break_40\", \"taxes\", \"section_break_43\", \"base_total_taxes_and_charges\", \"column_break_47\", \"total_taxes_and_charges\", \"totals_section\", \"use_company_roundoff_cost_center\", \"grand_total\", \"in_words\", \"column_break5\", \"disable_rounded_total\", \"rounding_adjustment\", \"rounded_total\", \"base_totals_section\", \"base_grand_total\", \"base_in_words\", \"column_break_xjag\", \"base_rounding_adjustment\", \"base_rounded_total\", \"section_break_pxwz\", \"total_advance\", \"column_break_iaso\", \"outstanding_amount\", \"section_tax_withholding_entry\", \"tax_withholding_group\", \"ignore_tax_withholding_threshold\", \"override_tax_withholding_entries\", \"tax_withholding_entries\", \"additional_discount_section\", \"apply_discount_on\", \"base_discount_amount\", \"coupon_code\", \"column_break_51\", \"additional_discount_percentage\", \"discount_amount\", \"is_cash_or_non_trade_discount\", \"additional_discount_account\", \"sec_tax_breakup\", \"other_charges_calculation\", \"item_wise_tax_details\", \"pricing_rule_details\", \"pricing_rules\", \"posa_offers\", \"posa_coupons\", \"gift_card_redemptions\", \"packing_list\", \"packed_items\", \"product_bundle_help\", \"time_sheet_list\", \"timesheets\", \"section_break_104\", \"total_billing_hours\", \"column_break_106\", \"total_billing_amount\", \"payments_tab\", \"payments_section\", \"cash_bank_account\", \"payments\", \"section_break_84\", \"base_paid_amount\", \"column_break_86\", \"paid_amount\", \"section_break_88\", \"base_change_amount\", \"column_break_90\", \"change_amount\", \"posa_change_returns\", \"posa_change_returned\", \"posa_remaining_change\", \"account_for_change_amount\", \"advances_section\", \"allocate_advances_automatically\", \"only_include_allocated_payments\", \"get_advances\", \"advances\", \"posa_redeemed_customer_credit\", \"posa_remaining_customer_credit_balance\", \"write_off_section\", \"write_off_amount\", \"base_write_off_amount\", \"write_off_outstanding_amount_automatically\", \"column_break_74\", \"write_off_account\", \"write_off_cost_center\", \"loyalty_points_redemption\", \"redeem_loyalty_points\", \"loyalty_points\", \"loyalty_amount\", \"column_break_77\", \"loyalty_program\", \"dont_create_loyalty_points\", \"loyalty_redemption_account\", \"loyalty_redemption_cost_center\", \"contact_and_address_tab\", \"address_and_contact\", \"customer_address\", \"address_display\", \"col_break4\", \"contact_person\", \"contact_display\", \"contact_mobile\", \"contact_email\", \"territory\", \"shipping_address_section\", \"shipping_address_name\", \"shipping_address\", \"shipping_addr_col_break\", \"dispatch_address_name\", \"dispatch_address\", \"company_address_section\", \"company_address\", \"company_address_display\", \"company_addr_col_break\", \"company_contact_person\", \"terms_tab\", \"payment_schedule_section\", \"ignore_default_payment_terms_template\", \"payment_terms_template\", \"payment_schedule\", \"terms_section_break\", \"tc_name\", \"terms\", \"more_info_tab\", \"customer_po_details\", \"po_no\", \"column_break_23\", \"po_date\", \"more_info\", \"debit_to\", \"party_account_currency\", \"is_opening\", \"column_break8\", \"unrealized_profit_loss_account\", \"against_income_account\", \"posa_additional_notes_section\", \"posa_notes\", \"posa_column_break_111\", \"posa_delivery_date\", \"posa_authorization_code\", \"commission_section\", \"column_break_rdiw\", \"sales_partner\", \"amount_eligible_for_commission\", \"column_break10\", \"commission_rate\", \"total_commission\", \"sales_team_section\", \"sales_team\", \"edit_printing_settings\", \"letter_head\", \"group_same_items\", \"column_break_84\", \"select_print_heading\", \"language\", \"subscription_section\", \"subscription\", \"column_break_140\", \"from_date\", \"to_date\", \"automation_section\", \"auto_repeat\", \"update_auto_repeat_reference\", \"utm_analytics_section\", \"column_break_rdke\", \"utm_source\", \"utm_medium\", \"column_break_ixxw\", \"utm_campaign\", \"utm_content\", \"more_information\", \"status\", \"remarks\", \"customer_group\", \"title\", \"column_break_imbx\", \"is_internal_customer\", \"represents_company\", \"inter_company_invoice_reference\", \"is_discounted\", \"connections_tab\"]"
+        }
+      ],
+      "metadata_changed": [],
+      "sha256": {
+        "amount_trace": "cf6b5a0c63b36e211d0882562713515aa952048d847735f08075e782fc5cda96",
+        "columns": "6cd6087e4ee62c56e61cafeebe0acf8caf75687256d3a28ef6baaabad02a3c0f",
+        "payments": "325339d8dfb35951cab60f0c1202b649c9cc3d0ed75b7250d47cc362c20f153e",
+        "rates": "9d9413f151113235fd852c7ec422b2ea6d1c6ea0938cf1aaf940b1b68951fd51",
+        "snapshots": "49a114d6392355e38f793a775fd6f84a0a2934cbdfd735fe49eeed3f6f810837",
+        "store_rates": "2083e8be10d7fc977cfdd198b4a53ce52f15074ac94253225efe5e08a460f950",
+        "trace": "81df90858838e342a6f2e4de45754beb4680b4ca7d4708ea793899891260974f"
+      },
+      "stage": "customize"
+    },
+    {
+      "full_records_equal": true,
+      "metadata_added": [
+        {
+          "_assign": null,
+          "_comments": null,
+          "_liked_by": null,
+          "_user_tags": null,
+          "creation": "2026-11-06 23:13:35.417436",
+          "default_value": null,
+          "doc_type": "Payment Entry",
+          "docstatus": 0,
+          "doctype_or_field": "DocField",
+          "field_name": "naming_series",
+          "idx": 0,
+          "is_system_generated": 1,
+          "modified": "2026-11-06 23:13:35.417436",
+          "modified_by": "Administrator",
+          "module": null,
+          "name": "Payment Entry-naming_series-options",
+          "owner": "Administrator",
+          "property": "options",
+          "property_type": "Text",
+          "row_name": null,
+          "value": "ACC-PAY-.YYYY.-"
+        },
+        {
+          "_assign": null,
+          "_comments": null,
+          "_liked_by": null,
+          "_user_tags": null,
+          "creation": "2026-11-06 23:13:34.903600",
+          "default_value": null,
+          "doc_type": "Sales Invoice",
+          "docstatus": 0,
+          "doctype_or_field": "DocField",
+          "field_name": "naming_series",
+          "idx": 0,
+          "is_system_generated": 1,
+          "modified": "2026-11-06 23:13:34.903600",
+          "modified_by": "Administrator",
+          "module": null,
+          "name": "Sales Invoice-naming_series-options",
+          "owner": "Administrator",
+          "property": "options",
+          "property_type": "Text",
+          "row_name": null,
+          "value": "ACC-SINV-.YYYY.-\nACC-SINV-RET-.YYYY.-"
+        }
+      ],
+      "metadata_changed": [],
+      "sha256": {
+        "amount_trace": "cf6b5a0c63b36e211d0882562713515aa952048d847735f08075e782fc5cda96",
+        "columns": "6cd6087e4ee62c56e61cafeebe0acf8caf75687256d3a28ef6baaabad02a3c0f",
+        "payments": "325339d8dfb35951cab60f0c1202b649c9cc3d0ed75b7250d47cc362c20f153e",
+        "rates": "9d9413f151113235fd852c7ec422b2ea6d1c6ea0938cf1aaf940b1b68951fd51",
+        "snapshots": "49a114d6392355e38f793a775fd6f84a0a2934cbdfd735fe49eeed3f6f810837",
+        "store_rates": "2083e8be10d7fc977cfdd198b4a53ce52f15074ac94253225efe5e08a460f950",
+        "trace": "81df90858838e342a6f2e4de45754beb4680b4ca7d4708ea793899891260974f"
+      },
+      "stage": "reload"
+    },
+    {
+      "full_records_equal": true,
+      "metadata_added": [],
+      "metadata_changed": [
+        {
+          "after": {
+            "_assign": null,
+            "_comments": null,
+            "_liked_by": null,
+            "_user_tags": null,
+            "creation": "2026-11-06 23:16:05.104840",
+            "default_value": null,
+            "doc_type": "Sales Invoice",
+            "docstatus": 0,
+            "doctype_or_field": "DocField",
+            "field_name": "posa_pos_opening_shift",
+            "idx": 0,
+            "is_system_generated": 0,
+            "modified": "2020-10-26 15:35:40.861492",
+            "modified_by": "Administrator",
+            "module": null,
+            "name": "Sales Invoice-posa_pos_opening_shift-no_copy",
+            "owner": "Administrator",
+            "property": "no_copy",
+            "property_type": "Check",
+            "row_name": null,
+            "value": "1"
+          },
+          "before": {
+            "_assign": null,
+            "_comments": null,
+            "_liked_by": null,
+            "_user_tags": null,
+            "creation": "2026-11-07 03:39:27.221076",
+            "default_value": null,
+            "doc_type": "Sales Invoice",
+            "docstatus": 0,
+            "doctype_or_field": "DocField",
+            "field_name": "posa_pos_opening_shift",
+            "idx": 0,
+            "is_system_generated": 0,
+            "modified": "2020-10-26 15:35:40.861492",
+            "modified_by": "Administrator",
+            "module": null,
+            "name": "Sales Invoice-posa_pos_opening_shift-no_copy",
+            "owner": "Administrator",
+            "property": "no_copy",
+            "property_type": "Check",
+            "row_name": null,
+            "value": "1"
+          }
+        },
+        {
+          "after": {
+            "_assign": null,
+            "_comments": null,
+            "_liked_by": null,
+            "_user_tags": null,
+            "creation": "2026-11-06 23:16:05.216904",
+            "default_value": null,
+            "doc_type": "Sales Invoice",
+            "docstatus": 0,
+            "doctype_or_field": "DocField",
+            "field_name": "update_outstanding_for_self",
+            "idx": 0,
+            "is_system_generated": 0,
+            "modified": "2024-05-15 00:00:00",
+            "modified_by": "Administrator",
+            "module": null,
+            "name": "Sales Invoice-update_outstanding_for_self-default",
+            "owner": "Administrator",
+            "property": "default",
+            "property_type": "Text",
+            "row_name": null,
+            "value": "0"
+          },
+          "before": {
+            "_assign": null,
+            "_comments": null,
+            "_liked_by": null,
+            "_user_tags": null,
+            "creation": "2026-11-07 03:39:27.261013",
+            "default_value": null,
+            "doc_type": "Sales Invoice",
+            "docstatus": 0,
+            "doctype_or_field": "DocField",
+            "field_name": "update_outstanding_for_self",
+            "idx": 0,
+            "is_system_generated": 0,
+            "modified": "2024-05-15 00:00:00",
+            "modified_by": "Administrator",
+            "module": null,
+            "name": "Sales Invoice-update_outstanding_for_self-default",
+            "owner": "Administrator",
+            "property": "default",
+            "property_type": "Text",
+            "row_name": null,
+            "value": "0"
+          }
+        }
+      ],
+      "sha256": {
+        "amount_trace": "cf6b5a0c63b36e211d0882562713515aa952048d847735f08075e782fc5cda96",
+        "columns": "6cd6087e4ee62c56e61cafeebe0acf8caf75687256d3a28ef6baaabad02a3c0f",
+        "payments": "325339d8dfb35951cab60f0c1202b649c9cc3d0ed75b7250d47cc362c20f153e",
+        "rates": "9d9413f151113235fd852c7ec422b2ea6d1c6ea0938cf1aaf940b1b68951fd51",
+        "snapshots": "49a114d6392355e38f793a775fd6f84a0a2934cbdfd735fe49eeed3f6f810837",
+        "store_rates": "2083e8be10d7fc977cfdd198b4a53ce52f15074ac94253225efe5e08a460f950",
+        "trace": "81df90858838e342a6f2e4de45754beb4680b4ca7d4708ea793899891260974f"
+      },
+      "stage": "migrate"
+    },
+    {
+      "full_records_equal": true,
+      "metadata_added": [],
+      "metadata_changed": [],
+      "sha256": {
+        "amount_trace": "cf6b5a0c63b36e211d0882562713515aa952048d847735f08075e782fc5cda96",
+        "columns": "6cd6087e4ee62c56e61cafeebe0acf8caf75687256d3a28ef6baaabad02a3c0f",
+        "payments": "325339d8dfb35951cab60f0c1202b649c9cc3d0ed75b7250d47cc362c20f153e",
+        "rates": "9d9413f151113235fd852c7ec422b2ea6d1c6ea0938cf1aaf940b1b68951fd51",
+        "setters": "33e88992d100df7800fc765270cbe382e8042264dccfb46157b8893eae48becd",
+        "snapshots": "49a114d6392355e38f793a775fd6f84a0a2934cbdfd735fe49eeed3f6f810837",
+        "store_rates": "2083e8be10d7fc977cfdd198b4a53ce52f15074ac94253225efe5e08a460f950",
+        "trace": "81df90858838e342a6f2e4de45754beb4680b4ca7d4708ea793899891260974f"
+      },
+      "stage": "resume_after_migrate"
+    }
+  ],
+  "result": "local precision/lifecycle checks pass; C3 remains unaccepted",
+  "site": "c3-precision-review.localhost"
+}

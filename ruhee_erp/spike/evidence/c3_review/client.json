@@ -1,0 +1,52 @@
+{
+  "browser_verified": false,
+  "commits": {
+    "frappe": "2fcb9397a1f1da353b21e53d2f97ec56653acd02",
+    "erpnext": "9cd11b19575bfc34f092a24f6c8b368c4dd69481",
+    "posawesome": "89ae16d872e90727086b2550d7ca97958c9c4aa4"
+  },
+  "cases": [
+    {
+      "conversion_rate": 0.000434783,
+      "usd": 100,
+      "raw": 229999.7930001863,
+      "line_at_two_decimals": 229999.79,
+      "exact_direct": 230000
+    },
+    {
+      "conversion_rate": 0.000434783,
+      "usd": 3000,
+      "raw": 6899993.790005589,
+      "line_at_two_decimals": 6899993.79,
+      "exact_direct": 6900000
+    },
+    {
+      "conversion_rate": 0.000434783,
+      "usd": 3200,
+      "raw": 7359993.376005962,
+      "line_at_two_decimals": 7359993.38,
+      "exact_direct": 7360000
+    },
+    {
+      "conversion_rate": 0.000434782609,
+      "usd": 100,
+      "raw": 229999.999839,
+      "line_at_two_decimals": 230000,
+      "exact_direct": 230000
+    },
+    {
+      "conversion_rate": 0.000434782609,
+      "usd": 3000,
+      "raw": 6899999.99517,
+      "line_at_two_decimals": 6900000,
+      "exact_direct": 6900000
+    },
+    {
+      "conversion_rate": 0.000434782609,
+      "usd": 3200,
+      "raw": 7359999.994848,
+      "line_at_two_decimals": 7359999.99,
+      "exact_direct": 7360000
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "collector_resumes": [
+    "a3201d3: after Customize Form",
+    "f55c2db: after forced reload",
+    "8f81a3a: after migrate"
+  ],
+  "gzip_json_integrity": "pass",
+  "limitations": "Fresh financial source is de9cbdb; resumed collector final source is 8f81a3a. Financial/probe/verifier code hashes remained identical. Browser and staging not executed.",
+  "metadata_changes_disclosed": {
+    "customize_added": 4,
+    "migrate_fixture_creation_changed": 2,
+    "reload_added": 2
+  },
+  "pre_commit": "all source checks passed; staged evidence checked before final commit",
+  "read_only_verifier_ast": "pass: no direct document writes, raw SQL or commit calls",
+  "smoke": "1 integration test passed"
+}

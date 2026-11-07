@@ -1,0 +1,99 @@
+{
+  "C3_acceptance": "failed/unaccepted; native 3200 USD line is 7359999.99 CDF",
+  "app_commits": {
+    "erpnext": "9cd11b19575bfc34f092a24f6c8b368c4dd69481",
+    "frappe": "2fcb9397a1f1da353b21e53d2f97ec56653acd02",
+    "posawesome": "89ae16d872e90727086b2550d7ca97958c9c4aa4",
+    "ruhee_erp": "de9cbdbf777736024d62db9ee67dbef6956d1825"
+  },
+  "browser_verified": false,
+  "business_and_rate_records_equal_including_modified": true,
+  "collector_note": "Fresh financial phases ran at de9cbdb. Collector assertions were corrected at native metadata boundaries, then resumed against captured full records. No precision or business operation was replayed on resume. Precision/probe/payment/verifier source hashes are identical across the fresh run and final readback.",
+  "final_trace": [
+    {
+      "column": "decimal(21,12)",
+      "doctype": "Currency Exchange",
+      "field": "exchange_rate",
+      "precision": "12"
+    },
+    {
+      "column": "decimal(21,12)",
+      "doctype": "Sales Invoice",
+      "field": "conversion_rate",
+      "precision": "12"
+    },
+    {
+      "column": "decimal(21,12)",
+      "doctype": "Sales Invoice Payment",
+      "field": "posa_company_exchange_rate",
+      "precision": "12"
+    },
+    {
+      "column": "decimal(21,12)",
+      "doctype": "GL Entry",
+      "field": "transaction_exchange_rate",
+      "precision": "12"
+    },
+    {
+      "column": "decimal(21,12)",
+      "doctype": "Payment Entry",
+      "field": "target_exchange_rate",
+      "precision": "12"
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "Sales Invoice",
+      "field": "plc_conversion_rate",
+      "precision": "9"
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "Sales Invoice Payment",
+      "field": "posa_exchange_rate",
+      "precision": ""
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "Payment Entry",
+      "field": "source_exchange_rate",
+      "precision": "9"
+    },
+    {
+      "column": null,
+      "doctype": "Sales Invoice Advance",
+      "field": "exchange_rate",
+      "precision": null
+    },
+    {
+      "column": "decimal(21,9)",
+      "doctype": "GL Entry",
+      "field": "reporting_currency_exchange_rate",
+      "precision": "9"
+    }
+  ],
+  "fresh_baseline_commit": "de9cbdbf777736024d62db9ee67dbef6956d1825",
+  "local_smoke": {
+    "command": "bench --site c3-precision-review.localhost run-tests --app ruhee_erp",
+    "result": "1 integration test passed"
+  },
+  "native_large_payment": {
+    "base_received_amount": 10086.96,
+    "deduction_amount": -86.96,
+    "errors": [],
+    "invoice": "ACC-SINV-2026-00022",
+    "invoice_outstanding": 0.0,
+    "payment": "ACC-PAY-2026-00002"
+  },
+  "population": {
+    "exchange_rates": 9,
+    "invoice_gl": 125,
+    "invoices": 22,
+    "payment_gl": 6,
+    "payments": 2,
+    "store_rates": 7
+  },
+  "precision_setters_equal_including_modified": true,
+  "site": "c3-precision-review.localhost",
+  "staging_executed": false,
+  "tested_code_commit": "8f81a3aa47b5a9ef02f755ee76ef45ef16dc4f1d"
+}
