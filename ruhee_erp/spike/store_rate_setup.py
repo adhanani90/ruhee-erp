@@ -24,8 +24,8 @@ Site artifacts (inventory in store_rate_report.md, "Site artifacts"):
 """
 
 import json
-import os
 import secrets
+from pathlib import Path
 
 import frappe
 from frappe.custom.doctype.custom_field.custom_field import create_custom_field
@@ -358,11 +358,8 @@ def _facturier(report):
 	"""Browser login for the M1-03 facturier; the password stays in the site's private folder."""
 	from posawesome.posawesome.api.employees import save_cashier_pin
 
-	path = frappe.get_site_path("private", "c7_secrets.json")
-	stored = {}
-	if os.path.exists(path):
-		with open(path) as handle:
-			stored = json.load(handle)
+	path = Path(frappe.get_site_path("private", "c7_secrets.json"))
+	stored = json.loads(path.read_text()) if path.exists() else {}
 	if stored.get("password") and stored.get("pin"):
 		report["existing"].append("facturier password and terminal PIN (site private/c7_secrets.json)")
 	else:
@@ -371,10 +368,11 @@ def _facturier(report):
 			update_password(FACTURIER, stored["password"])
 		stored["pin"] = str(100000 + secrets.randbelow(900000))
 		save_cashier_pin(PROFILE, FACTURIER, stored["pin"])
-		fd = os.open(path + ".tmp", os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
-		with os.fdopen(fd, "w") as handle:
-			json.dump(stored, handle)
-		os.replace(path + ".tmp", path)
+		temporary = path.with_suffix(".tmp")
+		temporary.touch(mode=0o600)
+		temporary.chmod(0o600)
+		temporary.write_text(json.dumps(stored))
+		temporary.replace(path)
 		report["created"].append(
 			"facturier password and terminal PIN, in site private/c7_secrets.json (mode 600)"
 		)

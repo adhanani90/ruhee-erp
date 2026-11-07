@@ -10,6 +10,7 @@ record. No save, insert, submit, set_value, commit, raw SQL or resubmission.
 
 import hashlib
 import json
+from pathlib import Path
 
 import frappe
 from frappe.utils import flt
@@ -213,6 +214,5 @@ def run(request_ids=None, expect=None, out=None):
 		result["cases"].append(state)
 	text = json.dumps(result, indent=1, default=str, sort_keys=True)
 	if out:
-		with open(out, "w") as handle:
-			handle.write(text)
+		Path(out).write_text(text)  # operator-supplied bench argument; never web-exposed
 	print(text)

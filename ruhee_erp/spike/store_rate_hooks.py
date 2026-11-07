@@ -35,7 +35,6 @@ PROFILE_FLAG = "ruhee_c7_store_rate"
 CLOCK_TOLERANCE = timedelta(minutes=5)
 # Test-only failure injection, read from the site cache on disposable sites.
 INJECT_KEY = "ruhee_c7_inject_submit_failure"
-TITLE = _("Taux magasin (essai C7)")
 
 
 def site_enabled():
@@ -54,8 +53,12 @@ def enabled(doc):
 	return profile_enabled(doc.get("pos_profile"))
 
 
+def title():
+	return _("Taux magasin (essai C7)")
+
+
 def fail(message):
-	frappe.throw(message, frappe.ValidationError, title=TITLE)
+	frappe.throw(message, frappe.ValidationError, title=title())
 
 
 def _records(company, profile):
@@ -266,7 +269,7 @@ def _inject_failure():
 	if spec and cint(spec.get("remaining")) > 0:
 		spec["remaining"] = cint(spec["remaining"]) - 1
 		frappe.cache.set_value(INJECT_KEY, spec)
-		frappe.throw(_("Essai C7 : échec de validation provoqué (récupérable)."), title=TITLE)
+		frappe.throw(_("Essai C7 : échec de validation provoqué (récupérable)."), title=title())
 
 
 @frappe.whitelist()
@@ -299,7 +302,7 @@ def submit_invoice(invoice: str, data: str, submit_in_background: bool = False):
 def get_store_rate(pos_profile: str) -> dict:
 	"""The store record in force now for this profile, with its identity and direct quotes."""
 	if not profile_enabled(pos_profile):
-		frappe.throw(_("Ce profil de caisse n'utilise pas le taux magasin (essai C7)."), title=TITLE)
+		frappe.throw(_("Ce profil de caisse n'utilise pas le taux magasin (essai C7)."), title=title())
 	profile = frappe.get_doc("POS Profile", pos_profile)
 	profile.check_permission("read")
 	record, problem = applicable_record(profile.company, profile.name, now_datetime())
