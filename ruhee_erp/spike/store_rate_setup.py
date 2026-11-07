@@ -276,6 +276,22 @@ def add_rate(base, higher, effective_from):
 	return doc.name
 
 
+def add_rate_in(base, higher, seconds):
+	"""Test arrangement: a replacement record effective ``seconds`` after the server's now."""
+	from frappe.utils import add_to_date
+
+	return add_rate(base, higher, str(add_to_date(now_datetime(), seconds=int(seconds))))
+
+
+def inject_submit_failures(count=1):
+	"""Test arrangement only: the next ``count`` C7 submits fail before anything is written."""
+	from ruhee_erp.spike.store_rate_hooks import INJECT_KEY
+
+	guard()
+	frappe.cache.set_value(INJECT_KEY, {"remaining": int(count)})
+	print(json.dumps({"inject_submit_failures": int(count)}))
+
+
 def _first_store_rate(report, test_date):
 	existing = frappe.get_all(RATE_TYPE, filters={"pos_profile": PROFILE, "docstatus": 1}, pluck="name")
 	if existing:

@@ -10,6 +10,7 @@
 // Run (see store_rate_report.md, "Reproduce"):
 //   PW_MODULE=<frontend>/node_modules/playwright/index.mjs SITE=<site> PORT=8021 \
 //   OUT=<dir> node c7_browser.mjs <scenario> [...]
+import { execFileSync } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 
 const { chromium } = await import(process.env.PW_MODULE);
@@ -177,8 +178,13 @@ export async function unlock(page) {
   )
     return;
   const who = page.getByText(SECRETS.user, { exact: true }).first();
-  await who.waitFor({ timeout: 30000 });
-  await who.click();
+  const pinField = page.locator("input[name=pos-terminal-unlock-pin]");
+  // The lock screen opens either on the cashier list or with a cashier selected.
+  await Promise.race([
+    who.waitFor({ timeout: 30000 }),
+    pinField.waitFor({ timeout: 30000 }),
+  ]);
+  if (await who.isVisible().catch(() => false)) await who.click();
   const pin = page.locator("input[name=pos-terminal-unlock-pin]");
   await pin.waitFor({ timeout: 30000 });
   await page.waitForTimeout(500);
@@ -386,13 +392,13 @@ export async function readPayment(page) {
   });
 }
 
-export async function submit(page, trace) {
+export async function submit(page, trace, { offline = false } = {}) {
   const before = trace.http.length;
   await page
     .getByRole("button", { name: /^\s*submit\s*$/i })
     .first()
     .click();
-  const deadline = Date.now() + 60000;
+  const deadline = Date.now() + (offline ? 8000 : 60000);
   while (Date.now() < deadline) {
     const done = trace.http
       .slice(before)
@@ -635,7 +641,7 @@ const SALES = {
   ],
 };
 
-export async function sale(session, name) {
+export async function sale(session, name, { offline = false } = {}) {
   const [currency, code, label, qty, mode, tenderCurrency, amount] =
     SALES[name];
   const { page, trace } = session;
@@ -648,8 +654,10 @@ export async function sale(session, name) {
   await pay(page, mode, tenderCurrency, amount);
   const payment = await readPayment(page);
   await page.screenshot({ path: `${OUT}/${name}-payment.png` });
-  const result = await submit(page, trace);
-  await page.screenshot({ path: `${OUT}/${name}-after-submit.png` });
+  const result = await submit(page, trace, { offline });
+  await page.screenshot({
+    path: `${OUT}/${name}-${Date.now()}-after-submit.png`,
+  });
   return {
     scenario: name,
     inputs: {
@@ -668,6 +676,353 @@ export async function sale(session, name) {
   };
 }
 
+// ------------------------------------------------------------------ flows
+// Server-side steps below are test ARRANGEMENT through the bench (a new store
+// record, a test-only failure switch); everything billed goes through the client.
+
+function server(method, kwargs = {}) {
+  const outText = execFileSync(
+    process.env.C7_RUNNER,
+    ["--site", SITE, "execute", method, "--kwargs", JSON.stringify(kwargs)],
+    { encoding: "utf8" }
+  );
+  const lines = outText
+    .trim()
+    .split("\n")
+    .filter((l) => l.startsWith("{"));
+  return lines.length ? JSON.parse(lines.at(-1)) : outText.trim();
+}
+
+const requestIds = (queue) =>
+  Object.values(queue.tables)
+    .flat()
+    .map((row) => ({
+      request_id: row.request_id,
+      status: row.status,
+      retry_count: row.retry_count,
+      last_error: row.last_error,
+    }));
+
+async function waitForQueue(page, predicate, timeout = 120000) {
+  const deadline = Date.now() + timeout;
+  let queue = await offlineQueue(page);
+  while (Date.now() < deadline && !predicate(queue)) {
+    await page.waitForTimeout(3000);
+    queue = await offlineQueue(page);
+  }
+  return queue;
+}
+
+const writeQueue = (queue) =>
+  queue.tables["posawesome_offline.write_queue"] || [];
+const settled = (queue) =>
+  writeQueue(queue).every(
+    (row) => !["pending", "syncing"].includes(row.status)
+  );
+
+async function goOffline(ctx, page) {
+  await ctx.setOffline(true);
+  await page.waitForTimeout(3000);
+}
+
+async function goOnline(ctx, page) {
+  await ctx.setOffline(false);
+  await page.waitForTimeout(3000);
+}
+
+async function syncNow(page) {
+  // The navbar's own sync action (the same store action the client runs on reconnect).
+  await page.evaluate(() => window.dispatchEvent(new Event("online")));
+  const button = page.getByRole("button", { name: /sync/i }).first();
+  if (await button.count()) await button.click().catch(() => {});
+}
+
+const FLOWS = {
+  // R11/I8: A issued before the replacement and synced after it keeps its rate;
+  // B issued after it uses the replacement; C issued after it with the
+  // superseded cached rate is not submitted or repriced.
+  async effective_time(session) {
+    const { ctx, page } = session;
+    const steps = [];
+    steps.push({
+      step: "binding_before",
+      cache: (await offlineQueue(page)).store_rate_cache,
+    });
+    await goOffline(ctx, page);
+    const a = await sale(session, "c3_01", { offline: true });
+    steps.push({
+      step: "A_offline_before_replacement",
+      sale: a,
+      queue: await offlineQueue(page),
+    });
+    const replacement = server("ruhee_erp.spike.store_rate_setup.add_rate_in", {
+      base: 2400,
+      higher: 2420,
+      seconds: 20,
+    });
+    steps.push({ step: "replacement_created", replacement });
+    await page.waitForTimeout(30000);
+    const c = await sale(session, "c3_01", { offline: true });
+    steps.push({
+      step: "C_offline_after_replacement_superseded_rate",
+      sale: c,
+      queue: await offlineQueue(page),
+    });
+    await goOnline(ctx, page);
+    await syncNow(page);
+    const synced = await waitForQueue(page, settled);
+    steps.push({
+      step: "after_reconnect_sync",
+      queue: synced,
+      http: [...session.trace.http],
+    });
+    await unlock(page); // new bill: the client refreshes the binding
+    const b = await sale(session, "c3_01");
+    steps.push({
+      step: "B_online_after_replacement",
+      sale: b,
+      cache: (await offlineQueue(page)).store_rate_cache,
+    });
+    return steps;
+  },
+
+  // Section 4, online path: a valid 232,000 FC C4 whose submit fails once.
+  async recovery_online(session) {
+    const { page } = session;
+    const steps = [];
+    steps.push({
+      step: "inject",
+      result: server(
+        "ruhee_erp.spike.store_rate_setup.inject_submit_failures",
+        { count: 1 }
+      ),
+    });
+    const first = await sale(session, "c4");
+    steps.push({
+      step: "first_attempt_failed",
+      sale: first,
+      queue: await offlineQueue(page),
+    });
+    await page.screenshot({ path: `${OUT}/recovery_online-after-failure.png` });
+    await session.ctx.close();
+    const reopened = await open();
+    Object.assign(session, reopened);
+    await unlock(session.page);
+    const after = await offlineQueue(session.page);
+    const screen = await readScreen(session.page);
+    steps.push({ step: "after_browser_restart", queue: after, screen });
+    await session.page.screenshot({
+      path: `${OUT}/recovery_online-after-restart.png`,
+    });
+    return steps;
+  },
+
+  // Section 4, offline queue path: queued C4, submit fails once on sync.
+  async recovery_offline_draft(session) {
+    const { ctx, page } = session;
+    const steps = [];
+    await goOffline(ctx, page);
+    const queued = await sale(session, "c4", { offline: true });
+    steps.push({
+      step: "queued_offline",
+      sale: queued,
+      queue: await offlineQueue(page),
+    });
+    steps.push({
+      step: "inject",
+      result: server(
+        "ruhee_erp.spike.store_rate_setup.inject_submit_failures",
+        { count: 1 }
+      ),
+    });
+    await goOnline(ctx, page);
+    await syncNow(page);
+    const synced = await waitForQueue(page, settled);
+    steps.push({
+      step: "after_sync",
+      queue: synced,
+      http: [...session.trace.http],
+    });
+    await session.ctx.close();
+    const reopened = await open();
+    Object.assign(session, reopened);
+    await unlock(session.page);
+    steps.push({
+      step: "after_browser_restart",
+      queue: await offlineQueue(session.page),
+    });
+    return steps;
+  },
+
+  // Section 4, recoverable failure: the server is unreachable during sync,
+  // the browser restarts, then the server is reachable again.
+  async recovery_network(session) {
+    const { ctx, page } = session;
+    const steps = [];
+    await goOffline(ctx, page);
+    const queued = await sale(session, "c4", { offline: true });
+    steps.push({
+      step: "queued_offline",
+      sale: queued,
+      queue: await offlineQueue(page),
+    });
+    const block = /invoices\.(submit_invoice|update_invoice)/;
+    await ctx.route(/\/api\/method\//, (route) =>
+      block.test(route.request().url())
+        ? route.abort("connectionreset")
+        : route.continue()
+    );
+    await goOnline(ctx, page);
+    await syncNow(page);
+    await page.waitForTimeout(20000);
+    steps.push({
+      step: "sync_while_server_unreachable",
+      queue: await offlineQueue(page),
+    });
+    await session.ctx.close();
+    const reopened = await open();
+    Object.assign(session, reopened);
+    await unlock(session.page);
+    steps.push({
+      step: "after_browser_restart",
+      queue: await offlineQueue(session.page),
+    });
+    await syncNow(session.page);
+    const synced = await waitForQueue(
+      session.page,
+      (q) => writeQueue(q).every((row) => row.status === "synced"),
+      150000
+    );
+    steps.push({
+      step: "after_server_reachable_again",
+      queue: synced,
+      http: [...session.trace.http],
+    });
+    return steps;
+  },
+
+  // Lost response: the server commits, the client never sees the answer, the
+  // facturier presses SUBMIT again on the same screen.
+  async lost_response(session) {
+    const { page, ctx } = session;
+    const steps = [];
+    let dropped = 0;
+    await ctx.route(/submit_invoice/, async (route) => {
+      try {
+        if (dropped === 0) {
+          dropped += 1;
+          // The server processes and commits the submit (Node resolves 127.0.0.1;
+          // the Host header selects the site)...
+          const url = route.request().url().replace(`${SITE}:`, "127.0.0.1:");
+          const answer = await route.fetch({
+            url,
+            headers: { ...route.request().headers(), host: `${SITE}:${PORT}` },
+          });
+          steps.push({
+            step: "server_answer_dropped",
+            status: answer.status(),
+            body: summarize(await answer.json().catch(() => null)),
+          });
+          await route.abort("connectionreset"); // ...but the answer never reaches the client
+        } else {
+          await route.continue();
+        }
+      } catch (error) {
+        steps.push({ step: "route_error", error: String(error).slice(0, 300) });
+        await route.abort("failed").catch(() => {});
+      }
+    });
+    const first = await sale(session, "c4");
+    steps.push({
+      step: "first_submit_response_lost",
+      sale: first,
+      queue: await offlineQueue(page),
+    });
+    await page.screenshot({ path: `${OUT}/lost_response-after-loss.png` });
+    const stillOpen = await page.evaluate(() =>
+      document.body.innerText.includes("Payment Methods")
+    );
+    let second = null;
+    if (stillOpen) {
+      second = await submit(page, session.trace);
+    }
+    steps.push({
+      step: "second_press_on_same_screen",
+      still_on_payment_screen: stillOpen,
+      second: second && {
+        request: payloadSummary(second.request),
+        response: second.response,
+        toasts: second.toasts,
+      },
+    });
+    steps.push({ step: "queue_after", queue: await offlineQueue(page) });
+    return steps;
+  },
+
+  // Concurrent replay of the client's own persisted payload (read back from
+  // its IndexedDB outbox, not built here), four requests released together.
+  async concurrent_replay(session) {
+    const { page } = session;
+    const steps = [];
+    steps.push({
+      step: "inject",
+      result: server(
+        "ruhee_erp.spike.store_rate_setup.inject_submit_failures",
+        { count: 1 }
+      ),
+    });
+    const failed = await sale(session, "c4");
+    steps.push({
+      step: "client_attempt_failed_payload_persisted",
+      sale: failed,
+    });
+    const replies = await page.evaluate(async () => {
+      const db = await new Promise((resolve, reject) => {
+        const req = indexedDB.open("posawesome_offline");
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => reject(req.error);
+      });
+      const rows = await new Promise((resolve) => {
+        const req = db
+          .transaction("invoice_outbox", "readonly")
+          .objectStore("invoice_outbox")
+          .getAll();
+        req.onsuccess = () => resolve(req.result);
+      });
+      const row = rows.filter((r) => r.status === "pending").at(-1);
+      const body = new URLSearchParams({
+        invoice: JSON.stringify(row.invoice),
+        data: JSON.stringify(row.data),
+      });
+      const send = () =>
+        fetch("/api/method/posawesome.posawesome.api.invoices.submit_invoice", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-Frappe-CSRF-Token": window.frappe?.csrf_token || "",
+          },
+          body,
+        }).then(async (r) => ({
+          status: r.status,
+          body: await r.json().catch(() => null),
+        }));
+      const results = await Promise.all([send(), send(), send(), send()]);
+      return {
+        request_id: row.client_request_id,
+        results: results.map((r) => ({
+          status: r.status,
+          name: r.body?.message?.name,
+          docstatus: r.body?.message?.docstatus,
+          replayed: r.body?.message?.replayed,
+          exc_type: r.body?.exc_type,
+        })),
+      };
+    });
+    steps.push({ step: "four_concurrent_replays", ...replies });
+    return steps;
+  },
+};
+
 async function main() {
   const scenarios = process.argv.slice(2);
   const session = await open();
@@ -677,7 +1032,11 @@ async function main() {
   for (const name of scenarios) {
     log("scenario", name);
     try {
-      results.push(await sale(session, name));
+      results.push(
+        FLOWS[name]
+          ? { scenario: name, steps: await FLOWS[name](session) }
+          : await sale(session, name)
+      );
     } catch (error) {
       await session.page
         .screenshot({ path: `${OUT}/${name}-error.png` })
